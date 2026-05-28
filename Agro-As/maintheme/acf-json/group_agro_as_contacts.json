@@ -1,0 +1,129 @@
+{
+    "key": "group_agro_as_contacts",
+    "title": "Контакты",
+    "fields": [
+        {
+            "key": "field_agro_ct_tab",
+            "label": "Контакты",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_ct",
+            "label": "Контакты",
+            "name": "kontakty",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_agro_ct_show",
+                    "label": "Показать",
+                    "name": "pokazat",
+                    "type": "true_false",
+                    "instructions": "Вывод секции на странице",
+                    "required": 0,
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ct_h",
+                    "label": "Заголовок",
+                    "name": "zagolovok",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ct_req",
+                    "label": "Реквизиты",
+                    "name": "rekvizity",
+                    "type": "wysiwyg",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                },
+                {
+                    "key": "field_agro_ct_lat",
+                    "label": "Широта карты",
+                    "name": "karta_shirota",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ct_lng",
+                    "label": "Долгота карты",
+                    "name": "karta_dolgota",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ct_zoom",
+                    "label": "Zoom карты",
+                    "name": "karta_zoom",
+                    "type": "number",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "min": 1,
+                    "max": 19,
+                    "step": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-contacts.php"
+            }
+        ]
+    ],
+    "menu_order": 4,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "featured_image"
+    ],
+    "active": true,
+    "description": "Agro-As — страница «Контакты»",
+    "show_in_rest": 0,
+    "modified": 1779798995
+}

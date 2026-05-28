@@ -1,0 +1,17 @@
+# Исключено из репозитория (локальные / не выгружаем)
+Объект_4/
+туроператор/
+turoperator
+antigravity-agent/
+Berega/
+агенты.zip
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Логи и кэш
+*.log
+.cache/

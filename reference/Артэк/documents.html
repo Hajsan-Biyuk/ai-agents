@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Заголовок</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="shortcut icon" href="favicon.png" />
+	<link rel="stylesheet" href="libs/bootstrap/bootstrap-grid.css" />
+	<link rel="stylesheet" href="libs/fontawesome-free-5.12.0-web/css/all.min.css" />
+	<link rel="stylesheet" href="libs/fancybox-master/dist/jquery.fancybox.min.css" />
+	<link rel="stylesheet" href="libs/slick-1.5.9/slick/slick.css" />
+	<link rel="stylesheet" href="css/fonts.css" />
+	<link rel="stylesheet" href="css/main.css?ver=1.5" />
+	<link rel="stylesheet" href="css/media.css?ver=1.5" />
+</head>
+<body> 
+
+	<div class="wrapper">
+
+		<header class="header">
+			<div class="container">
+				<div class="header__top">
+					<div class="row">
+						<div class="col-lg-5 col-3">
+							<div class="header__about">
+								<a href="#" class="btn-main">Скачать презентацию</a>
+								<div class="logo-descr">Грузоперевозки и логистика по всей РФ и ближайшему зарубежью</div>
+							</div>
+							<span class='sandwich sandwich_mobile'>
+								<span class='sw-topper'></span>
+								<span class='sw-bottom'></span>
+								<span class='sw-footer'></span>
+							</span>
+						</div>
+						<div class="col-lg-2 col-6">
+							<div class="logo-wrap">
+								<a href="#" class="logo">
+									<img src="img/logo.svg" alt="alt">
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-5 col-3">
+							<div class="header__contacts">
+								<div class="header__info">г. Москва, <br>Востряковский пр-д., <br>10-Б., стр 2., пом 16</div>
+								<div class="contacts-main">
+									<div class="contacts-main__content">
+										<a href="tel:+74951977737" class="phone-main">+7 (495) 197-77-37</a>
+										<div class="contacts-main__wrap">
+											<a href="mailto:tkartek@tkartek.ru" class="link-default">tkartek@tkartek.ru</a>
+											<a href="#modal-callback" class="link-main fancybox">заказать звонок</a>
+										</div>
+									</div>
+									<ul class="socials-list">
+										<li><a href="#" target="_blank"><img src="img/tg.svg" alt="alt"></a></li>
+										<li><a href="#" target="_blank"><img src="img/wp.svg" alt="alt"></a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="tel:+74951977737" class="phone-mob"><i class="fas fa-phone-alt"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="header__bottom">
+					<span class='sandwich sandwich_menu'>
+						<span class='sw-topper'></span>
+						<span class='sw-bottom'></span>
+						<span class='sw-footer'></span>
+					</span>
+					<ul class="menu">
+						<li><a href="#">Транспортная логистика</a></li>
+						<li><a href="#">Складская логистика</a></li>
+						<li><a href="#">Документационное сопровождение</a></li>
+						<li><a href="#">Специализированные перевозки</a></li>
+						<li><a href="#">Дополнительные услуги</a></li>
+					</ul>
+					<div class="menu-dropdown">
+						<ul>
+							<li><a href="#">О Компании</a></li>
+							<li><a href="#">Документация</a></li>
+							<li><a href="#">Сотрудничество</a></li>
+							<li><a href="#">Новости</a></li>
+							<li><a href="#">Контакты</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="menu-mobile">
+				<ul class="menu">
+					<li><a href="#">О Компании</a></li>
+					<li><a href="#">Документация</a></li>
+					<li><a href="#">Сотрудничество</a></li>
+					<li><a href="#">Новости</a></li>
+					<li><a href="#">Контакты</a></li>
+					<li><a href="#">Транспортная логистика</a></li>
+					<li><a href="#">Складская логистика</a></li>
+					<li><a href="#">Документационное сопровождение</a></li>
+					<li><a href="#">Специализированные перевозки</a></li>
+					<li><a href="#">Дополнительные услуги</a></li>
+				</ul>
+				<div class="header__info">г. Москва, <br>Востряковский пр-д., <br>10-Б., стр 2., пом 16</div>
+				<div class="contacts-main">
+					<div class="contacts-main__content">
+						<a href="tel:+74951977737" class="phone-main">+7 (495) 197-77-37</a>
+						<div class="contacts-main__wrap">
+							<a href="mailto:tkartek@tkartek.ru" class="link-default">tkartek@tkartek.ru</a>
+							<a href="#modal-callback" class="link-main fancybox">заказать звонок</a>
+						</div>
+					</div>
+					<ul class="socials-list">
+						<li><a href="#" target="_blank"><img src="img/tg.svg" alt="alt"></a></li>
+						<li><a href="#" target="_blank"><img src="img/wp.svg" alt="alt"></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="menu-overlay"></div>
+		</header>
+
+		<section class="page-about">
+			<div class="container">
+				<ul class="breadcrumbs">
+					<li><a href="#">Главная</a></li>
+					<li>Документы</li>
+				</ul>
+				<h1 class="title-big">Документы</h1>
+				<div class="descr-big">На странице «Документы» компания «Артэк» предоставляет доступ к лицензиям, сертификатам, разрешениям и другим документам. Мы соблюдаем все законодательные требования и стремимся к полной прозрачности в работе.</div>
+				<div class="content-section">
+					<div class="row row_items">
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc1.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc2.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc1.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc1.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc1.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc2.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc1.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc1.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc1.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc2.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+						<div class="col-lg-3">
+							<a href="#" class="item-document">
+								<span class="item-document__image">
+									<img src="img/doc1.jpg" alt="alt">
+								</span>
+								<span class="item-document__title">Сводная ведомость специальной оценки условий труда</span>
+								<span class="item-document__btn"><img src="img/dowload.svg" alt="alt"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="consultation">
+			<div class="container">
+				<div class="consultation__block">
+					<div class="row">
+						<div class="col-lg-9 offset-lg-3">
+							<div class="consultation__content">
+								<h2 class="title-section">Оставьте заявку и получите индивидуальное коммерческое предложение <span>в течение 30 минут</span></h2>
+								<div class="consultation__text">
+									<p>Наш специалист подберет оптимальный вариант и маршрут перевозки</p>
+									<p>Предварительно сориентирует вас по срокам и стоимости</p>
+									<p>Подскажет как подготовить груз к перевозке</p>
+								</div>
+								<form>
+									<div class="row row_small">
+										<div class="col-md-4">
+											<div class="item-form">
+												<input type="text" placeholder="Ваше имя" required>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="item-form">
+												<input type="tel" placeholder="Номер телефона" class="input-phone" inputmode="numeric" required>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<input type="submit" class="btn-main" value="Заказать">
+										</div>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" required="required" checked="checked" />
+											<span>Я согласен с условиями обработки персональных данных</span>
+										</label>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="consultation__image">
+						<img src="img/consultation.png" alt="alt">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="contacts">
+			<div class="container">
+				<div class="contacts__wrapper">
+					<div class="contacts-block">
+						<h2 class="title-section">Как нас найти</h2>
+						<div class="contacts-block__item"><strong>Адрес:</strong> г. Москва, Востряковский пр-д., <br>д .10-Б., стр 2., пом 16</div>
+						<div class="contacts-block__item"><strong>Телефон:</strong> <a href="tel:+74951977737">+7 (495) 197-77-37</a></div>
+						<div class="contacts-block__item"><strong>E-mail: </strong> <a href="mailto:tkartek@tkartek.ru">tkartek@tkartek.ru</a></div>
+						<a href="#modal-application" class="btn-main fancybox">Оставить заявку</a>
+					</div>
+				</div>
+			</div>
+			<div id="map"></div>
+		</section>
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="footer__logo">
+							<a href="#" class="logo">
+								<img src="img/logo2.svg" alt="alt">
+							</a>
+							<div class="logo-descr">Грузоперевозки <br>и транспортная логистика по всей РФ и ближайшему зарубежью</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<ul class="footer__nav">
+							<li><a href="#">Транспортная логистика</a></li>
+							<li><a href="#">Складская логистика</a></li>
+							<li><a href="#">Документационное сопровождение</a></li>
+							<li><a href="#">Специализированные перевозки</a></li>
+							<li><a href="#">Дополнительные услуги</a></li>
+							<li><a href="#">О Компании</a></li>
+							<li><a href="#">Документация</a></li>
+							<li><a href="#">Сотрудничество</a></li>
+							<li><a href="#">Новости</a></li>
+							<li><a href="#">Контакты</a></li>
+						</ul>
+					</div>
+					<div class="col-lg-3">
+						<div class="footer__right">
+							<div class="footer__contacts">
+								<div class="contacts-main">
+									<div class="contacts-main__content">
+										<a href="tel:+74951977737" class="phone-main">+7 (495) 197-77-37</a>
+									</div>
+									<ul class="socials-list">
+										<li><a href="#" target="_blank"><img src="img/tg.svg" alt="alt"></a></li>
+										<li><a href="#" target="_blank"><img src="img/wp.svg" alt="alt"></a></li>
+									</ul>
+								</div>
+								<div class="footer__location">г. Москва, Востряковский пр-д, <br>д .10-Б., стр 2., пом 16</div>
+								<a href="mailto:tkartek@tkartek.ru" class="mail-main">tkartek@tkartek.ru</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+	</div>
+
+	<div id="modal-callback" class="modal-block">
+		<div class="modal-wrap">
+			<div class="title-section">Закажите звонок</div>
+			<div class="descr-modal">и наш менеджер свяжется с вами в течение 30 минут</div>
+			<form>
+				<div class="item-form">
+					<input type="text" placeholder="Ваше имя" required>
+				</div>
+				<div class="item-form">
+					<input type="tel" placeholder="Номер телефона" class="input-phone" inputmode="numeric" required>
+				</div>
+				<input type="submit" class="btn-main" value="Отправить">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" required="required" checked="checked" />
+						<span>Я согласен с условиями обработки персональных данных</span>
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="modal-application" class="modal-block">
+		<div class="modal-wrap">
+			<div class="title-section">Оставьте заявку</div>
+			<div class="descr-modal">и получите индивидуальное <br>коммерческое предложение в течение 30 минут</div>
+			<form>
+				<div class="row">
+					<div class="col-12">
+						<div class="item-form">
+							<input type="text" placeholder="Ваше имя" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="item-form">
+							<input type="tel" placeholder="Номер телефона" class="input-phone" inputmode="numeric" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="item-form">
+							<input type="email" placeholder="Почта" inputmode="email" required>
+						</div>
+					</div>
+				</div>
+				<div class="title-small">Параметры груза:</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="item-form item-form_location">
+							<input type="text" placeholder="Откуда" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="item-form item-form_location">
+							<input type="text" placeholder="Куда" required>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="item-form">
+							<input type="text" placeholder="Вес" required>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="item-form">
+							<input type="text" placeholder="Габариты" required>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="item-form">
+							<input type="text" placeholder="Объем м³" required>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="item-form">
+							<input type="text" placeholder="Комментарий" required>
+						</div>
+					</div>
+				</div>
+				<input type="submit" class="btn-main" value="Рассчитать стоимость услуги">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" required="required" checked="checked" />
+						<span>Я согласен с условиями обработки персональных данных</span>
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!--[if lt IE 9]>
+	<script src="libs/html5shiv/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/respond.min.js"></script>
+	<![endif]-->
+	<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+	<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+	<script src="libs/fancybox-master/dist/jquery.fancybox.min.js"></script>
+	<script src="libs/slick-1.5.9/slick/slick.min.js"></script>
+	<script src="libs/mask/jquery.maskedinput.js"></script>
+	<script src="js/common.js?ver=1.5"></script>
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+	<script>
+		$(document).ready(function () {
+			ymaps.ready(init);
+
+			function init() {
+				var myMap = new ymaps.Map('map', {
+					center: [55.576559, 37.622917],
+					zoom: 12
+				}, {
+					searchControlProvider: 'yandex#search'
+				});
+
+				var iconSize = window.matchMedia("(max-width: 1600px)").matches ? [40, 55] : [64, 87];
+				var iconOffset = window.matchMedia("(max-width: 1600px)").matches ? [-20, -55] : [-32, -87];
+				var balloonOffset = window.matchMedia("(max-width: 1600px)").matches ? [0, -55] : [0, -87];
+
+				myPlacemark = new ymaps.Placemark([55.576559, 37.622917], {
+				}, {
+					iconLayout: 'default#image',
+					iconImageHref: 'img/pin.svg',
+					hideIconOnBalloonOpen: false,
+					iconImageSize: iconSize,
+					iconImageOffset: iconOffset,
+					balloonOffset: balloonOffset
+				});
+				myMap.controls.remove('searchControl');
+				myMap.behaviors.disable('scrollZoom');
+				myMap.geoObjects.add(myPlacemark);
+
+				window.matchMedia("(max-width: 1600px)").addEventListener("change", function (e) {
+					var newSize = e.matches ? [40, 55] : [64, 87];
+					var newOffset = e.matches ? [-20, -55] : [-32, -87];
+					var newBalloonOffset = e.matches ? [0, -55] : [0, -87];
+
+					myPlacemark.options.set({
+						iconImageSize: newSize,
+						iconImageOffset: newOffset,
+						balloonOffset: newBalloonOffset
+					});
+				});
+			}
+		});
+	</script>
+	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
+	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
+</body>
+</html>

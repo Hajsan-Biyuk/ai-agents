@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'LINE Seed JP';
+    src: local('LINE Seed JP Regular'), local('LINE-Seed-JP-Regular'),
+        url('../fonts/LINESeedJP-Regular.woff2') format('woff2'),
+        url('../fonts/LINESeedJP-Regular.woff') format('woff'),
+        url('../fonts/LINESeedJP-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'LINE Seed JP';
+    src: local('LINE Seed JP Bold'), local('LINE-Seed-JP-Bold'),
+        url('../fonts/LINESeedJP-Bold.woff2') format('woff2'),
+        url('../fonts/LINESeedJP-Bold.woff') format('woff'),
+        url('../fonts/LINESeedJP-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }

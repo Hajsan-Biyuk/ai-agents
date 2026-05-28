@@ -1,0 +1,127 @@
+{
+    "key": "group_agro_as_options",
+    "title": "Основные настройки",
+    "fields": [
+        {
+            "key": "field_agro_as_tab_contacts",
+            "label": "Контакты",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_as_telefon",
+            "label": "Телефон",
+            "name": "telefon",
+            "type": "text",
+            "instructions": "Отображается в шапке, подвале и блоке контактов на главной",
+            "required": 0,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_agro_as_pochta",
+            "label": "Почта",
+            "name": "pochta",
+            "type": "email",
+            "instructions": "Email для ссылок mailto:",
+            "required": 0,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_agro_as_adres",
+            "label": "Адрес (короткий)",
+            "name": "adres",
+            "type": "text",
+            "required": 0,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_agro_as_polnyj_adres",
+            "label": "Полный адрес",
+            "name": "polnyj_adres",
+            "type": "textarea",
+            "instructions": "Подвал и секция «Контакты» на главной",
+            "required": 0,
+            "wrapper": {
+                "width": "50"
+            },
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_agro_as_telegram",
+            "label": "Telegram",
+            "name": "telegram",
+            "type": "url",
+            "instructions": "Ссылка на Telegram-канал или бот",
+            "required": 0,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_agro_as_tab_legal",
+            "label": "Документы",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_as_politika",
+            "label": "Политика конфиденциальности",
+            "name": "politika",
+            "type": "url",
+            "required": 0,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_agro_as_soglasie",
+            "label": "Согласие на обработку персональных данных",
+            "name": "soglasie",
+            "type": "url",
+            "required": 0,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_agro_as_fajl_rekvizity",
+            "label": "Файл реквизиты",
+            "name": "fajl_rekvizity",
+            "type": "file",
+            "instructions": "PDF-файл с реквизитами компании",
+            "required": 0,
+            "return_format": "array",
+            "library": "all",
+            "mime_types": "pdf"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Agro-As — глобальные настройки темы. Паттерн: zarina Options Page.",
+    "show_in_rest": 0,
+    "modified": 1779779664
+}

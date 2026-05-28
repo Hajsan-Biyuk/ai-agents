@@ -1,0 +1,863 @@
+{
+    "key": "group_agro_as_wholesale",
+    "title": "Оптовым клиентам",
+    "fields": [
+        {
+            "key": "field_agro_ws_tab_hero",
+            "label": "Hero",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_ws_hero",
+            "label": "Hero",
+            "name": "geroj",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_agro_ws_hero_show",
+                    "label": "Показать",
+                    "name": "pokazat",
+                    "type": "true_false",
+                    "instructions": "Вывод секции на странице",
+                    "required": 0,
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_hero_bg",
+                    "label": "Фон",
+                    "name": "izobrazhenie_fona",
+                    "type": "image",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_agro_ws_hero_title",
+                    "label": "Заголовок",
+                    "name": "zagolovok",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_hero_descr",
+                    "label": "Описание",
+                    "name": "opisanie",
+                    "type": "textarea",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_agro_ws_hero_stats",
+                    "label": "Статистика",
+                    "name": "statistika",
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Добавить",
+                    "min": 0,
+                    "max": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_agro_ws_hero_stat_v",
+                            "label": "Значение",
+                            "name": "znachenie",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_ws_hero_stat_l",
+                            "label": "Подпись",
+                            "name": "podpis",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "field_agro_ws_hero_btn1",
+                    "label": "Кнопка 1 — текст",
+                    "name": "knopka_1",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_hero_btn1l",
+                    "label": "Кнопка 1 — ссылка",
+                    "name": "knopka_1_ssylka",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_hero_btn2",
+                    "label": "Кнопка 2 — текст",
+                    "name": "knopka_2",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_hero_btn2l",
+                    "label": "Кнопка 2 — ссылка",
+                    "name": "knopka_2_ssylka",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_agro_ws_tab_adv",
+            "label": "Преимущества",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_ws_adv",
+            "label": "Преимущества",
+            "name": "preimushhestva",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_agro_ws_adv_show",
+                    "label": "Показать",
+                    "name": "pokazat",
+                    "type": "true_false",
+                    "instructions": "Вывод секции на странице",
+                    "required": 0,
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_adv_h",
+                    "label": "Заголовок",
+                    "name": "zagolovok",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_adv_d",
+                    "label": "Описание",
+                    "name": "opisanie",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_adv_items",
+                    "label": "Блоки",
+                    "name": "elementy",
+                    "type": "repeater",
+                    "layout": "block",
+                    "button_label": "Добавить",
+                    "min": 0,
+                    "max": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_agro_ws_adv_el_tip",
+                            "label": "Тип блока",
+                            "name": "tip",
+                            "type": "select",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "kartochka": "Карточка",
+                                "foto": "Фото",
+                                "foto_shirokaya": "Широкое фото",
+                                "kartochka_shirokaya": "Широкая карточка"
+                            },
+                            "default_value": "kartochka",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0
+                        },
+                        {
+                            "key": "field_agro_ws_adv_el_cvet",
+                            "label": "Цвет карточки",
+                            "name": "cvet",
+                            "type": "select",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "cream": "Кремовый",
+                                "green": "Зелёный"
+                            },
+                            "default_value": "cream",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0
+                        },
+                        {
+                            "key": "field_agro_ws_adv_el_icon",
+                            "label": "Иконка",
+                            "name": "ikonka",
+                            "type": "image",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_agro_ws_adv_el_img",
+                            "label": "Изображение",
+                            "name": "izobrazhenie",
+                            "type": "image",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_agro_ws_adv_el_title",
+                            "label": "Заголовок",
+                            "name": "zagolovok",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_ws_adv_el_text",
+                            "label": "Текст",
+                            "name": "tekst",
+                            "type": "textarea",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 4,
+                            "new_lines": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_agro_ws_tab_tiers",
+            "label": "Условия",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_ws_tiers",
+            "label": "Условия",
+            "name": "usloviya",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_agro_ws_tiers_show",
+                    "label": "Показать",
+                    "name": "pokazat",
+                    "type": "true_false",
+                    "instructions": "Вывод секции на странице",
+                    "required": 0,
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_tiers_h",
+                    "label": "Заголовок",
+                    "name": "zagolovok",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_tiers_d",
+                    "label": "Описание",
+                    "name": "opisanie",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_tiers_items",
+                    "label": "Тарифы",
+                    "name": "tarify",
+                    "type": "repeater",
+                    "layout": "block",
+                    "button_label": "Добавить",
+                    "min": 0,
+                    "max": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_agro_ws_tier_name",
+                            "label": "Название (бейдж)",
+                            "name": "nazvanie",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_ws_tier_badge",
+                            "label": "Цвет бейджа",
+                            "name": "cvet_badge",
+                            "type": "select",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "cream": "Кремовый",
+                                "accent": "Акцентный"
+                            },
+                            "default_value": "cream",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0
+                        },
+                        {
+                            "key": "field_agro_ws_tier_feat",
+                            "label": "Выделенный тариф",
+                            "name": "vydelennyj",
+                            "type": "true_false",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "ui_on_text": "Да",
+                            "ui_off_text": "Нет"
+                        },
+                        {
+                            "key": "field_agro_ws_tier_disc",
+                            "label": "Скидка",
+                            "name": "skidka",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_ws_tier_disc_a",
+                            "label": "Скидка — акцент",
+                            "name": "skidka_akcent",
+                            "type": "true_false",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "ui_on_text": "Да",
+                            "ui_off_text": "Нет"
+                        },
+                        {
+                            "key": "field_agro_ws_tier_vol",
+                            "label": "Объём",
+                            "name": "objom",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_ws_tier_pts",
+                            "label": "Пункты",
+                            "name": "punkty",
+                            "type": "repeater",
+                            "layout": "table",
+                            "button_label": "Добавить",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_agro_ws_tier_pt",
+                                    "label": "Текст",
+                                    "name": "tekst",
+                                    "type": "text",
+                                    "required": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_agro_ws_tier_btn",
+                            "label": "Кнопка — текст",
+                            "name": "knopka",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_ws_tier_btnl",
+                            "label": "Кнопка — ссылка",
+                            "name": "knopka_ssylka",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_ws_tier_btn_s",
+                            "label": "Стиль кнопки",
+                            "name": "knopka_stil",
+                            "type": "select",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "outline": "Контур",
+                                "yellow": "Жёлтая"
+                            },
+                            "default_value": "outline",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_agro_ws_tab_cat",
+            "label": "Каталог",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_ws_cat",
+            "label": "Каталог",
+            "name": "katalog",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_agro_ws_cat_show",
+                    "label": "Показать",
+                    "name": "pokazat",
+                    "type": "true_false",
+                    "instructions": "Вывод секции на странице",
+                    "required": 0,
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_cat_h",
+                    "label": "Заголовок",
+                    "name": "zagolovok",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_cat_d",
+                    "label": "Описание",
+                    "name": "opisanie",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_cat_items",
+                    "label": "Категории",
+                    "name": "kategorii",
+                    "type": "repeater",
+                    "layout": "block",
+                    "button_label": "Добавить",
+                    "min": 0,
+                    "max": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_agro_ws_cat_title",
+                            "label": "Заголовок",
+                            "name": "zagolovok",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_ws_cat_pos",
+                            "label": "Позиции",
+                            "name": "pozicii",
+                            "type": "repeater",
+                            "layout": "table",
+                            "button_label": "Добавить",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_agro_ws_cat_pos_n",
+                                    "label": "Название",
+                                    "name": "nazvanie",
+                                    "type": "text",
+                                    "required": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_agro_ws_cat_linkt",
+                            "label": "Текст ссылки",
+                            "name": "tekst_ssylki",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_agro_ws_tab_steps",
+            "label": "Шаги",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_ws_steps",
+            "label": "Шаги",
+            "name": "shagi",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_agro_ws_steps_show",
+                    "label": "Показать",
+                    "name": "pokazat",
+                    "type": "true_false",
+                    "instructions": "Вывод секции на странице",
+                    "required": 0,
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_steps_h",
+                    "label": "Заголовок",
+                    "name": "zagolovok",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_steps_d",
+                    "label": "Описание",
+                    "name": "opisanie",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_steps_items",
+                    "label": "Шаги",
+                    "name": "elementy",
+                    "type": "repeater",
+                    "layout": "block",
+                    "button_label": "Добавить",
+                    "min": 0,
+                    "max": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_agro_ws_step_title",
+                            "label": "Заголовок",
+                            "name": "zagolovok",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_ws_step_text",
+                            "label": "Текст",
+                            "name": "tekst",
+                            "type": "textarea",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 4,
+                            "new_lines": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_agro_ws_tab_req",
+            "label": "Заявка",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_ws_req",
+            "label": "Заявка",
+            "name": "zayavka",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_agro_ws_req_show",
+                    "label": "Показать",
+                    "name": "pokazat",
+                    "type": "true_false",
+                    "instructions": "Вывод секции на странице",
+                    "required": 0,
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_req_h",
+                    "label": "Заголовок",
+                    "name": "zagolovok",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_req_d",
+                    "label": "Описание",
+                    "name": "opisanie",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_ws_req_form_h",
+                    "label": "Заголовок формы",
+                    "name": "zagolovok_formy",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-wholesale.php"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "featured_image"
+    ],
+    "active": true,
+    "description": "Agro-As — страница «Оптовым клиентам»",
+    "show_in_rest": 0,
+    "modified": 1779800486
+}

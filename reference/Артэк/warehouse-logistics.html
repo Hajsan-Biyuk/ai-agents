@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Заголовок</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="shortcut icon" href="favicon.png" />
+	<link rel="stylesheet" href="libs/bootstrap/bootstrap-grid.css" />
+	<link rel="stylesheet" href="libs/fontawesome-free-5.12.0-web/css/all.min.css" />
+	<link rel="stylesheet" href="libs/fancybox-master/dist/jquery.fancybox.min.css" />
+	<link rel="stylesheet" href="libs/slick-1.5.9/slick/slick.css" />
+	<link rel="stylesheet" href="css/fonts.css" />
+	<link rel="stylesheet" href="css/main.css?ver=1.5" />
+	<link rel="stylesheet" href="css/media.css?ver=1.5" />
+</head>
+<body> 
+
+	<div class="wrapper">
+
+		<header class="header">
+			<div class="container">
+				<div class="header__top">
+					<div class="row">
+						<div class="col-lg-5 col-3">
+							<div class="header__about">
+								<a href="#" class="btn-main">Скачать презентацию</a>
+								<div class="logo-descr">Грузоперевозки и логистика по всей РФ и ближайшему зарубежью</div>
+							</div>
+							<span class='sandwich sandwich_mobile'>
+								<span class='sw-topper'></span>
+								<span class='sw-bottom'></span>
+								<span class='sw-footer'></span>
+							</span>
+						</div>
+						<div class="col-lg-2 col-6">
+							<div class="logo-wrap">
+								<a href="#" class="logo">
+									<img src="img/logo.svg" alt="alt">
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-5 col-3">
+							<div class="header__contacts">
+								<div class="header__info">г. Москва, <br>Востряковский пр-д., <br>10-Б., стр 2., пом 16</div>
+								<div class="contacts-main">
+									<div class="contacts-main__content">
+										<a href="tel:+74951977737" class="phone-main">+7 (495) 197-77-37</a>
+										<div class="contacts-main__wrap">
+											<a href="mailto:tkartek@tkartek.ru" class="link-default">tkartek@tkartek.ru</a>
+											<a href="#modal-callback" class="link-main fancybox">заказать звонок</a>
+										</div>
+									</div>
+									<ul class="socials-list">
+										<li><a href="#" target="_blank"><img src="img/tg.svg" alt="alt"></a></li>
+										<li><a href="#" target="_blank"><img src="img/wp.svg" alt="alt"></a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="tel:+74951977737" class="phone-mob"><i class="fas fa-phone-alt"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="header__bottom">
+					<span class='sandwich sandwich_menu'>
+						<span class='sw-topper'></span>
+						<span class='sw-bottom'></span>
+						<span class='sw-footer'></span>
+					</span>
+					<ul class="menu">
+						<li><a href="#">Транспортная логистика</a></li>
+						<li class="active"><a href="#">Складская логистика</a></li>
+						<li><a href="#">Документационное сопровождение</a></li>
+						<li><a href="#">Специализированные перевозки</a></li>
+						<li><a href="#">Дополнительные услуги</a></li>
+					</ul>
+					<div class="menu-dropdown">
+						<ul>
+							<li><a href="#">О Компании</a></li>
+							<li><a href="#">Документация</a></li>
+							<li><a href="#">Сотрудничество</a></li>
+							<li><a href="#">Новости</a></li>
+							<li><a href="#">Контакты</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="menu-mobile">
+				<ul class="menu">
+					<li><a href="#">О Компании</a></li>
+					<li><a href="#">Документация</a></li>
+					<li><a href="#">Сотрудничество</a></li>
+					<li><a href="#">Новости</a></li>
+					<li><a href="#">Контакты</a></li>
+					<li><a href="#">Транспортная логистика</a></li>
+					<li><a href="#">Складская логистика</a></li>
+					<li><a href="#">Документационное сопровождение</a></li>
+					<li><a href="#">Специализированные перевозки</a></li>
+					<li><a href="#">Дополнительные услуги</a></li>
+				</ul>
+				<div class="header__info">г. Москва, <br>Востряковский пр-д., <br>10-Б., стр 2., пом 16</div>
+				<div class="contacts-main">
+					<div class="contacts-main__content">
+						<a href="tel:+74951977737" class="phone-main">+7 (495) 197-77-37</a>
+						<div class="contacts-main__wrap">
+							<a href="mailto:tkartek@tkartek.ru" class="link-default">tkartek@tkartek.ru</a>
+							<a href="#modal-callback" class="link-main fancybox">заказать звонок</a>
+						</div>
+					</div>
+					<ul class="socials-list">
+						<li><a href="#" target="_blank"><img src="img/tg.svg" alt="alt"></a></li>
+						<li><a href="#" target="_blank"><img src="img/wp.svg" alt="alt"></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="menu-overlay"></div>
+		</header>
+
+		<section class="billbord billbord_warehouse billbord_page">
+			<div class="container">
+				<ul class="breadcrumbs">
+					<li><a href="#">Главная</a></li>
+					<li><a href="#">Услуги</a></li>
+					<li>Складская логистика</li>
+				</ul>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="billbord__content">
+							<h1 class="title-big">Складская логистика</h1>
+							<div class="descr-big">Обеспечиваем полный цикл складских услуг: прием, хранение, сортировку, комплектацию и отгрузку товаров, оптимизируя все этапы логистической цепочки для точной и своевременной доставки.</div>
+							<a href="#modal-application" class="btn-main fancybox">Рассчитать стоимость перевозки</a>	
+						</div>
+					</div>
+				</div>
+				<div class="benefits">
+					<div class="slider-elements">
+						<div>
+							<div class="item-benefit">
+								<div class="title-small">Все перевозки</div>
+								<p>Автопарк более 100 грузовых автомобилей. Авиа, Ж/Д и морские перевозки по различным направлениям.</p>
+							</div>
+						</div>
+						<div>
+							<div class="item-benefit">
+								<div class="title-small">Логистика</div>
+								<p>Работаем в направлениях Китая, Турции, Вьетнама, всей Азии. Сопровождение, таможенное оформление, страхование грузов.</p>
+							</div>
+						</div>
+						<div>
+							<div class="item-benefit">
+								<div class="title-small">GPS-мониторинг</div>
+								<p>Полный контроль маршрута в режиме реального времени. Отслеживание местоположения груза на всех этапах перевозки. </p>
+							</div>
+						</div>
+						<div>
+							<div class="item-benefit">
+								<div class="title-small">Складирование</div>
+								<p>Хранение, учет и маркировка товаров с вниманием к деталям. Комплектация заказов любой сложности.</p>
+							</div>
+						</div>
+						<div>
+							<div class="item-benefit">
+								<div class="title-small">4PL услуги</div>
+								<p>Управление всей цепочкой поставок клиента от планирования и до доставки. Эффективно оптимизируем процессы.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="billbord__image">
+				<img src="img/billbord5.png" alt="alt">
+			</div>
+		</section>
+
+		<section class="service-main">
+			<div class="container">
+				<div class="service-main__block">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="service-main__image">
+								<img src="img/service_about2.jpg" alt="alt">
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="service-main__content">
+								<h2 class="title-section">Предоставляем дополнительные услуги</h2>
+								<p>Мы предлагаем комплексные логистические решения, адаптированные под уникальные потребности вашего бизнеса. Наши специализированные перевозки включают полный спектр услуг, обеспечивающих эффективное, устойчивое и надежное перемещение товаров на всех этапах цепочки поставок.</p>
+								<ul>
+									<li><strong>Страхование грузов —</strong> защита от непредвиденных ситуаций на всех этапах транспортировки, включая международные маршруты.</li>
+									<li><strong>GPS-мониторинг —</strong> круглосуточное отслеживание местоположения и статуса груза в режиме реального времени.</li>
+									<li><strong>Экспедирование —</strong> сопровождение грузов, оформление необходимых документов и полное логистическое сопровождение в пути.</li>
+									<li><strong>Консолидация грузов —</strong> объединение отправлений от разных поставщиков с последующей доставкой в одной партии, что позволяет снизить затраты.</li>
+									<li><strong>Фрахтование судов —</strong> организация морских перевозок и аренда морского транспорта под конкретные проекты или объемы поставок.</li>
+									<li><strong>Проектная логистика —</strong> комплексная организация доставки нестандартных, крупногабаритных или технически сложных грузов, включая маршруты, разрешения и координацию.</li>
+									<li><strong>Курьерская доставка —</strong> оперативная доставка «от двери до двери» по городу, региону или стране, включая срочные отправления.</li>
+								</ul>
+								<div class="item-dropdown">
+									<div class="item-dropdown__head">Необходимые для поездки документы</div>
+									<div class="item-dropdown__content">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+									</div>
+								</div>
+								<div class="service-main__info">
+									<div class="features">
+										<div class="feature">
+											<div class="feature__title">Сопровождение экспедитора:</div>
+											<div class="feature__value">присутствует</div>
+										</div>
+										<div class="feature">
+											<div class="feature__title">Начало работы:</div>
+											<div class="feature__value">день в день</div>
+										</div>
+									</div>
+									<a href="#modal-application" class="btn-main fancybox">Заказать перевозку</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="services">
+			<div class="container">
+				<div class="services__block">
+					<h2 class="title-section">Сопутствующие услуги</h2>
+					<div class="row">
+						<div class="col-lg-3">
+							<div class="tabs-wrap">
+								<div class="btn-tab"></div>
+								<ul class="tabs-page">
+									<li class="active"><a href="#service1">Страхование грузов</a></li>
+									<li><a href="#service2">GPS-мониторинг</a></li>
+									<li><a href="#service3">Экспедирование</a></li>
+									<li><a href="#service4">Консолидация грузов</a></li>
+									<li><a href="#service5">Фрахтование судов</a></li>
+									<li><a href="#service6">Проектная логистика</a></li>
+									<li><a href="#service7">Курьерская доставка</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-9">
+							<div class="tab-container-page">
+								<div class="tab-pane-page" id="service1">
+									<div class="row">
+										<div class="col-lg-5">
+											<div class="service-about">
+												<img src="img/item_serv2.jpg" alt="alt">
+											</div>
+										</div>
+										<div class="col-lg-7">
+											<div class="service-content">
+												<div class="title-small">Страхование грузов</div>
+												<p><strong>Фулфилмент —</strong> это комплекс логистических и операционных услуг, связанных с обработкой заказов. Включает приём, хранение и упаковку товаров, сборку заказов, маркировку, оформление сопроводительной документации, а также доставку покупателю и, при необходимости, обратную логистику (возвраты).</p>
+												<p>Фулфилмент позволяет компаниям передать логистику на аутсорсинг, сосредоточившись на продажах, маркетинге и развитии продукта. Особенно актуален для e-commerce, интернет-магазинов и маркетплейсов, где важны скорость, точность и надёжность в обработке заказов.</p>
+												<p><strong>Фулфилмент позволяет бизнесу:</strong></p>
+												<ul>
+													<li>Сэкономить на содержании собственного склада, персонала и ИТ-систем.</li>
+													<li>Сфокусироваться на маркетинге, продажах и продукте, не отвлекаясь на логистику.</li>
+													<li>Повысить качество обслуживания клиентов за счёт более быстрой и точной обработки заказов.</li>
+													<li>Масштабировать бизнес без резких затрат — особенно важно при сезонных всплесках спроса.</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane-page" id="service1">
+									<div class="row">
+										<div class="col-lg-5">
+											<div class="service-about">
+												<img src="img/item_serv2.jpg" alt="alt">
+											</div>
+										</div>
+										<div class="col-lg-7">
+											<div class="service-content">
+												<div class="title-small">Страхование грузов</div>
+												<p><strong>Фулфилмент —</strong> это комплекс логистических и операционных услуг, связанных с обработкой заказов. Включает приём, хранение и упаковку товаров, сборку заказов, маркировку, оформление сопроводительной документации, а также доставку покупателю и, при необходимости, обратную логистику (возвраты).</p>
+												<p>Фулфилмент позволяет компаниям передать логистику на аутсорсинг, сосредоточившись на продажах, маркетинге и развитии продукта. Особенно актуален для e-commerce, интернет-магазинов и маркетплейсов, где важны скорость, точность и надёжность в обработке заказов.</p>
+												<p><strong>Фулфилмент позволяет бизнесу:</strong></p>
+												<ul>
+													<li>Сэкономить на содержании собственного склада, персонала и ИТ-систем.</li>
+													<li>Сфокусироваться на маркетинге, продажах и продукте, не отвлекаясь на логистику.</li>
+													<li>Повысить качество обслуживания клиентов за счёт более быстрой и точной обработки заказов.</li>
+													<li>Масштабировать бизнес без резких затрат — особенно важно при сезонных всплесках спроса.</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane-page" id="service3">
+									<div class="row">
+										<div class="col-lg-5">
+											<div class="service-about">
+												<img src="img/item_serv2.jpg" alt="alt">
+											</div>
+										</div>
+										<div class="col-lg-7">
+											<div class="service-content">
+												<div class="title-small">Страхование грузов</div>
+												<p><strong>Фулфилмент —</strong> это комплекс логистических и операционных услуг, связанных с обработкой заказов. Включает приём, хранение и упаковку товаров, сборку заказов, маркировку, оформление сопроводительной документации, а также доставку покупателю и, при необходимости, обратную логистику (возвраты).</p>
+												<p>Фулфилмент позволяет компаниям передать логистику на аутсорсинг, сосредоточившись на продажах, маркетинге и развитии продукта. Особенно актуален для e-commerce, интернет-магазинов и маркетплейсов, где важны скорость, точность и надёжность в обработке заказов.</p>
+												<p><strong>Фулфилмент позволяет бизнесу:</strong></p>
+												<ul>
+													<li>Сэкономить на содержании собственного склада, персонала и ИТ-систем.</li>
+													<li>Сфокусироваться на маркетинге, продажах и продукте, не отвлекаясь на логистику.</li>
+													<li>Повысить качество обслуживания клиентов за счёт более быстрой и точной обработки заказов.</li>
+													<li>Масштабировать бизнес без резких затрат — особенно важно при сезонных всплесках спроса.</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane-page" id="service4">
+									<div class="row">
+										<div class="col-lg-5">
+											<div class="service-about">
+												<img src="img/item_serv2.jpg" alt="alt">
+											</div>
+										</div>
+										<div class="col-lg-7">
+											<div class="service-content">
+												<div class="title-small">Страхование грузов</div>
+												<p><strong>Фулфилмент —</strong> это комплекс логистических и операционных услуг, связанных с обработкой заказов. Включает приём, хранение и упаковку товаров, сборку заказов, маркировку, оформление сопроводительной документации, а также доставку покупателю и, при необходимости, обратную логистику (возвраты).</p>
+												<p>Фулфилмент позволяет компаниям передать логистику на аутсорсинг, сосредоточившись на продажах, маркетинге и развитии продукта. Особенно актуален для e-commerce, интернет-магазинов и маркетплейсов, где важны скорость, точность и надёжность в обработке заказов.</p>
+												<p><strong>Фулфилмент позволяет бизнесу:</strong></p>
+												<ul>
+													<li>Сэкономить на содержании собственного склада, персонала и ИТ-систем.</li>
+													<li>Сфокусироваться на маркетинге, продажах и продукте, не отвлекаясь на логистику.</li>
+													<li>Повысить качество обслуживания клиентов за счёт более быстрой и точной обработки заказов.</li>
+													<li>Масштабировать бизнес без резких затрат — особенно важно при сезонных всплесках спроса.</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane-page" id="service5">
+									<div class="row">
+										<div class="col-lg-5">
+											<div class="service-about">
+												<img src="img/item_serv2.jpg" alt="alt">
+											</div>
+										</div>
+										<div class="col-lg-7">
+											<div class="service-content">
+												<div class="title-small">Страхование грузов</div>
+												<p><strong>Фулфилмент —</strong> это комплекс логистических и операционных услуг, связанных с обработкой заказов. Включает приём, хранение и упаковку товаров, сборку заказов, маркировку, оформление сопроводительной документации, а также доставку покупателю и, при необходимости, обратную логистику (возвраты).</p>
+												<p>Фулфилмент позволяет компаниям передать логистику на аутсорсинг, сосредоточившись на продажах, маркетинге и развитии продукта. Особенно актуален для e-commerce, интернет-магазинов и маркетплейсов, где важны скорость, точность и надёжность в обработке заказов.</p>
+												<p><strong>Фулфилмент позволяет бизнесу:</strong></p>
+												<ul>
+													<li>Сэкономить на содержании собственного склада, персонала и ИТ-систем.</li>
+													<li>Сфокусироваться на маркетинге, продажах и продукте, не отвлекаясь на логистику.</li>
+													<li>Повысить качество обслуживания клиентов за счёт более быстрой и точной обработки заказов.</li>
+													<li>Масштабировать бизнес без резких затрат — особенно важно при сезонных всплесках спроса.</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane-page" id="service6">
+									<div class="row">
+										<div class="col-lg-5">
+											<div class="service-about">
+												<img src="img/item_serv2.jpg" alt="alt">
+											</div>
+										</div>
+										<div class="col-lg-7">
+											<div class="service-content">
+												<div class="title-small">Страхование грузов</div>
+												<p><strong>Фулфилмент —</strong> это комплекс логистических и операционных услуг, связанных с обработкой заказов. Включает приём, хранение и упаковку товаров, сборку заказов, маркировку, оформление сопроводительной документации, а также доставку покупателю и, при необходимости, обратную логистику (возвраты).</p>
+												<p>Фулфилмент позволяет компаниям передать логистику на аутсорсинг, сосредоточившись на продажах, маркетинге и развитии продукта. Особенно актуален для e-commerce, интернет-магазинов и маркетплейсов, где важны скорость, точность и надёжность в обработке заказов.</p>
+												<p><strong>Фулфилмент позволяет бизнесу:</strong></p>
+												<ul>
+													<li>Сэкономить на содержании собственного склада, персонала и ИТ-систем.</li>
+													<li>Сфокусироваться на маркетинге, продажах и продукте, не отвлекаясь на логистику.</li>
+													<li>Повысить качество обслуживания клиентов за счёт более быстрой и точной обработки заказов.</li>
+													<li>Масштабировать бизнес без резких затрат — особенно важно при сезонных всплесках спроса.</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane-page" id="service7">
+									<div class="row">
+										<div class="col-lg-5">
+											<div class="service-about">
+												<img src="img/item_serv2.jpg" alt="alt">
+											</div>
+										</div>
+										<div class="col-lg-7">
+											<div class="service-content">
+												<div class="title-small">Страхование грузов</div>
+												<p><strong>Фулфилмент —</strong> это комплекс логистических и операционных услуг, связанных с обработкой заказов. Включает приём, хранение и упаковку товаров, сборку заказов, маркировку, оформление сопроводительной документации, а также доставку покупателю и, при необходимости, обратную логистику (возвраты).</p>
+												<p>Фулфилмент позволяет компаниям передать логистику на аутсорсинг, сосредоточившись на продажах, маркетинге и развитии продукта. Особенно актуален для e-commerce, интернет-магазинов и маркетплейсов, где важны скорость, точность и надёжность в обработке заказов.</p>
+												<p><strong>Фулфилмент позволяет бизнесу:</strong></p>
+												<ul>
+													<li>Сэкономить на содержании собственного склада, персонала и ИТ-систем.</li>
+													<li>Сфокусироваться на маркетинге, продажах и продукте, не отвлекаясь на логистику.</li>
+													<li>Повысить качество обслуживания клиентов за счёт более быстрой и точной обработки заказов.</li>
+													<li>Масштабировать бизнес без резких затрат — особенно важно при сезонных всплесках спроса.</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="advantages">
+			<div class="container">
+				<div class="slider-elements">
+					<div>
+						<div class="item-advantage">
+							<div class="icon-page">
+								<img src="img/ic_avd1.svg" alt="alt">
+							</div>
+							<h3 class="title-small">Гарантия <br>безопасности</h3>
+							<p>Современные технологии отслеживания и страхования, для безопасности вашего груза на каждом этапе пути с возможностью отследить его местонахождение при помощи системы gps-мониторинга.</p>
+						</div>
+					</div>
+					<div>
+						<div class="item-advantage">
+							<div class="icon-page">
+								<img src="img/ic_avd2.svg" alt="alt">
+							</div>
+							<h3 class="title-small">Перевозки <br>«под ключ»</h3>
+							<p>Осуществим комплексную транспортировку груза с полным документационным сопровождением, доставка от двери до двери</p>
+						</div>
+					</div>
+					<div>
+						<div class="item-advantage">
+							<div class="icon-page">
+								<img src="img/ic_avd3.svg" alt="alt">
+							</div>
+							<h3 class="title-small">Индивидуальный подход</h3>
+							<p>Мы понимаем, что каждый клиент уникален. Наша команда готова предложить персонализированные решения, учитывающие ваши потребности и сроки.</p>
+						</div>
+					</div>
+					<div>
+						<div class="item-advantage">
+							<div class="icon-page">
+								<img src="img/ic_avd4.svg" alt="alt">
+							</div>
+							<h3 class="title-small">Скорость <br>и надежность</h3>
+							<p>Мы гарантируем своевременную доставку благодаря оптимизированным маршрутам и высококвалифицированным водителям.</p>
+						</div>
+					</div>
+					<div>
+						<div class="item-advantage">
+							<div class="icon-page">
+								<img src="img/ic_avd5.svg" alt="alt">
+							</div>
+							<h3 class="title-small">Прозрачность <br>и честность</h3>
+							<p>Никаких скрытых платежей! Мы предоставляем полную информацию о стоимости и условиях перевозки заранее.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="consultation">
+			<div class="container">
+				<div class="consultation__block">
+					<div class="row">
+						<div class="col-lg-9 offset-lg-3">
+							<div class="consultation__content">
+								<h2 class="title-section">Оставьте заявку и получите индивидуальное коммерческое предложение <span>в течение 30 минут</span></h2>
+								<div class="consultation__text">
+									<p>Наш специалист подберет оптимальный вариант и маршрут перевозки</p>
+									<p>Предварительно сориентирует вас по срокам и стоимости</p>
+									<p>Подскажет как подготовить груз к перевозке</p>
+								</div>
+								<form>
+									<div class="row row_small">
+										<div class="col-md-4">
+											<div class="item-form">
+												<input type="text" placeholder="Ваше имя" required>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="item-form">
+												<input type="tel" placeholder="Номер телефона" class="input-phone" inputmode="numeric" required>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<input type="submit" class="btn-main" value="Заказать">
+										</div>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" required="required" checked="checked" />
+											<span>Я согласен с условиями обработки персональных данных</span>
+										</label>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="consultation__image">
+						<img src="img/consultation.png" alt="alt">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="contacts">
+			<div class="container">
+				<div class="contacts__wrapper">
+					<div class="contacts-block">
+						<h2 class="title-section">Как нас найти</h2>
+						<div class="contacts-block__item"><strong>Адрес:</strong> г. Москва, Востряковский пр-д., <br>д .10-Б., стр 2., пом 16</div>
+						<div class="contacts-block__item"><strong>Телефон:</strong> <a href="tel:+74951977737">+7 (495) 197-77-37</a></div>
+						<div class="contacts-block__item"><strong>E-mail: </strong> <a href="mailto:tkartek@tkartek.ru">tkartek@tkartek.ru</a></div>
+						<a href="#modal-application" class="btn-main fancybox">Оставить заявку</a>
+					</div>
+				</div>
+			</div>
+			<div id="map"></div>
+		</section>
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="footer__logo">
+							<a href="#" class="logo">
+								<img src="img/logo2.svg" alt="alt">
+							</a>
+							<div class="logo-descr">Грузоперевозки <br>и транспортная логистика по всей РФ и ближайшему зарубежью</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<ul class="footer__nav">
+							<li><a href="#">Транспортная логистика</a></li>
+							<li><a href="#">Складская логистика</a></li>
+							<li><a href="#">Документационное сопровождение</a></li>
+							<li><a href="#">Специализированные перевозки</a></li>
+							<li><a href="#">Дополнительные услуги</a></li>
+							<li><a href="#">О Компании</a></li>
+							<li><a href="#">Документация</a></li>
+							<li><a href="#">Сотрудничество</a></li>
+							<li><a href="#">Новости</a></li>
+							<li><a href="#">Контакты</a></li>
+						</ul>
+					</div>
+					<div class="col-lg-3">
+						<div class="footer__right">
+							<div class="footer__contacts">
+								<div class="contacts-main">
+									<div class="contacts-main__content">
+										<a href="tel:+74951977737" class="phone-main">+7 (495) 197-77-37</a>
+									</div>
+									<ul class="socials-list">
+										<li><a href="#" target="_blank"><img src="img/tg.svg" alt="alt"></a></li>
+										<li><a href="#" target="_blank"><img src="img/wp.svg" alt="alt"></a></li>
+									</ul>
+								</div>
+								<div class="footer__location">г. Москва, Востряковский пр-д, <br>д .10-Б., стр 2., пом 16</div>
+								<a href="mailto:tkartek@tkartek.ru" class="mail-main">tkartek@tkartek.ru</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+	</div>
+
+	<div id="modal-callback" class="modal-block">
+		<div class="modal-wrap">
+			<div class="title-section">Закажите звонок</div>
+			<div class="descr-modal">и наш менеджер свяжется с вами в течение 30 минут</div>
+			<form>
+				<div class="item-form">
+					<input type="text" placeholder="Ваше имя" required>
+				</div>
+				<div class="item-form">
+					<input type="tel" placeholder="Номер телефона" class="input-phone" inputmode="numeric" required>
+				</div>
+				<input type="submit" class="btn-main" value="Отправить">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" required="required" checked="checked" />
+						<span>Я согласен с условиями обработки персональных данных</span>
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="modal-application" class="modal-block">
+		<div class="modal-wrap">
+			<div class="title-section">Оставьте заявку</div>
+			<div class="descr-modal">и получите индивидуальное <br>коммерческое предложение в течение 30 минут</div>
+			<form>
+				<div class="row">
+					<div class="col-12">
+						<div class="item-form">
+							<input type="text" placeholder="Ваше имя" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="item-form">
+							<input type="tel" placeholder="Номер телефона" class="input-phone" inputmode="numeric" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="item-form">
+							<input type="email" placeholder="Почта" inputmode="email" required>
+						</div>
+					</div>
+				</div>
+				<div class="title-small">Параметры груза:</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="item-form item-form_location">
+							<input type="text" placeholder="Откуда" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="item-form item-form_location">
+							<input type="text" placeholder="Куда" required>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="item-form">
+							<input type="text" placeholder="Вес" required>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="item-form">
+							<input type="text" placeholder="Габариты" required>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="item-form">
+							<input type="text" placeholder="Объем м³" required>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="item-form">
+							<input type="text" placeholder="Комментарий" required>
+						</div>
+					</div>
+				</div>
+				<input type="submit" class="btn-main" value="Рассчитать стоимость услуги">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" required="required" checked="checked" />
+						<span>Я согласен с условиями обработки персональных данных</span>
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!--[if lt IE 9]>
+	<script src="libs/html5shiv/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/respond.min.js"></script>
+	<![endif]-->
+	<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+	<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+	<script src="libs/fancybox-master/dist/jquery.fancybox.min.js"></script>
+	<script src="libs/slick-1.5.9/slick/slick.min.js"></script>
+	<script src="libs/mask/jquery.maskedinput.js"></script>
+	<script src="js/common.js?ver=1.5"></script>
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+	<script>
+		$(document).ready(function () {
+			ymaps.ready(init);
+
+			function init() {
+				var myMap = new ymaps.Map('map', {
+					center: [55.576559, 37.622917],
+					zoom: 12
+				}, {
+					searchControlProvider: 'yandex#search'
+				});
+
+				var iconSize = window.matchMedia("(max-width: 1600px)").matches ? [40, 55] : [64, 87];
+				var iconOffset = window.matchMedia("(max-width: 1600px)").matches ? [-20, -55] : [-32, -87];
+				var balloonOffset = window.matchMedia("(max-width: 1600px)").matches ? [0, -55] : [0, -87];
+
+				myPlacemark = new ymaps.Placemark([55.576559, 37.622917], {
+				}, {
+					iconLayout: 'default#image',
+					iconImageHref: 'img/pin.svg',
+					hideIconOnBalloonOpen: false,
+					iconImageSize: iconSize,
+					iconImageOffset: iconOffset,
+					balloonOffset: balloonOffset
+				});
+				myMap.controls.remove('searchControl');
+				myMap.behaviors.disable('scrollZoom');
+				myMap.geoObjects.add(myPlacemark);
+
+				window.matchMedia("(max-width: 1600px)").addEventListener("change", function (e) {
+					var newSize = e.matches ? [40, 55] : [64, 87];
+					var newOffset = e.matches ? [-20, -55] : [-32, -87];
+					var newBalloonOffset = e.matches ? [0, -55] : [0, -87];
+
+					myPlacemark.options.set({
+						iconImageSize: newSize,
+						iconImageOffset: newOffset,
+						balloonOffset: newBalloonOffset
+					});
+				});
+			}
+		});
+	</script>
+	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
+	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
+</body>
+</html>

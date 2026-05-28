@@ -1,0 +1,303 @@
+{
+    "key": "group_agro_as_product",
+    "title": "Товар",
+    "fields": [
+        {
+            "key": "field_agro_pr_tab_main",
+            "label": "Основное",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_pr_gallery",
+            "label": "Галерея",
+            "name": "galereya",
+            "type": "gallery",
+            "instructions": "Одно фото — статичный блок. Несколько — слайдер на карточке товара.",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": 0,
+            "max": 0,
+            "insert": "append",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_agro_pr_tags",
+            "label": "Теги",
+            "name": "tegi",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить тег",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_agro_pr_tag_text",
+                    "label": "Текст",
+                    "name": "tekst",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_agro_pr_status",
+            "label": "Наличие",
+            "name": "status_nalichiya",
+            "type": "select",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "v_nalichii": "Есть в наличии",
+                "net_v_nalichii": "Нет в наличии",
+                "pod_zakaz": "Под заказ"
+            },
+            "default_value": "v_nalichii",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0
+        },
+        {
+            "key": "field_agro_pr_volume_label",
+            "label": "Название блока объёма",
+            "name": "nazvanie_bloka_obema",
+            "type": "text",
+            "instructions": "Подпись перед значением, например: Объём:",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_agro_pr_variations",
+            "label": "Вариации",
+            "name": "variacii",
+            "type": "repeater",
+            "instructions": "Кнопки объёма/фасовки. У активной вариации на сайте выводится её цена.",
+            "layout": "block",
+            "button_label": "Добавить вариацию",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_agro_pr_var_value",
+                    "label": "Значение",
+                    "name": "znachenie",
+                    "type": "text",
+                    "instructions": "Подпись на кнопке, например: 5 или 10",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_pr_var_unit",
+                    "label": "Единица",
+                    "name": "edinica",
+                    "type": "text",
+                    "instructions": "л, кг и т.д.",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_pr_var_price",
+                    "label": "Цена",
+                    "name": "cena",
+                    "type": "text",
+                    "instructions": "Текст цены, например: 2 284 ₽",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_pr_var_default",
+                    "label": "По умолчанию",
+                    "name": "po_umolchaniyu",
+                    "type": "true_false",
+                    "instructions": "Активная вариация при загрузке страницы",
+                    "required": 0,
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_agro_pr_tab_specs",
+            "label": "Характеристики",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_pr_specs",
+            "label": "Характеристики",
+            "name": "harakteristiki",
+            "type": "repeater",
+            "instructions": "В превью выводятся первые 6 строк. Остальные — по кнопке «Все характеристики».",
+            "layout": "table",
+            "button_label": "Добавить строку",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_agro_pr_spec_name",
+                    "label": "Название",
+                    "name": "nazvanie",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_pr_spec_value",
+                    "label": "Значение",
+                    "name": "znachenie",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_agro_pr_tab_extra",
+            "label": "Табы",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_pr_application",
+            "label": "Применение",
+            "name": "primenenie",
+            "type": "wysiwyg",
+            "instructions": "Таб «Применение». Описание — в основном редакторе записи.",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_agro_pr_reviews",
+            "label": "Отзывы (заглушка)",
+            "name": "otzyvy_zaglushka",
+            "type": "textarea",
+            "instructions": "Текст таба «Отзывы», если отзывов нет.",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_agro_pr_tab_recommend",
+            "label": "Рекомендуемые",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_pr_recommend",
+            "label": "Рекомендуемые товары",
+            "name": "rekomenduemye_tovary",
+            "type": "relationship",
+            "instructions": "Если пусто — на сайте выводятся 6 случайных товаров из той же категории product_cat.",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "product"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search"
+            ],
+            "return_format": "object",
+            "min": 0,
+            "max": 0,
+            "elements": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 5,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "featured_image"
+    ],
+    "active": true,
+    "description": "Agro-As — карточка товара (card.html)",
+    "show_in_rest": 0,
+    "modified": 1779868790
+}

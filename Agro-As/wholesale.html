@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Оптовым клиентам — АГРО АС</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" href="libs/bootstrap/bootstrap-grid.css" />
+	<link rel="stylesheet" href="libs/fontawesome-free-5.12.0-web/css/all.min.css" />
+	<link rel="stylesheet" href="libs/fancybox-master/dist/jquery.fancybox.min.css" />
+	<link rel="stylesheet" href="libs/slick-1.5.9/slick/slick.css" />
+	<link rel="stylesheet" href="css/fonts.css?ver=1.0" />
+	<link rel="stylesheet" href="css/main.css?ver=8.6" />
+	<link rel="stylesheet" href="css/media.css?ver=6.8" />
+</head>
+<body class="wrapper__default">
+
+	<div class="wrapper">
+
+		<header class="header">
+			<div class="container-fluid container-main">
+				<div class="row align-items-center header__row">
+					<div class="col-auto header__logo-col">
+						<a href="index.html" class="logo logo--inner">
+							<img src="img/logo-inner.svg" alt="АГРО АС">
+						</a>
+					</div>
+					<div class="col header__nav-col d-none d-lg-block">
+						<nav class="menu-pills">
+							<ul class="menu-pills__list">
+								<li><a href="category.html" class="btn-catalog">Каталог</a></li>
+								<li><a href="index.html">Главная</a></li>
+								<li><a href="wholesale.html" class="active">Оптовым клиентам</a></li>
+								<li><a href="delivery.html">Доставка и оплата</a></li>
+								<li><a href="contacts.html">Контакты</a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="col-lg-auto d-none d-lg-flex align-items-center header__contacts">
+						<a href="mailto:agroas@mail.ru" class="header__email">agroas@mail.ru</a>
+						<a href="tel:+79785199523" class="phone-main phone-main--header">+7 (978) 519-95-23</a>
+						<a href="#" class="btn-telegram" target="_blank" rel="noopener">
+							<img src="img/icon-telegram.svg" alt="Telegram">
+						</a>
+					</div>
+					<div class="col-auto header__bar">
+						<a href="tel:+79785199523" class="phone-mobile"><i class="fal fa-phone-alt"></i></a>
+						<div class="sandwich">
+							<div class="sw-topper"></div>
+							<div class="sw-bottom"></div>
+							<div class="sw-footer"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="menu-mobile">
+				<nav class="menu-pills">
+					<ul class="menu-pills__list">
+						<li><a href="category.html" class="btn-catalog">Каталог</a></li>
+						<li><a href="index.html">Главная</a></li>
+						<li><a href="wholesale.html" class="active">Оптовым клиентам</a></li>
+						<li><a href="delivery.html">Доставка и оплата</a></li>
+						<li><a href="contacts.html">Контакты</a></li>
+					</ul>
+				</nav>
+				<div class="header__contacts">
+					<a href="mailto:agroas@mail.ru" class="header__email">agroas@mail.ru</a>
+					<div class="header__phone-wrap">
+						<a href="tel:+79785199523" class="phone-main">+7 (978) 519-95-23</a>
+						<a href="#" class="btn-telegram" target="_blank" rel="noopener">
+							<img src="img/icon-telegram.svg" alt="Telegram">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="menu-overlay"></div>
+		</header>
+
+		<section class="wholesale-page-hero">
+			<div class="wholesale-page-hero__bg">
+				<img src="img/wholesale-page-hero.png" alt="">
+			</div>
+			<div class="container-fluid container-main">
+				<nav class="breadcrumbs breadcrumbs--hero" aria-label="Хлебные крошки">
+					<a href="index.html">Главная</a>
+					<span class="breadcrumbs__sep">/</span>
+					<span class="breadcrumbs__current">Оптовым клиентам</span>
+				</nav>
+				<div class="row wholesale-page-hero__head align-items-start">
+					<div class="col-lg-7 wholesale-page-hero__content">
+						<h1 class="wholesale-page-hero__title">Оптовым клиентам</h1>
+						<p class="wholesale-page-hero__descr">Специальные условия для агропредприятий, фермерских хозяйств и перепродавцов. Удобрения, СЗР, семена и системы орошения — напрямую от поставщика, без посредников.</p>
+					</div>
+					<div class="col-lg-auto wholesale-page-hero__stats-col">
+						<div class="wholesale-page-hero__stats">
+							<div class="wholesale-page-hero__stat">
+								<div class="wholesale-page-hero__stat-value">от 500 кг</div>
+								<p class="wholesale-page-hero__stat-label">минимальный заказ</p>
+							</div>
+							<div class="wholesale-page-hero__stat">
+								<div class="wholesale-page-hero__stat-value">20%</div>
+								<p class="wholesale-page-hero__stat-label">скидка на опт</p>
+							</div>
+							<div class="wholesale-page-hero__stat">
+								<div class="wholesale-page-hero__stat-value">за 48 ч</div>
+								<p class="wholesale-page-hero__stat-label">произведем отгрузку</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="wholesale-page-hero__actions">
+					<a href="#modal-application" class="btn-main fancybox">Оставить заявку</a>
+					<a href="category.html" class="btn-main btn-main--yellow">Смотреть каталог</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="advantages wholesale-page-advantages">
+			<div class="container-fluid container-main">
+				<div class="head-section">
+					<h2 class="title-section">Преимущества оптовых закупок</h2>
+					<p class="descr-section">Почему агробизнес выбирает АГРО АС основным поставщиком</p>
+				</div>
+				<div class="row advantages__row">
+					<div class="col-12 col-md-6 advantages__col-square">
+						<div class="item-advantage item-advantage--cream">
+							<img src="img/icon-advantage-delivery.svg" alt="" class="item-advantage__icon">
+							<div>
+								<div class="item-advantage__title">Прямые поставки</div>
+								<p class="item-advantage__text">Работаем напрямую с российскими и зарубежными производителями. Никаких посредников — только заводские цены.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 advantages__col-square">
+						<div class="item-advantage item-advantage--green">
+							<img src="img/icon-advantage-seeds.svg" alt="" class="item-advantage__icon">
+							<div>
+								<div class="item-advantage__title">Отсрочка платежа</div>
+								<p class="item-advantage__text">Нашим партнёрам предоставляем отсрочку платежа до 30 дней. Работаем по договору с НДС</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 advantages__col-square">
+						<div class="item-advantage item-advantage--cream">
+							<img src="img/icon-advantage-cereal.svg" alt="" class="item-advantage__icon">
+							<div>
+								<div class="item-advantage__title">Агрономическая поддержка</div>
+								<p class="item-advantage__text">Бесплатные консультации агронома. Подберём препараты под культуру, почву и задачу.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 advantages__col-wide">
+						<div class="item-advantage__photo">
+							<img src="img/wholesale-advantage-wide.png" alt="">
+						</div>
+					</div>
+					<div class="col-12 col-md-6 advantages__col-square">
+						<div class="item-advantage item-advantage--green">
+							<img src="img/icon-advantage-trolley.svg" alt="" class="item-advantage__icon">
+							<div>
+								<div class="item-advantage__title">Быстрая отгрузка</div>
+								<p class="item-advantage__text">Склад в Крыму. Отгрузка в течение 48 часов после оплаты. Доставка по всей России и СНГ.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 advantages__col-square">
+						<div class="item-advantage__photo">
+							<img src="img/wholesale-advantage-tall.png" alt="">
+						</div>
+					</div>
+					<div class="col-12 col-md-6 advantages__col-square">
+						<div class="item-advantage item-advantage--green">
+							<img src="img/icon-advantage-boxes.svg" alt="" class="item-advantage__icon">
+							<div>
+								<div class="item-advantage__title">Опт и розница</div>
+								<p class="item-advantage__text">Одна площадка для разных типов клиентов</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 advantages__col-wide">
+						<div class="item-advantage item-advantage--cream item-advantage--wide">
+							<img src="img/icon-advantage-signature.svg" alt="" class="item-advantage__icon">
+							<div>
+								<div class="item-advantage__title">Гибкий прайс-лист</div>
+								<p class="item-advantage__text">Цены снижаются по мере роста объёма. Чем больше заказ — тем выгоднее условия для вашего бизнеса.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="wholesale-page-tiers">
+			<div class="container-fluid container-main">
+				<div class="head-section">
+					<h2 class="title-section">Условия сотрудничества</h2>
+					<p class="descr-section">Скидки растут вместе с объёмом — выбирайте подходящий уровень</p>
+				</div>
+				<div class="row wholesale-page-tiers__row">
+					<div class="col-lg-4 wholesale-page-tiers__col">
+						<div class="wholesale-page-tier">
+							<span class="wholesale-page-tier__badge wholesale-page-tier__badge--cream">Стандарт</span>
+							<div class="wholesale-page-tier__discount">до -10%</div>
+							<div class="wholesale-page-tier__volume">от 500 кг / 50 л</div>
+							<ul class="wholesale-page-tier__list">
+								<li>Прайс-лист по запросу</li>
+								<li>Доставка за ваш счёт</li>
+								<li>Оплата по счёту (100%)</li>
+								<li>Персональный менеджер</li>
+							</ul>
+							<a href="#modal-application" class="btn-main btn-main--outline wholesale-page-tier__btn fancybox">Получить прайс-лист</a>
+						</div>
+					</div>
+					<div class="col-lg-4 wholesale-page-tiers__col">
+						<div class="wholesale-page-tier wholesale-page-tier--featured">
+							<span class="wholesale-page-tier__badge wholesale-page-tier__badge--accent">Оптимальный</span>
+							<div class="wholesale-page-tier__discount wholesale-page-tier__discount--accent">до -20%</div>
+							<div class="wholesale-page-tier__volume">от 2 000 кг / 200 л</div>
+							<ul class="wholesale-page-tier__list">
+								<li>Фиксированный прайс</li>
+								<li>Частичная компенсация доставки</li>
+								<li>Отсрочка 14 дней</li>
+								<li>Приоритетная отгрузка</li>
+							</ul>
+							<a href="#modal-application" class="btn-main btn-main--yellow wholesale-page-tier__btn fancybox">Получить прайс-лист</a>
+						</div>
+					</div>
+					<div class="col-lg-4 wholesale-page-tiers__col">
+						<div class="wholesale-page-tier">
+							<span class="wholesale-page-tier__badge wholesale-page-tier__badge--cream">Крупный опт</span>
+							<div class="wholesale-page-tier__discount">до -30%</div>
+							<div class="wholesale-page-tier__volume">от 10 000 кг / 1 000 л</div>
+							<ul class="wholesale-page-tier__list">
+								<li>Индивидуальные цены</li>
+								<li>Доставка включена</li>
+								<li>Отсрочка до 30 дней</li>
+								<li>Выделенный менеджер</li>
+							</ul>
+							<a href="#modal-application" class="btn-main btn-main--outline wholesale-page-tier__btn fancybox">Получить прайс-лист</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="wholesale-page-catalog">
+			<div class="container-fluid container-main">
+				<div class="head-section">
+					<h2 class="title-section">Оптовый каталог</h2>
+					<p class="descr-section">Полный ассортимент для растениеводства — всё необходимое в одном месте</p>
+				</div>
+				<div class="row wholesale-page-catalog__row">
+					<div class="col-lg-4 col-md-6 wholesale-page-catalog__col">
+						<div class="wholesale-page-catalog-card">
+							<h3 class="wholesale-page-catalog-card__title">Комплексные удобрения</h3>
+							<ul class="wholesale-page-catalog-card__list">
+								<li>NPK комплексы</li>
+								<li>Монофосфат калия</li>
+								<li>Кальциевая селитра</li>
+								<li>Магниевая селитра</li>
+							</ul>
+							<a href="#" class="wholesale-page-catalog-card__link">Узнать цены</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 wholesale-page-catalog__col">
+						<div class="wholesale-page-catalog-card">
+							<h3 class="wholesale-page-catalog-card__title">Удобрения с микроэлементами</h3>
+							<ul class="wholesale-page-catalog-card__list">
+								<li>Лигногумат ВМ-NPK</li>
+								<li>Фульватный комплекс</li>
+								<li>Микромикс</li>
+								<li>Хелаты железа</li>
+							</ul>
+							<a href="#" class="wholesale-page-catalog-card__link">Узнать цены</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 wholesale-page-catalog__col">
+						<div class="wholesale-page-catalog-card">
+							<h3 class="wholesale-page-catalog-card__title">СЗР</h3>
+							<ul class="wholesale-page-catalog-card__list">
+								<li>Инсектициды</li>
+								<li>Фунгициды</li>
+								<li>Гербициды</li>
+								<li>Протравители</li>
+							</ul>
+							<a href="#" class="wholesale-page-catalog-card__link">Узнать цены</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 wholesale-page-catalog__col">
+						<div class="wholesale-page-catalog-card">
+							<h3 class="wholesale-page-catalog-card__title">Семена</h3>
+							<ul class="wholesale-page-catalog-card__list">
+								<li>Арбуз</li>
+								<li>Дыня</li>
+								<li>Томат</li>
+								<li>Перец</li>
+							</ul>
+							<a href="#" class="wholesale-page-catalog-card__link">Узнать цены</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 wholesale-page-catalog__col">
+						<div class="wholesale-page-catalog-card">
+							<h3 class="wholesale-page-catalog-card__title">Капельный полив</h3>
+							<ul class="wholesale-page-catalog-card__list">
+								<li>Капельная лента</li>
+								<li>Системы орошения</li>
+								<li>Фурнитура</li>
+								<li>Шланги</li>
+							</ul>
+							<a href="#" class="wholesale-page-catalog-card__link">Узнать цены</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 wholesale-page-catalog__col">
+						<div class="wholesale-page-catalog-card">
+							<h3 class="wholesale-page-catalog-card__title">Укрывной материал</h3>
+							<ul class="wholesale-page-catalog-card__list">
+								<li>Плёнка тепличная</li>
+								<li>Агроволокно</li>
+								<li>Мульчирующая плёнка</li>
+							</ul>
+							<a href="#" class="wholesale-page-catalog-card__link">Узнать цены</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="wholesale-page-steps">
+			<div class="container-fluid container-main">
+				<div class="head-section head-section--light">
+					<h2 class="title-section">Как начать работу</h2>
+					<p class="descr-section">4 шага от первого звонка до получения товара</p>
+				</div>
+				<div class="row wholesale-page-steps__row">
+					<div class="col-lg-3 col-md-6 wholesale-page-steps__col">
+						<div class="wholesale-page-step">
+							<div class="wholesale-page-step__head">
+								<span class="wholesale-page-step__num">01</span>
+								<img src="img/Arrow_Left_MD.svg" alt="" class="wholesale-page-step__arrow">
+							</div>
+							<div class="wholesale-page-step__title">Оставьте заявку</div>
+							<p class="wholesale-page-step__text">Заполните форму или позвоните нам. Укажите нужные товары и примерный объём</p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 wholesale-page-steps__col">
+						<div class="wholesale-page-step">
+							<div class="wholesale-page-step__head">
+								<span class="wholesale-page-step__num">02</span>
+								<img src="img/Arrow_Left_MD.svg" alt="" class="wholesale-page-step__arrow">
+							</div>
+							<div class="wholesale-page-step__title">Получите КП</div>
+							<p class="wholesale-page-step__text">Менеджер свяжется в течение рабочего дня и пришлёт коммерческое предложение с ценами.</p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 wholesale-page-steps__col">
+						<div class="wholesale-page-step">
+							<div class="wholesale-page-step__head">
+								<span class="wholesale-page-step__num">03</span>
+								<img src="img/Arrow_Left_MD.svg" alt="" class="wholesale-page-step__arrow">
+							</div>
+							<div class="wholesale-page-step__title">Оформите договор</div>
+							<p class="wholesale-page-step__text">Заключаем договор поставки, согласуем условия оплаты и логистику.</p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 wholesale-page-steps__col">
+						<div class="wholesale-page-step">
+							<div class="wholesale-page-step__head">
+								<span class="wholesale-page-step__num">04</span>
+								<img src="img/Arrow_Left_MD.svg" alt="" class="wholesale-page-step__arrow">
+							</div>
+							<div class="wholesale-page-step__title">Получите товар</div>
+							<p class="wholesale-page-step__text">Формируем заказ, отгружаем в 48 часов. Доставка на ваш склад или самовывоз.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="wholesale-page-request">
+			<div class="container-fluid container-main">
+				<div class="row wholesale-page-request__row">
+					<div class="col-lg-5 wholesale-page-request__info">
+						<div class="head-section">
+							<h2 class="title-section">Запросить прайс-лист</h2>
+							<p class="descr-section">Оставьте заявку — в течение одного рабочего дня пришлём актуальный прайс-лист и условия сотрудничества.</p>
+						</div>
+						<div class="wholesale-page-request__contacts">
+							<div class="wholesale-page-request__contact">
+								<span class="wholesale-page-request__contact-icon">
+									<img src="icons/Group%204595.svg" width="48" height="48" alt="">
+								</span>
+								<div class="wholesale-page-request__contact-body">
+									<span class="wholesale-page-request__contact-label">Телефон:</span>
+									<a href="tel:+79781234567" class="wholesale-page-request__contact-value">+7 (978) 123-45-67</a>
+								</div>
+							</div>
+							<div class="wholesale-page-request__contact">
+								<span class="wholesale-page-request__contact-icon">
+									<img src="icons/Group%204596.svg" width="48" height="48" alt="">
+								</span>
+								<div class="wholesale-page-request__contact-body">
+									<span class="wholesale-page-request__contact-label">Почта:</span>
+									<a href="mailto:agroas@mail.ru" class="wholesale-page-request__contact-value">agroas@mail.ru</a>
+								</div>
+							</div>
+							<div class="wholesale-page-request__contact">
+								<span class="wholesale-page-request__contact-icon">
+									<img src="icons/Group%204597.svg" width="48" height="48" alt="">
+								</span>
+								<div class="wholesale-page-request__contact-body">
+									<span class="wholesale-page-request__contact-label">Адрес:</span>
+									<span class="wholesale-page-request__contact-value">Республика Крым, Нижнегорский район, с. Садовое, ул. Садовая, 95</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-7 wholesale-page-request__form-col">
+						<div class="wholesale-page-request__form">
+							<div class="wholesale-page-request__form-title">Заявка на прайс-лист</div>
+					<form action="#" method="post">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="item-form">
+									<label>Имя*</label>
+									<input type="text" name="name" placeholder="Иван Иванов" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="item-form">
+									<label>Компания</label>
+									<input type="text" name="company" placeholder="ООО Агро">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="item-form">
+									<label>Телефон*</label>
+									<input type="tel" name="phone" class="input-phone" inputmode="numeric" placeholder="+7 (978) 000-00-00" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="item-form">
+									<label>Почта</label>
+									<input type="email" name="email" placeholder="mail@mail.ru">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="item-form">
+									<label>Интересующие товары</label>
+									<input type="text" name="products" placeholder="Удобрения, СЗР...">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="item-form">
+									<label>Примерный объём</label>
+									<input type="text" name="volume" placeholder="1000 кг">
+								</div>
+							</div>
+						</div>
+						<div class="item-form">
+							<label>Комментарий</label>
+							<textarea name="comment" placeholder="Уточните детали или задайте вопрос..."></textarea>
+						</div>
+						<div class="row align-items-center">
+							<div class="col-lg">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" required checked>
+										<span>Подтверждаю, что ознакомлен(а) с условиями <a href="#">Политики конфиденциальности</a> и <a href="#">Политики в области обработки персональных данных</a>, даю свое <a href="#">согласие на обработку персональных данных</a></span>
+									</label>
+								</div>
+							</div>
+							<div class="col-lg-auto">
+								<button type="submit" class="btn-main">Отправить заявку <img src="img/icon-arrow.svg" alt=""></button>
+							</div>
+						</div>
+					</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer class="footer">
+			<div class="container-fluid container-main">
+				<div class="row footer__top align-items-start">
+					<div class="col-lg-3 footer__logo-col">
+						<a href="index.html" class="logo footer__logo">
+							<img src="img/logo.svg" alt="АГРО АС">
+						</a>
+					</div>
+					<div class="col-lg-9 footer__nav-wrap">
+						<div class="row align-items-start">
+							<div class="col-lg-3 col-md-6 footer__col">
+								<ul class="footer__menu">
+									<li><a href="wholesale.html">Оптовым клиентам</a></li>
+									<li><a href="delivery.html">Доставка и оплата</a></li>
+									<li><a href="contacts.html">Контакты</a></li>
+								</ul>
+							</div>
+							<div class="col-lg-6 col-md-12 footer__col footer__col--catalog">
+								<div class="footer__col-title">Каталог</div>
+								<div class="row footer__catalog">
+									<div class="col-lg-6 col-md-6 footer__catalog-col">
+										<div class="footer__category">
+											<a href="#" class="footer__category-title">Удобрения</a>
+											<ul class="footer__sub">
+												<li><a href="#">Комплексные удобрения</a></li>
+												<li><a href="#">Удобрения с микроэлементами</a></li>
+											</ul>
+										</div>
+										<div class="footer__category">
+											<a href="#" class="footer__category-title">Семена</a>
+											<ul class="footer__sub">
+												<li><a href="#">Арбуз</a></li>
+												<li><a href="#">Дыня</a></li>
+											</ul>
+										</div>
+										<div class="footer__category">
+											<a href="#" class="footer__category-title">СЗР</a>
+											<ul class="footer__sub">
+												<li><a href="#">Инсектициды</a></li>
+												<li><a href="#">Фунгициды</a></li>
+												<li><a href="#">Гербициды</a></li>
+												<li><a href="#">Протравители</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 footer__catalog-col">
+										<div class="footer__category">
+											<a href="#" class="footer__category-title">Система капельного полива</a>
+											<ul class="footer__sub">
+												<li><a href="#">Система капельного полива</a></li>
+												<li><a href="#">Капельная лента</a></li>
+												<li><a href="#">Лайфлет</a></li>
+												<li><a href="#">Фурнитура для полива</a></li>
+												<li><a href="#">Шланги</a></li>
+												<li><a href="#">Спрей лента</a></li>
+											</ul>
+										</div>
+										<div class="footer__category">
+											<a href="#" class="footer__category-title">Пленка тепличная, укрывной материал</a>
+											<ul class="footer__sub">
+												<li><a href="#">Пленка тепличная</a></li>
+												<li><a href="#">Агроволокно</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-12 footer__col footer__col--contacts ml-lg-auto">
+								<p class="footer__contacts-text">Адрес: <strong>Республика Крым, Нижнегорский район, с. Садовое, ул. Садовая, 95</strong><br>Почта: <strong>agroas@mail.ru</strong></p>
+								<div class="footer__phone-row">
+									<a href="tel:+79785199523" class="footer__phone">+7 (978) 519-95-23</a>
+									<a href="#" class="btn-telegram btn-telegram--footer" target="_blank" rel="noopener">
+										<img src="img/icon-telegram.svg" alt="Telegram">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer__bottom">
+					<div class="footer__legal">
+						<a href="#">Политика конфиденциальности</a>
+						<a href="#">Согласие на обработку персональных данных</a>
+						<span class="footer__copy">© Copyright 2026 г.</span>
+					</div>
+					<div class="footer__made">Сделано в <span class="footer__made-logo">Sheer</span></div>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+	<div id="modal-callback" class="modal-block">
+		<div class="modal-wrap">
+			<div class="title-section">Заказать звонок</div>
+			<div class="descr-modal">и наш менеджер свяжется с вами в течение 30 минут</div>
+			<form>
+				<div class="item-form">
+					<input type="text" placeholder="Ваше имя" required>
+				</div>
+				<div class="item-form">
+					<input type="tel" placeholder="Номер телефона" class="input-phone" inputmode="numeric" required>
+				</div>
+				<input type="submit" class="btn-main" value="Отправить">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" required checked>
+						<span>Я согласен с условиями обработки персональных данных</span>
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="modal-application" class="modal-block">
+		<div class="modal-wrap">
+			<div class="title-section">Оставить заявку</div>
+			<div class="descr-modal">и получите индивидуальное коммерческое предложение в течение 30 минут</div>
+			<form>
+				<div class="item-form">
+					<input type="text" placeholder="Ваше имя" required>
+				</div>
+				<div class="item-form">
+					<input type="tel" placeholder="Номер телефона" class="input-phone" inputmode="numeric" required>
+				</div>
+				<input type="submit" class="btn-main" value="Отправить">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" required checked>
+						<span>Я согласен с условиями обработки персональных данных</span>
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+	<script src="libs/fancybox-master/dist/jquery.fancybox.min.js"></script>
+	<script src="libs/slick-1.5.9/slick/slick.min.js"></script>
+	<script src="libs/mask/jquery.maskedinput.js"></script>
+	<script src="js/common.js?ver=3.6"></script>
+</body>
+</html>

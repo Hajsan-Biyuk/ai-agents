@@ -1,0 +1,359 @@
+{
+    "key": "group_agro_as_delivery",
+    "title": "Доставка и оплата",
+    "fields": [
+        {
+            "key": "field_agro_dl_tab_pay",
+            "label": "Оплата",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_dl_pay",
+            "label": "Оплата",
+            "name": "oplata",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_agro_dl_pay_show",
+                    "label": "Показать",
+                    "name": "pokazat",
+                    "type": "true_false",
+                    "instructions": "Вывод секции на странице",
+                    "required": 0,
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_dl_pay_h",
+                    "label": "Заголовок",
+                    "name": "zagolovok",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_dl_pay_intro",
+                    "label": "Вступление",
+                    "name": "intro",
+                    "type": "wysiwyg",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                },
+                {
+                    "key": "field_agro_dl_pay_cards",
+                    "label": "Карточки",
+                    "name": "kartochki",
+                    "type": "repeater",
+                    "layout": "block",
+                    "button_label": "Добавить",
+                    "min": 0,
+                    "max": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_agro_dl_pay_card_icon",
+                            "label": "Иконка",
+                            "name": "ikonka",
+                            "type": "image",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_agro_dl_pay_card_title",
+                            "label": "Заголовок",
+                            "name": "zagolovok",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_dl_pay_card_text",
+                            "label": "Текст",
+                            "name": "tekst",
+                            "type": "wysiwyg",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_agro_dl_pay_card_cvet",
+                            "label": "Цвет карточки",
+                            "name": "cvet",
+                            "type": "select",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "cream": "Кремовый",
+                                "green": "Зелёный"
+                            },
+                            "default_value": "cream",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0
+                        },
+                        {
+                            "key": "field_agro_dl_pay_card_tall",
+                            "label": "Высокая карточка",
+                            "name": "vysokaya",
+                            "type": "true_false",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "ui_on_text": "Да",
+                            "ui_off_text": "Нет"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_agro_dl_tab_ship",
+            "label": "Доставка",
+            "name": "",
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_agro_dl_ship",
+            "label": "Доставка",
+            "name": "dostavka",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_agro_dl_ship_show",
+                    "label": "Показать",
+                    "name": "pokazat",
+                    "type": "true_false",
+                    "instructions": "Вывод секции на странице",
+                    "required": 0,
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_dl_ship_h",
+                    "label": "Заголовок",
+                    "name": "zagolovok",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_agro_dl_ship_d",
+                    "label": "Описание",
+                    "name": "opisanie",
+                    "type": "wysiwyg",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                },
+                {
+                    "key": "field_agro_dl_ship_logos",
+                    "label": "Логотипы ТК",
+                    "name": "logotipy",
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Добавить",
+                    "min": 0,
+                    "max": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_agro_dl_ship_logo",
+                            "label": "Логотип",
+                            "name": "logo",
+                            "type": "image",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_agro_dl_ship_cards",
+                    "label": "Карточки",
+                    "name": "kartochki",
+                    "type": "repeater",
+                    "layout": "block",
+                    "button_label": "Добавить",
+                    "min": 0,
+                    "max": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_agro_dl_ship_card_icon",
+                            "label": "Иконка",
+                            "name": "ikonka",
+                            "type": "image",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_agro_dl_ship_card_title",
+                            "label": "Заголовок",
+                            "name": "zagolovok",
+                            "type": "text",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_agro_dl_ship_card_text",
+                            "label": "Текст",
+                            "name": "tekst",
+                            "type": "wysiwyg",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_agro_dl_ship_card_cvet",
+                            "label": "Цвет карточки",
+                            "name": "cvet",
+                            "type": "select",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "cream": "Кремовый",
+                                "green": "Зелёный"
+                            },
+                            "default_value": "cream",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0
+                        },
+                        {
+                            "key": "field_agro_dl_ship_card_tall",
+                            "label": "Высокая карточка",
+                            "name": "vysokaya",
+                            "type": "true_false",
+                            "required": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "ui_on_text": "Да",
+                            "ui_off_text": "Нет"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-delivery.php"
+            }
+        ]
+    ],
+    "menu_order": 3,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "featured_image"
+    ],
+    "active": true,
+    "description": "Agro-As — страница «Доставка и оплата»",
+    "show_in_rest": 0,
+    "modified": 1779798995
+}

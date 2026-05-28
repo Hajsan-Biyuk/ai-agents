@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Заголовок</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="shortcut icon" href="favicon.png" />
+	<link rel="stylesheet" href="libs/bootstrap/bootstrap-grid.css" />
+	<link rel="stylesheet" href="libs/fontawesome-free-5.12.0-web/css/all.min.css" />
+	<link rel="stylesheet" href="libs/fancybox-master/dist/jquery.fancybox.min.css" />
+	<link rel="stylesheet" href="libs/datetimepicker/jquery.datetimepicker.min.css" />
+	<link rel="stylesheet" href="libs/slick-1.5.9/slick/slick.css" />
+	<link rel="stylesheet" href="css/fonts.css" />
+	<link rel="stylesheet" href="css/main.css?ver=1.6" />
+	<link rel="stylesheet" href="css/media.css?ver=1.6" />
+</head>
+<body>
+
+	<div class="wrapper wrapper--page">
+
+		<header class="header default">
+			<div class="container-fluid">
+				<div class="header__wrapper">
+					<div class="sandwich">
+						<div class="sw-topper"></div>
+						<div class="sw-bottom"></div>
+						<div class="sw-footer"></div>
+					</div>
+					<div class="header__left">
+						<a href="#" class="logo">
+							<img src="img/logo_header.svg" alt="alt">
+						</a>
+						<div class="header__location"><strong>Алушта,</strong> пер. Александрийский, 7</div>
+					</div>
+					<div class="header__buttons">
+						<a href="#" class="btn-main btn-main--light">Отель</a>
+						<a href="#" class="btn-main btn-main--light">Гостевой дом</a>
+					</div>
+					<nav class="menu">
+						<ul class="menu__list">
+							<li><a href="#">Об отеле</a></li>
+							<li><a href="#">Номера</a></li>
+							<li><a href="#">Инфраструктура</a></li>
+							<li><a href="#">Новости</a></li>
+							<li><a href="#">Контакты</a></li>
+						</ul>
+					</nav>
+					<a href="#" class="btn-main btn-main--light">Забронировать</a>
+					<div class="header__contacts">
+						<a href="tel:+88002001476" class="phone-main">8 800 200-14-76</a>
+						<a href="#" class="link-page">Позвоните мне</a>
+					</div>
+					<ul class="socials-list">
+						<li><a href="#" target="_blank"><img src="img/tg.svg" alt="alt"></a></li>
+						<li><a href="#" target="_blank"><img src="img/max.svg" alt="alt"></a></li>
+					</ul>
+					<a href="tel:+88002001476" class="phone-mobile"><i class="fal fa-phone-alt"></i></a>
+				</div>
+			</div>
+			<div class="menu-mobile">
+				<div class="header__buttons">
+					<a href="#" class="btn-main btn-main--light">Отель</a>
+					<a href="#" class="btn-main btn-main--light">Гостевой дом</a>
+				</div>
+				<nav class="menu">
+					<ul class="menu__list">
+						<li><a href="#">Об отеле</a></li>
+						<li><a href="#">Номера</a></li>
+						<li><a href="#">Инфраструктура</a></li>
+						<li><a href="#">Новости</a></li>
+						<li><a href="#">Контакты</a></li>
+					</ul>
+				</nav>
+				<a href="#" class="btn-main">Забронировать</a>
+				<div class="header__contacts">
+					<a href="tel:+88002001476" class="phone-main">8 800 200-14-76</a>
+					<a href="#" class="link-page">Позвоните мне</a>
+				</div>
+				<ul class="socials-list">
+					<li><a href="#" target="_blank"><img src="img/tg.svg" alt="alt"></a></li>
+					<li><a href="#" target="_blank"><img src="img/max.svg" alt="alt"></a></li>
+				</ul>
+				<div class="header__location"><strong>Алушта,</strong> пер. Александрийский, 7</div>
+			</div>
+			<div class="menu-overlay"></div>
+		</header>
+
+		<section class="billbord-card">
+			<div class="container">
+				<ul class="breadcrumbs">
+					<li><a href="#">Главная</a></li>
+					<li><a href="#">Номера</a></li>
+					<li>2-комнатный номер-стандарт</li>
+				</ul>
+				<div class="billbord-card__content">
+					<h1 class="billbord-card__title">2-комнатный номер-стандарт с видом на море</h1>
+					<div class="billbord-card__text">
+						<p>Номер с балконом площадью 5 кв.м. и видом на море и гору Кастель, заповедный лес, расположен на 2-3 этаже</p>
+						<p>Общая площадь номера 22 кв.м</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="page-card">
+			<div class="container">
+				<div class="form-booking form-booking--page">
+					<form>
+						<div class="form-booking__line">
+							<div class="form-booking__title">Бронирование путёвок</div>
+							<div class="item-form item-form--date">
+								<div class="item-form__title">Дата заезда</div>
+								<input type="text" id="date-start" placeholder="01.05.26">
+							</div>
+							<div class="item-form item-form--date">
+								<div class="item-form__title">Дата выезда</div>
+								<input type="text" id="date-end" placeholder="01.05.26">
+							</div>
+							<div class="item-form item-form--people">
+								<div class="item-form__title">Гости</div>
+								<input type="text" placeholder="2 взрослых, 1 ребенок">
+							</div>
+							<input type="submit" class="btn-main" value="Найти">
+						</div>
+					</form>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="slider-wrapper">
+							<div class="slider-card">
+								<div>
+									<a href="img/slide_card1.jpg" class="slider-card__image fancybox" data-fancybox="card">
+										<img src="img/slide_card1.jpg" alt="alt">
+									</a>
+								</div>
+								<div>
+									<a href="img/slide_card1.jpg" class="slider-card__image fancybox" data-fancybox="card">
+										<img src="img/slide_card1.jpg" alt="alt">
+									</a>
+								</div>
+								<div>
+									<a href="img/slide_card1.jpg" class="slider-card__image fancybox" data-fancybox="card">
+										<img src="img/slide_card1.jpg" alt="alt">
+									</a>
+								</div>
+								<div>
+									<a href="img/slide_card1.jpg" class="slider-card__image fancybox" data-fancybox="card">
+										<img src="img/slide_card1.jpg" alt="alt">
+									</a>
+								</div>
+								<div>
+									<a href="img/slide_card1.jpg" class="slider-card__image fancybox" data-fancybox="card">
+										<img src="img/slide_card1.jpg" alt="alt">
+									</a>
+								</div>
+								<div>
+									<a href="img/slide_card1.jpg" class="slider-card__image fancybox" data-fancybox="card">
+										<img src="img/slide_card1.jpg" alt="alt">
+									</a>
+								</div>
+							</div>
+							<div class="slider-controls">
+								<div class="slider-controls__counts">
+									<div class="slider-controls__number"></div>
+									/
+									<div class="slider-controls__total"></div>
+								</div>
+							</div>
+						</div>
+						<div class="card-about">
+							<h2>Включено в стоимость проживания</h2>
+							<p>Номер данной категории идеально подойдет для размещения двоих взрослых.</p>
+							<p>Комплектация: двуспальная кровать, телевизор, мини сейф, холодильник, кондиционер, постельное белье, душевая кабинка санузел, фен и принадлежности, мини-парфюмерия, банные халаты.</p>
+							<br>
+							<p>Проживание от 2-х суток.</p>
+							<br>
+							<ul>
+								<li>Пользование открытым бассейном с зоной отдыха, которая оборудована всем необходимым: пляжная мебель — зонты, шезлонги, столики; душевые кабинки, санузел, полотенца, банные халаты (по сезону);</li>
+								<li>Беспроводной доступ в интернет;</li>
+								<li>Парковка в стоимость входит 1 парковочное место на территории.</li>
+								<li>Бесплатный WI-FI</li>
+								<li>Кондиционирование в здании</li>
+								<li>Стандартный набор туалетных принадлежностей</li>
+							</ul>
+							<br>
+							<p>Открытый подогреваемый бассейн с видом на море (Размер 14 м х 5,9 м, глубина взрослой чаши уровень воды бассейна в начале 1,5 м — по уклону 1,7 м по борту)</p>
+							<br>
+							<ul>
+								<li><strong>Родители и законные представители обязаны следить за поведением детей на территории бассейна и в воде. Администрация гостевого дома ответственность за нахождение детей без присмотра не несёт!</strong></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="card-info">
+							<div class="card-info__head">
+								<div class="card-info__title">О номере</div>
+								<div class="card-info__warning">
+									<img src="img/dontsmoke.svg" alt="alt">
+									Номер для некурящих!
+								</div>
+							</div>
+							<div class="card-info__features">
+								<div class="feature">
+									<div class="feature__title">Площадь:</div>
+									<div class="feature__value">22 кв.м</div>
+								</div>
+								<div class="feature">
+									<div class="feature__title">Спальня:</div>
+									<div class="feature__value">14,5 кв.м</div>
+								</div>
+								<div class="feature">
+									<div class="feature__title">Вместимость:</div>
+									<div class="feature__value">2 взрослых</div>
+								</div>
+								<div class="feature">
+									<div class="feature__title">Вид из окна:</div>
+									<div class="feature__value">море, горы</div>
+								</div>
+							</div>
+							<div class="card-info__bottom">
+								<div class="price-main">4 500 руб.</div>
+								<a href="#" class="btn-main">Забронировать</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2">
+						<a href="#" class="logo">
+							<img src="img/logo.svg" alt="alt">
+						</a>
+					</div>
+					<div class="col-lg-3">
+						<div class="footer__title">Номера <i class="far fa-chevron-down"></i></div>
+						<div class="footer__content">
+							<ul class="footer__nav">
+								<li><a href="#">Стандарт двухместный</a></li>
+								<li><a href="#">Стандарт двухместный с балконом</a></li>
+								<li><a href="#">Стандарт трехместный</a></li>
+								<li><a href="#">Стандарт трехместный с балконом</a></li>
+								<li><a href="#">Стандарт четырехместный</a></li>
+								<li><a href="#">Стандарт четырехместный с балконом</a></li>
+								<li><a href="#">Семейный</a></li>
+								<li><a href="#">Люкс</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<ul class="footer__nav footer__nav--big">
+							<li><a href="#">Об отеле</a></li>
+							<li><a href="#">Инфраструктура</a></li>
+							<li><a href="#">Контакты</a></li>
+						</ul>
+					</div>
+					<div class="col-lg-3">
+						<div class="footer__title">Новости <i class="far fa-chevron-down"></i></div>
+						<div class="footer__content">
+							<ul class="footer__nav">
+								<li><a href="#">Новости отеля</a></li>
+								<li><a href="#">Новости в туризме</a></li>
+								<li><a href="#">Статьи</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class="footer__location"><strong>Алушта,</strong> пос. Лучистое, <br>пер. Александрийский, 7</div>
+						<a href="tel:+88002001476" class="phone-main">8 800 200-14-76</a>
+						<ul class="socials-list">
+							<li><a href="#" target="_blank"><img src="img/tg.svg" alt="alt"></a></li>
+							<li><a href="#" target="_blank"><img src="img/max.svg" alt="alt"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer__bottom">
+				<div class="container">
+					<div class="footer__wrapper">
+						<div class="footer__links">
+							<a href="#">Политика конфиденциальности</a>
+							<a href="#">Согласие на обработку персональных данных</a>
+						</div>
+						<div class="copyright">© Copyright 2026 г.</div>
+						<div class="create">Сделано в <a href="#" target="_blank"><img src="img/sheer.svg" alt="alt"></a></div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+	</div>
+
+	<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+	<script src="libs/fancybox-master/dist/jquery.fancybox.min.js"></script>
+	<script src="libs/slick-1.5.9/slick/slick.min.js"></script>
+	<script src="libs/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+	<script src="libs/mask/jquery.maskedinput.js"></script>
+	<script src="js/common.js?ver=1.6"></script>
+	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
+	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
+</body>
+</html>

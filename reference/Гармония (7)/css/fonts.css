@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text Regular'), local('Golos-Text-Regular'),
+        url('../fonts/GolosText-Regular.woff2') format('woff2'),
+        url('../fonts/GolosText-Regular.woff') format('woff'),
+        url('../fonts/GolosText-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text Medium'), local('Golos-Text-Medium'),
+        url('../fonts/GolosText-Medium.woff2') format('woff2'),
+        url('../fonts/GolosText-Medium.woff') format('woff'),
+        url('../fonts/GolosText-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text Demi Bold'), local('Golos-Text-Demi-Bold'),
+        url('../fonts/GolosText-DemiBold.woff2') format('woff2'),
+        url('../fonts/GolosText-DemiBold.woff') format('woff'),
+        url('../fonts/GolosText-DemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text Bold'), local('Golos-Text-Bold'),
+        url('../fonts/GolosText-Bold.woff2') format('woff2'),
+        url('../fonts/GolosText-Bold.woff') format('woff'),
+        url('../fonts/GolosText-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Golos Text';
+    src: local('Golos Text Black'), local('Golos-Text-Black'),
+        url('../fonts/GolosText-Black.woff2') format('woff2'),
+        url('../fonts/GolosText-Black.woff') format('woff'),
+        url('../fonts/GolosText-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+  }
