@@ -27,14 +27,15 @@ alwaysApply: false
 
 Перед любой задачей **сверься** с:
 
-1. **Skill вёрстки:** `~/.cursor/skills/skill-verstka/SKILL.md` — полный pipeline, стек, Figma MCP, чеклисты.
-2. **Чек-лист Sheer:** `агенты/КОЛЯ/_КОНТЕКСТ/чек-лист_верстальщика.md` — [Google Docs](https://docs.google.com/document/d/11ba7tZWpTh9AT6W7o4LAbFqt0kmSfdk2HSMrtRK6Vjg/edit) — **обязательная самопроверка перед сдачей**.
-3. **Яндекс.Карта:** `агенты/КОЛЯ/_КОНТЕКСТ/yandex-karta.md` — блок контактов, эталон `reference/Артэк`.
-4. **Формы:** `агенты/КОЛЯ/_КОНТЕКСТ/формы-разметка.md` — `<form>` без BEM, поля в `.item-form`, эталон `reference/Артэк`.
-5. **Figma → img/:** `агенты/КОЛЯ/_КОНТЕКСТ/figma-изображения-500kb.md`.
-6. **Свод правил (HTML → CSS → JS):** `Правила для верстки.txt` в корне репозитория.
-7. **User rules Cursor** — русский язык, без `gap` на `.row`, pixel-perfect, структура `css/` / `js/` / `fonts/`, Bootstrap, jQuery.
-8. **Референсы проекта:** папка `reference/` — эталонные паттерны (см. `агенты/КОЛЯ/_КОНТЕКСТ/референсы.md`).
+1. **Паттерны (главный источник кода):** `агенты/КОЛЯ/_КОНТЕКСТ/паттерн/README.md` — HTML/CSS/JS фрагменты. **После сдачи задачи** — новый устойчивый паттерн сразу дописать в `паттерн/`.
+2. **Skill вёрстки:** `~/.cursor/skills/skill-verstka/SKILL.md` — полный pipeline, стек, Figma MCP, чеклисты.
+3. **Чек-лист Sheer:** `агенты/КОЛЯ/_КОНТЕКСТ/чек-лист_верстальщика.md` — [Google Docs](https://docs.google.com/document/d/11ba7tZWpTh9AT6W7o4LAbFqt0kmSfdk2HSMrtRK6Vjg/edit) — **обязательная самопроверка перед сдачей**.
+4. **Яндекс.Карта:** `агенты/КОЛЯ/_КОНТЕКСТ/паттерн/слайдеры-карты.md`, детали: `yandex-karta.md`.
+5. **Формы:** `агенты/КОЛЯ/_КОНТЕКСТ/паттерн/формы.md`, детали: `формы-разметка.md`.
+6. **Figma → img/:** `агенты/КОЛЯ/_КОНТЕКСТ/figma-изображения-500kb.md`.
+7. **Свод правил (HTML → CSS → JS):** `Правила для верстки.txt` в корне репозитория.
+8. **User rules Cursor** — русский язык, без `gap` на `.row`, pixel-perfect, структура `css/` / `js/` / `fonts/`, Bootstrap, jQuery.
+9. **Свод референсов:** `агенты/КОЛЯ/_КОНТЕКСТ/референсы.md` — только если нет нужного в `паттерн/`. Папка `reference/` **не открывать**, если паттерн уже выгружен.
 
 При конфликте: **skill-verstka** и явные правила пользователя важнее локальных договорённостей.
 
@@ -401,15 +402,22 @@ SVG и другие форматы — без лимита веса. См. `figm
 3. **Разметка триггера:** `<a href="#modal-callback" class="link-page fancybox">Заказать звонок</a>` (классы по проекту).
 4. **Скрытый блок** перед скриптами:
    - `#modal-callback.modal-block` → `.modal-wrap` → заголовок, `.descr-modal`, форма (имя, телефон `.input-phone`, submit, чекбокс согласия).
-5. **Fancybox** в `common.js`:
+5. **Fancybox** в `common.js` — **обязательно без сдвига влево** (см. `примеры/2026-06-01_fancybox_scrollbar_gutter_без_сдвига.md`):
+   - `html { scrollbar-gutter: stable; }` в `main.css`
+   - `jQuery.fancybox.defaults.hideScrollbar = false`
    ```js
    $(".fancybox").fancybox({
      autoFocus: false,
      backFocus: false,
+     hideScrollbar: false,
      afterShow: function (instance, current) {
        if (current && current.$content) {
          current.$content.find(".input-phone").mask("+7 (999) 999-99-99");
        }
+     },
+     afterClose: function () {
+       $("#fancybox-style-noscroll").remove();
+       $("body").css("padding-right", "");
      }
    });
    ```
@@ -421,9 +429,12 @@ SVG и другие форматы — без лимита веса. См. `figm
 ### Слайдеры (slick):
 - Кастомные стрелки FA, `responsive` до 1 слайда на 992px.
 
-### Fancybox:
+### Fancybox (модалки и галереи):
+- **Сдвиг влево при открытии:** `scrollbar-gutter: stable` на `html` + `hideScrollbar: false` — **не** оставлять дефолт Fancybox 3.
+- Подробно: `агенты/КОЛЯ/_КОНТЕКСТ/примеры/2026-06-01_fancybox_scrollbar_gutter_без_сдвига.md`
 ```js
-$('.fancybox').fancybox({ autoFocus: false, backFocus: false });
+jQuery.fancybox.defaults.hideScrollbar = false;
+$('.fancybox').fancybox({ autoFocus: false, backFocus: false, hideScrollbar: false });
 ```
 
 ### Плавный скролл к якорям (ОБЯЗАТЕЛЬНО)

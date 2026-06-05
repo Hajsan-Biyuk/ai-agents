@@ -31,10 +31,10 @@ PHP · JavaScript · jQuery · Python
 
 - Правила агента: `.cursor/rules/макс.mdc`
 - **Канон Agro-As (WP без WC):** `_КОНТЕКСТ/agro-as-wp-pattern.md` — **делать только так**
-- **Главный эталон WP + WC:** `reference/natyajka/maintheme/`
-- **Эталон WP без WC:** `reference/zarina-wp/maintheme/`
-- ACF-паттерны: `_КОНТЕКСТ/acf-zarina-reference.md`
-- Вёрстка и классы: агент **@коля**, папка `reference/`
+- **Паттерны CMS:** `_КОНТЕКСТ/паттерн/` — **новый паттерн после сдачи → сразу дописать**
+- **Канон Agro-As:** `_КОНТЕКСТ/agro-as-wp-pattern.md`
+- ACF: `_КОНТЕКСТ/acf-zarina-reference.md`
+- Вёрстка и классы: `агенты/КОЛЯ/_КОНТЕКСТ/паттерн/`
 
 ## Структура агента
 
@@ -42,6 +42,7 @@ PHP · JavaScript · jQuery · Python
 агенты/МАКС/
 ├── README.md
 ├── _КОНТЕКСТ/
+│   ├── паттерн/                ← ГЛАВНЫЙ: WP/ACF фрагменты (дополнять после каждой задачи)
 │   ├── agro-as-wp-pattern.md   ← КАНОН натяжки Agro-As
 │   ├── cpt-wordpress-pattern.md ← КАНОН регистрации CPT + taxonomy
 │   ├── product-single-wp-pattern.md ← КАНОН карточки товара (card.html)
