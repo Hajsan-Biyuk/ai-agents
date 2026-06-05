@@ -9,7 +9,7 @@
 | `агенты/` | Агенты @коля, @даша, @макс — контекст, **паттерн/**, примеры, логи |
 | `агенты/*/_КОНТЕКСТ/паттерн/` | **Главный источник кода** — HTML/CSS/JS/PHP фрагменты (без `reference/`) |
 | `.cursor/rules/` | Правила Cursor (`коля.mdc`, `даша.mdc`, `макс.mdc`) |
-| `.cursor/skills/` | Skills проекта (CPT, карточка товара WP) |
+| `.cursor/skills/` | Skills проекта: **skill-verstka** (копия для Windows), CPT, карточка товара WP |
 | `Правила для верстки.txt` | Полный свод правил HTML/CSS/JS |
 | `Материалы_для_ученика/` | Методичка создания агентов |
 | `Agro-As/` | Проект Agro-As (тема, вёрстка, плагины) |
@@ -24,7 +24,11 @@ cd ai-agents
 
 1. Cursor → **Open Folder** → папка репозитория
 2. В чате: `@коля`, `@макс`, `@даша`
-3. Вручную скопировать `skill-verstka` в `C:\Users\<имя>\.cursor\skills\`
+3. Скопировать skill из репо в глобальные skills Cursor:
+   ```text
+   .cursor\skills\skill-verstka\  →  C:\Users\<имя>\.cursor\skills\skill-verstka\
+   ```
+   (папку целиком: `SKILL.md` + `reference.md`)
 4. Настроить **User Rules** и **MCP** (Figma) в Cursor Settings
 
 ## Не в репозитории
