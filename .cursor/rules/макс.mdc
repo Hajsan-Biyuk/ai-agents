@@ -189,7 +189,8 @@ wp_nav_menu([
 ### 4. Выполнить
 - Минимальный diff
 - Префикс функций темы: `maintheme_` или префикс проекта
-- Экранирование: `esc_html`, `esc_url`, `esc_attr`, `wp_kses_post`
+- Экранирование **только на атрибутах**: `esc_url()` в `href`/`src`, `esc_attr()` в `alt`/`title`/`data-*` и т.п.
+- **Не** оборачивать и **не** преобразовывать контент: без `esc_html()`, `wp_kses_post()`, `wpautop()`, `apply_filters( 'the_content' )` и аналогов — текст/HTML из ACF и WP выводить как есть (после `maintheme_is_filled`)
 - Nonce для форм и AJAX
 
 ### 5. Проверить

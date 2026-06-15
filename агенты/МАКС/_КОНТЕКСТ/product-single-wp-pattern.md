@@ -180,7 +180,7 @@ PHP: `maintheme_get_product_variations()`, `maintheme_product_variation_volume_t
 - [ ] Галерея: fancybox + slick при >1 фото
 - [ ] Specs: 6 строк, toggle кнопки
 - [ ] Вариации меняют цену
-- [ ] `esc_html` / `esc_url` / `esc_attr`
+- [ ] `esc_url` / `esc_attr` — только атрибуты; контент без `esc_html` / `wp_kses_post` / `wpautop`
 - [ ] Bump `?ver=` css/js при правках
 - [ ] Лог в `агенты/МАКС/_ЛОГИ/`
 

@@ -29,11 +29,15 @@ Agro-As/maintheme/
 │   └── group_agro_as_product.json      ← post_type product
 ├── acf-import-all.json    ← ручной импорт: ACF → Tools → Import
 ├── page-wholesale.php / page-delivery.php / page-contacts.php / page-catalog.php / page-basket.php
+├── page-thnx.php          ← Template Name: Спасибо (стиль сайта)
+├── 404.php                ← стиль сайта, не Underscores
 ├── single-product.php
 ├── taxonomy-product_cat.php
 ├── template-parts/product/   ← card.html
 ├── template-parts/shared/
 │   └── categories-section.php
+├── template-parts/page/
+│   └── service-message.php   ← 404, спасибо
 ├── template-parts/front/
 │   ├── billbord.php
 │   ├── advantages.php
@@ -119,7 +123,7 @@ if ( ! maintheme_section_show( $sect ) ) {
 
 // каждое поле перед выводом:
 if ( maintheme_is_filled( $sect['zagolovok'] ?? '' ) ) {
-    echo esc_html( $sect['zagolovok'] );
+    echo $sect['zagolovok'];
 }
 
 // картинка:
@@ -241,7 +245,7 @@ add_filter( 'body_class', fn( $c ) => is_front_page() ? $c : array_merge( $c, [ 
 - [ ] Пустые поля не выводят HTML
 - [ ] Нет fallback из статики
 - [ ] JSON с `modified`, без автоимпорта в PHP
-- [ ] `esc_html`, `esc_url`, `esc_attr` на выводе
+- [ ] `esc_url`, `esc_attr` — только в атрибутах (`href`, `src`, `alt`); контент без `esc_html` / `wp_kses_post` / `wpautop`
 - [ ] Лог в `агенты/МАКС/_ЛОГИ/`
 
 ---
