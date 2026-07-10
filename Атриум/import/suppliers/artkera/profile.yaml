@@ -1,0 +1,42 @@
+# Профиль поставщика: ПЛИТКА «АРТКЕРА» (6 брендов)
+key: artkera
+enabled: true
+channel: upload            # Excel вручную
+reader: flat_excel         # плоские таблицы (после hier-препроцессинга или напрямую)
+upsert_key: article
+
+# Иерархический прайс (один файл «Прайс-лист…») — разбирается автоматически в cron
+hier:
+  enabled: true
+  with_photos: true        # фото с сайтов — только при боевом импорте (--confirm / auto_confirm)
+  reference_dir: data/reference/artkera   # опционально: эталон «с обработкой» для обогащения
+
+# Синонимы заголовков → поля канонической модели
+synonyms:
+  article: ["Артикул"]
+  brand: ["Бренд"]
+  name: ["Наименование"]
+  price_retail: ["Цена, руб."]
+  unit: ["Единица измерения"]
+  in_stock: ["В наличии"]
+  quantity: ["Количество"]
+  collection: ["Коллекция"]
+  description: ["Описание"]
+  path: ["Путь"]
+  path2: ["Путь2"]
+  photo: ["Фото"]           # Фото2..Фото16 подхватываются автоматически
+
+# Колонки → attributes (характеристики). Всё, что не в synonyms и не photo — attributes as-is
+ignore: ["Статус"]
+
+normalize:
+  in_stock: { "Да": true, "Нет": false, "": true }
+  path_separator: "///"
+
+defaults:
+  quantity: 500
+
+# Раздел по умолчанию для товаров без «Путь» (новые позиции из прайса)
+default_section: ["plitka", "keramogranit-i-napolnaya-plitka"]
+
+photo_limit: 16

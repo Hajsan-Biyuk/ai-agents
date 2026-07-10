@@ -1,0 +1,50 @@
+{
+  "source": "/Users/asanhajretdinov/Documents/Sites/Cursor-sheer/Атриум/API   +  (исходники таблиц ТМ)/ПЛИТКА \"АРТКЕРА\"/Исходник/Прайс-лист с 01.01.2026.xls",
+  "output_dir": "/Users/asanhajretdinov/Documents/Sites/Cursor-sheer/Атриум/API   +  (исходники таблиц ТМ)/ПЛИТКА \"АРТКЕРА\"/parsing",
+  "price_field": "РРЦ → Цена, руб.",
+  "brands": {
+    "ALMA_ceramica": {
+      "source_count": 672,
+      "output_count": 672,
+      "from_reference": 669,
+      "from_web": 3,
+      "photos_found": 0
+    },
+    "LCM": {
+      "source_count": 127,
+      "output_count": 127,
+      "from_reference": 127,
+      "from_web": 0,
+      "photos_found": 0
+    },
+    "NewTrend": {
+      "source_count": 221,
+      "output_count": 221,
+      "from_reference": 211,
+      "from_web": 10,
+      "photos_found": 7
+    },
+    "AltaCera": {
+      "source_count": 102,
+      "output_count": 102,
+      "from_reference": 100,
+      "from_web": 2,
+      "photos_found": 2
+    },
+    "Delacora": {
+      "source_count": 211,
+      "output_count": 211,
+      "from_reference": 211,
+      "from_web": 0,
+      "photos_found": 0
+    },
+    "Арткера": {
+      "source_count": 124,
+      "output_count": 124,
+      "from_reference": 124,
+      "from_web": 0,
+      "photos_found": 0
+    }
+  },
+  "total_rows": 1457
+}

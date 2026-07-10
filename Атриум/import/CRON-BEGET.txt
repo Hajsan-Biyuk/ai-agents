@@ -1,0 +1,13 @@
+# Cron в панели Beget (Планировщик заданий)
+
+Расписание: **каждые 30 минут** (`*/30 * * * *`)
+
+Команда:
+
+```
+/bin/bash /home/s/sheer26/atriumceramic.sheer26.ru/import/run_cron.sh
+```
+
+На shared-хостинге Beget `crontab` через SSH недоступен — задание добавляется только в панели управления.
+
+После добавления проверьте лог: `import/reports/cron.log`

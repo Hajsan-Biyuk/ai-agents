@@ -1,0 +1,22 @@
+# Пример config.yaml — скопировать в config.yaml и подставить token
+url: https://atriumceramic.sheer26.ru
+token: PASTE_IMPORT_TOKEN_HERE
+batch_size: 100
+watch_inbox: true
+
+suppliers:
+  artkera:
+    with_photos: true
+    auto_confirm: true
+    max_convert_errors: 100
+    max_create_auto: 500
+  rgw:
+    with_photos: true
+    auto_confirm: true
+    max_convert_errors: 100
+    max_create_auto: 2000
+  santehcentr:
+    with_photos: true
+    auto_confirm: true
+    max_convert_errors: 300
+    max_create_auto: 25000

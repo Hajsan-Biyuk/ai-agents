@@ -6,6 +6,23 @@ antigravity-agent/
 Berega/
 агенты.zip
 
+# MCP (ключи не коммитить)
+.cursor/mcp.json
+
+# Доступы (не коммитить)
+*.env
+.env
+.env.*
+Атриум/import/config.yaml
+Атриум/site/local/tools/import/config.php
+
+# Атриум — сгенерированные данные импорта (восстанавливаются из inbox)
+Атриум/import/data/staging/
+Атриум/import/data/normalized/
+Атриум/import/data/state/
+Атриум/import/.lock
+Атриум/API   +  (исходники таблиц ТМ).zip
+
 # OS / IDE
 .DS_Store
 Thumbs.db

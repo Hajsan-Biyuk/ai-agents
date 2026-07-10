@@ -1,0 +1,21 @@
+.one_click_buy_frame {
+    width: 720px;
+}
+.popup-info-product .row-box > div {
+    width: 50%;
+}
+
+.one_click_buy_basket_frame.popup {
+    position: relative;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    max-width: 480px;
+    margin: 20px auto;
+    padding: 40px 80px 55px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 5px;
+}

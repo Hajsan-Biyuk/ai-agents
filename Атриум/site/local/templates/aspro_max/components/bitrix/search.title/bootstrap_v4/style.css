@@ -1,0 +1,91 @@
+.searche-title {}
+
+.search-title-button {
+	background-image: url(images/icon-search.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	min-width: 45px;
+	min-height: 38px;
+}
+
+.title-search-result {
+	border: 1px solid #ced4da;
+	display: none;
+	overflow: hidden;
+	z-index: 205;
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 3px;
+}
+
+.search-title-result-item {
+	border-bottom: 1px solid #ddd;
+}
+
+
+.search-title .search-title-result-item:last-child {
+	border-bottom:  none;
+}
+
+.search-title-result-item-link {
+	font-size: 16px;
+	transition: 170ms linear all;
+}
+
+.search-title-result-item-price {
+	font-size: 16px;
+}
+
+.search-title-result-item-current-price {
+	font-weight: bold;
+}
+
+.search-title-result-item-old-price {
+	font-size: 80%;
+	text-decoration: line-through;
+}
+
+.search-top-position {
+    right: 0;
+    position: absolute;
+    top: 0;	
+	height: 100%;
+}
+.search-top-position .search-title-button {
+	background: transparent;
+	height: 100%;
+}
+
+.input-group--search_top {
+	min-height: 35px;
+	min-width: 280px;
+}
+
+.label-for-search {
+	top: 22px;
+	left: 20px;
+	position: absolute;
+	font-weight: normal;
+}
+
+.right_wrap .type-wrap {
+	font-size: 12px;
+	max-width: 280px;
+	display: table-cell;
+	padding: 0px 10px;
+	height: 65px;
+	vertical-align: middle;	
+	position: relative;
+}
+.logo_and_menu-row .basket-link {
+	position: relative;
+	padding-left: 15px;
+	padding-right: 0px;
+	display: block;
+}
+
+.typed-cursor {display: none;}
+
+.disable_label {
+	display: none;
+}

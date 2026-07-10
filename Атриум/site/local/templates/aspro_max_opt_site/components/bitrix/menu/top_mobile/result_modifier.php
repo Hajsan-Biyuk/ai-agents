@@ -1,0 +1,44 @@
+<?$arResult = CMax::getChilds($arResult);
+global $arRegion, $arTheme;
+if($arResult){
+	$MENU_TYPE = $arTheme['MEGA_MENU_TYPE']['VALUE'];
+
+	foreach($arResult as $key=>$arItem)
+	{
+		if(isset($arItem['CHILD']))
+		{
+			foreach($arItem['CHILD'] as $key2=>$arItemChild)
+			{
+				if(isset($arItemChild['PARAMS']) && $arRegion && $arTheme['USE_REGIONALITY']['VALUE'] === 'Y' && $arTheme['USE_REGIONALITY']['DEPENDENT_PARAMS']['REGIONALITY_FILTER_ITEM']['VALUE'] === 'Y')
+				{
+					// filter items by region
+					if(isset($arItemChild['PARAMS']['LINK_REGION']))
+					{
+						if($arItemChild['PARAMS']['LINK_REGION'])
+						{
+							if(!in_array($arRegion['ID'], $arItemChild['PARAMS']['LINK_REGION']))
+								unset($arResult[$key]['CHILD'][$key2]);
+						}
+						else
+							unset($arResult[$key]['CHILD'][$key2]);
+					}
+				}
+			}
+		}
+	}
+	
+	if($MENU_TYPE == 3) {
+		CMax::replaceMenuChilds($arResult, $arParams);
+	}
+	$save_cat = $arResult[0]['CHILD'];
+	$save_cat_childs_1 = $save_cat[0];
+	$save_cat_childs_2 = $save_cat[1];
+	$save_cat_childs_5 = $save_cat[2];
+	
+	$build_new_sorts = [
+		$save_cat_childs_1,
+		$save_cat_childs_5,
+		$save_cat_childs_2
+	];
+	$arResult[0]['CHILD'] = $build_new_sorts;	
+}?>

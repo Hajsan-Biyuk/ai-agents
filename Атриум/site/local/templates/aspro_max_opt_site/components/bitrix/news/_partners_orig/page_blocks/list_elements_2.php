@@ -1,0 +1,15 @@
+drwxr-xr-x   5 atriumcerami 1004         4096 Oct 28 13:16 .
+drwxr-xr-x  21 atriumcerami 1004         4096 Oct 28 13:15 ..
+-rw-r--r--   1 atriumcerami 1004        12817 Oct 28 13:15 detail.php
+drwxr-xr-x   2 atriumcerami 1004         4096 Oct 28 13:16 include
+drwxr-xr-x   4 atriumcerami 1004         4096 Oct 28 13:16 lang
+-rw-r--r--   1 atriumcerami 1004         6083 Oct 28 13:15 news.php
+drwxr-xr-x   2 atriumcerami 1004         4096 Oct 28 13:16 page_blocks
+-rw-r--r--   1 atriumcerami 1004        29390 Oct 28 13:15 .parameters.php
+-rw-r--r--   1 atriumcerami 1004          664 Oct 28 13:15 rss.php
+-rw-r--r--   1 atriumcerami 1004          760 Oct 28 13:15 rss_section.php
+-rw-r--r--   1 atriumcerami 1004         1034 Oct 28 13:15 script.js
+-rw-r--r--   1 atriumcerami 1004          833 Oct 28 13:15 script.min.js
+-rw-r--r--   1 atriumcerami 1004         5778 Oct 28 13:15 section.php
+-rw-r--r--   1 atriumcerami 1004         2995 Oct 28 13:15 style.css
+-rw-r--r--   1 atriumcerami 1004         2341 Oct 28 13:15 style.min.css

@@ -1,0 +1,42 @@
+# Профиль поставщика: Центр Сантехники
+key: santehcentr
+enabled: true
+channel: upload
+reader: flat_excel
+upsert_key: article
+
+# Сырые прайсы prices.xlsx + керамогранит — препроцессинг в cron
+raw:
+  enabled: true
+  reference_dir: data/reference/santehcentr   # опционально: файлы «после обработки»
+
+# Два файла в inbox: основной прайс + аксессуары (после обработки)
+synonyms:
+  article: ["Артикул"]
+  brand: ["Бренд", "Бренд "]
+  name: ["Наименование", "Наименование товара"]
+  price_retail: ["Цена, руб.", "Цена, руб", "Цена, руб "]
+  in_stock: ["В наличии"]
+  quantity: ["Количество"]
+  collection: ["Коллекция"]
+  description: ["Описание", "Описание товара"]
+  path: ["Путь"]
+  path2: ["Путь2"]
+  photo: ["Фото"]
+
+ignore: ["Статус"]
+
+normalize:
+  in_stock: { "Да": true, "Нет": false, "": true }
+  path_separator: "///"
+  path_strip_catalog: true
+  brand_trim: true
+
+defaults:
+  quantity: 500
+
+# Товары без «Путь» (новые позиции из сырого прайса)
+default_section: ["santekhnika"]
+
+skip_sheets: ["Meta", "Оглавление"]
+photo_limit: 16

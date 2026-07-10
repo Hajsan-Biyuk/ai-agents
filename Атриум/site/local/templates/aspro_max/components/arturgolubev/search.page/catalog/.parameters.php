@@ -1,0 +1,23 @@
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+
+$arTemplateParameters["INPUT_PLACEHOLDER"] = array(
+	"NAME" => GetMessage("TP_BSP_INPUT_PLACEHOLDER"),
+	"TYPE" => "STRING",
+	"DEFAULT" => "",
+);
+
+$arTemplateParameters["SHOW_CLARIFY_SECTION"] = [
+	"PARENT" => "VISUAL",
+	"NAME" => GetMessage("SP_ASP_SHOW_CLARIFY_SECTION"),
+	"TYPE" => "CHECKBOX",
+	"DEFAULT" => "N"
+];
+
+$arTemplateParameters["SHOW_HISTORY"] = array(
+	"PARENT" => "VISUAL",
+	"NAME" => GetMessage("CP_BSP_SHOW_HISTORY"),
+	"TYPE" => "CHECKBOX",
+	"DEFAULT" => "N"
+);
+?>

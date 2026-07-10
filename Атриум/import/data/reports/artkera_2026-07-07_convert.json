@@ -1,0 +1,458 @@
+{
+  "supplier": "artkera",
+  "total": 1367,
+  "errors": [
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "DWU12LRG07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU12RLT04R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU12RLT04R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU12RLT07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU12RLT08R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU12RLT18R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU12LRT07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU12LRT70R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "DWU12RLA04R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "DWU12RLA44R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93IBR07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93IBR17R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93MGC04R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93MGC07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93MGC47R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93MGC47R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93MGC64R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93ORG07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93ORG27R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93ORG70R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93SHL00R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93VLT07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "TWU93VLT17R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "BWM51MET707",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "BWM51MET808",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "BWM61MET707",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "BWM61MET808",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "BWM71MET707",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "BWM71MET707",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "BWM71MET808",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92ADR07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92NTK07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92BRC70R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92CHR07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92GRN00R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92GRN07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92MDR40R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92SND04R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92SNR40R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92WTD00R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFA92WDW44R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04BTC07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04BTC70R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04CTR14R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04RIC70R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04TVT04R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04URB07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04URB70R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04BLN04R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04BLN07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04BLN47R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04BLN80R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04CRR00R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04NCL04R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04NCL07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04OLN07R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04OLS40R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "ALMA_ceramica.xls",
+      "article": "GFU04TRD04R",
+      "message": "дубликат артикула (уже в ALMA_ceramica.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "WT11FOR00",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "WT11SND08",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "DW9BLK03",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "BW0BLK01",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "DW9SHN11",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "SW9MEG55",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "DW9CFT16",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "DW9FLC06",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "DW9LXR00",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "DW9LXR06",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "DW7MSC16",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "DW9WAV06",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "AltaCera.xls",
+      "article": "BW0LXR00",
+      "message": "дубликат артикула (уже в AltaCera.xls)"
+    },
+    {
+      "file": "Delacora.xlsx",
+      "article": "BW0FRZ09",
+      "message": "дубликат артикула (уже в Delacora.xlsx)"
+    },
+    {
+      "file": "Delacora.xlsx",
+      "article": "D12010M",
+      "message": "дубликат артикула (уже в Delacora.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "60120PRM21HG",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "60120TWN99HG",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "60120WOW16HG",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "6060CAS55P",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "6060DLL15P",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "6060IME18P",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "6060MOS21P",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "6060ORO11P",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "6060SWX00P",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "6060CBL23HG",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "6060ILN18HG",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "LCM.xlsx",
+      "article": "6060ILN55HG",
+      "message": "дубликат артикула (уже в LCM.xlsx)"
+    },
+    {
+      "file": "NewTrend.xls",
+      "article": "WT11CHS15",
+      "message": "дубликат артикула (уже в NewTrend.xls)"
+    },
+    {
+      "file": "NewTrend.xls",
+      "article": "WT11CHL00",
+      "message": "дубликат артикула (уже в NewTrend.xls)"
+    },
+    {
+      "file": "NewTrend.xls",
+      "article": "SW9NER00",
+      "message": "дубликат артикула (уже в NewTrend.xls)"
+    },
+    {
+      "file": "NewTrend.xls",
+      "article": "GP40DES01R",
+      "message": "дубликат артикула (уже в NewTrend.xls)"
+    },
+    {
+      "file": "NewTrend.xls",
+      "article": "GP40PEG15R",
+      "message": "дубликат артикула (уже в NewTrend.xls)"
+    }
+  ],
+  "unknown_categories": {},
+  "output": "/Users/asanhajretdinov/Documents/Sites/Cursor-sheer/Атриум/import/data/normalized/artkera_2026-07-07.json"
+}

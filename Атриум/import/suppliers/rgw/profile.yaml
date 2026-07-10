@@ -1,0 +1,45 @@
+# Профиль поставщика: ТМ RGW «стильные душевые»
+key: rgw
+enabled: true
+channel: upload
+reader: flat_excel
+upsert_key: article
+brand_default: RGW
+
+# Сырой прайс RGW_Price.xlsx (без колонки «Путь») — препроцессинг в cron
+raw:
+  enabled: true
+  reference_dir: data/reference/rgw   # опционально: файлы «Обработка прайса RGW»
+
+synonyms:
+  article: ["Артикул"]
+  brand: ["Бренд"]
+  name: ["Наименование", "Название", "Нименование", "ITP наименование сайт"]
+  price_retail: ["Цена, руб.", "Цена, руб", "Цена", "Цена (розница), руб.", "Цена, руб"]
+  in_stock: ["В наличии", "В наличии (перезалить)", "Доступно"]
+  quantity: ["Количество"]
+  collection: ["Коллекция", "Серия"]
+  description: ["Описание"]
+  path: ["Путь"]
+  path2: ["Путь2"]
+  photo: ["Фото", "Фото дополнительные"]
+
+ignore: ["Статус", "Unnamed: 0"]
+
+normalize:
+  in_stock: { "Да": true, "Нет": false, "Много": true, "": true }
+  path_separator: "///"
+  path_strip_catalog: true
+  path_fix_double_slash: true
+  brand_trim: true
+  photo_split: ","
+
+defaults:
+  quantity: 500
+  brand: RGW
+
+# Товары без «Путь» (новые позиции из сырого прайса)
+default_section: ["santekhnika", "dushevye-dveri-ograzhdeniya-boksy", "dushevye-dveri-k"]
+
+skip_sheets: ["Meta", "Оглавление"]
+photo_limit: 16
