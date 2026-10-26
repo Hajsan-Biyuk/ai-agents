@@ -107,5 +107,8 @@ if ($arParams['SHOW_SORT']) {
 	include 'sort.php';
 }
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/atrium/CatalogFilterTune.php';
+atriumTuneCatalogFilter($arResult, $arParams['SECTION_ID'] ?? 0);
+
 global $sotbitFilterResult;
 $sotbitFilterResult = $arResult;

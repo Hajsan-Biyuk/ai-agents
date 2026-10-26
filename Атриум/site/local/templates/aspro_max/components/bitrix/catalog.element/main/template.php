@@ -6,6 +6,216 @@
 	$this->addExternalCss("/local/templates/aspro_max/vendor/css/carousel/slick/slick.css");
 ?>
 
+
+
+
+
+
+<?$this->SetViewTarget('LEFT_INFO_CARD');?>
+<? if (!empty($arResult['ATRIUM_LINKED_VARIANTS']['axes'])) { ?>
+<div class="product-variants-stack">
+<? foreach ($arResult['ATRIUM_LINKED_VARIANTS']['axes'] as $axis) { ?>
+	<div class="product-variants-row">
+		<div class="title-info-product"><?=htmlspecialcharsbx($axis['TITLE'])?>: <?=htmlspecialcharsbx($axis['CURRENT'])?></div>
+		<div class="product-variants">
+		<? foreach ($axis['ITEMS'] as $item) { ?>
+			<? if (!empty($item['ACTIVE'])) { ?>
+			<span class="product-variants__item active" title="<?=htmlspecialcharsbx($item['LABEL'])?>">
+				<? if ($axis['MODE'] === 'image' && !empty($item['IMG'])) { ?>
+					<img src="<?=htmlspecialcharsbx($item['IMG'])?>" alt="<?=htmlspecialcharsbx($item['LABEL'])?>">
+				<? } else { ?>
+					<span class="product-variants__fallback"><?=htmlspecialcharsbx($item['LABEL'])?></span>
+				<? } ?>
+			</span>
+			<? } else { ?>
+			<a href="<?=htmlspecialcharsbx($item['URL'])?>" class="product-variants__item" title="<?=htmlspecialcharsbx($item['LABEL'])?>">
+				<? if ($axis['MODE'] === 'image' && !empty($item['IMG'])) { ?>
+					<img src="<?=htmlspecialcharsbx($item['IMG'])?>" alt="<?=htmlspecialcharsbx($item['LABEL'])?>">
+				<? } else { ?>
+					<span class="product-variants__fallback"><?=htmlspecialcharsbx($item['LABEL'])?></span>
+				<? } ?>
+			</a>
+			<? } ?>
+		<? } ?>
+		</div>
+	</div>
+<? } ?>
+</div>
+<? } elseif (!empty($arResult['ATRIUM_OFFER_SWATCHES']) && count($arResult['ATRIUM_OFFER_SWATCHES']) >= 2) { ?>
+<div class="title-info-product"><?=htmlspecialcharsbx($arResult['ATRIUM_OFFER_VARIANT_TITLE'])?>: <span class="js-offer-variant-label"><?=htmlspecialcharsbx($arResult['ATRIUM_OFFER_VARIANT_LABEL'])?></span></div>
+<div class="product-variants product-variants--offers" data-prop-id="<?=(int)$arResult['ATRIUM_OFFER_PROP_ID']?>">
+	<?foreach ($arResult['ATRIUM_OFFER_SWATCHES'] as $swatch):?>
+		<a href="javascript:void(0)" class="product-variants__item<?=$swatch['ACTIVE'] ? ' active' : ''?>" data-onevalue="<?=(int)$swatch['ONE_VALUE']?>" data-offer-id="<?=(int)$swatch['OFFER_ID']?>" data-tree="<?=htmlspecialcharsbx((string)$swatch['TREE_JSON'])?>" title="<?=htmlspecialcharsbx($swatch['LABEL'])?>">
+			<?if ($swatch['IMG']):?>
+				<img src="<?=htmlspecialcharsbx($swatch['IMG'])?>" alt="<?=htmlspecialcharsbx($swatch['LABEL'])?>">
+			<?else:?>
+				<span class="product-variants__fallback"><?=htmlspecialcharsbx($swatch['LABEL'])?></span>
+			<?endif;?>
+		</a>
+	<?endforeach;?>
+</div>
+<? } ?>
+<div class="code-product">Код товара:&nbsp;<span><?=$arResult['ID'];?></span></div>
+<div class="list-features">
+<?
+$brandId = 0;
+if (!empty($arResult["PROPERTIES"]["BRAND"]["VALUE"])) {
+	$brandRaw = $arResult["PROPERTIES"]["BRAND"]["VALUE"];
+	$brandId = (int)(is_array($brandRaw) ? reset($brandRaw) : $brandRaw);
+}
+$brandName = '';
+$brandHtml = '';
+if ($brandId > 0) {
+	$res = CIBlockElement::GetByID($brandId);
+	if ($arRes = $res->GetNext()) {
+		$brandName = $arRes['~NAME'];
+		$brandUrl = (string)$arRes['DETAIL_PAGE_URL'];
+		if ($brandName !== '' && $brandUrl !== '') {
+			$brandHtml = '<a href="'.htmlspecialcharsbx($brandUrl).'">'.htmlspecialcharsbx($brandName).'</a>';
+		} elseif ($brandName !== '') {
+			$brandHtml = htmlspecialcharsbx($brandName);
+		}
+	}
+}
+if ($brandHtml !== '') {
+	$BRAND_PROPERTIES = [
+		"ID" => 879,
+		"CODE" => "BRAND",
+		"NAME" => $arResult["PROPERTIES"]["BRAND"]["NAME"] ?: "Бренд",
+		"VALUE" => $brandName,
+		"~VALUE" => $brandName,
+		"DISPLAY_VALUE" => $brandHtml,
+	];
+	if (isset($arResult["DISPLAY_PROPERTIES"]["BRAND"])) {
+		$arResult["DISPLAY_PROPERTIES"]["BRAND"]["VALUE"] = $brandName;
+		$arResult["DISPLAY_PROPERTIES"]["BRAND"]["~VALUE"] = $brandName;
+		$arResult["DISPLAY_PROPERTIES"]["BRAND"]["DISPLAY_VALUE"] = $brandHtml;
+	} else {
+		array_unshift($arResult["DISPLAY_PROPERTIES"], $BRAND_PROPERTIES);
+	}
+}
+
+if(!empty($arResult["PROPERTIES"]["CML2_ARTICLE"]["VALUE"])){
+	$ARTICLE_PROPERTIES = [
+		"ID" => 899,
+		"NAME" => $arResult["PROPERTIES"]["CML2_ARTICLE"]["NAME"],
+		"VALUE" => $arResult["PROPERTIES"]["CML2_ARTICLE"]["VALUE"],
+		"~VALUE" => $arResult["PROPERTIES"]["CML2_ARTICLE"]["VALUE"],
+		"DISPLAY_VALUE" => $arResult["PROPERTIES"]["CML2_ARTICLE"]["VALUE"],
+	];
+	array_unshift($arResult["DISPLAY_PROPERTIES"], $ARTICLE_PROPERTIES);
+}
+
+// if(!empty($arResult["DISPLAY_PROPERTIES"]["PROP_1240"]["VALUE"])){
+	// $res = CIBlockElement::GetList([], ["IBLOCK_ID" => 73, "PROPERTY_COLLECTION_VALUE" => $arResult["DISPLAY_PROPERTIES"]["PROP_1240"]['VALUE']], false, false, ["*"]);
+	// if($arRes = $res->GetNext()){
+		// $arResult["DISPLAY_PROPERTIES"]["PROP_1240"]["DISPLAY_VALUE"] = '<a href="'. $arRes['DETAIL_PAGE_URL'] .'">'. $arResult["DISPLAY_PROPERTIES"]["PROP_1240"]['VALUE'] .'</a>';
+	// }
+// }
+if (!empty($arResult['DISPLAY_PROPERTIES']['COLLECTION_HL']['VALUE'])) {
+    $prop = &$arResult['DISPLAY_PROPERTIES']['COLLECTION_HL'];
+
+    $xmlId = is_array($prop['VALUE']) ? reset($prop['VALUE']) : $prop['VALUE'];
+    $name  = is_array($prop['DISPLAY_VALUE']) ? reset($prop['DISPLAY_VALUE']) : $prop['DISPLAY_VALUE'];
+    $name  = trim(strip_tags((string)$name));
+	
+    // убираем префикс «Бренд: », если он совпадает с брендом товара
+    $brand = $brandName;
+    $brand = trim(strip_tags(is_array($brand) ? reset($brand) : (string)$brand));
+    if ($brand !== '' && mb_stripos($name, $brand . ': ') === 0) {
+        $name = mb_substr($name, mb_strlen($brand) + 2);
+    }
+    $title = $name;
+	
+    $res = CIBlockElement::GetList(
+        [],
+        ['IBLOCK_ID' => 73, 'ACTIVE' => 'Y', '=PROPERTY_COLLECTIONS_HL' => $xmlId],
+        false,
+        ['nTopCount' => 1],
+        ['ID', 'IBLOCK_ID', 'CODE', 'IBLOCK_SECTION_ID', 'DETAIL_PAGE_URL']
+    );
+    $prop['DISPLAY_VALUE'] = ($arRes = $res->GetNext())
+        ? '<a href="' . $arRes['DETAIL_PAGE_URL'] . '">' . $title . '</a>'
+        : $title;
+
+    unset($prop);
+}
+
+$countryValue = '';
+$countryCode = '';
+foreach (['PROP_2084', 'STRANA_PROIZVODSTVA'] as $code) {
+	$raw = $arResult['PROPERTIES'][$code]['VALUE'] ?? '';
+	if (is_array($raw)) {
+		$raw = implode(', ', array_filter(array_map('trim', $raw)));
+	}
+	$raw = trim((string) $raw);
+	if ($raw !== '') {
+		$countryValue = $raw;
+		$countryCode = $code;
+		break;
+	}
+}
+if ($countryValue !== '' && $countryCode !== '') {
+	$countryHtml = htmlspecialcharsbx($countryValue);
+	if (isset($arResult['DISPLAY_PROPERTIES'][$countryCode])) {
+		$arResult['DISPLAY_PROPERTIES'][$countryCode]['VALUE'] = $countryValue;
+		$arResult['DISPLAY_PROPERTIES'][$countryCode]['~VALUE'] = $countryValue;
+		$arResult['DISPLAY_PROPERTIES'][$countryCode]['DISPLAY_VALUE'] = $countryHtml;
+	} else {
+		$arResult['DISPLAY_PROPERTIES'][$countryCode] = [
+			'ID' => (int) ($arResult['PROPERTIES'][$countryCode]['ID'] ?? 0),
+			'CODE' => $countryCode,
+			'NAME' => 'Страна',
+			'VALUE' => $countryValue,
+			'~VALUE' => $countryValue,
+			'DISPLAY_VALUE' => $countryHtml,
+		];
+	}
+}
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/atrium/ProductCardChars.php';
+atriumInjectTileMenuChars($arResult);
+?>
+<?foreach($arResult["DISPLAY_PROPERTIES"] as $arProp):?>
+	<div class="list-features__item">
+		<div class="feature-card">
+			<div class="feature-card__title"><?=$arProp["NAME"]?></div>
+			<div class="feature-card__value">
+				<?if(is_array($arProp["DISPLAY_VALUE"]) && count($arProp["DISPLAY_VALUE"]) > 1):?>
+					<?=implode(', ', $arProp["DISPLAY_VALUE"]);?>
+				<?else:?>
+					<?=$arProp["DISPLAY_VALUE"];?>
+				<?endif;?>
+			</div>
+		</div>
+	</div>
+<?endforeach;?>
+<?foreach($arResult["OFFER_PROP"] as $arProp):?>
+	<div class="list-features__item">
+		<div class="feature-card">
+			<div class="feature-card__title"><?=$arProp["NAME"]?></div>
+			<div class="feature-card__value">
+				<?if(is_array($arProp["DISPLAY_VALUE"]) && count($arProp["DISPLAY_VALUE"]) > 1):?>
+					<?=implode(', ', $arProp["DISPLAY_VALUE"]);?>
+				<?else:?>
+					<?=$arProp["DISPLAY_VALUE"];?>
+				<?endif;?>
+			</div>
+		</div>
+	</div>
+<?endforeach;?>
+</div>
+<?$this->EndViewTarget();?>
+<?php
+if (function_exists('atriumInjectFilledDetailChars')) {
+	atriumInjectFilledDetailChars($arResult);
+}
+?>
+
+
+
+
+
 <div class="basket_props_block" id="bx_basket_div_<?=$arResult["ID"];?>" style="display: none;">
 	<?if (!empty($arResult['PRODUCT_PROPERTIES_FILL'])){
 		foreach ($arResult['PRODUCT_PROPERTIES_FILL'] as $propID => $propInfo){?>
@@ -118,6 +328,8 @@ unset($currencyList, $templateLibrary);
 
 if($arResult["PROPERTIES"]["YM_ELEMENT_ID"] && $arResult["PROPERTIES"]["YM_ELEMENT_ID"]["VALUE"])
 	$templateData["YM_ELEMENT_ID"] = $arResult["PROPERTIES"]["YM_ELEMENT_ID"]["VALUE"];
+
+$templateData['HAS_REVIEWS'] = true;
 
 $arSkuTemplate = array();
 if(!empty($arResult['SKU_PROPS']))
@@ -583,10 +795,8 @@ $iCountProps = count($arResult['DISPLAY_PROPERTIES']) + $offerPropCount;
 	<?//brand,article,rating?>
 	<div class="product-info-headnote clearfix">
 		<div class="flexbox flexbox--row align-items-center justify-content-between flex-wrap">
-	
 			<div class="col-auto">
 				<div class="product-info-headnote__inner">
-			
 					<div class="product-info-headnote__toolbar">
 						<?$GLOBALS['CHARE_PRODUCT_BUTTON_DETAIL']=true;?>
 						<?\Aspro\Functions\CAsproMaxItem::showDelayCompareBtn(array_merge($arParams, $addParams), $arResult, $arAddToBasketData, $totalCount, $bUseSkuProps, 'list static icons long', false, false, '_small', $currentSKUID, $currentSKUIBlock);?>
@@ -617,7 +827,9 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 <div class="wrap-for-slider">
     <?if($arResult["MORE_PHOTO"]):?>
 		<div class="slider-for-wrap">
-			<div class="badge-sale">-29%</div>
+			<? if(!empty($arResult['PROPERTIES']['SALE_PERCENT']['VALUE'])){ ?>
+			<div class="badge-sale"><?=$arResult['PROPERTIES']['SALE_PERCENT']['VALUE']?></div>
+			<? } ?>
 			<div class="slider-for">
 				<?foreach($arResult["MORE_PHOTO"] as $i => $arImage):
 					// Если включен режим MAGNIFIER (лупа), Аспро в главном слайдере выводит только первое фото
@@ -848,8 +1060,8 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 				
 				<?$frame = $this->createFrame()->begin('');?>
 				<div class="product_id_wrapper">
-		<span class="left">Код товара:</span>&nbsp;<span class="right"><?=$arResult['ID'];?></span>
-	</div>
+					<span class="left">Код товара:</span>&nbsp;<span class="right"><?=$arResult['ID'];?></span>
+				</div>
 					<div class="prices_block">
 					
 						<?ob_start()?>
@@ -860,7 +1072,9 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 							<?endif;?>
 
 							<?//echo '<pre>';print_r($arResult['MIN_PRICE']['VALUE']);echo '</pre>';?>
-							<?if(!$arResult['PRICES']['BASE'] && ($arResult['MIN_PRICE']['VALUE'] <= 0 && !$arResult["OFFERS"] )):?>
+							<?if(!empty($arResult['ATRIUM_NOT_FOR_SALE'])):?>
+									<span class="text-bold atrium-not-for-sale">Нет в продаже</span>
+							<?elseif(!$arResult['PRICES']['BASE'] && ($arResult['MIN_PRICE']['VALUE'] <= 0 && !$arResult["OFFERS"] )):?>
 									<?=GetMessage("NON_PRICE")?>
 							<?else:?>
 								<?if($bComplect):?>
@@ -916,7 +1130,9 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 
 <? /* простой товар ( цена ) */ ?>
 										<div class="simple_price_wrapper<?if(!empty($arResult['PROPERTIES']['STARAYA_CENA']['VALUE'])):?> show_old_price__i<?endif;?>">
-										
+											<?if(!empty($arResult['PROPERTIES']['STARAYA_CENA']['VALUE'])):?>
+												<div class="old_price"><?=CurrencyFormat($arResult['PROPERTIES']['STARAYA_CENA']['VALUE'], 'RUB');?></div>
+											<?endif;?>
 											<?if(isset($arResult['PRICE_MATRIX']) && $arResult['PRICE_MATRIX']): // USE_PRICE_COUNT?>
 											
 												<?if(\CMax::GetFrontParametrValue('SHOW_POPUP_PRICE') == 'Y' || $arResult['ITEM_PRICE_MODE'] == 'Q' || (\CMax::GetFrontParametrValue('SHOW_POPUP_PRICE') != 'Y' && $arResult['ITEM_PRICE_MODE'] != 'Q' && count($arResult['PRICE_MATRIX']['COLS']) <= 1)):?>
@@ -930,9 +1146,6 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 												<?endif;?>
 											<?elseif(isset($arResult["PRICES"])):?>
 												<?\Aspro\Functions\CAsproMaxItem::showItemPrices($arParams, $arResult["PRICES"], $strMeasure, $min_price_id, ($arParams["SHOW_DISCOUNT_PERCENT_NUMBER"] == "Y" ? "N" : "Y"));?>
-											<?endif;?>
-											<?if(!empty($arResult['PROPERTIES']['STARAYA_CENA']['VALUE'])):?>
-												<div class="old_price"><?=CurrencyFormat($arResult['PROPERTIES']['STARAYA_CENA']['VALUE'], 'RUB');?></div>
 											<?endif;?>
 											<?if( explode('/', $APPLICATION->GetCurPage())[2] == 'oboi'){?>
 												<span class="oboi__info">Уважаемые покупатели! Продажа товаров "Обои" производится только упаковками!</span>
@@ -955,9 +1168,9 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 									<?\Aspro\Functions\CAsproMax::showBonusBlockDetail($arCurrentSKU ?: $arResult);?>
 								<?endif;?>
 							<?endif;?>
-<div class="product_id_wrapper">
-		<span class="left">Код товара:</span>&nbsp;<span class="right"><?=$arResult['ID'];?></span>
-	</div>
+				<div class="product_id_wrapper">
+					<span class="left">Код товара:</span>&nbsp;<span class="right"><?=$arResult['ID'];?></span>
+				</div>
 						<?$productPrice = ob_get_clean();?>
 
 						<?//for product wo POPUP_PRICE in fixed header?>
@@ -1074,9 +1287,8 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 						<?$this->SetViewTarget('PRODUCT_SIDE_INFO', 500);?>
 							<div class="js-prices-in-side product-action">
 								<div class="buy_block">
-									<?if($arResult["OFFERS"] && $showCustomOffer):?>
-										<div class="sku_props inner_content js_offers__<?=$arResult['ID'];?>_detail">
-											<?if (!empty($arResult['OFFERS_PROP'])){?>
+									<?if($arResult["OFFERS"] && $showCustomOffer && !empty($arResult['OFFERS_PROP'])):?>
+										<div class="sku_props inner_content js_offers__<?=$arResult['ID'];?>_detail<?=!empty($arResult['ATRIUM_OFFER_SWATCHES']) ? ' sku_props--hidden-by-swatches' : ''?>">
 												<div class="bx_catalog_item_scu wrapper_sku sku_in_detail" id="<? echo $arItemIDs["ALL_ITEM_IDS"]['PROP_DIV']; ?>"
 												data-site_id="<?=SITE_ID;?>" data-id="<?=$arResult["ID"];?>" data-offer_id="<?=$arResult["OFFERS"][$arResult["OFFERS_SELECTED"]]["ID"];?>" data-propertyid="<?=$arResult["OFFERS"][$arResult["OFFERS_SELECTED"]]["PROPERTIES"]["CML2_LINK"]["ID"];?>" data-offer_iblockid="<?=$arResult["OFFERS"][$arResult["OFFERS_SELECTED"]]["IBLOCK_ID"];?>" data-iblockid="<?=$arResult["IBLOCK_ID"];?>">
 
@@ -1086,7 +1298,6 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 														echo '<div class="item_wrapper">', str_replace('#ITEM#_prop_', $arItemIDs["ALL_ITEM_IDS"]['PROP'], $strTemplate), '</div>';
 													}?>
 												</div>
-											<?}?>
 											<?//$arItemJSParams=CMax::GetSKUJSParams($arResult, $arParams, $arResult, "Y");?>
 											<?/*
 											<script type="text/javascript">
@@ -1502,143 +1713,118 @@ $arSection = $nav->GetNext();
 	<?$this->EndViewTarget();?>
 <?endif;?>
 
-
 <?// content complect tab ?>
+<? if(!empty($arResult['PROPERTIES']['KITS']['VALUE'])){ ?>
 <?$this->SetViewTarget('PRODUCT_MY_CUSTOM_TAB_INFO');?>
 <div class="complect-card">
-				<div class="complect-card__title">Выгодные комплекты</div>
-				<ul class="complect-card__tabs">
-					<li class="active"><a href="#tab_complect1">Комплект 1</a></li>
-					<li><a href="#tab_complect2">Комплект 2</a></li>
-				</ul>
-				<div class="complect-card__container">
-					<div class="complect-card__pane" id="tab_complect1">
-						<div class="complect-card__wrapper">
-							<div class="complect-card__item">
-								<a href="#" class="complect-card__image">
-									<img src="<?php echo SITE_TEMPLATE_PATH ?>/images/complect1.jpg" alt="alt">
-								</a>
-								<div class="complect-card__prices">
-									<div class="complect-card__price">2 900 ₽/шт</div>
-								</div>
-								<a href="#" class="complect-card__name">Смеситель для кухни Domaci D8652S ст…</a>
-							</div>
-							<div class="complect-card__plus"></div>
-							<div class="complect-card__item">
-								<div class="complect-card__checkbox checked"></div>
-								<a href="#" class="complect-card__image">
-									<img src="<?php echo SITE_TEMPLATE_PATH ?>/images/complect2.jpg" alt="alt">
-									<span class="complect-card__badge">-370 ₽</span>
-								</a>
-								<div class="complect-card__prices">
-									<div class="complect-card__price">6 120 ₽/шт</div>
-									<div class="complect-card__price-old">6 490 ₽/шт</div>
-								</div>
-								<a href="#" class="complect-card__name">Мойка кухонная Равенна DMC-RV44061S</a>
-								<div class="complect-card__bottom">
-									<div class="complect-card__brand"><a href="#">Domaci</a> (Россия)</div>
-									<a href="#" class="complect-card__link">Выбрать другой</a>
-								</div>
-							</div>
-							<div class="complect-card__plus"></div>
-							<div class="complect-card__item">
-								<div class="complect-card__checkbox checked"></div>
-								<a href="#" class="complect-card__image">
-									<img src="<?php echo SITE_TEMPLATE_PATH ?>/images/complect3.jpg" alt="alt">
-									<span class="complect-card__badge">-370 ₽</span>
-								</a>
-								<div class="complect-card__prices">
-									<div class="complect-card__price">1 300 ₽/шт</div>
-									<div class="complect-card__price-old">1 500 ₽/шт</div>
-								</div>
-								<a href="#" class="complect-card__name">Сифон для мойки</a>
-								<div class="complect-card__bottom">
-									<div class="complect-card__brand"><a href="#">Диво</a></div>
-									<a href="#" class="complect-card__link">Выбрать другой</a>
-								</div>
-							</div>
-							<div class="complect-card__equals"></div>
-							<div class="complect-card__total">
-								<div class="complect-card__top">
-									<div class="complect-card__subtitle">По отдельности:</div>
-									<div class="complect-card__price-separately">10 890 ₽</div>
-								</div>
-								<div class="complect-card__subtitle">Комплектом:</div>
-								<div class="complect-card__line">
-									<div class="complect-card__price-complect">10 320 ₽</div>
-									<div class="complect-card__benefit">Выгода 570  ₽</div>
-								</div>
-								<div class="complect-card__button">
-									<a href="#" class="btn-main">В корзину комплектом</a>
-								</div>
-							</div>
-						</div>
+	<div class="complect-card__title">Выгодные комплекты</div>
+	<ul class="complect-card__tabs">
+	<? foreach($arResult['PROPERTIES']['KITS']['VALUE'] as $key => $KIT){ ?>
+		<? $arKit = CIBlockElement::GetByID($KIT)->GetNext(); ?>
+		<li <?=($key == 0 ? 'class="active"' : '')?>><a href="#tab_complect<?=$arKit['ID']?>"><?=$arKit['NAME']?></a></li>
+	<? } ?>
+	</ul>
+	<div class="complect-card__container">
+	<? foreach($arResult['PROPERTIES']['KITS']['VALUE'] as $key => $KIT){ ?>
+		<? $arKit = CIBlockElement::GetByID($KIT)->GetNext(); ?>
+		<div class="complect-card__pane" id="tab_complect<?=$arKit['ID']?>">
+			<div class="complect-card__wrapper">
+			<?
+			
+			$optimalPriceKit = CCatalogProduct::GetOptimalPrice($KIT, 1, 0);
+			if($optimalPriceKit){
+				$priceKit = $optimalPriceKit['DISCOUNT_PRICE'];
+			}
+			
+			$sets = \CCatalogProductSet::getAllSetsByProduct($arKit['ID'], \CCatalogProductSet::TYPE_SET);
+			if($sets !== false && !empty($sets)){
+				foreach($sets as $setId => $setData){
+					
+					$priceKitOld = 0;
+					foreach($setData['ITEMS'] as $item){
+						$arKitItem = CIBlockElement::GetByID($item['ITEM_ID'])->GetNext();
+						$optimalPrice = CCatalogProduct::GetOptimalPrice($arKitItem['ID'], $item['QUANTITY'], 0);
+						if($optimalPrice){
+							$priceKitOld += $optimalPrice['DISCOUNT_PRICE'];
+						}
+					}
+					
+					$DISCOUNT = $priceKitOld - $priceKit;
+					
+					$i = 0;
+					foreach($setData['ITEMS'] as $item){
+						$arKitItem = CIBlockElement::GetByID($item['ITEM_ID'])->GetNext();
+						
+						$measure = \Bitrix\Catalog\MeasureTable::getById($item['MEASURE'])->fetch();
+						$symbol = \CCatalogMeasureClassifier::getMeasureTitle($measure["CODE"], 'SYMBOL_RUS');
+						
+						$optimalPrice = CCatalogProduct::GetOptimalPrice($arKitItem['ID'], $item['QUANTITY'], 0);
+						if($optimalPrice){
+							$price = $optimalPrice['DISCOUNT_PRICE'];
+						}
+						if(!empty($arKitItem['PREVIEW_PICTURE'])) $PREVIEW_PICTURE = CFile::GetPath($arKitItem['PREVIEW_PICTURE']);
+						else $PREVIEW_PICTURE = '/local/templates/aspro_max/images/svg/noimage_product.svg';
+						
+						$res = CIBlockElement::GetProperty(61, $arKitItem['ID'], array("sort" => "asc"), Array("CODE" => "BRAND"));
+						if($ob = $res->GetNext()){
+							$res = CIBlockElement::GetByID($ob['VALUE']);
+							if($arRes = $res->GetNext()){
+								$BRAND = '<a href="'. $arRes['DETAIL_PAGE_URL'] .'">'. $arRes['NAME'] .'</a>';
+							}
+						}
+			?>
+				<div class="complect-card__item">
+					<a href="<?=$arKitItem['DETAIL_PAGE_URL']?>" class="complect-card__image">
+						<img src="<?=$PREVIEW_PICTURE?>" alt="alt">
+						<span class="complect-card__badge">-<?=round($price * $item['DISCOUNT_PERCENT'] / 100)?> ₽</span>
+					</a>
+					<div class="complect-card__prices">
+						<div class="complect-card__price"><?=$price - round($price * $item['DISCOUNT_PERCENT'] / 100)?> ₽/<?=$symbol?></div>
+						<div class="complect-card__price-old"><?=$price?> ₽/<?=$symbol?></div>
 					</div>
-					<div class="complect-card__pane" id="tab_complect2">
-						<div class="complect-card__wrapper">
-							<div class="complect-card__item">
-								<a href="#" class="complect-card__image">
-									<img src="<?php echo SITE_TEMPLATE_PATH ?>/images/complect1.jpg" alt="alt">
-								</a>
-								<div class="complect-card__prices">
-									<div class="complect-card__price">2 900 ₽/шт</div>
-								</div>
-								<a href="#" class="complect-card__name">Смеситель для кухни Domaci D8652S ст…</a>
-							</div>
-							<div class="complect-card__plus"></div>
-							<div class="complect-card__item">
-								<div class="complect-card__checkbox checked"></div>
-								<a href="#" class="complect-card__image">
-									<img src="<?php echo SITE_TEMPLATE_PATH ?>/images/complect2.jpg" alt="alt">
-									<span class="complect-card__badge">-370 ₽</span>
-								</a>
-								<div class="complect-card__prices">
-									<div class="complect-card__price">6 120 ₽/шт</div>
-									<div class="complect-card__price-old">6 490 ₽/шт</div>
-								</div>
-								<a href="#" class="complect-card__name">Мойка кухонная Равенна DMC-RV44061S</a>
-								<div class="complect-card__bottom">
-									<div class="complect-card__brand"><a href="#">Domaci</a> (Россия)</div>
-									<a href="#" class="complect-card__link">Выбрать другой</a>
-								</div>
-							</div>
-							<div class="complect-card__plus"></div>
-							<div class="complect-card__item">
-								<div class="complect-card__checkbox checked"></div>
-								<a href="#" class="complect-card__image">
-									<img src="<?php echo SITE_TEMPLATE_PATH ?>/images/complect3.jpg" alt="alt">
-									<span class="complect-card__badge">-370 ₽</span>
-								</a>
-								<div class="complect-card__prices">
-									<div class="complect-card__price">1 300 ₽/шт</div>
-									<div class="complect-card__price-old">1 500 ₽/шт</div>
-								</div>
-								<a href="#" class="complect-card__name">Сифон для мойки</a>
-								<div class="complect-card__bottom">
-									<div class="complect-card__brand"><a href="#">Диво</a></div>
-									<a href="#" class="complect-card__link">Выбрать другой</a>
-								</div>
-							</div>
-							<div class="complect-card__equals"></div>
-							<div class="complect-card__total">
-								<div class="complect-card__top">
-									<div class="complect-card__subtitle">По отдельности:</div>
-									<div class="complect-card__price-separately">10 890 ₽</div>
-								</div>
-								<div class="complect-card__subtitle">Комплектом:</div>
-								<div class="complect-card__line">
-									<div class="complect-card__price-complect">10 320 ₽</div>
-									<div class="complect-card__benefit">Выгода 570  ₽</div>
-								</div>
-								<div class="complect-card__button">
-									<a href="#" class="btn-main">В корзину комплектом</a>
-								</div>
-							</div>
+					<a href="<?=$arKitItem['DETAIL_PAGE_URL']?>" class="complect-card__name"><?=$arKitItem['NAME']?></a>
+					<div class="complect-card__bottom">
+					
+						<div class="complect-card__brand"><?=$BRAND?></div>
+						<?/*?><a href="#" class="complect-card__link">Выбрать другой</a><?*/?>
+					</div>
+				</div>
+				<? if(count($setData['ITEMS']) > ($i + 1)){ ?>
+				<div class="complect-card__plus"></div>
+				<? } ?>
+			<?
+						$i++;
+					}
+				}
+			}
+			?>
+				<div class="complect-card__equals"></div>
+				<div class="complect-card__total">
+					<div class="complect-card__top">
+						<div class="complect-card__subtitle">По отдельности:</div>
+						<div class="complect-card__price-separately"><?=$priceKitOld?> ₽</div>
+					</div>
+					<div class="complect-card__subtitle">Комплектом:</div>
+					<div class="complect-card__line">
+						<div class="complect-card__price-complect"><?=$priceKit?> ₽</div>
+						<div class="complect-card__benefit">Выгода <?=$DISCOUNT?>  ₽</div>
+					</div>
+					<div class="complect-card__button">
+						<div class="button_block">
+							<span data-value="<?=$priceKit?>" data-currency="RUB" data-item="<?=$KIT?>" data-float_ratio="1" data-ratio="1" data-bakset_div="bx_basket_div_<?=$KIT?>" data-props="" data-part_props="Y" data-add_props="Y" data-empty_props="Y" data-offers="" data-iblockid="61" data-quantity="1" class="btn-exlg to-cart btn btn-default transition_bg animate-load has-ripple">
+								<span>В корзину комплектом</span>
+							</span>
+							<a rel="nofollow" href="/basket/" class="btn-exlg in-cart btn btn-default transition_bg" data-item="<?=$KIT?>" style="display:none;"><i class="svg inline  svg-inline-fw ncolor colored" aria-hidden="true" title="В корзине"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18"><path data-name="Rounded Rectangle 906 copy 3" class="cls-1" d="M1005.97,4556.22l-1.01,4.02a0.031,0.031,0,0,0-.01.02,0.87,0.87,0,0,1-.14.29,0.423,0.423,0,0,1-.05.07,0.7,0.7,0,0,1-.2.18,0.359,0.359,0,0,1-.1.07,0.656,0.656,0,0,1-.21.08,1.127,1.127,0,0,1-.18.03,0.185,0.185,0,0,1-.07.02H993c-0.03,0-.056-0.02-0.086-0.02a1.137,1.137,0,0,1-.184-0.04,0.779,0.779,0,0,1-.207-0.08c-0.031-.02-0.059-0.04-0.088-0.06a0.879,0.879,0,0,1-.223-0.22s-0.007-.01-0.011-0.01a1,1,0,0,1-.172-0.43l-1.541-6.14H988a1,1,0,1,1,0-2h3.188a0.3,0.3,0,0,1,.092.02,0.964,0.964,0,0,1,.923.76l1.561,6.22h9.447l0.82-3.25a1,1,0,0,1,1.21-.73A0.982,0.982,0,0,1,1005.97,4556.22Zm-7.267.47c0,0.01,0,.01,0,0.01a1,1,0,0,1-1.414,0l-2.016-2.03a0.982,0.982,0,0,1,0-1.4,1,1,0,0,1,1.414,0l1.305,1.31,4.3-4.3a1,1,0,0,1,1.41,0,1.008,1.008,0,0,1,0,1.42ZM995,4562a3,3,0,1,1-3,3A3,3,0,0,1,995,4562Zm0,4a1,1,0,1,0-1-1A1,1,0,0,0,995,4566Zm7-4a3,3,0,1,1-3,3A3,3,0,0,1,1002,4562Zm0,4a1,1,0,1,0-1-1A1,1,0,0,0,1002,4566Z" transform="translate(-987 -4550)"></path></svg></i><span>В корзине</span></a>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+	<? } ?>
+	</div>
+</div>
 <?$this->EndViewTarget();?>
+<? } ?>
 
 <?//custom tab?>
 <?if($arParams['SHOW_ADDITIONAL_TAB'] == 'Y'):?>
@@ -1648,7 +1834,7 @@ $arSection = $nav->GetNext();
 <?endif;?>
 <?//props content?>
 
-<!--pre style="display:none"><?var_dump($arResult["PRODUCT_PROPERTIES_FILL"]["BRAND"]["VALUE"]);?></pre-->
+<!--pre style="display:none"><?//var_dump($arResult["PRODUCT_PROPERTIES_FILL"]["BRAND"]["VALUE"]);?></pre-->
 <?
 /*111111
 	$BRAND_PROPERTIES=["ID"=>879,
@@ -1661,7 +1847,7 @@ $arSection = $nav->GetNext();
 ?>
 
 
-<?if(($arResult['DISPLAY_PROPERTIES'] || $arResult['OFFER_PROP']) && ($iCountProps < $arParams['VISIBLE_PROP_COUNT'])):?>
+<?if($arResult['DISPLAY_PROPERTIES'] || $arResult['OFFER_PROP']):?>
 
 	<?$templateData['CHARACTERISTICS'] = true;?>
 	<?$this->SetViewTarget('PRODUCT_PROPS_INFO');?>
@@ -1759,17 +1945,15 @@ $arSection = $nav->GetNext();
 				<div class="char_block bordered rounded3 js-scrolled dfgsgsgdsd">
 					<table class="props_list nbg">
 						<tbody class="js-offers-prop">
-							
 							<?
-							$BRAND_PROPERTIES=["ID"=>879,
-								"NAME"=>$arResult["PROPERTIES"]["BRAND"]["NAME"],
-								"VALUE"=>$arResult["PRODUCT_PROPERTIES_FILL"]["BRAND"]["VALUE"],
-								"~VALUE"=>$arResult["PRODUCT_PROPERTIES_FILL"]["BRAND"]["VALUE"],
-								"DISPLAY_VALUE"=>$arResult["PRODUCT_PROPERTIES_FILL"]["BRAND"]["VALUE"],
-							];
-							array_unshift($arResult["DISPLAY_PROPERTIES"],$BRAND_PROPERTIES);
+							// $BRAND_PROPERTIES=["ID"=>879,
+								// "NAME"=>$arResult["PROPERTIES"]["BRAND"]["NAME"],
+								// "VALUE"=>$arResult["PRODUCT_PROPERTIES_FILL"]["BRAND"]["VALUE"],
+								// "~VALUE"=>$arResult["PRODUCT_PROPERTIES_FILL"]["BRAND"]["VALUE"],
+								// "DISPLAY_VALUE"=>$arResult["PRODUCT_PROPERTIES_FILL"]["BRAND"]["VALUE"],
+							// ];
+							// array_unshift($arResult["DISPLAY_PROPERTIES"],$BRAND_PROPERTIES);
 							?>
-							<pre style="display:none"><?var_dump($arResult["DISPLAY_PROPERTIES"]);?></pre>
 							<?foreach($arResult["DISPLAY_PROPERTIES"] as $arProp):?>
 								<tr class="js-prop-replace" itemprop="additionalProperty" itemscope itemtype="http://schema.org/PropertyValue">
 									<td class="char_name">
@@ -2102,6 +2286,41 @@ if ($arResult['CATALOG'] && $arParams['USE_GIFTS_MAIN_PR_SECTION_LIST'] == 'Y' &
 
 <?$this->EndViewTarget();?>
 
+
+<? if(!empty($arResult["PROPERTIES"]["EXPANDABLES"]["VALUE"])){ ?>
+<?$this->SetViewTarget('PRODUCT_BOTTOM_SLIDER');?>
+	<section class="section-catalog">
+		<div class="maxwidth-theme">
+			<div class="head-section">
+				<div class="head-section__left">
+					<h2 class="title-section">С этим товаром покупают</h2>
+				</div>
+			</div>
+			<?
+				include $_SERVER["DOCUMENT_ROOT"]."/catalog/_catalog_param.php";
+				global $arrFilter;
+				$_catalog_param = array_merge($_catalog_param, array("FILTER_NAME" => "arrFilter", "SET_TITLE" => "N", "PAGE_ELEMENT_COUNT" => 20));
+				$arrFilter['ID'] = $arResult["PROPERTIES"]["EXPANDABLES"]["VALUE"];
+				$APPLICATION->IncludeComponent(
+					"bitrix:catalog.section",
+					"swiper-slide-product",
+					$_catalog_param,
+					false,
+					array('HIDE_ICONS' => 'Y')
+				);
+				$arrFilter = [];
+			?>
+		</div>
+	</section>
+<?$this->EndViewTarget();?>
+<? } ?>
+
+
+
+
+
+
+
 <?\Aspro\Functions\CAsproMax::showBonusComponentDetail($arResult);
 
 // $APPLICATION->AddChainItem("Форум &quot;Отзывы&quot;", "/test/");
@@ -2111,7 +2330,7 @@ if ($arResult['CATALOG'] && $arParams['USE_GIFTS_MAIN_PR_SECTION_LIST'] == 'Y' &
 <script>
 $(document).ready(function () {
 		$('.slider-for').slick({
-		arrows: false,
+		arrows: true,
 		dots: false,
 		infinite: true,
 		slidesToShow: 1,
