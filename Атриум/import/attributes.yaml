@@ -1,0 +1,104 @@
+# Синхронизировано с site/local/php_interface/atrium_import/attributes.yaml
+# Основной режим — совпадение по NAME свойства в Bitrix.
+# overrides — для колонок с нестандартными названиями.
+
+auto_create_unknown: true
+
+# Текстовые значения характеристик — с заглавной буквы (карточка, фильтры)
+capitalize_text_values: true
+
+skip_name_patterns:
+  - '/^фото\s*\d*/ui'
+  - '/^unnamed/i'
+
+# Колонки, которые не пишем в карточку (и очищаем при импорте)
+supplier_skips:
+  dk:
+    - "тип"
+    - "количество монтажных отверстий"
+    - "область применения"
+    - "встраиваемая система"
+    - "количество единиц в мастер коробке"
+    - "количество единиц в коробке"
+
+# Свойства, которые всегда очищаем при импорте поставщика (даже если колонки нет в файле)
+supplier_clear_codes:
+  dk:
+    - PROP_2033
+    - PROP_1253
+    - PROP_1243
+    - PROP_1241
+    - PROP_1270
+
+# AllerBath: глобальные overrides уводят колонки в чужой фильтр.
+supplier_overrides:
+  allerbath:
+    "исполнение полотна":
+      code: PROP_1348
+    "толщина полотна, мм":
+      code: PROP_1349
+    "страна производства":
+      code: PROP_2084
+    "гарантия":
+      code: PROP_2120
+
+overrides:
+  "исполнение полотна (переименовать)":
+    code: PROP_1393
+  "исполнение полотна":
+    code: PROP_1393
+  "толщина полотна, мм":
+    code: TOLSHINA_PERDENEGO_POLOTNA
+  "толщина переднего полотна, мм":
+    code: TOLSHINA_PERDENEGO_POLOTNA
+  "ширина,\nмм":
+    code: PROP_1403
+  "ширина, мм":
+    code: PROP_1403
+  "размеры с диапазоном регулировок, мм":
+    code: RAZMERY_S_DIAPAZONOM
+  "особенности (есть множественный выбор)":
+    code: OSOBENNOSTI
+  "особенности":
+    code: OSOBENNOSTI
+  "название модели":
+    skip: true
+  "цвет":
+    code: COLOR_REF2
+    directory: true
+  "цвет поддона":
+    code: COLOR_REF2
+    directory: true
+  "размер поддона, мм":
+    code: ATR_RAZMER_PODDONA_MM
+  "условный размер, мм":
+    code: USLOVNIY_RAZMER
+  "размер экрана, мм":
+    code: ATR_RAZMER_EKRANA_MM
+  "размер верхней лейки, мм":
+    code: ATR_RAZMER_LEYKI_MM
+  "форма":
+    code: PROP_206
+  "цвет профиля":
+    code: PROP_1278
+  "конструкция дверей":
+    code: PROP_1350
+  "страна производства":
+    code: STRANA_PROIZVODSTVA
+  "страна производитель":
+    code: STRANA_PROIZVODSTVA
+  "гарантия":
+    code: GARANTIA
+  "коллекция":
+    code: PROP_1240
+  "серия":
+    code: PROP_1240
+  "покрытие стекла анти капля":
+    code: PROP_2075
+  "покрытие стекла анти-капля":
+    code: PROP_2075
+
+enum_normalize:
+  PROP_1350:
+    "неподвижные": "Неподвижная"
+    "неподвижная": "Неподвижная"

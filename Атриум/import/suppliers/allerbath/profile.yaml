@@ -1,0 +1,38 @@
+# Душевые ограждения AllerBath. Один лист, простые карточки по артикулу.
+key: allerbath
+enabled: true
+channel: upload
+reader: flat_excel
+upsert_key: article
+mode: simple
+
+synonyms:
+  article: ["Артикул"]
+  brand: ["Бренд"]
+  name: ["Наименование"]
+  price_retail: ["Цена, руб."]
+  in_stock: ["В наличии"]
+  quantity: ["Количество"]
+  collection: ["Коллекция"]
+  description: ["Описание"]
+  path: ["Путь"]
+  photo: ["Фото"]
+
+ignore: ["Комплектация", "Вид поддона", "Материал поддона"]
+
+skip_sheets:
+  - "Мебель, унитазы"
+  - "Кнопки, инсталляции"
+  - "Керамогранит"
+  - "Ванны"
+  - "meta"
+  - "оглавление"
+
+normalize:
+  in_stock: { "Да": true, "Нет": false, "": true }
+  path_separator: "///"
+
+defaults:
+  quantity: 500
+
+photo_limit: 10
