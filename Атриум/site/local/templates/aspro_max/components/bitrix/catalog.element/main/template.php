@@ -1435,38 +1435,6 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 						<?=$productForms;?>
 						<div class="js-prices-in-item"></div>
 						<div class="js-services-in-item"></div>
-
-<?php
-$sectionID = $arResult['IBLOCK_SECTION_ID']; // ID текущего раздела
-$nav = CIBlockSection::GetNavChain(false, $sectionID);
-$arSection = $nav->GetNext();
-// echo $arSection['ID'];
-				if ($arSection['ID'] != false):
-					?>
-						<br>
-						<div class="tinkoff-btns">
-							<div class="tinkoff-button first">
-								<tinkoff-create-button
-								size="M"
-								subtext="от 3400 ₽ в месяц"
-								shopId="8cedcd0d-804f-43b9-8069-0830f22ed44a"
-								showcaseId="ea7ba2aa-a441-437a-ba68-e1254f24bb69"
-								ui-data="productType=installment&useReturnLinks=true&view=newTab"
-								payment-data="items.0.name=<?=$arResult['NAME']?>&items.0.price=<?=ceil($arResult['CATALOG_PRICE_1'])?>&items.0.quantity=1&promoCode=installment_0_0_3_4,5&sum=<?=ceil($arResult['CATALOG_PRICE_1'])?>&values.contact.fio.firstName=Иван&values.contact.fio.lastName=Петров&values.contact.fio.middleName=Иванович&values.contact.mobilePhone=+7 (988) 777-66-55&orderNumber=ORDER_<?=strtotime("now")?>"
-								></tinkoff-create-button>	
-							</div>
-							<div class="tinkoff-button">
-								<tinkoff-create-button
-									size="M"
-									subtext="от 3400 ₽ в месяц"
-									shopId="8cedcd0d-804f-43b9-8069-0830f22ed44a"
-									showcaseId="ea7ba2aa-a441-437a-ba68-e1254f24bb69"
-									ui-data="productType=credit&useReturnLinks=true&view=newTab"
-									payment-data="items.0.name=<?=$arResult['NAME']?>&items.0.price=<?=ceil($arResult['CATALOG_PRICE_1'])?>&items.0.quantity=1&promoCode=default&sum=<?=ceil($arResult['CATALOG_PRICE_1'])?>&values.contact.fio.firstName=Иван&values.contact.fio.lastName=Петров&values.contact.fio.middleName=Иванович&values.contact.mobilePhone=+7 (988) 777-66-55&orderNumber=ORDER_<?=strtotime("now")?>"
-								></tinkoff-create-button>	
-							</div>					
-						</div>
-					<?endif;?>
 						<?//=$productCalcDelivery;?>
 						<?=$sendGiftForm;?>
 						<?=$productHelpText;?>
@@ -1512,44 +1480,6 @@ $arSection = $nav->GetNext();
 
 			<?//dop text?>
 			<?$this->SetViewTarget('PRODUCT_SIDE_INFO', 800);?>
-				<!-- tcs -->
-				<?
-
-$sectionID = $arResult['IBLOCK_SECTION_ID']; // ID текущего раздела
-$nav = CIBlockSection::GetNavChain(false, $sectionID);
-$arSection = $nav->GetNext();
-// echo $arSection['ID']; // ID первого раздела в цепочке
-
-// 				echo '<pre>';
-// 				print_r($arResult['IBLOCK_SECTION_ID']);
-// 				echo '</pre>';
-				// CATALOG_PRICE_1
-				if ($arSection['ID'] != false):
-				?>
-					<br>
-					<div class="tinkoff-btns">
-						<div class="tinkoff-button first">
-							<tinkoff-create-button
-							size="M"
-							subtext="от 3400 ₽ в месяц"
-							shopId="8cedcd0d-804f-43b9-8069-0830f22ed44a"
-							showcaseId="ea7ba2aa-a441-437a-ba68-e1254f24bb69"
-							ui-data="productType=installment&useReturnLinks=true&view=newTab"
-							payment-data="items.0.name=<?=$arResult['NAME']?>&items.0.price=<?=ceil($arResult['CATALOG_PRICE_1'])?>&items.0.quantity=1&promoCode=installment_0_0_3_4,5&sum=<?=ceil($arResult['CATALOG_PRICE_1'])?>&values.contact.fio.firstName=Иван&values.contact.fio.lastName=Петров&values.contact.fio.middleName=Иванович&values.contact.mobilePhone=+7 (988) 777-66-55&orderNumber=ORDER_<?=strtotime("now")?>"
-							></tinkoff-create-button>	
-						</div>
-						<div class="tinkoff-button">
-							<tinkoff-create-button
-								size="M"
-								subtext="от 3400 ₽ в месяц"
-								shopId="8cedcd0d-804f-43b9-8069-0830f22ed44a"
-								showcaseId="ea7ba2aa-a441-437a-ba68-e1254f24bb69"
-								ui-data="productType=credit&useReturnLinks=true&view=newTab"
-								payment-data="items.0.name=<?=$arResult['NAME']?>&items.0.price=<?=ceil($arResult['CATALOG_PRICE_1'])?>&items.0.quantity=1&promoCode=default&sum=<?=ceil($arResult['CATALOG_PRICE_1'])?>&values.contact.fio.firstName=Иван&values.contact.fio.lastName=Петров&values.contact.fio.middleName=Иванович&values.contact.mobilePhone=+7 (988) 777-66-55&orderNumber=ORDER_<?=strtotime("now")?>"
-							></tinkoff-create-button>
-						</div>						
-					</div>
-				<?endif;?>
 				<div class="text-additional">
 					<?$path = SITE_DIR."include/element_detail_text.php"?>
 					<div class="price_txt muted777 font_sxs<?=((CMax::checkContentFile($path) ? ' filed' : ''));?>">

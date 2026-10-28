@@ -2310,14 +2310,6 @@ a.btn-exlg.in-cart.btn.btn-default.transition_bg span {
     .button_size_m {
         width: 270px;
     }
-    .tinkoff-button {
-        border-radius: 8px;
-        background: #ffdd2d;
-        max-width: 300px;
-    }
-    .tinkoff-button.first {
-        margin-bottom: 3px;
-    }
     .tabs.arrow_scroll.arrow_scroll_init.swipeignore .nav.nav-tabs.font_upper_md {
         max-width: 100%;
         display: flex;

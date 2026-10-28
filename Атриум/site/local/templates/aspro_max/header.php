@@ -85,8 +85,6 @@ if ($countReplace > 0)
 		<meta name="robots" content="noindex, nofollow" />
 	<?}
 	?>
-	<script src="https://forma.tinkoff.ru/static/onlineScript.js"></script>
-
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
 	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
 </head>

@@ -5048,7 +5048,6 @@ if (!funcDefined("setPriceItem")) {
         if ((1 == quantity && old_quantity == quantity) || (typeof is_sku !== "undefined" && is_sku && !check)) {
           
           main_block.find(".total_summ").slideUp(50);
-          updateTinkoffButton(vs_sum, Math.ceil(value * vs_sum)); // Задаем нужное значение quantity и sum
 
         } else {
           let unit = quantity / vs_sum;
@@ -5065,9 +5064,6 @@ if (!funcDefined("setPriceItem")) {
           main_block.find(".total_summ span").html(BX.Currency.currencyFormat(value * quantity, currency, true));
           if (main_block.find(".total_summ").is(":hidden") /* || sku_checked == 'Y'*/)
             main_block.find(".total_summ").slideDown(100);
-
-          // Пример вызова функции
-          updateTinkoffButton(vs_sum, full); // Задаем нужное значение quantity и sum
         }
       } else {
 
@@ -5076,34 +5072,6 @@ if (!funcDefined("setPriceItem")) {
     }
   };
 }
-function updateTinkoffButton(quantity, sum) {
-          console.log(quantity);
-          console.log(sum);  
-
-  let price = sum / quantity;
-  // Находим все элементы <tinkoff-create-button>
-  const tinkoffButtons = document.querySelectorAll('tinkoff-create-button');
-
-  // Проходим по каждому элементу и обновляем его
-  tinkoffButtons.forEach(tinkoffButton => {
-      // Получаем текущий атрибут payment-data
-      let paymentData = tinkoffButton.getAttribute('payment-data');
-
-      paymentData = paymentData.replace(/items\.0\.price=\d+/, `items.0.price=${price}`);
-
-      // Заменяем значение quantity на заданное
-      paymentData = paymentData.replace(/items\.0\.quantity=\d+/, `items.0.quantity=${quantity}`);
-
-      // Заменяем значение sum на заданное
-      paymentData = paymentData.replace(/sum=\d+(\.\d+)?/, `sum=${sum}`);
-
-      // Устанавливаем обновленный атрибут обратно в элемент
-      tinkoffButton.setAttribute('payment-data', paymentData);
-  });
-}
-
-
-
 if (!funcDefined("getCurrentPrice")) {
   var getCurrentPrice = function getCurrentPrice(price, currency, print_price) {
     var val = "";

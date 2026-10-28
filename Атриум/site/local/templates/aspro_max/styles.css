@@ -5332,9 +5332,6 @@ body .product-side.left_block .cost {
   color: #1e2c2e;
   border: none;
 }
-.right-info-card .tinkoff-btns {
-  display: none;
-}
 .right-info-card .text-additional {
   display: none;
 }
@@ -5684,7 +5681,6 @@ body .main-catalog-wrapper.details.maxwidth-theme {
   .quantity_block_wrapper .item-stock {
     display: block !important;
   }
-  .right_info .tinkoff-btns,
   .quantity_block_wrapper .cheaper_form {
     display: none !important;
   }
