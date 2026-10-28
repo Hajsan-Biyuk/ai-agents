@@ -3171,14 +3171,82 @@ a[data-role="set-buy-btn"] {
 	overflow: visible;
 }
 
-/* Количество плитки: цифры после запятой целиком */
+/* Количество плитки: цифры после запятой целиком в счётчике карточки */
 .catalog_detail .counter_block input[type="text"],
-body .counter_block input[type="text"],
-.basket-item-amount-filed {
+body .counter_block input[type="text"] {
 	width: 92px !important;
 	min-width: 92px;
 	padding: 0 4px;
 	box-sizing: border-box;
+}
+
+/* Карточка товара: плашка скидки под ценой, не поверх ₽ и /шт */
+.catalog_detail .cost.prices.detail .price_matrix_wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 6px;
+	width: 100%;
+	padding-right: 0 !important;
+	box-sizing: border-box;
+}
+.catalog_detail .cost.prices.detail .prices-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2px;
+	width: 100%;
+	max-width: 100%;
+	padding-left: 0;
+}
+.catalog_detail .cost.prices.detail .price.font_mxs {
+	display: block;
+	margin: 0;
+	max-width: 100%;
+	padding-right: 146px;
+	box-sizing: border-box;
+}
+.catalog_detail .cost.prices.detail .price.discount {
+	display: block;
+	margin: 0;
+	max-width: 100%;
+}
+.catalog_detail .cost.prices.detail .sale_block {
+	position: static;
+	margin: 0;
+	max-width: 100%;
+}
+.catalog_detail .cost.prices.detail .sale_block .sale-number {
+	white-space: nowrap;
+}
+@media (max-width: 767px) {
+	.catalog_detail .cost.prices.detail .price.font_mxs {
+		padding-right: 120px;
+	}
+	.catalog_detail .cost.prices.detail .sale_block .sale-number {
+		white-space: normal;
+	}
+}
+
+/* Корзина: поле количества не перекрывает кнопку «−» */
+#basket-root .basket-item-amount {
+	max-width: 168px;
+	min-width: 148px;
+	justify-content: stretch;
+	box-sizing: border-box;
+}
+#basket-root .basket-item-amount-filed-block {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+#basket-root .basket-item-amount-filed {
+	width: 100% !important;
+	min-width: 0 !important;
+	box-sizing: border-box;
+}
+#basket-root .basket-item-btn-minus,
+#basket-root .basket-item-btn-plus {
+	z-index: 2;
 }
 .atrium-tile-qty {
 	display: inline-block;

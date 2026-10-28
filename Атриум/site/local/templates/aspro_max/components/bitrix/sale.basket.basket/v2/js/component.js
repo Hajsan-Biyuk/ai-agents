@@ -448,6 +448,10 @@
     fixStikerBlock: function () {
       var totalNodes = this.getEntities(this.getCacheNode(this.ids.basketRoot), "basket-total-block")[0];
 
+      if (!totalNodes || !arAsproOptions || !arAsproOptions["THEME"]) {
+        return;
+      }
+
       if (arAsproOptions["THEME"]["TOP_MENU_FIXED"] === "Y") {
         totalNodes.classList.add("sticky_top");
         let $header = document.querySelector("#header");
@@ -461,9 +465,13 @@
     },
     checkMinPrice: function () {
       const $checkoutOrder = document.querySelector(".checkout-order");
-      if (arAsproOptions["PRICES"]["MIN_PRICE"] && arAsproOptions["PRICES"]["MIN_PRICE"] > this.result.allSum) {
-        document.querySelector(".basket-btn-checkout").remove();
-        if (typeof jsPriceFormat === "function" && jsPriceFormat) {
+      const minPrice = parseFloat(arAsproOptions && arAsproOptions["PRICES"] ? arAsproOptions["PRICES"]["MIN_PRICE"] : 0) || 0;
+      if (minPrice > 0 && minPrice > this.result.allSum) {
+        const checkoutBtn = document.querySelector(".basket-btn-checkout");
+        if (checkoutBtn) {
+          checkoutBtn.remove();
+        }
+        if ($checkoutOrder && typeof jsPriceFormat === "function" && jsPriceFormat) {
           var svgMinPrice =
             '<i class="svg  svg-inline-price colored_theme_svg" aria-hidden="true"><svg id="Group_278_copy" data-name="Group 278 copy" xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38"><path id="Ellipse_305_copy_2" data-name="Ellipse 305 copy 2" class="clswm-1" d="M1851,561a19,19,0,1,1,19-19A19,19,0,0,1,1851,561Zm0-36a17,17,0,1,0,17,17A17,17,0,0,0,1851,525Zm3.97,10.375-0.03.266c-0.01.062-.02,0.127-0.03,0.188l-0.94,7.515h0a2.988,2.988,0,0,1-5.94,0H1848l-0.91-7.525c-0.01-.041-0.01-0.086-0.02-0.128l-0.04-.316h0.01c-0.01-.125-0.04-0.246-0.04-0.375a4,4,0,0,1,8,0c0,0.129-.03.25-0.04,0.375h0.01ZM1851,533a2,2,0,0,0-2,2,1.723,1.723,0,0,0,.06.456L1850,543a1,1,0,0,0,2,0l0.94-7.544A1.723,1.723,0,0,0,1853,535,2,2,0,0,0,1851,533Zm0,14a3,3,0,1,1-3,3A3,3,0,0,1,1851,547Zm0,4a1,1,0,1,0-1-1A1,1,0,0,0,1851,551Z" transform="translate(-1832 -523)"></path>  <path class="clswm-2 op-cls" d="M1853,543l-1,1h-2l-1-1-1-8,1-2,1-1h2l1,1,1,2Zm-1,5,1,1v2l-1,1h-2l-1-1v-2l1-1h2Z" transform="translate(-1832 -523)"></path></svg></i>';
           $checkoutOrder.innerHTML =
@@ -476,7 +484,7 @@
             "</div></div>";
         }
       } else {
-        if (!document.querySelector(".basket-btn-checkout")) {
+        if ($checkoutOrder && !document.querySelector(".basket-btn-checkout")) {
           $checkoutOrder.appendChild(
             BX.create("button", {
               props: {
@@ -489,7 +497,10 @@
         }
       }
       if (typeof addShareBasket === "function" && addShareBasket) {
-        addShareBasket(document.querySelector(".page-top .topic .topic__heading"));
+        var shareBasketParent = document.querySelector(".page-top .topic .topic__heading");
+        if (shareBasketParent) {
+          addShareBasket(shareBasketParent);
+        }
       }
     },
     initAction: function () {
@@ -1644,6 +1655,16 @@
         var measureRatio = isQuantityFloat ? parseFloat(itemData.MEASURE_RATIO) : parseInt(itemData.MEASURE_RATIO);
 
         var quantity = parseFloat((currentQuantity - measureRatio).toFixed(5));
+        if (!(measureRatio > 0) || quantity < measureRatio) {
+          this.clearQuantityInterval();
+          this.actionPool.deleteItem(itemData.ID);
+          this.items[itemData.ID].SHOW_LOADING = true;
+          if (this.params.SHOW_RESTORE === "Y" && this.isItemAvailable(itemData.ID)) {
+            this.items[itemData.ID].SHOW_RESTORE = true;
+          }
+          this.redrawBasketItemNode(itemData.ID);
+          return;
+        }
         quantity = this.getCorrectQuantity(itemData, quantity);
 
         this.setQuantity(itemData, quantity);
