@@ -1,0 +1,49 @@
+/* sabona-delivery-media */
+@media only screen and (max-width: 1199px) {
+	.page-del .page-del__cards {
+		flex-direction: column;
+	}
+
+	.page-del .page-del__steps {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+	}
+
+	.page-del .page-del__step {
+		flex: none;
+		max-width: none;
+		width: auto;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.page-del .page-del__steps {
+		grid-template-columns: 1fr;
+	}
+
+	.page-del .page-del__prices,
+	.page-del .page-del__form-fields,
+	.page-del .page-del__form-bar,
+	.page-del .page-del__pays-row {
+		flex-direction: column;
+	}
+
+	.page-del .page-del__form-bar {
+		align-items: stretch;
+	}
+
+	.page-del .page-del__form-submit,
+	.page-del .page-del__btn {
+		width: 100%;
+		flex: none;
+	}
+
+	.page-del .page-del__field {
+		font-size: 16px;
+	}
+
+	.page-del .page-del__field_area {
+		min-height: 140px;
+	}
+}
