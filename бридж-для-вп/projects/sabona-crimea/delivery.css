@@ -478,6 +478,10 @@
 	outline: none;
 }
 
+.page-del .page-del__field.wpcf7-not-valid {
+	border: 1px solid red !important;
+}
+
 .page-del .page-del__form-bar {
 	display: flex;
 	align-items: center;

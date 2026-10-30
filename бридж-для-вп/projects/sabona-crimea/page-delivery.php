@@ -4,8 +4,8 @@ Template Name: Доставка
 */
 add_action( 'wp_enqueue_scripts', function () {
 	$uri = get_template_directory_uri();
-	wp_enqueue_style( 'sabona-delivery', $uri . '/delivery.css', array(), '1.1' );
-	wp_enqueue_style( 'sabona-delivery-media', $uri . '/delivery-media.css', array( 'sabona-delivery' ), '1.1' );
+	wp_enqueue_style( 'sabona-delivery', $uri . '/delivery.css', array(), '1.2' );
+	wp_enqueue_style( 'sabona-delivery-media', $uri . '/delivery-media.css', array( 'sabona-delivery' ), '1.2' );
 }, 20 );
 
 if ( ! function_exists( 'sabona_del_str' ) ) {
