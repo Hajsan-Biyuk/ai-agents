@@ -414,6 +414,10 @@
 	gap: 16px;
 }
 
+.page-del .page-del__form-item {
+	margin: 0;
+}
+
 .page-del .page-del__form-col_area {
 	gap: 0;
 }
@@ -584,4 +588,103 @@
 .page-del .page-del__btn:focus-visible {
 	outline: 2px solid #156E00;
 	outline-offset: 2px;
+}
+
+.page-del .wpcf7,
+.page-del .wpcf7-form {
+	margin: 0;
+}
+
+.page-del .wpcf7-form {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.page-del .wpcf7 p {
+	margin: 0;
+}
+
+.page-del .wpcf7-form-control-wrap {
+	display: block;
+	width: 100%;
+}
+
+.page-del .page-del__form-col_area,
+.page-del .page-del__form-col_area .page-del__form-item,
+.page-del .page-del__form-col_area p,
+.page-del .page-del__form-col_area .wpcf7-form-control-wrap {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	min-height: 120px;
+}
+
+.page-del .page-del__form-bar > p {
+	flex: 1 1 0;
+	min-width: 0;
+	position: relative;
+}
+
+.page-del .wpcf7-acceptance .wpcf7-list-item {
+	margin: 0;
+}
+
+.page-del .wpcf7-acceptance label {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	margin: 0;
+	cursor: pointer;
+	font-family: Montserrat, sans-serif;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 20px;
+	color: #828282;
+}
+
+.page-del .wpcf7-acceptance input {
+	flex: 0 0 20px;
+	width: 20px;
+	height: 20px;
+	margin: 2px 0 0;
+	border: 2px solid #828282;
+	border-radius: 3px;
+	background: transparent center / 20px 20px no-repeat;
+	cursor: pointer;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.page-del .wpcf7-acceptance input:checked {
+	border-color: transparent;
+	background-image: url("img/del-icon-check.svg");
+}
+
+.page-del .wpcf7-acceptance input:focus-visible {
+	outline: 2px solid #338A17;
+	outline-offset: 2px;
+}
+
+.page-del .wpcf7-not-valid-tip {
+	display: block;
+	margin-top: 6px;
+	color: #156E00;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+.page-del .wpcf7-response-output {
+	margin: 0;
+	padding: 12px 16px;
+	border-radius: 8px;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.page-del .wpcf7-spinner {
+	position: absolute;
+	right: 16px;
+	top: 50%;
+	margin: -12px 0 0;
 }

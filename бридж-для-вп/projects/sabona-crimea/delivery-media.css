@@ -34,7 +34,9 @@
 	}
 
 	.page-del .page-del__form-submit,
-	.page-del .page-del__btn {
+	.page-del .page-del__form-bar > p,
+	.page-del .page-del__btn,
+	.page-del .wpcf7-submit {
 		width: 100%;
 		flex: none;
 	}

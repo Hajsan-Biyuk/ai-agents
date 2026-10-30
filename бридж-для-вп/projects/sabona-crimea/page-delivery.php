@@ -4,8 +4,8 @@ Template Name: Доставка
 */
 add_action( 'wp_enqueue_scripts', function () {
 	$uri = get_template_directory_uri();
-	wp_enqueue_style( 'sabona-delivery', $uri . '/delivery.css', array(), '1.0' );
-	wp_enqueue_style( 'sabona-delivery-media', $uri . '/delivery-media.css', array( 'sabona-delivery' ), '1.0' );
+	wp_enqueue_style( 'sabona-delivery', $uri . '/delivery.css', array(), '1.1' );
+	wp_enqueue_style( 'sabona-delivery-media', $uri . '/delivery-media.css', array( 'sabona-delivery' ), '1.1' );
 }, 20 );
 
 if ( ! function_exists( 'sabona_del_str' ) ) {
@@ -78,13 +78,19 @@ $note_big_text  = sabona_del_field( 'del_note_big_text' );
 $steps_title = sabona_del_field( 'del_steps_title' );
 $steps_lead  = sabona_del_field( 'del_steps_lead' );
 $steps       = sabona_del_rows( 'del_steps' );
-$form_title  = sabona_del_field( 'del_form_title' );
-$form_lead   = sabona_del_field( 'del_form_lead' );
-$form_phone  = sabona_del_field( 'del_form_phone' );
-$form_company = sabona_del_field( 'del_form_company' );
-$form_message = sabona_del_field( 'del_form_message' );
-$form_agree  = sabona_del_field( 'del_form_agree' );
-$form_btn    = sabona_del_field( 'del_form_btn' );
+$form_title = sabona_del_field( 'del_form_title' );
+$form_lead  = sabona_del_field( 'del_form_lead' );
+$form_id    = 0;
+$form_posts = get_posts( array(
+	'post_type'      => 'wpcf7_contact_form',
+	'title'          => 'Заявка: доставка и оплата',
+	'post_status'    => 'publish',
+	'posts_per_page' => 1,
+	'fields'         => 'ids',
+) );
+if ( ! empty( $form_posts ) ) {
+	$form_id = (int) $form_posts[0];
+}
 
 $pay_left  = array();
 $pay_right = array();
@@ -107,7 +113,7 @@ $show_hours = ( $hours_title !== '' || $hours_text !== '' );
 $show_ship  = ( $ship_title !== '' || $show_hours || $free_title !== '' || $free_text !== '' || $prices || $days_title !== '' || $days );
 $show_pay   = ( $pay_title !== '' || $show_hours || $pays || $note_new_title !== '' || $note_new_text !== '' || $note_big_title !== '' || $note_big_text !== '' );
 $show_steps = ( $steps_title !== '' || $steps_lead !== '' || $steps );
-$show_form  = ( $form_title !== '' || $form_lead !== '' || $form_phone !== '' || $form_company !== '' || $form_message !== '' || $form_agree !== '' || $form_btn !== '' );
+$show_form = ( $form_title !== '' || $form_lead !== '' || $form_id );
 
 if ( ! function_exists( 'sabona_del_hours' ) ) {
 	function sabona_del_hours( $img, $title, $text ) {
@@ -342,7 +348,8 @@ if ( ! function_exists( 'sabona_del_pay_item' ) ) {
 			<?php } ?>
 
 			<?php if ( $show_form ) { ?>
-			<form class="page-del__form" action="#" method="post" onsubmit="return false;">
+			<div class="page-del__form">
+				<?php if ( $form_title !== '' || $form_lead !== '' ) { ?>
 				<div class="page-del__form-head">
 					<?php if ( $form_title !== '' ) { ?>
 						<h2 class="page-del__form-title"><?php echo esc_html( $form_title ); ?></h2>
@@ -351,33 +358,11 @@ if ( ! function_exists( 'sabona_del_pay_item' ) ) {
 						<p class="page-del__form-lead"><?php echo sabona_del_html( $form_lead ); ?></p>
 					<?php } ?>
 				</div>
-				<div class="page-del__form-fields">
-					<div class="page-del__form-col">
-						<input class="page-del__field" type="tel" inputmode="numeric" name="phone" autocomplete="tel" placeholder="<?php echo esc_attr( $form_phone ); ?>" aria-label="<?php echo esc_attr( $form_phone ); ?>">
-						<input class="page-del__field" type="text" name="company" autocomplete="organization" placeholder="<?php echo esc_attr( $form_company ); ?>" aria-label="<?php echo esc_attr( $form_company ); ?>">
-					</div>
-					<div class="page-del__form-col page-del__form-col_area">
-						<textarea class="page-del__field page-del__field_area" name="message" placeholder="<?php echo esc_attr( $form_message ); ?>" aria-label="<?php echo esc_attr( $form_message ); ?>"></textarea>
-					</div>
-				</div>
-				<div class="page-del__form-bar">
-					<label class="page-del__agree">
-						<span class="page-del__agree-box">
-							<input class="page-del__agree-input" type="checkbox" checked>
-							<img class="page-del__agree-mark" src="<?php echo esc_url( $del_img . 'del-icon-check.svg' ); ?>" alt="" width="20" height="20">
-							<span class="page-del__agree-empty" aria-hidden="true"></span>
-						</span>
-						<?php if ( $form_agree !== '' ) { ?>
-							<span class="page-del__agree-text"><?php echo esc_html( $form_agree ); ?></span>
-						<?php } ?>
-					</label>
-					<?php if ( $form_btn !== '' ) { ?>
-					<div class="page-del__form-submit">
-						<button class="page-del__btn" type="button"><?php echo esc_html( $form_btn ); ?></button>
-					</div>
-					<?php } ?>
-				</div>
-			</form>
+				<?php } ?>
+				<?php if ( $form_id ) { ?>
+					<?php echo do_shortcode( '[contact-form-7 id="' . $form_id . '" title="Заявка: доставка и оплата"]' ); ?>
+				<?php } ?>
+			</div>
 			<?php } ?>
 		</div>
 	</div>
