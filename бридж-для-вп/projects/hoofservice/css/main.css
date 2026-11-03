@@ -3994,3 +3994,20 @@ blockquote p {
 	height: 100%;
 	object-fit: cover;
 }
+.farm-check__card + .farm-check__card {
+	margin-top: 24px;
+}
+.farm-check__text {
+	max-width: 675px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 1.45;
+	color: #2b2b2b;
+}
+.farm-check__text p {
+	margin: 0 0 16px;
+}
+.farm-check__text p:last-child {
+	margin-bottom: 0;
+}

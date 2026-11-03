@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/libs/fancybox-master/dist/jquery.fancybox.min.css" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/libs/slick-1.5.9/slick/slick.css" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/fonts.css" />
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/main.css?ver=1.95" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/main.css?ver=1.96" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/media.css?ver=1.95" />
 	<?php wp_head(); ?>
 

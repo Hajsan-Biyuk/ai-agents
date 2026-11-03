@@ -288,37 +288,108 @@ if(!empty($portfolio['показать'])){ ?>
 </section>
 <?php } ?>
 
+<?php
+$farm_rows  = get_field( 'mini', 2 );
+$farm_cards = array();
+if ( is_array( $farm_rows ) ) {
+	foreach ( $farm_rows as $farm_row ) {
+		if ( ! is_array( $farm_row ) ) {
+			continue;
+		}
+		$card = array(
+			'titles' => array(),
+			'texts'  => array(),
+			'lists'  => array(),
+			'image'  => '',
+			'alt'    => '',
+		);
+		foreach ( $farm_row as $farm_key => $farm_value ) {
+			if ( ! is_string( $farm_key ) || $farm_key === '' ) {
+				continue;
+			}
+			if ( is_string( $farm_value ) ) {
+				$farm_value = trim( $farm_value );
+				if ( $farm_value === '' ) {
+					continue;
+				}
+				if ( mb_strlen( $farm_value ) <= 140 ) {
+					$card['titles'][] = $farm_value;
+				} else {
+					$card['texts'][] = $farm_value;
+				}
+			} elseif ( is_array( $farm_value ) && ! empty( $farm_value['url'] ) ) {
+				$card['image'] = $farm_value['url'];
+				$card['alt']   = isset( $farm_value['alt'] ) ? (string) $farm_value['alt'] : '';
+			} elseif ( is_array( $farm_value ) ) {
+				$items = array();
+				foreach ( $farm_value as $farm_item ) {
+					if ( is_string( $farm_item ) && trim( $farm_item ) !== '' ) {
+						$items[] = trim( $farm_item );
+					} elseif ( is_array( $farm_item ) ) {
+						foreach ( $farm_item as $farm_piece ) {
+							if ( is_string( $farm_piece ) && trim( $farm_piece ) !== '' ) {
+								$items[] = trim( $farm_piece );
+								break;
+							}
+						}
+					}
+				}
+				if ( $items ) {
+					$card['lists'][] = $items;
+				}
+			}
+		}
+		if ( $card['titles'] || $card['texts'] || $card['lists'] || $card['image'] !== '' ) {
+			$farm_cards[] = $card;
+		}
+	}
+}
+if ( $farm_cards ) {
+	$farm_photo = get_template_directory_uri() . '/img/farm-check.png';
+	?>
 <section class="farm-check" id="farm-check">
     <div class="container">
+        <?php foreach ( $farm_cards as $farm_card ) {
+			$farm_img = $farm_card['image'] !== '' ? $farm_card['image'] : $farm_photo;
+			$farm_alt = $farm_card['alt'] !== '' ? $farm_card['alt'] : 'Торговый представитель с планшетом осматривает коров в коровнике';
+			$farm_btn = ! empty( $farm_card['titles'][0] ) ? $farm_card['titles'][0] : 'Проверить ферму';
+			?>
         <div class="farm-check__card">
             <div class="row farm-check__row">
                 <div class="col-lg-6">
                     <div class="farm-check__content">
                         <div class="farm-check__body">
-                            <h2 class="farm-check__title">Хотите проверить ферму<br>без больших затрат и долгих<br>отчётов?</h2>
-                            <p class="farm-check__lead">Миниаудит за один выезд: торговый представитель оценит ключевые параметры хозяйства и подскажет, что улучшить в первую очередь.</p>
-                            <ul class="farm-check__list">
-                                <li>Поголовье, условия содержания, кормление и доение</li>
-                                <li>Ключевые показатели продуктивности и здоровья стада</li>
-                                <li>Слабые места и рекомендации — на месте, за один визит</li>
-                                <li>Без громоздких отчётов и долгих согласований</li>
-                            </ul>
+                            <?php foreach ( $farm_card['titles'] as $farm_title ) { ?>
+                                <h2 class="farm-check__title"><?php echo esc_html( $farm_title ); ?></h2>
+                            <?php } ?>
+                            <?php foreach ( $farm_card['texts'] as $farm_text ) { ?>
+                                <div class="farm-check__text"><?php echo wp_kses_post( wpautop( $farm_text ) ); ?></div>
+                            <?php } ?>
+                            <?php foreach ( $farm_card['lists'] as $farm_list ) { ?>
+                                <ul class="farm-check__list">
+                                    <?php foreach ( $farm_list as $farm_item ) { ?>
+                                        <li><?php echo esc_html( $farm_item ); ?></li>
+                                    <?php } ?>
+                                </ul>
+                            <?php } ?>
                         </div>
                         <div class="farm-check__actions">
-                            <a href="#order-modal" class="farm-check__btn farm-check__btn--order fancybox" data-title="Проверить ферму">Оставить заявку</a>
+                            <a href="#order-modal" class="farm-check__btn farm-check__btn--order fancybox" data-title="<?php echo esc_attr( $farm_btn ); ?>">Оставить заявку</a>
                             <a href="#farm-check" class="farm-check__btn farm-check__btn--more">Подробнее</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 farm-check__photo-col">
                     <div class="farm-check__photo">
-                        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/farm-check.png" alt="Торговый представитель с планшетом осматривает коров в коровнике">
+                        <img src="<?php echo esc_url( $farm_img ); ?>" alt="<?php echo esc_attr( $farm_alt ); ?>">
                     </div>
                 </div>
             </div>
         </div>
+        <?php } ?>
     </div>
 </section>
+<?php } ?>
 
 <?php if (have_rows('отзывы', 2)) : ?>
 <section class="reviews-section">
