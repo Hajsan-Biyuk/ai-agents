@@ -177,16 +177,17 @@
 	display: none;
 }
 
-.page-article .article-toc__list a,
-.page-article .article-toc__list a:hover,
-.page-article .article-toc__list a:focus,
-.page-article .article-toc__list a:active {
+.page-article .article-toc__list a {
 	color: #2A2D29;
 	text-decoration: none;
 	border-bottom: 1px solid transparent;
 }
 
-.page-article .article-toc__list a:hover {
+.page-article .article-toc__list a:hover,
+.page-article .article-toc__list a:focus,
+.page-article .article-toc__list a:active {
+	color: #2A2D29;
+	text-decoration: none;
 	border-bottom-color: #2A2D29;
 }
 
