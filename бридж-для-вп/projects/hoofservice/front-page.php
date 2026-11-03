@@ -289,85 +289,49 @@ if(!empty($portfolio['показать'])){ ?>
 <?php } ?>
 
 <?php
-$farm_rows  = get_field( 'mini', 2 );
-$farm_cards = array();
-if ( is_array( $farm_rows ) ) {
-	foreach ( $farm_rows as $farm_row ) {
-		if ( ! is_array( $farm_row ) ) {
-			continue;
-		}
-		$card = array(
-			'titles' => array(),
-			'texts'  => array(),
-			'lists'  => array(),
-			'image'  => '',
-			'alt'    => '',
-		);
-		foreach ( $farm_row as $farm_key => $farm_value ) {
-			if ( ! is_string( $farm_key ) || $farm_key === '' ) {
-				continue;
+$farm = get_field( 'миниаудит', 2 );
+if ( is_array( $farm ) && ! empty( $farm['показать'] ) ) {
+	$farm_title = isset( $farm['заголовок'] ) ? trim( (string) $farm['заголовок'] ) : '';
+	$farm_lead  = isset( $farm['описание'] ) ? trim( (string) $farm['описание'] ) : '';
+	$farm_more  = isset( $farm['подробнее'] ) ? trim( (string) $farm['подробнее'] ) : '';
+	$farm_items = array();
+	if ( ! empty( $farm['список'] ) && is_array( $farm['список'] ) ) {
+		foreach ( $farm['список'] as $farm_row ) {
+			$farm_line = '';
+			if ( is_array( $farm_row ) && isset( $farm_row['текст'] ) ) {
+				$farm_line = trim( (string) $farm_row['текст'] );
 			}
-			if ( is_string( $farm_value ) ) {
-				$farm_value = trim( $farm_value );
-				if ( $farm_value === '' ) {
-					continue;
-				}
-				if ( mb_strlen( $farm_value ) <= 140 ) {
-					$card['titles'][] = $farm_value;
-				} else {
-					$card['texts'][] = $farm_value;
-				}
-			} elseif ( is_array( $farm_value ) && ! empty( $farm_value['url'] ) ) {
-				$card['image'] = $farm_value['url'];
-				$card['alt']   = isset( $farm_value['alt'] ) ? (string) $farm_value['alt'] : '';
-			} elseif ( is_array( $farm_value ) ) {
-				$items = array();
-				foreach ( $farm_value as $farm_item ) {
-					if ( is_string( $farm_item ) && trim( $farm_item ) !== '' ) {
-						$items[] = trim( $farm_item );
-					} elseif ( is_array( $farm_item ) ) {
-						foreach ( $farm_item as $farm_piece ) {
-							if ( is_string( $farm_piece ) && trim( $farm_piece ) !== '' ) {
-								$items[] = trim( $farm_piece );
-								break;
-							}
-						}
-					}
-				}
-				if ( $items ) {
-					$card['lists'][] = $items;
-				}
+			if ( $farm_line !== '' ) {
+				$farm_items[] = $farm_line;
 			}
-		}
-		if ( $card['titles'] || $card['texts'] || $card['lists'] || $card['image'] !== '' ) {
-			$farm_cards[] = $card;
 		}
 	}
-}
-if ( $farm_cards ) {
-	$farm_photo = get_template_directory_uri() . '/img/farm-check.png';
+	$farm_img = get_template_directory_uri() . '/img/farm-check.png';
+	$farm_alt = 'Торговый представитель с планшетом осматривает коров в коровнике';
+	if ( ! empty( $farm['картинка']['url'] ) ) {
+		$farm_img = $farm['картинка']['url'];
+		if ( ! empty( $farm['картинка']['alt'] ) ) {
+			$farm_alt = $farm['картинка']['alt'];
+		}
+	}
+	$farm_btn = $farm_title !== '' ? wp_strip_all_tags( preg_replace( '/\s+/', ' ', $farm_title ) ) : 'Проверить ферму';
 	?>
 <section class="farm-check" id="farm-check">
     <div class="container">
-        <?php foreach ( $farm_cards as $farm_card ) {
-			$farm_img = $farm_card['image'] !== '' ? $farm_card['image'] : $farm_photo;
-			$farm_alt = $farm_card['alt'] !== '' ? $farm_card['alt'] : 'Торговый представитель с планшетом осматривает коров в коровнике';
-			$farm_btn = ! empty( $farm_card['titles'][0] ) ? $farm_card['titles'][0] : 'Проверить ферму';
-			?>
         <div class="farm-check__card">
             <div class="row farm-check__row">
                 <div class="col-lg-6">
                     <div class="farm-check__content">
                         <div class="farm-check__body">
-                            <?php foreach ( $farm_card['titles'] as $farm_title ) { ?>
-                                <h2 class="farm-check__title"><?php echo esc_html( $farm_title ); ?></h2>
+                            <?php if ( $farm_title !== '' ) { ?>
+                                <h2 class="farm-check__title"><?php echo nl2br( esc_html( $farm_title ) ); ?></h2>
                             <?php } ?>
-                            <?php foreach ( $farm_card['texts'] as $farm_text ) { ?>
-                                <div class="farm-check__text"><?php echo wp_kses_post( wpautop( $farm_text ) ); ?></div>
+                            <?php if ( $farm_lead !== '' ) { ?>
+                                <p class="farm-check__lead"><?php echo esc_html( $farm_lead ); ?></p>
                             <?php } ?>
-                            <?php foreach ( $farm_card['lists'] as $farm_list ) { ?>
+                            <?php if ( $farm_items ) { ?>
                                 <ul class="farm-check__list">
-                                    <?php foreach ( $farm_list as $farm_item ) { ?>
+                                    <?php foreach ( $farm_items as $farm_item ) { ?>
                                         <li><?php echo esc_html( $farm_item ); ?></li>
                                     <?php } ?>
                                 </ul>
@@ -375,7 +339,9 @@ if ( $farm_cards ) {
                         </div>
                         <div class="farm-check__actions">
                             <a href="#order-modal" class="farm-check__btn farm-check__btn--order fancybox" data-title="<?php echo esc_attr( $farm_btn ); ?>">Оставить заявку</a>
-                            <a href="#farm-check" class="farm-check__btn farm-check__btn--more">Подробнее</a>
+                            <?php if ( $farm_more !== '' ) { ?>
+                                <a href="<?php echo esc_url( $farm_more ); ?>" class="farm-check__btn farm-check__btn--more">Подробнее</a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -386,7 +352,6 @@ if ( $farm_cards ) {
                 </div>
             </div>
         </div>
-        <?php } ?>
     </div>
 </section>
 <?php } ?>
