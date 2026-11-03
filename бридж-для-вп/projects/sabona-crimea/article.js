@@ -15,6 +15,24 @@ jQuery(function ($) {
 		$button.attr('aria-label', open ? 'Развернуть содержание' : 'Свернуть содержание');
 	});
 
+	$(document).on('click', '.page-article a[href^="#"]', function (e) {
+		var hash = $(this).attr('href');
+		if (!hash || hash === '#') {
+			return;
+		}
+		var $target = $(hash);
+		if (!$target.length) {
+			return;
+		}
+		e.preventDefault();
+		var header = $('.header').outerHeight() || 0;
+		var top = Math.max(0, $target.offset().top - header - 16);
+		$('html, body').stop(true).animate({ scrollTop: top }, 700);
+		if (window.history && history.pushState) {
+			history.pushState(null, '', hash);
+		}
+	});
+
 	$(document).on('click', '.article-faq__q', function () {
 		var $button = $(this);
 		var $item = $button.closest('.article-faq__item');
