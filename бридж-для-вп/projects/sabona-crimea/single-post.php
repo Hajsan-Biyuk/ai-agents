@@ -1,7 +1,7 @@
 <?php
 add_action( 'wp_enqueue_scripts', function () {
 	$uri = get_template_directory_uri();
-	wp_enqueue_style( 'sabona-article', $uri . '/article.css', array(), '1.5' );
+	wp_enqueue_style( 'sabona-article', $uri . '/article.css', array(), '1.6' );
 	wp_enqueue_style( 'sabona-article-media', $uri . '/article-media.css', array( 'sabona-article' ), '1.3' );
 	wp_enqueue_script( 'sabona-article', $uri . '/article.js', array( 'jquery' ), '1.2', true );
 }, 20 );

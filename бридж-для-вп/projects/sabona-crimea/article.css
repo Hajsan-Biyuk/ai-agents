@@ -229,6 +229,17 @@
 	margin: 0;
 }
 
+.page-article .article-content h2,
+.page-article .article-content h3 {
+	margin-top: 36px;
+	margin-bottom: 12px;
+}
+
+.page-article .article-content h2:first-child,
+.page-article .article-content h3:first-child {
+	margin-top: 0;
+}
+
 .page-article .article-content h2 {
 	font-weight: 500;
 	font-size: 28px;
