@@ -75,6 +75,13 @@
 		align-items: stretch;
 	}
 
+	.page-article .article-form__submit,
+	.page-article .article-form__bar > p,
+	.page-article .article-form__btn {
+		width: 100%;
+		min-width: 0;
+	}
+
 	.page-article .article-form__field {
 		font-size: 16px;
 	}
