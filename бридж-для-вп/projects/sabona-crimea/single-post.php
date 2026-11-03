@@ -158,20 +158,8 @@ if ( have_posts() ) :
 		$author_name = sabona_art_text( 'article_author_name', '', $post_id );
 		$author_role = sabona_art_text( 'article_author_role', '', $post_id );
 		$author_img  = function_exists( 'get_field' ) ? sabona_art_img( get_field( 'article_author_photo', $post_id ), 'thumbnail' ) : '';
-		$read_time   = sabona_art_minutes( $post_id );
-		$toc_rows    = function_exists( 'get_field' ) ? get_field( 'article_toc', $post_id ) : array();
-		$toc         = array();
-		if ( is_array( $toc_rows ) ) {
-			foreach ( $toc_rows as $row ) {
-				$item = isset( $row['item'] ) ? trim( (string) $row['item'] ) : '';
-				if ( $item !== '' ) {
-					$toc[] = array( 'text' => $item, 'id' => '' );
-				}
-			}
-		}
-		if ( ! $toc ) {
-			$toc = sabona_art_heading_items( get_post_field( 'post_content', $post_id ) );
-		}
+		$read_time = sabona_art_minutes( $post_id );
+		$toc       = sabona_art_heading_items( get_post_field( 'post_content', $post_id ) );
 		$faq = function_exists( 'get_field' ) ? get_field( 'article_faq', $post_id ) : array();
 		if ( ! is_array( $faq ) ) {
 			$faq = array();
