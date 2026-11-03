@@ -173,6 +173,10 @@
 	top: 0;
 }
 
+.page-article .article-toc__item_more {
+	display: none;
+}
+
 .page-article .article-toc__list a {
 	color: #2A2D29;
 	border-bottom: 1px solid transparent;

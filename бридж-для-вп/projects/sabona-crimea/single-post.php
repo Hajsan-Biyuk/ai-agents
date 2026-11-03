@@ -1,9 +1,9 @@
 <?php
 add_action( 'wp_enqueue_scripts', function () {
 	$uri = get_template_directory_uri();
-	wp_enqueue_style( 'sabona-article', $uri . '/article.css', array(), '1.2' );
-	wp_enqueue_style( 'sabona-article-media', $uri . '/article-media.css', array( 'sabona-article' ), '1.2' );
-	wp_enqueue_script( 'sabona-article', $uri . '/article.js', array( 'jquery' ), '1.1', true );
+	wp_enqueue_style( 'sabona-article', $uri . '/article.css', array(), '1.3' );
+	wp_enqueue_style( 'sabona-article-media', $uri . '/article-media.css', array( 'sabona-article' ), '1.3' );
+	wp_enqueue_script( 'sabona-article', $uri . '/article.js', array( 'jquery' ), '1.2', true );
 }, 20 );
 
 if ( ! function_exists( 'sabona_art_text' ) ) {
@@ -219,8 +219,8 @@ if ( have_posts() ) :
 						<div class="article-toc__head">
 							<div class="article-toc__title">В этой статье</div>
 							<ul class="article-toc__list">
-								<?php foreach ( $toc as $item ) { ?>
-									<li>
+								<?php foreach ( $toc as $index => $item ) { ?>
+									<li<?php echo $index >= 4 ? ' class="article-toc__item_more"' : ''; ?>>
 										<?php if ( ! empty( $item['id'] ) ) { ?>
 											<a href="#<?php echo esc_attr( $item['id'] ); ?>"><?php echo esc_html( $item['text'] ); ?></a>
 										<?php } else { ?>
@@ -230,9 +230,11 @@ if ( have_posts() ) :
 								<?php } ?>
 							</ul>
 						</div>
-						<button class="article-toc__toggle" type="button" aria-expanded="true" aria-label="Свернуть содержание">
-							<svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 20L16 12L24 20" stroke="#2A2D29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-						</button>
+						<?php if ( count( $toc ) > 4 ) { ?>
+							<button class="article-toc__toggle" type="button" aria-expanded="false" aria-label="Показать все пункты">
+								<svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 20L16 12L24 20" stroke="#2A2D29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+							</button>
+						<?php } ?>
 					</div>
 				<?php } ?>
 				<div class="article-content">

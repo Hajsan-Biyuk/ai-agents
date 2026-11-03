@@ -8,11 +8,11 @@ jQuery(function ($) {
 
 	$(document).on('click', '.article-toc__toggle', function () {
 		var $button = $(this);
-		var $list = $button.closest('.article-toc').find('.article-toc__list');
-		var open = $button.attr('aria-expanded') !== 'false';
-		$list.stop(true, true).slideToggle(200);
-		$button.attr('aria-expanded', open ? 'false' : 'true');
-		$button.attr('aria-label', open ? 'Развернуть содержание' : 'Свернуть содержание');
+		var $extra = $button.closest('.article-toc').find('.article-toc__item_more');
+		var willOpen = $button.attr('aria-expanded') !== 'true';
+		$button.attr('aria-expanded', willOpen ? 'true' : 'false');
+		$button.attr('aria-label', willOpen ? 'Свернуть содержание' : 'Показать все пункты');
+		$extra.stop(true, true).slideToggle(200);
 	});
 
 	$(document).on('click', '.page-article a[href^="#"]', function (e) {
