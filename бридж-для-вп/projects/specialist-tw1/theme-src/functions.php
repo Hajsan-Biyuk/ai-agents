@@ -34,6 +34,22 @@ function theme_name_scripts() {
 
 
 
+add_action('acf/init', 'spec_header_footer_options');
+function spec_header_footer_options() {
+    if (!function_exists('acf_add_options_page')) {
+        return;
+    }
+    acf_add_options_page(array(
+        'page_title' => 'Шапка и подвал',
+        'menu_title' => 'Шапка и подвал',
+        'menu_slug' => 'hp-header-footer',
+        'capability' => 'edit_posts',
+        'redirect' => false,
+        'position' => 61,
+        'icon_url' => 'dashicons-admin-customizer',
+    ));
+}
+
 add_action("wp_enqueue_scripts", "spec_home_assets", 30);
 function spec_home_assets() {
     if (!is_front_page()) {

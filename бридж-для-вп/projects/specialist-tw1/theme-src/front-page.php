@@ -5,11 +5,32 @@
 
 require_once get_template_directory() . '/hp-content.php';
 
+function hp_store($key) {
+    $options = array(
+        'phone_1' => true,
+        'phone_2' => true,
+        'phone_boss' => true,
+        'phone_boss_note' => true,
+        'messenger_tg_url' => true,
+        'messenger_max_url' => true,
+        'header_consult' => true,
+        'nav' => true,
+        'img_logo' => true,
+        'footer_legal' => true,
+        'footer_email' => true,
+        'footer_copy' => true,
+        'vi_label' => true,
+        'footer_menus' => true,
+    );
+    return isset($options[$key]) ? 'option' : false;
+}
+
 function hp_t($key) {
     $defaults = hp_default_content();
     $fallback = isset($defaults[$key]) && is_string($defaults[$key]) ? $defaults[$key] : '';
     if (function_exists('get_field')) {
-        $value = get_field($key);
+        $where = hp_store($key);
+        $value = $where ? get_field($key, $where) : get_field($key);
         if (is_string($value) && $value !== '') {
             return $value;
         }
@@ -21,12 +42,25 @@ function hp_rows($key) {
     $defaults = hp_default_content();
     $fallback = isset($defaults[$key]) && is_array($defaults[$key]) ? $defaults[$key] : array();
     if (function_exists('get_field')) {
-        $value = get_field($key);
+        $where = hp_store($key);
+        $value = $where ? get_field($key, $where) : get_field($key);
         if (is_array($value) && count($value) > 0) {
             return $value;
         }
     }
     return $fallback;
+}
+
+function hp_on($key) {
+    $post_id = get_queried_object_id();
+    if (!$post_id || !function_exists('get_field')) {
+        return true;
+    }
+    $ref = get_post_meta($post_id, '_' . $key, true);
+    if ($ref === '' || $ref === null || $ref === false) {
+        return true;
+    }
+    return (bool) get_field($key, $post_id);
 }
 
 function hp_theme_img($file) {
@@ -50,7 +84,11 @@ function hp_media_url($value, $fallback_file) {
 }
 
 function hp_img($key, $file) {
-    $value = function_exists('get_field') ? get_field($key) : null;
+    $value = null;
+    if (function_exists('get_field')) {
+        $where = hp_store($key);
+        $value = $where ? get_field($key, $where) : get_field($key);
+    }
     return hp_media_url($value, $file);
 }
 
@@ -189,6 +227,7 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
     </header>
 
     <main>
+        <?php if (hp_on('show_banner')) : ?>
         <section class="hp-hero" id="hero">
             <img class="hp-hero__bg" src="<?php echo esc_url(hp_img('img_hero', 'hero-bg-7d4ec6.png')); ?>" alt="<?php echo esc_attr(hp_t('hero_alt')); ?>">
             <div class="hp-hero__fade"></div>
@@ -223,6 +262,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_needs')) : ?>
         <section class="hp-needs" id="needs">
             <div class="hp-container">
                 <h2 class="hp-title"><?php echo esc_html(hp_t('needs_title')); ?></h2>
@@ -246,6 +287,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_courses')) : ?>
         <section class="hp-courses" id="courses">
             <div class="hp-container">
                 <h2 class="hp-title"><?php echo esc_html(hp_t('courses_title')); ?></h2>
@@ -321,6 +364,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_tractor')) : ?>
         <section class="hp-tractor" id="tractor">
             <div class="hp-container">
                 <div class="hp-tractor__card">
@@ -354,6 +399,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_polygon')) : ?>
         <section class="hp-polygon" id="polygon">
             <div class="hp-container">
                 <h2 class="hp-title"><?php echo esc_html(hp_t('polygon_title')); ?></h2>
@@ -391,6 +438,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_about')) : ?>
         <section class="hp-about" id="about">
             <div class="hp-container">
                 <div class="hp-about__head">
@@ -423,6 +472,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_steps')) : ?>
         <section class="hp-steps" id="steps">
             <div class="hp-container">
                 <h2 class="hp-title"><?php echo esc_html(hp_t('steps_title')); ?></h2>
@@ -460,6 +511,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_companies')) : ?>
         <section class="hp-companies" id="companies">
             <div class="hp-container">
                 <div class="hp-companies__grid">
@@ -484,6 +537,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_partners')) : ?>
         <section class="hp-partners" id="partners">
             <div class="hp-container">
                 <h2 class="hp-title"><?php echo esc_html(hp_t('partners_title')); ?></h2>
@@ -503,6 +558,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_docs')) : ?>
         <section class="hp-docs" id="documents">
             <div class="hp-container">
                 <h2 class="hp-title"><?php echo esc_html(hp_t('docs_title')); ?></h2>
@@ -517,6 +574,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_reviews')) : ?>
         <section class="hp-reviews" id="reviews">
             <div class="hp-container">
                 <h2 class="hp-title hp-title--light"><?php echo esc_html(hp_t('reviews_title')); ?></h2>
@@ -547,6 +606,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_faq')) : ?>
         <section class="hp-faq" id="faq">
             <div class="hp-container">
                 <h2 class="hp-title"><?php echo esc_html(hp_t('faq_title')); ?></h2>
@@ -561,6 +622,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_consult')) : ?>
         <section class="hp-consult" id="consult">
             <div class="hp-container">
                 <div class="hp-consult__panel">
@@ -629,6 +692,8 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </section>
 
+        <?php endif; ?>
+        <?php if (hp_on('show_contacts')) : ?>
         <section class="hp-contacts" id="contacts">
             <div class="hp-container">
                 <h2 class="hp-title"><?php echo esc_html(hp_t('contacts_title')); ?></h2>
@@ -649,6 +714,7 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
                 </div>
             </div>
         </section>
+        <?php endif; ?>
     </main>
 
     <footer class="hp-footer">
