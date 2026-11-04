@@ -250,7 +250,6 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
                 </div>
                 <article class="hp-hero__card">
                     <div class="hp-hero__photo">
-                        <img src="<?php echo esc_url(hp_img('img_hero_card', 'hero-bg-7d4ec6.png')); ?>" alt="<?php echo esc_attr(hp_t('hero_card_alt')); ?>">
                         <p class="hp-hero__price"><strong><?php echo esc_html(hp_t('hero_price')); ?></strong><br><span><?php echo esc_html(hp_t('hero_price_note')); ?></span></p>
                     </div>
                     <div class="hp-hero__card-body">

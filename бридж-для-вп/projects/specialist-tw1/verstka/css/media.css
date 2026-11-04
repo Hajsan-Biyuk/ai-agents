@@ -8,7 +8,7 @@
   .hp-tractor__card { grid-template-columns: minmax(0, 1fr) 560px; }
   .hp-companies__photo { width: 480px; flex-basis: 480px; }
   .hp-hero__card { width: 440px; }
-  .hp-hero__photo { height: 400px; }
+  .hp-hero__photo { height: 0; }
 }
 
 @media (max-width: 1730px) {
@@ -30,11 +30,8 @@
   .hp-courses__list-col h3 { font-size: 24px; }
   .hp-need { min-height: 0; }
   .hp-form { width: 420px; flex-basis: 420px; padding: 28px; }
-  .hp-hero { min-height: 0; }
-  .hp-hero__inner { min-height: 0; }
   .hp-hero__copy,
   .hp-hero__title { max-width: none; }
-  .hp-hero__card { position: relative; top: auto; right: auto; width: 100%; max-width: 496px; margin-top: 32px; }
   .hp-footer__brand { width: 320px; flex-basis: 320px; }
   .hp-footer__col { width: 220px; flex-basis: 220px; }
 }
@@ -50,14 +47,6 @@
   .hp-nav__item > a { font-size: 14px; white-space: normal; }
   .hp-hero { min-height: 0; }
   .hp-hero__inner { min-height: 0; padding-bottom: 40px; }
-  .hp-hero__card {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: 100%;
-    max-width: 496px;
-    margin-top: 32px;
-  }
   .hp-hero__copy { max-width: none; }
   .hp-needs__grid,
   .hp-about__grid { flex-wrap: wrap; }
@@ -97,6 +86,7 @@
 
 @media (max-width: 1200px) {
   .hp-container { margin: 0 24px; }
+  .hp-hero__card { position: relative; right: auto; bottom: auto; width: 100%; max-width: 496px; margin-top: 32px; }
   .hp-title,
   .hp-hero__title { font-size: 30px; }
   .hp-header__logo img { width: 220px; height: 56px; }
