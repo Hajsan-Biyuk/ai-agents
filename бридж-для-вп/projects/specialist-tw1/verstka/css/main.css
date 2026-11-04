@@ -654,7 +654,7 @@ body.hp-menu-open { overflow: hidden; }
 
 .hp-about {
   padding: 60px 0;
-  background: #174d94 url("../img/why-bg.png") center / cover no-repeat;
+  background: #174d94 url("../img/why-bg.jpg") center / cover no-repeat;
   position: relative;
 }
 .hp-about::before {
@@ -819,38 +819,20 @@ body.hp-menu-open { overflow: hidden; }
 .hp-docs__grid { display: flex; gap: 36px; }
 .hp-doc { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 17px; }
 .hp-doc__sheet {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 547px;
   border-radius: 12px;
   background: #fff;
   border: 1px solid #d1dcee;
 }
-.hp-doc__glyph {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 40px;
-  height: 40px;
-  transform: translate(-50%, -50%);
-  border: 2px solid #144087;
-  border-radius: 4px;
-}
-.hp-doc__glyph::before,
-.hp-doc__glyph::after {
-  content: "";
-  position: absolute;
-  left: 6px;
-  right: 6px;
-  height: 2px;
-  background: #144087;
-}
-.hp-doc__glyph::before { top: 12px; }
-.hp-doc__glyph::after { top: 22px; }
+.hp-doc__sheet img { width: 40px; height: 40px; }
 .hp-doc p { font-weight: 600; font-size: 16px; line-height: 1.5; color: #144087; }
 
 .hp-reviews {
   padding: 60px 0;
-  background: #174d94 url("../img/why-bg.png") center / cover no-repeat;
+  background: #174d94 url("../img/why-bg.jpg") center / cover no-repeat;
   position: relative;
 }
 .hp-reviews::before {

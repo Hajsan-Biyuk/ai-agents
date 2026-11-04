@@ -566,7 +566,7 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
                 <div class="hp-docs__grid">
                     <?php foreach (hp_rows('docs') as $doc) : ?>
                         <article class="hp-doc">
-                            <div class="hp-doc__sheet"><span class="hp-doc__glyph" aria-hidden="true"></span></div>
+                            <div class="hp-doc__sheet"><img src="<?php echo esc_url(hp_theme_img('icon-doc-placeholder.svg')); ?>" alt="" width="40" height="40"></div>
                             <p><?php echo hp_br($doc['text']); ?></p>
                         </article>
                     <?php endforeach; ?>
