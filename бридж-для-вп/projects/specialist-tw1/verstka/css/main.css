@@ -350,23 +350,26 @@ body.hp-menu-open { overflow: hidden; }
 }
 .hp-hero__card {
   position: absolute;
+  top: 51px;
   right: 0;
-  bottom: 36px;
   width: 496px;
-  background: transparent;
+  background: #fff;
+  border-radius: 20px;
   z-index: 3;
 }
 .hp-hero__photo {
   position: relative;
-  height: 0;
-  margin: 0;
-  overflow: visible;
-  background: transparent;
+  height: 481px;
+  margin: 21px 23px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #e0e0e0;
 }
+.hp-hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 78% 30%; }
 .hp-hero__price {
   position: absolute;
-  right: 24px;
-  bottom: 12px;
+  top: 16px;
+  right: 16px;
   margin: 0;
   padding: 18px 24px;
   border-radius: 14px 14px 14px 0;
@@ -383,12 +386,7 @@ body.hp-menu-open { overflow: hidden; }
   line-height: 1.2;
   color: #00b0c7;
 }
-.hp-hero__card-body {
-  margin-top: 16px;
-  padding: 24px 23px;
-  background: #fff;
-  border-radius: 20px;
-}
+.hp-hero__card-body { padding: 24px 23px; }
 .hp-hero__card-body h2 {
   font-family: "Inclusive Sans", Inter, sans-serif;
   font-weight: 700;

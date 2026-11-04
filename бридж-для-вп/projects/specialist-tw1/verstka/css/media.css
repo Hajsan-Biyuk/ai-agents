@@ -8,7 +8,7 @@
   .hp-tractor__card { grid-template-columns: minmax(0, 1fr) 560px; }
   .hp-companies__photo { width: 480px; flex-basis: 480px; }
   .hp-hero__card { width: 440px; }
-  .hp-hero__photo { height: 0; }
+  .hp-hero__photo { height: 400px; }
 }
 
 @media (max-width: 1730px) {
