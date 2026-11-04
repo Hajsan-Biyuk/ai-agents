@@ -8,7 +8,32 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+add_action('init', 'hp_ensure_front_page');
 add_action('acf/init', 'hp_install_home_fields', 20);
+
+function hp_ensure_front_page() {
+    $current = (int) get_option('page_on_front');
+    if ($current && get_post_status($current) === 'publish' && get_option('show_on_front') === 'page') {
+        return;
+    }
+    $page = get_page_by_path('glavnaya');
+    if ($page) {
+        $page_id = (int) $page->ID;
+    } else {
+        $page_id = (int) wp_insert_post(array(
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'post_title' => 'Главная',
+            'post_name' => 'glavnaya',
+            'post_content' => '',
+        ));
+    }
+    if (!$page_id) {
+        return;
+    }
+    update_option('show_on_front', 'page');
+    update_option('page_on_front', $page_id);
+}
 
 function hp_install_home_fields() {
     if (get_option('hp_home_installed') === '1') {
