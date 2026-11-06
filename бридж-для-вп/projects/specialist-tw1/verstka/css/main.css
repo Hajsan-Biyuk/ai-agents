@@ -271,6 +271,12 @@ html body :where(.hp) img { display: block; border: 0; }
   background: #fff;
   padding: 8px 16px 20px;
   box-shadow: 0 16px 32px rgba(9, 23, 54, 0.08);
+  /* длинное меню прокручивается внутри панели, пока страница под ним заблокирована */
+  max-height: calc(100vh - 72px);
+  max-height: calc(100dvh - 72px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 .hp-menu-mobile a { display: block; padding: 12px 0; font-size: 16px; border-bottom: 1px solid #dee4ec; }
 .hp-menu-overlay {
