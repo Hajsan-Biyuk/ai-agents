@@ -84,7 +84,7 @@
 /* списки */
 .ks-list { max-width: 1100px; padding: 24px 28px; }
 .ks-list ul,
-.ks-list ol { display: flex; flex-direction: column; gap: 14px; counter-reset: ks; }
+.ks-list ol { display: flex; flex-direction: column; gap: 14px; margin: 0; padding: 0; list-style: none; counter-reset: ks; }
 .ks-list li { position: relative; padding-left: 44px; font-size: 20px; line-height: 28px; color: #091736; counter-increment: ks; }
 .ks-list li::before { content: ""; position: absolute; left: 0; top: 2px; width: 24px; height: 24px; background: center / 24px no-repeat; }
 .ks-list--marker li::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='4.5' fill='%2300b0c7'/%3E%3C/svg%3E"); }
