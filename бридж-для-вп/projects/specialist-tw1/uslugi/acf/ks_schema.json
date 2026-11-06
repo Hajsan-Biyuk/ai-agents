@@ -1,0 +1,598 @@
+{
+ "groups": [
+  {
+   "key": "group_ks_service",
+   "title": "Курс или услуга",
+   "fields": [
+    {
+     "key": "field_ks_tab_307457",
+     "label": "Баннер",
+     "name": "",
+     "type": "tab",
+     "placement": "top",
+     "endpoint": 0
+    },
+    {
+     "key": "field_ks_h1_before",
+     "label": "Заголовок H1: текст до выделенной части",
+     "name": "ks_h1_before",
+     "type": "text"
+    },
+    {
+     "key": "field_ks_h1_accent",
+     "label": "Заголовок H1: выделенная цветом часть",
+     "name": "ks_h1_accent",
+     "type": "text"
+    },
+    {
+     "key": "field_ks_h1_after",
+     "label": "Заголовок H1: текст после",
+     "name": "ks_h1_after",
+     "type": "text"
+    },
+    {
+     "key": "field_ks_lead",
+     "label": "Подзаголовок",
+     "name": "ks_lead",
+     "type": "wysiwyg",
+     "tabs": "all",
+     "toolbar": "basic",
+     "media_upload": 0,
+     "delay": 1
+    },
+    {
+     "key": "field_ks_price",
+     "label": "Стоимость в баннере",
+     "name": "ks_price",
+     "type": "text",
+     "instructions": "Например: от 7 000 ₽. Пусто — карточка цены в баннере скрыта."
+    },
+    {
+     "key": "field_ks_price_note",
+     "label": "Подпись к стоимости",
+     "name": "ks_price_note",
+     "type": "text",
+     "placeholder": "Стоимость обучения"
+    },
+    {
+     "key": "field_ks_hero_img",
+     "label": "Фото в баннере",
+     "name": "ks_hero_img",
+     "type": "image",
+     "return_format": "id",
+     "preview_size": "medium",
+     "library": "all",
+     "instructions": "Необязательно. Если не задано, баннер без фото."
+    },
+    {
+     "key": "field_ks_tab_578975",
+     "label": "Для перечня услуг",
+     "name": "",
+     "type": "tab",
+     "placement": "top",
+     "endpoint": 0
+    },
+    {
+     "key": "field_ks_icon",
+     "label": "Значок для плитки",
+     "name": "ks_icon",
+     "type": "image",
+     "return_format": "id",
+     "preview_size": "medium",
+     "library": "all",
+     "instructions": "PNG или SVG на прозрачном фоне, лучше 160×160 px."
+    },
+    {
+     "key": "field_ks_short",
+     "label": "Короткое описание для плитки",
+     "name": "ks_short",
+     "type": "text"
+    },
+    {
+     "key": "field_ks_tab_435505",
+     "label": "Содержимое",
+     "name": "",
+     "type": "tab",
+     "placement": "top",
+     "endpoint": 0
+    },
+    {
+     "key": "field_ks_sections",
+     "label": "Блоки страницы",
+     "name": "ks_sections",
+     "type": "flexible_content",
+     "instructions": "Блоки идут на странице сверху вниз. Новый «Заголовок» начинает новый раздел страницы.",
+     "button_label": "Добавить блок",
+     "min": "",
+     "max": "",
+     "layouts": [
+      {
+       "key": "layout_ks_heading",
+       "name": "heading",
+       "label": "Заголовок раздела",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_ks_sections__heading__level",
+         "label": "Размер",
+         "name": "level",
+         "type": "select",
+         "allow_null": 0,
+         "multiple": 0,
+         "ui": 0,
+         "return_format": "value",
+         "choices": {
+          "2": "Заголовок раздела",
+          "3": "Подзаголовок",
+          "4": "Малый заголовок"
+         },
+         "default_value": "2"
+        },
+        {
+         "key": "field_ks_sections__heading__before",
+         "label": "Текст до выделенной части",
+         "name": "before",
+         "type": "text"
+        },
+        {
+         "key": "field_ks_sections__heading__accent",
+         "label": "Выделенная цветом часть",
+         "name": "accent",
+         "type": "text"
+        },
+        {
+         "key": "field_ks_sections__heading__after",
+         "label": "Текст после выделенной части",
+         "name": "after",
+         "type": "text"
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_ks_text",
+       "name": "text",
+       "label": "Текст",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_ks_sections__text__content",
+         "label": "Текст",
+         "name": "content",
+         "type": "wysiwyg",
+         "tabs": "all",
+         "toolbar": "basic",
+         "media_upload": 0,
+         "delay": 1
+        },
+        {
+         "key": "field_ks_sections__text__emphasis",
+         "label": "Выделенный абзац (плашка)",
+         "name": "emphasis",
+         "type": "true_false",
+         "ui": 1,
+         "default_value": 0
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_ks_list",
+       "name": "list",
+       "label": "Список",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_ks_sections__list__style",
+         "label": "Вид списка",
+         "name": "style",
+         "type": "select",
+         "allow_null": 0,
+         "multiple": 0,
+         "ui": 0,
+         "return_format": "value",
+         "choices": {
+          "marker": "С маркерами",
+          "check": "С галочками",
+          "warning": "С предупреждением",
+          "numbered": "Нумерованный"
+         },
+         "default_value": "marker"
+        },
+        {
+         "key": "field_ks_sections__list__items",
+         "label": "Пункты",
+         "name": "items",
+         "type": "repeater",
+         "layout": "table",
+         "button_label": "Добавить пункт",
+         "sub_fields": [
+          {
+           "key": "field_ks_sections__list__items__text",
+           "label": "Пункт",
+           "name": "text",
+           "type": "textarea",
+           "rows": 2,
+           "new_lines": ""
+          }
+         ]
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_ks_cards",
+       "name": "cards",
+       "label": "Карточки",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_ks_sections__cards__variant",
+         "label": "Вид",
+         "name": "variant",
+         "type": "select",
+         "allow_null": 0,
+         "multiple": 0,
+         "ui": 0,
+         "return_format": "value",
+         "choices": {
+          "cards": "Обычные карточки",
+          "price": "Карточки цен"
+         },
+         "default_value": "cards"
+        },
+        {
+         "key": "field_ks_sections__cards__cards",
+         "label": "Карточки",
+         "name": "cards",
+         "type": "repeater",
+         "layout": "block",
+         "button_label": "Добавить карточку",
+         "sub_fields": [
+          {
+           "key": "field_ks_sections__cards__cards__title",
+           "label": "Заголовок",
+           "name": "title",
+           "type": "text"
+          },
+          {
+           "key": "field_ks_sections__cards__cards__text",
+           "label": "Текст",
+           "name": "text",
+           "type": "wysiwyg",
+           "tabs": "all",
+           "toolbar": "basic",
+           "media_upload": 0,
+           "delay": 1
+          }
+         ]
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_ks_steps",
+       "name": "steps",
+       "label": "Этапы",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_ks_sections__steps__steps",
+         "label": "Этапы по порядку",
+         "name": "steps",
+         "type": "repeater",
+         "layout": "table",
+         "button_label": "Добавить этап",
+         "sub_fields": [
+          {
+           "key": "field_ks_sections__steps__steps__text",
+           "label": "Этап",
+           "name": "text",
+           "type": "text"
+          }
+         ]
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_ks_images",
+       "name": "images",
+       "label": "Изображения",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_ks_sections__images__variant",
+         "label": "Вид",
+         "name": "variant",
+         "type": "select",
+         "allow_null": 0,
+         "multiple": 0,
+         "ui": 0,
+         "return_format": "value",
+         "choices": {
+          "documents": "Сетка (документы, свидетельства)",
+          "slider": "Лента с прокруткой"
+         },
+         "default_value": "documents"
+        },
+        {
+         "key": "field_ks_sections__images__images",
+         "label": "Изображения",
+         "name": "images",
+         "type": "repeater",
+         "layout": "table",
+         "button_label": "Добавить изображение",
+         "sub_fields": [
+          {
+           "key": "field_ks_sections__images__images__image",
+           "label": "Изображение",
+           "name": "image",
+           "type": "image",
+           "return_format": "id",
+           "preview_size": "medium",
+           "library": "all"
+          },
+          {
+           "key": "field_ks_sections__images__images__link",
+           "label": "Ссылка (если картинка ведёт на другой сайт)",
+           "name": "link",
+           "type": "url"
+          }
+         ]
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_ks_embed",
+       "name": "embed",
+       "label": "Видео или вставка",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_ks_sections__embed__code",
+         "label": "Код вставки (iframe)",
+         "name": "code",
+         "type": "textarea",
+         "rows": 4,
+         "new_lines": ""
+        }
+       ],
+       "min": "",
+       "max": ""
+      }
+     ]
+    }
+   ],
+   "location": [
+    [
+     {
+      "param": "post_type",
+      "operator": "==",
+      "value": "uslugi"
+     }
+    ]
+   ],
+   "menu_order": 0,
+   "position": "normal",
+   "style": "default",
+   "label_placement": "top",
+   "instruction_placement": "label",
+   "hide_on_screen": [],
+   "active": true,
+   "show_in_rest": 0,
+   "description": "Тип записи «Курсы и услуги». Шаблон single-uslugi.php только читает эти поля."
+  },
+  {
+   "key": "group_ks_list",
+   "title": "Перечень курсов и услуг",
+   "fields": [
+    {
+     "key": "field_ks_list_title",
+     "label": "Заголовок страницы",
+     "name": "ks_list_title",
+     "type": "text"
+    },
+    {
+     "key": "field_ks_list_intro",
+     "label": "Вводный текст",
+     "name": "ks_list_intro",
+     "type": "textarea",
+     "rows": 3,
+     "new_lines": ""
+    },
+    {
+     "key": "field_ks_list_extra",
+     "label": "Дополнительные плитки (страницы вне типа «Курсы и услуги»)",
+     "name": "ks_list_extra",
+     "type": "repeater",
+     "layout": "block",
+     "button_label": "Добавить плитку",
+     "sub_fields": [
+      {
+       "key": "field_ks_list_extra__title",
+       "label": "Название",
+       "name": "title",
+       "type": "text"
+      },
+      {
+       "key": "field_ks_list_extra__text",
+       "label": "Короткое описание",
+       "name": "text",
+       "type": "text"
+      },
+      {
+       "key": "field_ks_list_extra__url",
+       "label": "Ссылка",
+       "name": "url",
+       "type": "text"
+      },
+      {
+       "key": "field_ks_list_extra__icon",
+       "label": "Значок",
+       "name": "icon",
+       "type": "image",
+       "return_format": "id",
+       "preview_size": "medium",
+       "library": "all"
+      },
+      {
+       "key": "field_ks_list_extra__direction",
+       "label": "Направление",
+       "name": "direction",
+       "type": "taxonomy",
+       "taxonomy": "napravlenie",
+       "field_type": "select",
+       "allow_null": 0,
+       "add_term": 0,
+       "save_terms": 0,
+       "load_terms": 0,
+       "return_format": "id",
+       "multiple": 0
+      }
+     ]
+    }
+   ],
+   "location": [
+    [
+     {
+      "param": "page",
+      "operator": "==",
+      "value": "70"
+     }
+    ]
+   ],
+   "menu_order": 0,
+   "position": "normal",
+   "style": "default",
+   "label_placement": "top",
+   "instruction_placement": "label",
+   "hide_on_screen": [
+    "the_content"
+   ],
+   "active": true,
+   "show_in_rest": 0,
+   "description": "Страница-перечень «Перечень курсов и услуг». Плитки выводятся из записей типа «Курсы и услуги»."
+  }
+ ],
+ "post_type": {
+  "key": "post_type_ks_uslugi",
+  "title": "Курсы и услуги",
+  "menu_order": 0,
+  "active": true,
+  "post_type": "uslugi",
+  "advanced_configuration": true,
+  "import_source": "",
+  "import_date": "",
+  "labels": {
+   "name": "Курсы и услуги",
+   "singular_name": "Курс или услуга",
+   "menu_name": "Курсы и услуги",
+   "all_items": "Все курсы и услуги",
+   "add_new": "Добавить",
+   "add_new_item": "Добавить курс или услугу",
+   "edit_item": "Изменить курс или услугу",
+   "new_item": "Новый курс или услуга",
+   "view_item": "Посмотреть",
+   "view_items": "Посмотреть курсы и услуги",
+   "search_items": "Найти курс или услугу",
+   "not_found": "Ничего не найдено",
+   "not_found_in_trash": "В корзине пусто",
+   "archives": "Курсы и услуги",
+   "attributes": "Порядок",
+   "name_admin_bar": "Курс или услуга",
+   "item_published": "Опубликовано",
+   "item_updated": "Сохранено",
+   "filter_items_list": "Фильтр списка",
+   "items_list": "Список курсов и услуг",
+   "items_list_navigation": "Навигация по списку"
+  },
+  "description": "Курсы обучения и услуги учебного центра",
+  "public": true,
+  "hierarchical": false,
+  "exclude_from_search": false,
+  "publicly_queryable": true,
+  "show_ui": true,
+  "show_in_menu": true,
+  "menu_position": 21,
+  "menu_icon": {
+   "type": "dashicons",
+   "value": "dashicons-welcome-learn-more"
+  },
+  "show_in_admin_bar": true,
+  "show_in_nav_menus": true,
+  "show_in_rest": false,
+  "has_archive": false,
+  "rewrite": {
+   "permalink_rewrite": "custom_permalink",
+   "slug": "uslugi",
+   "feeds": 0,
+   "pages": 0,
+   "with_front": 0
+  },
+  "query_var": "post_type",
+  "supports": [
+   "title",
+   "excerpt",
+   "thumbnail",
+   "revisions",
+   "page-attributes"
+  ],
+  "taxonomies": [
+   "napravlenie"
+  ],
+  "enter_title_here": "Название курса или услуги",
+  "delete_with_user": false,
+  "can_export": true,
+  "capability_type": "post"
+ },
+ "taxonomy": {
+  "key": "taxonomy_ks_napravlenie",
+  "title": "Направления",
+  "menu_order": 0,
+  "active": true,
+  "taxonomy": "napravlenie",
+  "object_type": [
+   "uslugi"
+  ],
+  "advanced_configuration": true,
+  "import_source": "",
+  "import_date": "",
+  "labels": {
+   "name": "Направления",
+   "singular_name": "Направление",
+   "menu_name": "Направления",
+   "all_items": "Все направления",
+   "edit_item": "Изменить направление",
+   "view_item": "Посмотреть",
+   "update_item": "Обновить",
+   "add_new_item": "Добавить направление",
+   "new_item_name": "Название направления",
+   "search_items": "Найти направление",
+   "not_found": "Ничего не найдено"
+  },
+  "description": "Группы курсов и услуг на странице-перечне",
+  "public": false,
+  "publicly_queryable": false,
+  "hierarchical": true,
+  "show_ui": true,
+  "show_in_menu": true,
+  "show_in_nav_menus": false,
+  "show_in_rest": false,
+  "show_admin_column": true,
+  "show_tagcloud": false,
+  "show_in_quick_edit": true,
+  "rewrite": {
+   "permalink_rewrite": "no_permalink"
+  },
+  "query_var": "taxonomy",
+  "sort": false
+ }
+}

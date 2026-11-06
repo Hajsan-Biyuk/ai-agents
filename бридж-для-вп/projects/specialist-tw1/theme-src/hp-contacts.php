@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 }
 $hp_p = isset($hp_p) ? $hp_p : '';
 $hp_src = isset($hp_src) ? $hp_src : null;
-$hp_front = $hp_p === '' ? null : hp_front_id();
+$hp_front = hp_front_id();
 ?>
         <section class="hp-contacts" id="contacts">
             <div class="hp-container">

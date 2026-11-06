@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 }
 $hp_p = isset($hp_p) ? $hp_p : '';
 $hp_src = isset($hp_src) ? $hp_src : null;
-$hp_front = $hp_p === '' ? null : hp_front_id();
+$hp_front = hp_front_id();
 ?>
         <section class="hp-consult" id="consult">
             <div class="hp-container">
@@ -45,9 +45,10 @@ $hp_front = $hp_p === '' ? null : hp_front_id();
                             <label class="hp-field">
                                 <span class="hp-visually-hidden">Направление</span>
                                 <select name="training_direction" required>
-                                    <option value="" selected><?php echo esc_html(hp_t($hp_p . 'consult_placeholder', $hp_src)); ?></option>
-                                    <?php foreach (hp_rows($hp_p . 'consult_options', $hp_src) as $opt) : ?>
-                                        <option><?php echo esc_html($opt['label']); ?></option>
+                                    <?php $hp_sel = isset($hp_selected) ? $hp_selected : ''; ?>
+                                    <option value=""<?php echo $hp_sel === '' ? ' selected' : ''; ?>><?php echo esc_html(hp_t($hp_p . 'consult_placeholder', $hp_src)); ?></option>
+                                    <?php foreach ((isset($hp_options) && $hp_options ? $hp_options : hp_rows($hp_p . 'consult_options', $hp_src)) as $opt) : ?>
+                                        <option<?php echo $hp_sel !== '' && $hp_sel === $opt['label'] ? ' selected' : ''; ?>><?php echo esc_html($opt['label']); ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </label>
