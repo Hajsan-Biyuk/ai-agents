@@ -174,6 +174,9 @@
 				}
 				$arAddToBasketData = CMax::GetAddToBasketArray($arItem, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], false, array(), 'btn-exlg', $arParams);
 			}
+			if (function_exists('atriumOboiApplyBasketData') && !empty($arAddToBasketData) && is_array($arAddToBasketData)) {
+				atriumOboiApplyBasketData($arAddToBasketData, (int)$arItem['ID']);
+			}
 
 			switch ($arParams["LINE_ELEMENT_COUNT"])
 			{

@@ -3306,3 +3306,20 @@ body .counter_block input[type="text"] {
 		box-sizing: border-box;
 	}
 }
+
+.oboi-min-note {
+	display: inline-block;
+	margin: 8px 0 12px;
+	padding: 4px 10px;
+	border-radius: 6px;
+	background: #fceb2a;
+	color: #023420;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.35;
+}
+.basket-items-list-item-amount-outer .oboi-min-note {
+	display: block;
+	margin: 6px 0 0;
+	text-align: center;
+}

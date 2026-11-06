@@ -79,6 +79,9 @@
 					$arItem["SHOW_MORE_BUTTON"] = "Y";
 				}
 				$arAddToBasketData = CMax::GetAddToBasketArray($arItem, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], false, $arItemIDs["ALL_ITEM_IDS"], '', $arParams);
+				if (function_exists('atriumOboiApplyBasketData')) {
+					atriumOboiApplyBasketData($arAddToBasketData, (int)$arItem['ID']);
+				}
 			}
 			elseif($arItem["OFFERS"]){
 				$strMeasure = $arItem["MIN_PRICE"]["CATALOG_MEASURE_NAME"];
@@ -125,6 +128,9 @@
 					/* */
 
 					$arAddToBasketData = CMax::GetAddToBasketArray($arItem["OFFERS"][$arItem["OFFERS_SELECTED"]], $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], false, $arItemIDs["ALL_ITEM_IDS"], '', $arParams);
+					if (function_exists('atriumOboiApplyBasketData')) {
+						atriumOboiApplyBasketData($arAddToBasketData, (int)$arItem['ID']);
+					}
 
 					/* restore IBLOCK_ID */
 					$arItem["OFFERS"][$arItem["OFFERS_SELECTED"]]["IBLOCK_ID"] = $currentSKUIBlock;

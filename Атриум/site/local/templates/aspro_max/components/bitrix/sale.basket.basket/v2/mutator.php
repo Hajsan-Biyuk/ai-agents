@@ -210,6 +210,10 @@ foreach ($this->basketItems as $row)
 		'HAS_SERVICES' => $buyServices,
 		'USE_FAST_VIEW' => $bUseFastView,
 	);
+	if (function_exists('atriumIsOboiProduct') && atriumIsOboiProduct((int)$row['PRODUCT_ID'])) {
+		$rowData['OBOI_MIN_QTY'] = ATRIUM_OBOI_MIN_QTY;
+		$rowData['OBOI_MIN_NOTE'] = 'Заказ от 6 штук';
+	}
 	$typeStickers = \Bitrix\Main\Config\Option::get('aspro.max', 'ITEM_STICKER_CLASS_SOURCE', 'PROPERTY_VALUE', $rowData['LID']);
 	$parentItemIDs = [
 		'ID' => $row['PRODUCT_ID'],
@@ -583,7 +587,7 @@ foreach ($this->basketItems as $row)
 	}
 
 	// $rowData['NAME'] = '11';
-	$result['BASKET_ITEM_RENDER_DATA'][] = $rowData;
+	$result['BASKET_ITEM_RENDER_DATA'][$rowData['ID']] = $rowData;
 }
 $result['SERVICES_RENDER_DATA'] = $arServices;
 $result['ITEMS_RENDER_DATA'] = $arItems;

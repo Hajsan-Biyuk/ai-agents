@@ -138,7 +138,7 @@ $APPLICATION->SetPageProperty("description", "Купить плитку, кер�
 				$_catalog_param = array_merge($_catalog_param, array(
 					"FILTER_NAME" => "arrFilter",
 					"SET_TITLE" => "N", "SET_BROWSER_TITLE" => "N", "SET_META_DESCRIPTION" => "N", "SET_META_KEYWORDS" => "N",
-					"PAGE_ELEMENT_COUNT" => 20,
+					"PAGE_ELEMENT_COUNT" => 8,
 					"SECTION_CODE" => "aktsii",
 					"INCLUDE_SUBSECTIONS" => "Y",
 					"ELEMENT_SORT_FIELD" => "DATE_CREATE",
@@ -232,7 +232,7 @@ $APPLICATION->SetPageProperty("description", "Купить плитку, кер�
 					"SET_BROWSER_TITLE" => "N",
 					"SET_META_DESCRIPTION" => "N",
 					"SET_META_KEYWORDS" => "N",
-					"PAGE_ELEMENT_COUNT" => 20,
+					"PAGE_ELEMENT_COUNT" => 8,
 					"SECTION_ID" => "1104",
 					"SECTION_CODE" => "top",
 					"INCLUDE_SUBSECTIONS" => "Y",

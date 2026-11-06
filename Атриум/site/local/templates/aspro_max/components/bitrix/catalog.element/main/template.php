@@ -426,6 +426,10 @@ else
 	}
 	$arAddToBasketData = CMax::GetAddToBasketArray($arResult, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], true, $arItemIDs["ALL_ITEM_IDS"], 'btn-lg', $arParams);
 }
+$atriumOboiCard = function_exists('atriumIsOboiProduct') && atriumIsOboiProduct((int)$arResult['ID']);
+if ($atriumOboiCard && !empty($arAddToBasketData) && is_array($arAddToBasketData)) {
+	atriumOboiApplyBasketData($arAddToBasketData, (int)$arResult['ID']);
+}
 
 $OFFERS_CART_PROPERTIES = isset($arParams['OFFERS_CART_PROPERTIES']) && is_array($arParams['OFFERS_CART_PROPERTIES']) ? $arParams['OFFERS_CART_PROPERTIES'] : [];
 $arOfferProps = implode(';', $OFFERS_CART_PROPERTIES);
@@ -1361,7 +1365,13 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 											$arParams['ITEM_MEASURE'] = $arResult['ITEM_MEASURE'];									
 											?>
 											<?//if(($arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_DETAIL"] && $arAddToBasketData["ACTION"] == "ADD") && $arAddToBasketData["CAN_BUY"]):?>
-												<?=\Aspro\Functions\CAsproMax::showItemCounter($arAddToBasketData, $arResult["ID"], $arItemIDs, $arParams, 'md', '', true, true);?>
+												<?
+												$atriumCounterHtml = \Aspro\Functions\CAsproMax::showItemCounter($arAddToBasketData, $arResult["ID"], $arItemIDs, $arParams, 'md', '', true, true);
+												if (!empty($atriumOboiCard)) {
+													$atriumCounterHtml = atriumOboiPatchCounterHtml($atriumCounterHtml);
+												}
+												echo $atriumCounterHtml;
+												?>
 											<?//endif;?>
 											<div id="<? echo $arItemIDs["ALL_ITEM_IDS"]['BASKET_ACTIONS']; ?>" class="button_block <?=(($arAddToBasketData["ACTION"] == "ORDER" /*&& !$arResult["CAN_BUY"]*/) || !$arAddToBasketData["CAN_BUY"] || !$arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_DETAIL"] || ($arAddToBasketData["ACTION"] == "SUBSCRIBE" && $arResult["CATALOG_SUBSCRIBE"] == "Y")  ? "wide" : "");?>">
 												<!--noindex--><?=$arAddToBasketData["HTML"]?><!--/noindex-->
@@ -1386,8 +1396,17 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 												</script>
 											<?endif;?>
 										<?}?>
+										<?if(!empty($atriumOboiCard)):?>
+											<div class="oboi-min-note">Заказ от 6 штук</div>
+										<?endif;?>
 										<?if($arAddToBasketData["ACTION"] !== "NOTHING"):?>
-											<?=\Aspro\Functions\CAsproMax::showItemOCB($arAddToBasketData, $arResult, $arParams, false, '');?>
+											<?
+											$atriumOcbHtml = \Aspro\Functions\CAsproMax::showItemOCB($arAddToBasketData, $arResult, $arParams, false, '');
+											if (!empty($atriumOboiCard)) {
+												$atriumOcbHtml = atriumOboiPatchQuantityAttrs($atriumOcbHtml);
+											}
+											echo $atriumOcbHtml;
+											?>
 										<?endif;?>
 										
 									<?elseif($arResult["OFFERS"] && $arParams['TYPE_SKU'] == 'TYPE_1'):?>

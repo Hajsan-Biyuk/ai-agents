@@ -336,6 +336,13 @@ if(isset($isAjaxFilter) && $isAjaxFilter == "Y")
 				<?endif;?>
 			<?endif;?>
 <div class="item-cnt" data-count="<?=$itemsCnt;?>"></div>
+<?php
+$atriumSectionPath = (string)($arResult['VARIABLES']['SECTION_CODE_PATH'] ?? '');
+$atriumSectionCode = (string)($arResult['VARIABLES']['SECTION_CODE'] ?? '');
+if ($atriumSectionCode === 'oboi' || preg_match('~(^|/)oboi(/|$)~', $atriumSectionPath)) :
+?>
+<div class="oboi-min-note">Заказ от 6 штук</div>
+<?php endif; ?>
 <?if($itemsCnt):?>
 			<?if($isAjax=="N"){
 				$frame = new \Bitrix\Main\Page\FrameHelper("viewtype-block");

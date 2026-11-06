@@ -355,6 +355,9 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 						<div class="basket-items-list-item-overlay"></div>
 					{{/SHOW_LOADING}}
 				</div>
+				{{#OBOI_MIN_NOTE}}
+					<div class="oboi-min-note">{{OBOI_MIN_NOTE}}</div>
+				{{/OBOI_MIN_NOTE}}
 
 				{{#MEASURE_CONVERT}}
 						<div class="text-center measure-convert">{{MEASURE_CONVERT}} шт.</div>

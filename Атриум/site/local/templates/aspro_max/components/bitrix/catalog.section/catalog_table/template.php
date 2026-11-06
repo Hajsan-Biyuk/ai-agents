@@ -234,6 +234,9 @@ $bColProps = $arParams['SHOW_PROPS_TABLE'] == 'cols';
 					}
 					$arAddToBasketData = CMax::GetAddToBasketArray($arItem, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], false, array(), 'small', $arParams);
 				}
+				if (function_exists('atriumOboiApplyBasketData') && !empty($arAddToBasketData) && is_array($arAddToBasketData)) {
+					atriumOboiApplyBasketData($arAddToBasketData, (int)$arItem['ID']);
+				}
 				?>
 				<?//$arAddToBasketData = $arItem['ADD_TO_BASKET_DATA'];?>
 				<div class="table-view__item item bordered box-shadow main_item_wrapper js-notice-block" id="<?=$this->GetEditAreaId($arItem['ID']);?>" data-id="<?=$arItem["ID"]?>" data-product_type="<?=$arItem["CATALOG_TYPE"]?>">

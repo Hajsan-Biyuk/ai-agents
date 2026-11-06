@@ -1710,6 +1710,11 @@
         }
       }
 
+      var oboiMin = parseFloat(itemData.OBOI_MIN_QTY) || 0;
+      if (oboiMin && quantity < oboiMin && !(availableQuantity > 0 && availableQuantity < oboiMin)) {
+        quantity = oboiMin;
+      }
+
       var reminder = (quantity / measureRatio - (quantity / measureRatio).toFixed(0)).toFixed(5),
         remain;
 

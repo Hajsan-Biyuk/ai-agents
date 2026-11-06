@@ -12,6 +12,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/atrium_banner_cac
 
 // В заявке по плитке: штуки и площадь.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/atrium_tile_area.php';
+
+// Обои: заказ от 6 штук.
+require_once $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/atrium_oboi_min.php';
 AddEventHandler('sale', 'OnOrderNewSendEmail', 'atriumOnOrderNewSendEmail');
 
 // Заявки форм и заказов в группу Telegram. Письма не отменяются.
