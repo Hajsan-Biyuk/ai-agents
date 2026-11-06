@@ -39,41 +39,10 @@ $hp_front = hp_front_id();
                             </a>
                         </div>
                     </div>
-                    <form class="hp-form" action="<?php echo esc_url(get_template_directory_uri() . '/mail.php'); ?>" method="post">
+                    <div class="hp-form" data-selected="<?php echo esc_attr(isset($hp_selected) ? $hp_selected : ''); ?>">
                         <h3><?php echo esc_html(hp_t($hp_p . 'consult_form_title', $hp_src)); ?></h3>
-                        <div class="hp-form__fields">
-                            <label class="hp-field">
-                                <span class="hp-visually-hidden">Направление</span>
-                                <select name="training_direction" required>
-                                    <?php $hp_sel = isset($hp_selected) ? $hp_selected : ''; ?>
-                                    <option value=""<?php echo $hp_sel === '' ? ' selected' : ''; ?>><?php echo esc_html(hp_t($hp_p . 'consult_placeholder', $hp_src)); ?></option>
-                                    <?php foreach ((isset($hp_options) && $hp_options ? $hp_options : hp_rows($hp_p . 'consult_options', $hp_src)) as $opt) : ?>
-                                        <option<?php echo $hp_sel !== '' && $hp_sel === $opt['label'] ? ' selected' : ''; ?>><?php echo esc_html($opt['label']); ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </label>
-                            <label class="hp-field">
-                                <span class="hp-visually-hidden">Имя</span>
-                                <input type="text" name="name" placeholder="<?php echo esc_attr(hp_t('consult_name', $hp_front)); ?>" required>
-                            </label>
-                            <label class="hp-field">
-                                <span class="hp-visually-hidden">Телефон</span>
-                                <input class="input-phone" type="tel" name="phone" inputmode="numeric" placeholder="<?php echo esc_attr(hp_t('consult_phone', $hp_front)); ?>" required>
-                            </label>
-                        </div>
-                        <input type="hidden" name="form_type" value="<?php echo esc_attr(isset($hp_form_type) ? $hp_form_type : 'Главная'); ?>">
-                        <div class="hp-form__checks">
-                            <label class="hp-check">
-                                <input type="checkbox" name="pd_consent" value="1" checked required>
-                                <span><?php echo hp_rich(hp_t('consent_text', $hp_front)); ?></span>
-                            </label>
-                            <label class="hp-check">
-                                <input type="checkbox" name="pd_consent_info" value="1" checked required>
-                                <span><?php echo hp_rich(hp_t('consent_text_2', $hp_front)); ?></span>
-                            </label>
-                        </div>
-                        <button class="hp-btn hp-btn--cyan hp-btn--submit" type="submit"><?php echo esc_html(hp_t($hp_p . 'consult_submit', $hp_src)); ?> <?php hp_icon('icon-arrow.svg', 26, 20); ?></button>
-                    </form>
+                        <?php echo function_exists('hp_cf7_shortcode') ? hp_cf7_shortcode() : ''; ?>
+                    </div>
                 </div>
             </div>
         </section>

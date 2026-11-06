@@ -115,7 +115,39 @@ $(function () {
     $(".hp-vi").attr("aria-pressed", on ? "true" : "false");
   });
 
-  $(".hp-form").on("submit", function (e) {
-    e.preventDefault();
+  // Заявка идёт через Contact Form 7: после отправки — страница «Спасибо»
+  document.addEventListener("wpcf7mailsent", function () {
+    window.location.href = "/spasibo/";
+  });
+
+  // Маска телефона +7 (999) 999-99-99
+  $(document).on("input", "input.input-phone", function () {
+    var d = this.value.replace(/\D/g, "");
+    if (d.charAt(0) === "7" || d.charAt(0) === "8") {
+      d = d.slice(1);
+    }
+    d = d.slice(0, 10);
+    var out = "";
+    if (d.length) {
+      out = "+7 (" + d.slice(0, 3);
+      if (d.length >= 3) { out += ")"; }
+      if (d.length > 3) { out += " " + d.slice(3, 6); }
+      if (d.length > 6) { out += "-" + d.slice(6, 8); }
+      if (d.length > 8) { out += "-" + d.slice(8, 10); }
+    }
+    this.value = out;
+  });
+
+  // На странице услуги в списке направлений выбрана текущая услуга
+  $(".hp-form[data-selected]").each(function () {
+    var wanted = $.trim($(this).attr("data-selected"));
+    if (!wanted) {
+      return;
+    }
+    $(this).find("select[name='training_direction'] option").each(function () {
+      if ($.trim($(this).text()) === wanted) {
+        $(this).prop("selected", true);
+      }
+    });
   });
 });

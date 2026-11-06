@@ -50,12 +50,6 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
         </div>
     </footer>
 </div>
-<?php require_once get_template_directory() . '/recaptcha-config.php'; ?>
-<script>
-window.specRecaptchaSiteKey = <?php echo wp_json_encode(spec_recaptcha_site_key()); ?>;
-</script>
-<script src="https://www.google.com/recaptcha/api.js?render=<?php echo esc_attr(spec_recaptcha_site_key()); ?>"></script>
-<script src="<?php echo esc_url(JS_DIR . '/recaptcha.js?v=1'); ?>"></script>
 <?php wp_footer(); ?>
 </body>
 </html>
