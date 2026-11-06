@@ -45,7 +45,7 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
                     <a href="/privacy-policy/">Политика конфиденциальности</a>
                     <a href="/soglasie-na-obrabotku-personalnyh-dannyh/">Согласие на обработку персональных данных</a>
                 </div>
-                <p class="hp-footer__copy"><?php echo esc_html(hp_t('footer_copy')); ?> <a class="hp-footer__made" href="https://sheer.ru/" target="_blank" rel="noopener">Сделано в <img src="<?php echo esc_url(hp_theme_img('logo-sheer.svg')); ?>" alt="Шер" width="57" height="13"></a></p>
+                <p class="hp-footer__copy"><?php echo esc_html(preg_replace('/\b20\d{2}\b/', wp_date('Y'), hp_t('footer_copy'))); ?> <a class="hp-footer__made" href="https://sheer.ru/" target="_blank" rel="noopener">Сделано в <img src="<?php echo esc_url(hp_theme_img('logo-sheer.svg')); ?>" alt="Шер" width="57" height="13"></a></p>
             </div>
         </div>
     </footer>
