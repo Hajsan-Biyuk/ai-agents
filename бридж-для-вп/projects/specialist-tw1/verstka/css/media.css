@@ -5,9 +5,8 @@
   .hp-header__logo img { width: 320px; height: 76px; }
   .hp-nav { gap: 36px; }
   .hp-courses__list-col { width: 640px; flex-basis: 640px; }
-  .hp-tractor__card { grid-template-columns: minmax(0, 1fr) 560px; }
   .hp-companies__photo { width: 480px; flex-basis: 480px; }
-  .hp-hero__card { width: 440px; }
+  .hp-hero__card { width: 440px; height: auto; }
   .hp-hero__photo { height: 400px; }
 }
 
@@ -31,9 +30,11 @@
   .hp-need { min-height: 0; }
   .hp-form { width: 420px; flex-basis: 420px; padding: 28px; }
   .hp-hero__copy,
-  .hp-hero__title { max-width: none; }
+  .hp-hero__title { max-width: calc(100% - 480px); }
+  .hp-hero__copy .hp-hero__title { max-width: none; }
   .hp-footer__brand { width: 320px; flex-basis: 320px; }
   .hp-footer__col { width: 220px; flex-basis: 220px; }
+  .hp-companies__actions .hp-btn { flex: 1 1 0; white-space: normal; }
 }
 
 @media (max-width: 1400px) {
@@ -46,8 +47,7 @@
   .hp-nav { gap: 16px; flex-wrap: wrap; }
   .hp-nav__item > a { font-size: 14px; white-space: normal; }
   .hp-hero { min-height: 0; }
-  .hp-hero__inner { min-height: 0; padding-bottom: 40px; }
-  .hp-hero__copy { max-width: none; }
+  .hp-hero__inner { min-height: 780px; padding-bottom: 40px; }
   .hp-needs__grid,
   .hp-about__grid { flex-wrap: wrap; }
   .hp-need,
@@ -59,11 +59,16 @@
   .hp-courses__grid { flex-wrap: wrap; }
   .hp-dir,
   .hp-courses__stack { flex: 1 1 320px; }
-  .hp-tractor__card { grid-template-columns: 1fr; }
+  .hp-tractor__card { display: flex; flex-direction: column; height: auto; background: linear-gradient(96deg, #12366b 0%, #1b5ba4 100%); }
   .hp-tractor__card::before,
-  .hp-tractor__card::after { width: 100%; border-radius: 0; }
-  .hp-tractor__photo { min-height: 360px; order: -1; }
-  .hp-tractor__body { padding: 32px 24px; }
+  .hp-tractor__card::after { display: none; }
+  .hp-tractor__photo { position: relative; left: auto; width: 100%; height: 360px; order: -1; }
+  .hp-tractor__body { width: auto; padding: 32px 24px; }
+  .hp-consult__info { flex: none; min-height: 0; }
+  .hp-consult__info .hp-messengers--lg { margin-top: 0; }
+  .hp-docs__grid { min-height: 0; }
+  .hp-steps__flow,
+  .hp-steps__photo { flex: none; }
   .hp-polygon__gallery { height: auto; grid-template-columns: 1fr; }
   .hp-shot--main { min-height: 360px; }
   .hp-polygon__side { min-height: 480px; }
@@ -87,6 +92,8 @@
 @media (max-width: 1200px) {
   .hp-container { margin: 0 24px; }
   .hp-hero__card { position: relative; right: auto; bottom: auto; width: 100%; max-width: 496px; margin-top: 32px; }
+  .hp-hero__inner { min-height: 0; }
+  .hp-hero__copy { max-width: none; }
   .hp-title,
   .hp-hero__title { font-size: 30px; }
   .hp-header__logo img { width: 220px; height: 56px; }
@@ -131,7 +138,16 @@
   .hp-hero__actions .hp-btn,
   .hp-tractor__actions .hp-btn,
   .hp-companies__actions .hp-btn,
-  .hp-btn--arrow { width: 100%; }
+  .hp-btn--arrow,
+  .hp-tractor__actions .hp-btn:first-child,
+  .hp-tractor__actions .hp-btn:last-child,
+  .hp-polygon__bar .hp-btn { width: 100%; }
+  .hp-steps__row:last-child .hp-step:first-child,
+  .hp-steps__row:last-child .hp-step:last-child { flex: none; margin-left: 0; }
+  .hp-steps__badge { width: auto; max-width: calc(100% - 26px); }
+  .hp-need:first-child h3 { min-height: 0; }
+  .hp-footer__bar-inner { gap: 12px; }
+  .hp-footer__copy { flex-wrap: wrap; gap: 12px; }
   .hp-need h3,
   .hp-dir h3,
   .hp-why h3,

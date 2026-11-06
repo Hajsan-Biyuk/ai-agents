@@ -503,7 +503,7 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
                     <div class="hp-steps__photo">
                         <img src="<?php echo esc_url(hp_img('img_steps', 'process-docs.png')); ?>" alt="<?php echo esc_attr(hp_t('steps_alt')); ?>">
                         <div class="hp-steps__badge">
-                            <?php hp_icon('icon-docs.svg', 60, 60); ?>
+                            <?php hp_icon('icon-check-circle.svg', 60, 60); ?>
                             <p><?php echo hp_br(hp_t('steps_badge')); ?></p>
                         </div>
                     </div>
