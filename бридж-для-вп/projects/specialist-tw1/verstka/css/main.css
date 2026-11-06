@@ -238,21 +238,9 @@ html body :where(.hp) img { display: block; border: 0; }
 .hp-menu-overlay { display: none; }
 .hp-header__phone-ico {
   display: block;
-  width: 18px;
-  height: 18px;
-  border: 2px solid #091736;
-  border-radius: 4px;
-  position: relative;
-}
-.hp-header__phone-ico::after {
-  content: "";
-  position: absolute;
-  left: 4px;
-  bottom: 2px;
-  width: 6px;
-  height: 2px;
-  border-radius: 2px;
-  background: #091736;
+  width: 26px;
+  height: 26px;
+  background: url("../img/icon-phone.svg") center / 26px 26px no-repeat;
 }
 .hp-header__sandwich {
   width: 28px;
