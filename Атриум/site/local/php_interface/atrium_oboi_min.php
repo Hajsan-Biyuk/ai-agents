@@ -104,8 +104,23 @@ function atriumIsOboiProduct(int $productId): bool
 	return $ok;
 }
 
-function atriumOboiPatchQuantityAttrs(string $html): string
+function atriumOboiCaptureHtml(callable $render): string
 {
+	ob_start();
+	$returned = $render();
+	$buffered = ob_get_clean();
+	if (is_string($returned) && $returned !== '') {
+		return $returned;
+	}
+
+	return is_string($buffered) ? $buffered : '';
+}
+
+function atriumOboiPatchQuantityAttrs(?string $html): string
+{
+	if (!is_string($html) || $html === '') {
+		return '';
+	}
 	$min = ATRIUM_OBOI_MIN_QTY;
 
 	return preg_replace_callback(
@@ -122,8 +137,11 @@ function atriumOboiPatchQuantityAttrs(string $html): string
 	);
 }
 
-function atriumOboiPatchCounterHtml(string $html): string
+function atriumOboiPatchCounterHtml(?string $html): string
 {
+	if (!is_string($html) || $html === '') {
+		return '';
+	}
 	$min = ATRIUM_OBOI_MIN_QTY;
 	if (!preg_match('/\bdata-min="/', $html)) {
 		$html = preg_replace('/<span class="minus\b/', '<span data-min="' . $min . '" class="minus', $html, 1);

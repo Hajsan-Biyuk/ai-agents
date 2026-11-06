@@ -1366,7 +1366,9 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 											?>
 											<?//if(($arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_DETAIL"] && $arAddToBasketData["ACTION"] == "ADD") && $arAddToBasketData["CAN_BUY"]):?>
 												<?
-												$atriumCounterHtml = \Aspro\Functions\CAsproMax::showItemCounter($arAddToBasketData, $arResult["ID"], $arItemIDs, $arParams, 'md', '', true, true);
+												$atriumCounterHtml = atriumOboiCaptureHtml(static function () use ($arAddToBasketData, $arResult, $arItemIDs, $arParams) {
+													return \Aspro\Functions\CAsproMax::showItemCounter($arAddToBasketData, $arResult["ID"], $arItemIDs, $arParams, 'md', '', true, true);
+												});
 												if (!empty($atriumOboiCard)) {
 													$atriumCounterHtml = atriumOboiPatchCounterHtml($atriumCounterHtml);
 												}
@@ -1401,7 +1403,9 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 										<?endif;?>
 										<?if($arAddToBasketData["ACTION"] !== "NOTHING"):?>
 											<?
-											$atriumOcbHtml = \Aspro\Functions\CAsproMax::showItemOCB($arAddToBasketData, $arResult, $arParams, false, '');
+											$atriumOcbHtml = atriumOboiCaptureHtml(static function () use ($arAddToBasketData, $arResult, $arParams) {
+												return \Aspro\Functions\CAsproMax::showItemOCB($arAddToBasketData, $arResult, $arParams, false, '');
+											});
 											if (!empty($atriumOboiCard)) {
 												$atriumOcbHtml = atriumOboiPatchQuantityAttrs($atriumOcbHtml);
 											}
