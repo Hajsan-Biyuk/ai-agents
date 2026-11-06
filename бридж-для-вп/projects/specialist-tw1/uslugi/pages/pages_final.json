@@ -1,0 +1,927 @@
+{
+ "pages": [
+  {
+   "id": 9,
+   "title": "О компании",
+   "slug": "%d0%be-%d0%ba%d0%be%d0%bc%d0%bf%d0%b0%d0%bd%d0%b8%d0%b8",
+   "style": "sections",
+   "consult": 1,
+   "contacts": 0,
+   "h1": {
+    "before": "О компании",
+    "accent": "",
+    "after": ""
+   },
+   "sections": [
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Кто вы",
+     "accent": "и чем занимаетесь?",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>«Уважаемые клиенты!</p><p>С 1 января 2026 года наша организация будет применять ставку НДС 5% в соответствии с Федеральным законом от 28.11.2025 №425-ФЗ.</p><p>Все цены, счета и первичные документы будут оформлены с учётом новой ставки.</p><p>Просьба учитывать это при оплате счетов за оказание услуг.</p><p>Спасибо, что выбираете нас!»</p><p><strong>Крымский центр профессиональной подготовки кадров</strong> – это современный учебный центр по подготовке, повышению квалификации, аттестация руководителей, специалистов и профессиональное обучение персонала по широкому спектру профессий.</p><p>Наша компания с 2016 года предоставляет высококачественные услуги в сфере профессиональной подготовки кадров. За это время мы накопили большой опыт и готовы поделиться им с Вами. Осуществляя свою деятельность, мы постоянно стремимся получить новые навыки и знания.</p><p>Мы проводим обучение руководителей, специалистов и работников организаций согласно требованиям нормативно-правовых актов РФ по следующим направлениям:</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "list",
+     "style": "check",
+     "items": [
+      {
+       "text": "охрана труда"
+      },
+      {
+       "text": "работы на высоте"
+      },
+      {
+       "text": "пожарно-технический минимум"
+      },
+      {
+       "text": "экологическая безопасность"
+      },
+      {
+       "text": "промышленная безопасность"
+      },
+      {
+       "text": "электробезопасность"
+      },
+      {
+       "text": "ГО и ЧС"
+      },
+      {
+       "text": "обращение с опасными отходами"
+      },
+      {
+       "text": "эксплуатация тепловых энергоустановок"
+      }
+     ]
+    },
+    {
+     "acf_fc_layout": "list",
+     "style": "check",
+     "items": [
+      {
+       "text": "стропальщиков"
+      },
+      {
+       "text": "крановщиков"
+      },
+      {
+       "text": "лифтёров"
+      },
+      {
+       "text": "электромехаников лифтов"
+      },
+      {
+       "text": "водителей погрузчиков"
+      },
+      {
+       "text": "операторов котельных"
+      },
+      {
+       "text": "персонал, обслуживающий сосуды под давлением"
+      },
+      {
+       "text": "профессиональную переподготовку диспетчеров"
+      },
+      {
+       "text": "специалистов по БДД"
+      }
+     ]
+    },
+    {
+     "acf_fc_layout": "list",
+     "style": "check",
+     "items": [
+      {
+       "text": "контролёров"
+      },
+      {
+       "text": "специалистов по ОТ"
+      },
+      {
+       "text": "специалистов в сфере закупок"
+      },
+      {
+       "text": "водитель квадроцикла"
+      },
+      {
+       "text": "водитель маломерных судов"
+      },
+      {
+       "text": "матрос-спасатель"
+      },
+      {
+       "text": "тракторист"
+      },
+      {
+       "text": "бульдозерист"
+      },
+      {
+       "text": "и др."
+      }
+     ]
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>По результатам подготовки и аттестации выдаются документы установленного образца.</p><p>Наш многолетний опыт позволяет качественно организовать учебный процесс в удобной для вас форме.</p><p>Индивидуально подойдем к любому вашего вопросу или проблеме, подберем удобные условия именно под Ваши требования.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Наши",
+     "accent": "документы",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "images",
+     "variant": "slider",
+     "images": [
+      {
+       "image": "file:pg-documents__1-1.jpg",
+       "link": "",
+       "alt": "Наши документы"
+      },
+      {
+       "image": "file:pg-documents__1.jpg",
+       "link": "",
+       "alt": "Наши документы"
+      },
+      {
+       "image": "file:pg-documents__2.jpg",
+       "link": "",
+       "alt": "Наши документы"
+      },
+      {
+       "image": "file:pg-documents__3.jpg",
+       "link": "",
+       "alt": "Наши документы"
+      },
+      {
+       "image": "file:pg-documents__4.jpg",
+       "link": "",
+       "alt": "Наши документы"
+      },
+      {
+       "image": "file:pg-documents__5.jpg",
+       "link": "",
+       "alt": "Наши документы"
+      },
+      {
+       "image": "file:pg-documents__6.jpg",
+       "link": "",
+       "alt": "Наши документы"
+      },
+      {
+       "image": "file:pg-documents__7.jpg",
+       "link": "",
+       "alt": "Наши документы"
+      }
+     ]
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Благодарности",
+     "accent": "наших клиентов",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "images",
+     "variant": "slider",
+     "images": [
+      {
+       "image": "file:pg-thanks-from-clients__image-1.jpg",
+       "link": "",
+       "alt": "Благодарности наших клиентов"
+      },
+      {
+       "image": "file:pg-thanks-from-clients__image-2.jpg",
+       "link": "",
+       "alt": "Благодарности наших клиентов"
+      },
+      {
+       "image": "file:pg-thanks-from-clients__image-3.jpg",
+       "link": "",
+       "alt": "Благодарности наших клиентов"
+      },
+      {
+       "image": "file:pg-thanks-from-clients__image-4.jpg",
+       "link": "",
+       "alt": "Благодарности наших клиентов"
+      },
+      {
+       "image": "file:pg-thanks-from-clients__image-5.jpg",
+       "link": "",
+       "alt": "Благодарности наших клиентов"
+      },
+      {
+       "image": "file:pg-thanks-from-clients__image-6.jpg",
+       "link": "",
+       "alt": "Благодарности наших клиентов"
+      },
+      {
+       "image": "file:pg-thanks-from-clients__image-7.jpg",
+       "link": "",
+       "alt": "Благодарности наших клиентов"
+      },
+      {
+       "image": "file:pg-thanks-from-clients__image-8.jpg",
+       "link": "",
+       "alt": "Благодарности наших клиентов"
+      },
+      {
+       "image": "file:pg-thanks-from-clients__image-9.jpg",
+       "link": "",
+       "alt": "Благодарности наших клиентов"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "title": "Контакты",
+   "slug": "%d0%ba%d0%be%d0%bd%d1%82%d0%b0%d0%ba%d1%82%d1%8b",
+   "style": "sections",
+   "consult": 1,
+   "contacts": 1,
+   "h1": {
+    "before": "Контакты",
+    "accent": "",
+    "after": ""
+   },
+   "sections": [
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Как нас",
+     "accent": "найти",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>ООО «Крымский центр профессиональной подготовки кадров «Специалист»</p>",
+     "emphasis": 1
+    },
+    {
+     "acf_fc_layout": "facts",
+     "rows": [
+      {
+       "label": "Адрес",
+       "value": "295000 Республика Крым, г. Симферополь, ул. Горького, д.8/10, эт. 2, оф. 26"
+      },
+      {
+       "label": "Директор",
+       "value": "Ацута Александр Георгиевич"
+      },
+      {
+       "label": "Телефоны",
+       "value": "<a href=\"tel:+79786451000\">+7(978)645-1000,</a> <a href=\"tel:+79787293338\">+7 (978) 729-33-38</a>, <a href=\"tel:+79789054197\">+7 (978) 905-41-97,</a>"
+      },
+      {
+       "label": "E-mail",
+       "value": "<a href=\"mailto:kzppk82@gmail.com\">kzppk82@gmail.com</a>"
+      },
+      {
+       "label": "Веб-сайт",
+       "value": "<a href=\"https://xn---082-43d3avb0a0bvgn4c.xn--p1ai/\">специалист-082.рф</a>"
+      },
+      {
+       "label": "Адрес практической подготовки машинистов самоходной техники",
+       "value": "г. Белогорск, ул. Тайганская, 1"
+      },
+      {
+       "label": "Реквизиты",
+       "value": "ООО «КЦППК«СПЕЦИАЛИСТ»<br>ОГРН 1169102091289<br>ИНН 9102221710"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 381,
+   "title": "Фотогалерея",
+   "slug": "%d1%84%d0%be%d1%82%d0%be%d0%b3%d0%b0%d0%bb%d0%b5%d1%80%d0%b5%d1%8f",
+   "style": "sections",
+   "consult": 1,
+   "contacts": 0,
+   "h1": {
+    "before": "Фотогалерея",
+    "accent": "",
+    "after": ""
+   },
+   "sections": [
+    {
+     "acf_fc_layout": "images",
+     "variant": "gallery",
+     "images": [
+      {
+       "image": "file:pg-gallery__1.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__2.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__3.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__4.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__5.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__7.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__8.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__9.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__10.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__11.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__12.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__13.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__14.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__15.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__16.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__17.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__18.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__19.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      },
+      {
+       "image": "file:pg-gallery__20.jpg",
+       "link": "",
+       "alt": "Фотогалерея"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 384,
+   "title": "Наша техника и полигон для практических занятий",
+   "slug": "%d0%bd%d0%b0%d1%88%d0%b0-%d1%82%d0%b5%d1%85%d0%bd%d0%b8%d0%ba%d0%b0-%d0%b8-%d0%bf%d0%be%d0%bb%d0%b8%d0%b3%d0%be%d0%bd-%d0%b4%d0%bb%d1%8f-%d0%b7%d0%b0%d0%bd%d1%8f%d1%82%d0%b8%d0%b9",
+   "style": "sections",
+   "consult": 1,
+   "contacts": 0,
+   "h1": {
+    "before": "Наша техника и полигон для практических занятий",
+    "accent": "",
+    "after": ""
+   },
+   "sections": [
+    {
+     "acf_fc_layout": "embed",
+     "code": "<iframe allowfullscreen=\"allowfullscreen\" frameborder=\"0\" height=\"315\" src=\"https://rutube.ru/play/embed/69998dc9801a55e44c5c7ff205df30c6/\" width=\"560\"></iframe>"
+    },
+    {
+     "acf_fc_layout": "embed",
+     "code": "<iframe allowfullscreen=\"allowfullscreen\" frameborder=\"0\" height=\"315\" src=\"https://rutube.ru/play/embed/9c4b2c4bba6a67780665efa45e65b777/\" width=\"560\"></iframe>"
+    },
+    {
+     "acf_fc_layout": "embed",
+     "code": "<iframe allowfullscreen=\"allowfullscreen\" frameborder=\"0\" height=\"315\" src=\"https://rutube.ru/play/embed/e63fc24870d3a1f984a45851d280a030/\" width=\"560\"></iframe>"
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Практические занятия проходят по графику, несмотря на проблемы с топливом. Дополнительных расходов за это не предусмотрено.</p>",
+     "emphasis": 0
+    }
+   ]
+  },
+  {
+   "id": 486,
+   "title": "Сведения об образовательной организации",
+   "slug": "%d1%81%d0%b2%d0%b5%d0%b4%d0%b5%d0%bd%d0%b8%d1%8f-%d0%be%d0%b1-%d0%be%d0%b1%d1%80%d0%b0%d0%b7%d0%be%d0%b2%d0%b0%d1%82%d0%b5%d0%bb%d1%8c%d0%bd%d0%be%d0%b9-%d0%be%d1%80%d0%b3%d0%b0%d0%bd%d0%b8%d0%b7",
+   "style": "sections",
+   "consult": 0,
+   "contacts": 0,
+   "h1": {
+    "before": "Сведения об образовательной организации",
+    "accent": "",
+    "after": ""
+   },
+   "sections": [
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "ООО «Крымский Центр Профессиональной Подготовки Кадров «Специалист» (ООО «КЦППК «СПЕЦИАЛИСТ»)",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Уважаемые клиенты!",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p><em><strong>С 1 января 2026 года в нашей компании применяется ставка НДС 5%. Это нововведение предусмотрено Федеральным законом от 28.11.2025 № 425-ФЗ. Все цены указаны с учётом налоговой ставки. Спасибо за доверие!</strong></em></p>",
+     "emphasis": 1
+    },
+    {
+     "acf_fc_layout": "facts",
+     "rows": [
+      {
+       "label": "Дата регистрации",
+       "value": "2 декабря 2016 года"
+      }
+     ]
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 3,
+     "before": "Учредители",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "list",
+     "style": "marker",
+     "items": [
+      {
+       "text": "<a href=\"https://checko.ru/person/911115517327\">Ацута Александр Георгиевич</a> с 2 декабря 2016 г."
+      },
+      {
+       "text": "<a href=\"https://checko.ru/person/910227906190\">Шперов Олег Валентинович</a> с 2 декабря 2016 г."
+      }
+     ]
+    },
+    {
+     "acf_fc_layout": "facts",
+     "rows": [
+      {
+       "label": "Организационно-правовая форма",
+       "value": "ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ"
+      },
+      {
+       "label": "Полное наименование юридического лица",
+       "value": "Общество с ограниченной ответственностью «Крымский Центр Профессиональной Подготовки Кадров «СПЕЦИАЛИСТ»"
+      },
+      {
+       "label": "Краткое наименование юридического лица",
+       "value": "ООО «КЦППК «СПЕЦИАЛИСТ»"
+      },
+      {
+       "label": "Юридический адрес",
+       "value": "295000 РК, г. Симферополь, ул. Горького 8/10 офис 25, 26"
+      },
+      {
+       "label": "ОГРН",
+       "value": "1169102091289"
+      },
+      {
+       "label": "ИНН",
+       "value": "9102221710"
+      },
+      {
+       "label": "ОКПО",
+       "value": "05882401"
+      },
+      {
+       "label": "КПП",
+       "value": "910201001"
+      },
+      {
+       "label": "Расчетный счет",
+       "value": "40702810652000002236"
+      },
+      {
+       "label": "Корреспондентский счет",
+       "value": "30101810600000000602"
+      },
+      {
+       "label": "Банк",
+       "value": "ЮГО-ЗАПАДНЫЙ БАНК ПАО СБЕРБАНК"
+      },
+      {
+       "label": "БИК",
+       "value": "046015602"
+      },
+      {
+       "label": "Генеральный директор",
+       "value": "Ацута Александр Георгиевич"
+      },
+      {
+       "label": "Телефон",
+       "value": "+7 978 905 41 97"
+      },
+      {
+       "label": "Электронная почта",
+       "value": "kzppk82@xmail.ru"
+      },
+      {
+       "label": "Вебсайт",
+       "value": "https://специалист082.рф"
+      },
+      {
+       "label": "ОКАТО",
+       "value": "35401000000"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "title": "Политика конфиденциальности",
+   "slug": "privacy-policy",
+   "style": "document",
+   "consult": 0,
+   "contacts": 0,
+   "h1": {
+    "before": "Политика конфиденциальности",
+    "accent": "",
+    "after": ""
+   },
+   "sections": [
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Редакция от 15 октября 2026 года.</p><p>Настоящая политика описывает, как ООО «Крымский центр профессиональной подготовки кадров «Специалист» обрабатывает персональные данные посетителей сайта <a href=\"https://xn---082-43d3avb0a0bvgn4c.xn--p1ai/\">специалист-082.рф</a>.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "1. Кто обрабатывает данные",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Оператор: ООО «Крымский центр профессиональной подготовки кадров «Специалист» (ООО «КЦППК «Специалист»).</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "list",
+     "style": "marker",
+     "items": [
+      {
+       "text": "ОГРН 1169102091289"
+      },
+      {
+       "text": "ИНН 9102221710"
+      },
+      {
+       "text": "Адрес: 295000, Республика Крым, г. Симферополь, ул. Горького, д. 8/10, эт. 2, оф. 26"
+      },
+      {
+       "text": "Директор: Ацута Александр Георгиевич"
+      },
+      {
+       "text": "Телефоны: <a href=\"tel:+79789054197\">+7 (978) 905-41-97</a>, <a href=\"tel:+79787293338\">+7 (978) 729-33-38</a>, <a href=\"tel:+79786451000\">+7 (978) 645-1000</a>"
+      },
+      {
+       "text": "E-mail: <a href=\"mailto:kzppk82@gmail.com\">kzppk82@gmail.com</a>"
+      }
+     ]
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "2. Какие данные мы получаем",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Через формы на сайте: имя, номер телефона, адрес электронной почты, выбранное направление обучения и текст сообщения.</p><p>При посещении сайта автоматически могут сохраняться IP-адрес, сведения о браузере и устройстве, а также файлы cookie. На сайте подключены Яндекс.Метрика и Google Analytics.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "3. Для чего нужны данные",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "list",
+     "style": "marker",
+     "items": [
+      {
+       "text": "ответить на заявку и связаться по поводу обучения или консультации;"
+      },
+      {
+       "text": "записать на курс и подготовить документы учебного центра;"
+      },
+      {
+       "text": "понимать, как пользуются сайтом, и исправлять ошибки в его работе."
+      }
+     ]
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "4. На каком основании",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Данные из форм обрабатываются на основании согласия, которое посетитель даёт, отмечая чекбокс перед отправкой. Согласие можно отозвать. Если данные нужны, чтобы ответить на уже отправленную заявку, обработка также нужна для этой цели.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "5. Кому данные передаются",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Заявки приходят на электронную почту оператора. Персональные данные не продаются и не передаются для чужой рекламы. Технические сведения о визите могут обрабатываться сервисами аналитики (Яндекс, Google) и хостингом — чтобы сайт открывался и была видна статистика посещений.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "6. Сколько времени хранятся данные",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Данные из заявки хранятся, пока по ней идёт переписка и пока они нужны для обучения или документов. Затем они удаляются, если закон не требует хранить их дольше. Cookie аналитики можно удалить в настройках браузера; срок их хранения задают сами сервисы аналитики.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "7. Какие есть права",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Можно запросить сведения о своих данных, попросить их исправить или удалить, а также отозвать согласие. Для этого напишите на <a href=\"mailto:kzppk82@gmail.com\">kzppk82@gmail.com</a> или по адресу оператора. Отзыв согласия не отменяет обработку, которая была законной до отзыва.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "8. Как защищаем данные",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Сайт открывается по защищённому соединению HTTPS. Доступ к почте, на которую приходят заявки, ограничен.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "9. Изменения политики",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Если правила обработки изменятся, новая редакция будет опубликована на этой странице.</p>",
+     "emphasis": 0
+    }
+   ]
+  },
+  {
+   "id": 550,
+   "title": "Согласие на обработку персональных данных",
+   "slug": "soglasie-na-obrabotku-personalnyh-dannyh",
+   "style": "document",
+   "consult": 0,
+   "contacts": 0,
+   "h1": {
+    "before": "Согласие на обработку персональных данных",
+    "accent": "",
+    "after": ""
+   },
+   "sections": [
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Редакция от 15 октября 2026 года.</p><p>Отправляя форму на сайте <a href=\"https://xn---082-43d3avb0a0bvgn4c.xn--p1ai/\">специалист-082.рф</a> и отмечая чекбокс, посетитель даёт согласие ООО «Крымский центр профессиональной подготовки кадров «Специалист» на обработку своих персональных данных.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Оператор",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "list",
+     "style": "marker",
+     "items": [
+      {
+       "text": "ООО «Крымский центр профессиональной подготовки кадров «Специалист»"
+      },
+      {
+       "text": "ОГРН 1169102091289, ИНН 9102221710"
+      },
+      {
+       "text": "Адрес: 295000, Республика Крым, г. Симферополь, ул. Горького, д. 8/10, эт. 2, оф. 26"
+      },
+      {
+       "text": "E-mail: <a href=\"mailto:kzppk82@gmail.com\">kzppk82@gmail.com</a>"
+      },
+      {
+       "text": "Телефоны: <a href=\"tel:+79789054197\">+7 (978) 905-41-97</a>, <a href=\"tel:+79787293338\">+7 (978) 729-33-38</a>"
+      }
+     ]
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Какие данные",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Имя, номер телефона, адрес электронной почты, направление обучения и текст сообщения, которые указаны в форме.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Цель",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Связаться по заявке: проконсультировать, записать на обучение и подготовить документы учебного центра.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Что делается с данными",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Сбор, запись, хранение, уточнение, использование и удаление. Заявка поступает сотруднику центра на электронную почту kzppk82@gmail.com.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Срок",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>До отзыва согласия или до момента, когда данные больше не нужны для заявки и обучения, если закон не требует хранить их дольше.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "heading",
+     "level": 2,
+     "before": "Как отозвать согласие",
+     "accent": "",
+     "after": ""
+    },
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Написать на <a href=\"mailto:kzppk82@gmail.com\">kzppk82@gmail.com</a> или по адресу оператора. Если без этих данных нельзя связаться, заявка может остаться без ответа.</p><p>Подробный порядок обработки описан в <a href=\"/privacy-policy/\">политике конфиденциальности</a>.</p>",
+     "emphasis": 0
+    }
+   ]
+  },
+  {
+   "id": 552,
+   "title": "Спасибо",
+   "slug": "spasibo",
+   "style": "notice",
+   "consult": 0,
+   "contacts": 0,
+   "h1": {
+    "before": "Спасибо",
+    "accent": "",
+    "after": ""
+   },
+   "sections": [
+    {
+     "acf_fc_layout": "text",
+     "content": "<p>Заявка отправлена. Наши менеджеры скоро свяжутся с вами.</p>",
+     "emphasis": 0
+    },
+    {
+     "acf_fc_layout": "button",
+     "label": "На главную",
+     "url": "/"
+    }
+   ]
+  }
+ ],
+ "files": [
+  "pg-documents__1-1.jpg",
+  "pg-documents__1.jpg",
+  "pg-documents__2.jpg",
+  "pg-documents__3.jpg",
+  "pg-documents__4.jpg",
+  "pg-documents__5.jpg",
+  "pg-documents__6.jpg",
+  "pg-documents__7.jpg",
+  "pg-gallery__1.jpg",
+  "pg-gallery__10.jpg",
+  "pg-gallery__11.jpg",
+  "pg-gallery__12.jpg",
+  "pg-gallery__13.jpg",
+  "pg-gallery__14.jpg",
+  "pg-gallery__15.jpg",
+  "pg-gallery__16.jpg",
+  "pg-gallery__17.jpg",
+  "pg-gallery__18.jpg",
+  "pg-gallery__19.jpg",
+  "pg-gallery__2.jpg",
+  "pg-gallery__20.jpg",
+  "pg-gallery__3.jpg",
+  "pg-gallery__4.jpg",
+  "pg-gallery__5.jpg",
+  "pg-gallery__7.jpg",
+  "pg-gallery__8.jpg",
+  "pg-gallery__9.jpg",
+  "pg-thanks-from-clients__image-1.jpg",
+  "pg-thanks-from-clients__image-2.jpg",
+  "pg-thanks-from-clients__image-3.jpg",
+  "pg-thanks-from-clients__image-4.jpg",
+  "pg-thanks-from-clients__image-5.jpg",
+  "pg-thanks-from-clients__image-6.jpg",
+  "pg-thanks-from-clients__image-7.jpg",
+  "pg-thanks-from-clients__image-8.jpg",
+  "pg-thanks-from-clients__image-9.jpg"
+ ],
+ "err404": {
+  "err404_title": "Страница не найдена",
+  "err404_text": "Такой страницы нет или ссылка устарела.",
+  "err404_btn": "На главную"
+ }
+}

@@ -1,0 +1,461 @@
+{
+ "groups": [
+  {
+   "key": "group_pg_inner",
+   "title": "Страница (внутренняя)",
+   "fields": [
+    {
+     "key": "field_pg_tab_head",
+     "label": "Заголовок",
+     "name": "",
+     "type": "tab",
+     "placement": "top",
+     "endpoint": 0
+    },
+    {
+     "key": "field_pg_h1_before",
+     "label": "Заголовок H1: текст до выделенной части",
+     "name": "pg_h1_before",
+     "type": "text"
+    },
+    {
+     "key": "field_pg_h1_accent",
+     "label": "Заголовок H1: выделенная цветом часть",
+     "name": "pg_h1_accent",
+     "type": "text"
+    },
+    {
+     "key": "field_pg_h1_after",
+     "label": "Заголовок H1: текст после",
+     "name": "pg_h1_after",
+     "type": "text"
+    },
+    {
+     "key": "field_pg_lead",
+     "label": "Подзаголовок",
+     "name": "pg_lead",
+     "type": "wysiwyg",
+     "tabs": "all",
+     "toolbar": "basic",
+     "media_upload": 0,
+     "delay": 1
+    },
+    {
+     "key": "field_pg_tab_view",
+     "label": "Вид страницы",
+     "name": "",
+     "type": "tab",
+     "placement": "top",
+     "endpoint": 0
+    },
+    {
+     "key": "field_pg_style",
+     "label": "Вид",
+     "name": "pg_style",
+     "type": "select",
+     "allow_null": 0,
+     "multiple": 0,
+     "ui": 0,
+     "return_format": "value",
+     "choices": {
+      "sections": "Разделы на разном фоне",
+      "document": "Документ (узкая колонка)",
+      "notice": "Сообщение по центру"
+     },
+     "default_value": "sections"
+    },
+    {
+     "key": "field_pg_show_consult",
+     "label": "Показывать форму консультации",
+     "name": "pg_show_consult",
+     "type": "true_false",
+     "ui": 1,
+     "default_value": 0
+    },
+    {
+     "key": "field_pg_show_contacts",
+     "label": "Показывать карты офисов",
+     "name": "pg_show_contacts",
+     "type": "true_false",
+     "ui": 1,
+     "default_value": 0
+    },
+    {
+     "key": "field_pg_tab_body",
+     "label": "Содержимое",
+     "name": "",
+     "type": "tab",
+     "placement": "top",
+     "endpoint": 0
+    },
+    {
+     "key": "field_pg_sections",
+     "label": "Блоки страницы",
+     "name": "pg_sections",
+     "type": "flexible_content",
+     "instructions": "Блоки идут на странице сверху вниз. Новый «Заголовок раздела» начинает новый раздел страницы.",
+     "button_label": "Добавить блок",
+     "min": "",
+     "max": "",
+     "layouts": [
+      {
+       "key": "layout_pg_heading",
+       "name": "heading",
+       "label": "Заголовок раздела",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_pg_sec__heading__level",
+         "label": "Размер",
+         "name": "level",
+         "type": "select",
+         "allow_null": 0,
+         "multiple": 0,
+         "ui": 0,
+         "return_format": "value",
+         "choices": {
+          "2": "Заголовок раздела",
+          "3": "Подзаголовок",
+          "4": "Малый заголовок"
+         },
+         "default_value": "2"
+        },
+        {
+         "key": "field_pg_sec__heading__before",
+         "label": "Текст до выделенной части",
+         "name": "before",
+         "type": "text"
+        },
+        {
+         "key": "field_pg_sec__heading__accent",
+         "label": "Выделенная цветом часть",
+         "name": "accent",
+         "type": "text"
+        },
+        {
+         "key": "field_pg_sec__heading__after",
+         "label": "Текст после выделенной части",
+         "name": "after",
+         "type": "text"
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_pg_text",
+       "name": "text",
+       "label": "Текст",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_pg_sec__text__content",
+         "label": "Текст",
+         "name": "content",
+         "type": "wysiwyg",
+         "tabs": "all",
+         "toolbar": "basic",
+         "media_upload": 0,
+         "delay": 1
+        },
+        {
+         "key": "field_pg_sec__text__emphasis",
+         "label": "Выделенный абзац (плашка)",
+         "name": "emphasis",
+         "type": "true_false",
+         "ui": 1,
+         "default_value": 0
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_pg_list",
+       "name": "list",
+       "label": "Список",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_pg_sec__list__style",
+         "label": "Вид списка",
+         "name": "style",
+         "type": "select",
+         "allow_null": 0,
+         "multiple": 0,
+         "ui": 0,
+         "return_format": "value",
+         "choices": {
+          "marker": "С маркерами",
+          "check": "С галочками",
+          "warning": "С предупреждением",
+          "numbered": "Нумерованный"
+         },
+         "default_value": "marker"
+        },
+        {
+         "key": "field_pg_sec__list__items",
+         "label": "Пункты",
+         "name": "items",
+         "type": "repeater",
+         "layout": "table",
+         "button_label": "Добавить пункт",
+         "sub_fields": [
+          {
+           "key": "field_pg_sec__list__items__text",
+           "label": "Пункт",
+           "name": "text",
+           "type": "textarea",
+           "rows": 2,
+           "new_lines": ""
+          }
+         ]
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_pg_facts",
+       "name": "facts",
+       "label": "Реквизиты (название — значение)",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_pg_sec__facts__rows",
+         "label": "Строки",
+         "name": "rows",
+         "type": "repeater",
+         "layout": "table",
+         "button_label": "Добавить строку",
+         "sub_fields": [
+          {
+           "key": "field_pg_sec__facts__rows__label",
+           "label": "Название",
+           "name": "label",
+           "type": "text"
+          },
+          {
+           "key": "field_pg_sec__facts__rows__value",
+           "label": "Значение",
+           "name": "value",
+           "type": "textarea",
+           "rows": 2,
+           "new_lines": ""
+          }
+         ]
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_pg_images",
+       "name": "images",
+       "label": "Изображения",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_pg_sec__images__variant",
+         "label": "Вид",
+         "name": "variant",
+         "type": "select",
+         "allow_null": 0,
+         "multiple": 0,
+         "ui": 0,
+         "return_format": "value",
+         "choices": {
+          "documents": "Сетка (документы, свидетельства)",
+          "slider": "Лента с прокруткой",
+          "gallery": "Фотогалерея"
+         },
+         "default_value": "documents"
+        },
+        {
+         "key": "field_pg_sec__images__images",
+         "label": "Изображения",
+         "name": "images",
+         "type": "repeater",
+         "layout": "table",
+         "button_label": "Добавить изображение",
+         "sub_fields": [
+          {
+           "key": "field_pg_sec__images__images__image",
+           "label": "Изображение",
+           "name": "image",
+           "type": "image",
+           "return_format": "id",
+           "preview_size": "medium",
+           "library": "all"
+          },
+          {
+           "key": "field_pg_sec__images__images__link",
+           "label": "Ссылка (если картинка ведёт на другой сайт)",
+           "name": "link",
+           "type": "url"
+          }
+         ]
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_pg_embed",
+       "name": "embed",
+       "label": "Видео или вставка",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_pg_sec__embed__code",
+         "label": "Код вставки (iframe)",
+         "name": "code",
+         "type": "textarea",
+         "rows": 4,
+         "new_lines": ""
+        }
+       ],
+       "min": "",
+       "max": ""
+      },
+      {
+       "key": "layout_pg_button",
+       "name": "button",
+       "label": "Кнопка",
+       "display": "block",
+       "sub_fields": [
+        {
+         "key": "field_pg_sec__button__label",
+         "label": "Текст кнопки",
+         "name": "label",
+         "type": "text"
+        },
+        {
+         "key": "field_pg_sec__button__url",
+         "label": "Ссылка",
+         "name": "url",
+         "type": "text"
+        }
+       ],
+       "min": "",
+       "max": ""
+      }
+     ]
+    }
+   ],
+   "location": [
+    [
+     {
+      "param": "page",
+      "operator": "==",
+      "value": "9"
+     }
+    ],
+    [
+     {
+      "param": "page",
+      "operator": "==",
+      "value": "16"
+     }
+    ],
+    [
+     {
+      "param": "page",
+      "operator": "==",
+      "value": "381"
+     }
+    ],
+    [
+     {
+      "param": "page",
+      "operator": "==",
+      "value": "384"
+     }
+    ],
+    [
+     {
+      "param": "page",
+      "operator": "==",
+      "value": "486"
+     }
+    ],
+    [
+     {
+      "param": "page",
+      "operator": "==",
+      "value": "3"
+     }
+    ],
+    [
+     {
+      "param": "page",
+      "operator": "==",
+      "value": "550"
+     }
+    ],
+    [
+     {
+      "param": "page",
+      "operator": "==",
+      "value": "552"
+     }
+    ]
+   ],
+   "menu_order": 0,
+   "position": "normal",
+   "style": "default",
+   "label_placement": "top",
+   "instruction_placement": "label",
+   "hide_on_screen": [
+    "the_content"
+   ],
+   "active": true,
+   "show_in_rest": 0,
+   "description": "Внутренние страницы в новом дизайне: О компании, Контакты, Фотогалерея, Наша техника, Сведения, политика, согласие, Спасибо. Шаблон page-inner.php."
+  },
+  {
+   "key": "group_pg_404",
+   "title": "Страница 404",
+   "fields": [
+    {
+     "key": "field_pg_err404_title",
+     "label": "Заголовок",
+     "name": "err404_title",
+     "type": "text"
+    },
+    {
+     "key": "field_pg_err404_text",
+     "label": "Текст",
+     "name": "err404_text",
+     "type": "textarea",
+     "rows": 3,
+     "new_lines": ""
+    },
+    {
+     "key": "field_pg_err404_btn",
+     "label": "Текст кнопки",
+     "name": "err404_btn",
+     "type": "text"
+    }
+   ],
+   "location": [
+    [
+     {
+      "param": "options_page",
+      "operator": "==",
+      "value": "hp-header-footer"
+     }
+    ]
+   ],
+   "menu_order": 5,
+   "position": "normal",
+   "style": "default",
+   "label_placement": "top",
+   "instruction_placement": "label",
+   "hide_on_screen": [],
+   "active": true,
+   "show_in_rest": 0,
+   "description": "Страница «Не найдено» (404.php). Поля на странице «Шапка и подвал»."
+  }
+ ]
+}

@@ -95,8 +95,28 @@ function ks_group_sections($rows) {
 function ks_block($r) {
     switch ($r['acf_fc_layout']) {
         case 'heading':
-            $lvl = max(3, min(4, (int) $r['level']));
+            $lvl = max(2, min(4, (int) $r['level']));
+            if ($lvl === 2) {
+                echo '<h2 class="ks-doc-h2">' . ks_heading_inner($r) . '</h2>';
+                break;
+            }
             printf('<h%1$d class="ks-h%1$d">%2$s</h%1$d>', $lvl, ks_heading_inner($r));
+            break;
+
+        case 'facts':
+            echo '<dl class="hp-panel ks-facts">';
+            foreach ((array) $r['rows'] as $row) {
+                echo '<div class="ks-facts__row">';
+                if ($row['label'] !== '') {
+                    echo '<dt>' . esc_html($row['label']) . '</dt>';
+                }
+                echo '<dd>' . ks_html($row['value']) . '</dd></div>';
+            }
+            echo '</dl>';
+            break;
+
+        case 'button':
+            echo '<div class="ks-button"><a class="hp-btn" href="' . esc_url($r['url']) . '">' . esc_html($r['label']) . '</a></div>';
             break;
 
         case 'text':
@@ -143,7 +163,8 @@ function ks_block($r) {
 
         case 'images':
             $slider = $r['variant'] === 'slider';
-            echo '<div class="ks-docs' . ($slider ? ' ks-docs--slider' : '') . '">';
+            $gallery = $r['variant'] === 'gallery';
+            echo '<div class="ks-docs' . ($slider ? ' ks-docs--slider' : '') . ($gallery ? ' ks-docs--gallery' : '') . '">';
             foreach ((array) $r['images'] as $im) {
                 $id = $im['image'];
                 $src = ks_img($id, 'large');
@@ -192,4 +213,30 @@ function ks_all_posts() {
 /** ID страницы-перечня «Перечень курсов и услуг». */
 function ks_list_page_id() {
     return 70;
+}
+
+/** Блоки подряд: соседние списки и видео выстраиваются в ряд. $doc — режим «документ» без группировки. */
+function ks_blocks($items, $group = false) {
+    $n = count($items);
+    for ($i = 0; $i < $n; $i++) {
+        $r = $items[$i];
+        $kind = $r['acf_fc_layout'];
+        if ($group && ($kind === 'list' || $kind === 'embed')) {
+            $j = $i;
+            while ($j < $n && $items[$j]['acf_fc_layout'] === $kind) {
+                $j++;
+            }
+            if ($j - $i > 1) {
+                $cols = min(3, $j - $i);
+                echo '<div class="ks-row ks-row--' . esc_attr($kind) . '" style="--ks-cols:' . (int) $cols . '">';
+                for ($k = $i; $k < $j; $k++) {
+                    ks_block($items[$k]);
+                }
+                echo '</div>';
+                $i = $j - 1;
+                continue;
+            }
+        }
+        ks_block($r);
+    }
 }
