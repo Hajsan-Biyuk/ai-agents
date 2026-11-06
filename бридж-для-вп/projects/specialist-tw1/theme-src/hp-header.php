@@ -47,7 +47,7 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
             <nav class="hp-header__nav" aria-label="Главная навигация">
                 <ul class="hp-nav">
-                    <?php foreach (hp_rows('nav') as $item) :
+                    <?php foreach (hp_nav_rows() as $item) :
                         $children = !empty($item['children']) && is_array($item['children']) ? $item['children'] : array();
                         ?>
                         <li class="hp-nav__item<?php echo $children ? ' hp-nav__item--drop' : ''; ?>">
@@ -68,7 +68,7 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
         </div>
         <div class="hp-menu-mobile">
             <ul>
-                <?php foreach (hp_rows('nav') as $item) : ?>
+                <?php foreach (hp_nav_rows() as $item) : ?>
                     <li><a href="<?php echo esc_url(hp_href($item['url'])); ?>"><?php echo esc_html($item['title']); ?></a></li>
                     <?php if (!empty($item['children']) && is_array($item['children'])) :
                         foreach ($item['children'] as $child) : ?>

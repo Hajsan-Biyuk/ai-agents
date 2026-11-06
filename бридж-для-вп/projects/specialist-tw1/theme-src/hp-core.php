@@ -160,3 +160,31 @@ function hp_href($url) {
     return $url;
 }
 
+
+/**
+ * Главное меню шапки. Берётся из «Внешний вид → Меню» (расположение «Шапка: главное меню»);
+ * пока меню там не задано, используется запасной список ACF «Шапка и подвал → Меню».
+ */
+function hp_nav_rows() {
+    $locations = function_exists('get_nav_menu_locations') ? get_nav_menu_locations() : array();
+    if (!empty($locations['hp_header'])) {
+        $items = wp_get_nav_menu_items($locations['hp_header']);
+        if ($items) {
+            $rows = array();
+            $by_id = array();
+            foreach ($items as $it) {
+                $row = array('title' => $it->title, 'url' => $it->url, 'children' => array());
+                if ((int) $it->menu_item_parent === 0) {
+                    $rows[] = $row;
+                    $by_id[$it->ID] = count($rows) - 1;
+                } elseif (isset($by_id[(int) $it->menu_item_parent])) {
+                    $rows[$by_id[(int) $it->menu_item_parent]]['children'][] = $row;
+                }
+            }
+            if ($rows) {
+                return $rows;
+            }
+        }
+    }
+    return hp_rows('nav');
+}
