@@ -1,0 +1,628 @@
+{
+ "key": "group_tr_tractor",
+ "title": "Удостоверение тракториста",
+ "fields": [
+  {
+   "key": "field_tr_tab_0",
+   "label": "Баннер",
+   "name": "",
+   "type": "tab",
+   "placement": "top",
+   "endpoint": 0
+  },
+  {
+   "key": "field_tr_crumb",
+   "label": "Хлебная крошка (название страницы)",
+   "name": "tr_crumb",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_hero_title",
+   "label": "Заголовок H1",
+   "name": "tr_hero_title",
+   "type": "textarea",
+   "rows": 3,
+   "new_lines": ""
+  },
+  {
+   "key": "field_tr_hero_lead",
+   "label": "Подзаголовок",
+   "name": "tr_hero_lead",
+   "type": "textarea",
+   "rows": 3,
+   "new_lines": ""
+  },
+  {
+   "key": "field_tr_img_hero",
+   "label": "Фото баннера",
+   "name": "tr_img_hero",
+   "type": "image",
+   "return_format": "id",
+   "preview_size": "medium",
+   "library": "all"
+  },
+  {
+   "key": "field_tr_hero_alt",
+   "label": "Alt фото баннера",
+   "name": "tr_hero_alt",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_price_label",
+   "label": "Карточка цены: надпись сверху",
+   "name": "tr_price_label",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_price_title",
+   "label": "Карточка цены: заголовок",
+   "name": "tr_price_title",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_price_text",
+   "label": "Карточка цены: текст",
+   "name": "tr_price_text",
+   "type": "textarea",
+   "rows": 3,
+   "new_lines": ""
+  },
+  {
+   "key": "field_tr_price_note",
+   "label": "Карточка цены: примечание",
+   "name": "tr_price_note",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_btn_1",
+   "label": "Кнопка 1",
+   "name": "tr_btn_1",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_btn_1_url",
+   "label": "Кнопка 1: ссылка",
+   "name": "tr_btn_1_url",
+   "type": "text",
+   "instructions": "Адрес страницы или якорь блока: #consult — форма, #categories — категории, #svo — скидка СВО."
+  },
+  {
+   "key": "field_tr_btn_2",
+   "label": "Кнопка 2",
+   "name": "tr_btn_2",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_btn_2_url",
+   "label": "Кнопка 2: ссылка",
+   "name": "tr_btn_2_url",
+   "type": "text",
+   "instructions": "Адрес страницы или якорь блока: #consult — форма, #categories — категории, #svo — скидка СВО."
+  },
+  {
+   "key": "field_tr_btn_3",
+   "label": "Кнопка 3",
+   "name": "tr_btn_3",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_btn_3_url",
+   "label": "Кнопка 3: ссылка",
+   "name": "tr_btn_3_url",
+   "type": "text",
+   "instructions": "Адрес страницы или якорь блока: #consult — форма, #categories — категории, #svo — скидка СВО."
+  },
+  {
+   "key": "field_tr_tab_16",
+   "label": "Категории",
+   "name": "",
+   "type": "tab",
+   "placement": "top",
+   "endpoint": 0
+  },
+  {
+   "key": "field_tr_cats_title",
+   "label": "Заголовок",
+   "name": "tr_cats_title",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_cats_intro",
+   "label": "Пояснение справа",
+   "name": "tr_cats_intro",
+   "type": "textarea",
+   "rows": 3,
+   "new_lines": ""
+  },
+  {
+   "key": "field_tr_cats",
+   "label": "Категории",
+   "name": "tr_cats",
+   "type": "repeater",
+   "layout": "block",
+   "button_label": "Добавить категорию",
+   "sub_fields": [
+    {
+     "key": "field_tr_cats__letter",
+     "label": "Буква на значке",
+     "name": "letter",
+     "type": "text"
+    },
+    {
+     "key": "field_tr_cats__title",
+     "label": "Название",
+     "name": "title",
+     "type": "text"
+    },
+    {
+     "key": "field_tr_cats__text",
+     "label": "Описание",
+     "name": "text",
+     "type": "textarea",
+     "rows": 3,
+     "new_lines": ""
+    },
+    {
+     "key": "field_tr_cats__image",
+     "label": "Фото",
+     "name": "image",
+     "type": "image",
+     "return_format": "id",
+     "preview_size": "medium",
+     "library": "all"
+    },
+    {
+     "key": "field_tr_cats__note",
+     "label": "Возраст и срок",
+     "name": "note",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "key": "field_tr_tab_20",
+   "label": "Скидка СВО",
+   "name": "",
+   "type": "tab",
+   "placement": "top",
+   "endpoint": 0
+  },
+  {
+   "key": "field_tr_svo_badge",
+   "label": "Метка",
+   "name": "tr_svo_badge",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_svo_title",
+   "label": "Заголовок",
+   "name": "tr_svo_title",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_svo_lead",
+   "label": "Подзаголовок",
+   "name": "tr_svo_lead",
+   "type": "textarea",
+   "rows": 3,
+   "new_lines": ""
+  },
+  {
+   "key": "field_tr_svo_list",
+   "label": "Кто может получить скидку",
+   "name": "tr_svo_list",
+   "type": "repeater",
+   "layout": "block",
+   "button_label": "Добавить пункт",
+   "sub_fields": [
+    {
+     "key": "field_tr_svo_list__text",
+     "label": "Пункт",
+     "name": "text",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "key": "field_tr_svo_btn",
+   "label": "Кнопка",
+   "name": "tr_svo_btn",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_svo_btn_url",
+   "label": "Кнопка: ссылка",
+   "name": "tr_svo_btn_url",
+   "type": "text",
+   "instructions": "Адрес страницы или якорь блока: #consult — форма, #categories — категории, #svo — скидка СВО."
+  },
+  {
+   "key": "field_tr_svo_img",
+   "label": "Фото",
+   "name": "tr_svo_img",
+   "type": "image",
+   "return_format": "id",
+   "preview_size": "medium",
+   "library": "all"
+  },
+  {
+   "key": "field_tr_svo_alt",
+   "label": "Alt фото",
+   "name": "tr_svo_alt",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_tab_29",
+   "label": "Почему мы",
+   "name": "",
+   "type": "tab",
+   "placement": "top",
+   "endpoint": 0
+  },
+  {
+   "key": "field_tr_about_badge",
+   "label": "Метка",
+   "name": "tr_about_badge",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_about_title",
+   "label": "Заголовок",
+   "name": "tr_about_title",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_about_items",
+   "label": "Преимущества",
+   "name": "tr_about_items",
+   "type": "repeater",
+   "layout": "block",
+   "button_label": "Добавить преимущество",
+   "sub_fields": [
+    {
+     "key": "field_tr_about_items__icon",
+     "label": "Иконка (файл из темы, home/img)",
+     "name": "icon",
+     "type": "text"
+    },
+    {
+     "key": "field_tr_about_items__title",
+     "label": "Заголовок",
+     "name": "title",
+     "type": "text"
+    },
+    {
+     "key": "field_tr_about_items__text",
+     "label": "Текст",
+     "name": "text",
+     "type": "textarea",
+     "rows": 3,
+     "new_lines": ""
+    },
+    {
+     "key": "field_tr_about_items__note",
+     "label": "Плашка рядом с иконкой",
+     "name": "note",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "key": "field_tr_tab_33",
+   "label": "Фотогалерея",
+   "name": "",
+   "type": "tab",
+   "placement": "top",
+   "endpoint": 0
+  },
+  {
+   "key": "field_tr_gallery_title",
+   "label": "Заголовок",
+   "name": "tr_gallery_title",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_gallery",
+   "label": "Фото (первое — большое)",
+   "name": "tr_gallery",
+   "type": "gallery",
+   "return_format": "id",
+   "preview_size": "medium",
+   "library": "all",
+   "insert": "append"
+  },
+  {
+   "key": "field_tr_tab_36",
+   "label": "Шаги",
+   "name": "",
+   "type": "tab",
+   "placement": "top",
+   "endpoint": 0
+  },
+  {
+   "key": "field_tr_steps_title",
+   "label": "Заголовок",
+   "name": "tr_steps_title",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_steps",
+   "label": "Шаги",
+   "name": "tr_steps",
+   "type": "repeater",
+   "layout": "block",
+   "button_label": "Добавить шаг",
+   "sub_fields": [
+    {
+     "key": "field_tr_steps__num",
+     "label": "Номер",
+     "name": "num",
+     "type": "text"
+    },
+    {
+     "key": "field_tr_steps__title",
+     "label": "Заголовок",
+     "name": "title",
+     "type": "text"
+    },
+    {
+     "key": "field_tr_steps__text",
+     "label": "Текст",
+     "name": "text",
+     "type": "textarea",
+     "rows": 3,
+     "new_lines": ""
+    }
+   ]
+  },
+  {
+   "key": "field_tr_steps_img",
+   "label": "Фото",
+   "name": "tr_steps_img",
+   "type": "image",
+   "return_format": "id",
+   "preview_size": "medium",
+   "library": "all"
+  },
+  {
+   "key": "field_tr_steps_alt",
+   "label": "Alt фото",
+   "name": "tr_steps_alt",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_steps_badge",
+   "label": "Плашка на фото",
+   "name": "tr_steps_badge",
+   "type": "textarea",
+   "rows": 3,
+   "new_lines": ""
+  },
+  {
+   "key": "field_tr_tab_42",
+   "label": "Что взять и что получаете",
+   "name": "",
+   "type": "tab",
+   "placement": "top",
+   "endpoint": 0
+  },
+  {
+   "key": "field_tr_take_title",
+   "label": "Заголовок «Что взять»",
+   "name": "tr_take_title",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_take_list",
+   "label": "Список документов",
+   "name": "tr_take_list",
+   "type": "repeater",
+   "layout": "block",
+   "button_label": "Добавить пункт",
+   "sub_fields": [
+    {
+     "key": "field_tr_take_list__text",
+     "label": "Пункт",
+     "name": "text",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "key": "field_tr_take_note",
+   "label": "Строка под списком",
+   "name": "tr_take_note",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_get_title",
+   "label": "Заголовок «Что вы получаете»",
+   "name": "tr_get_title",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_get_photos",
+   "label": "Фото удостоверения",
+   "name": "tr_get_photos",
+   "type": "gallery",
+   "return_format": "id",
+   "preview_size": "medium",
+   "library": "all",
+   "insert": "append"
+  },
+  {
+   "key": "field_tr_tab_48",
+   "label": "Компаниям",
+   "name": "",
+   "type": "tab",
+   "placement": "top",
+   "endpoint": 0
+  },
+  {
+   "key": "field_tr_comp_badge",
+   "label": "Метка",
+   "name": "tr_comp_badge",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_comp_title",
+   "label": "Заголовок",
+   "name": "tr_comp_title",
+   "type": "textarea",
+   "rows": 3,
+   "new_lines": ""
+  },
+  {
+   "key": "field_tr_comp_lead",
+   "label": "Текст",
+   "name": "tr_comp_lead",
+   "type": "textarea",
+   "rows": 3,
+   "new_lines": ""
+  },
+  {
+   "key": "field_tr_comp_btn",
+   "label": "Кнопка",
+   "name": "tr_comp_btn",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_comp_btn_url",
+   "label": "Кнопка: ссылка",
+   "name": "tr_comp_btn_url",
+   "type": "text",
+   "instructions": "Адрес страницы или якорь блока: #consult — форма, #categories — категории, #svo — скидка СВО."
+  },
+  {
+   "key": "field_tr_comp_img",
+   "label": "Фото",
+   "name": "tr_comp_img",
+   "type": "image",
+   "return_format": "id",
+   "preview_size": "medium",
+   "library": "all"
+  },
+  {
+   "key": "field_tr_comp_alt",
+   "label": "Alt фото",
+   "name": "tr_comp_alt",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_tab_56",
+   "label": "Вопрос-ответ",
+   "name": "",
+   "type": "tab",
+   "placement": "top",
+   "endpoint": 0
+  },
+  {
+   "key": "field_tr_faq_title",
+   "label": "Заголовок",
+   "name": "tr_faq_title",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_faq",
+   "label": "Вопросы",
+   "name": "tr_faq",
+   "type": "repeater",
+   "layout": "block",
+   "button_label": "Добавить вопрос",
+   "sub_fields": [
+    {
+     "key": "field_tr_faq__question",
+     "label": "Вопрос",
+     "name": "question",
+     "type": "text"
+    },
+    {
+     "key": "field_tr_faq__answer",
+     "label": "Ответ",
+     "name": "answer",
+     "type": "textarea",
+     "rows": 3,
+     "new_lines": ""
+    }
+   ]
+  },
+  {
+   "key": "field_tr_tab_59",
+   "label": "Консультация",
+   "name": "",
+   "type": "tab",
+   "placement": "top",
+   "endpoint": 0
+  },
+  {
+   "key": "field_tr_consult_title",
+   "label": "Заголовок",
+   "name": "tr_consult_title",
+   "type": "textarea",
+   "rows": 3,
+   "new_lines": ""
+  },
+  {
+   "key": "field_tr_consult_lead",
+   "label": "Текст под заголовком",
+   "name": "tr_consult_lead",
+   "type": "textarea",
+   "rows": 3,
+   "new_lines": ""
+  },
+  {
+   "key": "field_tr_consult_form_title",
+   "label": "Заголовок формы",
+   "name": "tr_consult_form_title",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_consult_placeholder",
+   "label": "Подсказка в списке",
+   "name": "tr_consult_placeholder",
+   "type": "text"
+  },
+  {
+   "key": "field_tr_consult_options",
+   "label": "Варианты в списке",
+   "name": "tr_consult_options",
+   "type": "repeater",
+   "layout": "block",
+   "button_label": "Добавить вариант",
+   "sub_fields": [
+    {
+     "key": "field_tr_consult_options__label",
+     "label": "Вариант",
+     "name": "label",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "key": "field_tr_consult_submit",
+   "label": "Текст кнопки",
+   "name": "tr_consult_submit",
+   "type": "text"
+  }
+ ],
+ "location": [
+  [
+   {
+    "param": "page",
+    "operator": "==",
+    "value": "394"
+   }
+  ]
+ ],
+ "menu_order": 0,
+ "position": "normal",
+ "style": "default",
+ "label_placement": "top",
+ "instruction_placement": "label",
+ "hide_on_screen": [
+  "the_content"
+ ],
+ "active": true,
+ "description": "Страница /tractor-driver/. Шаблон page-tractor-driver.php только читает эти поля.",
+ "show_in_rest": 0
+}

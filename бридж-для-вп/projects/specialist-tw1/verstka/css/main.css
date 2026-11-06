@@ -27,15 +27,19 @@ html body :where(.hp) form { margin: 0; padding: 0; }
 
 html body :where(.hp) p { text-indent: 0; }
 
-body.home header.hp-header {
+/* Тема задаёт внутренним страницам свою шапку (body:not(.home) header) — для «hp» сбрасываем */
+body header.hp-header {
+  position: sticky;
+  top: 0;
   height: auto;
   min-height: 0;
+  margin-top: 0;
   background-color: #fff;
   background-image: none;
   background-attachment: scroll;
 }
 
-body.home .hp main {
+body .hp main {
   margin: 0;
   padding: 0;
 }
