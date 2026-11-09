@@ -381,14 +381,24 @@ $tabControl->Begin();
     var rolling = false;
     var sessid = '<?= CUtil::JSEscape(bitrix_sessid()); ?>';
 
-    function showAjaxError() {
+    function showAjaxError(detail) {
+        running = false;
+        rolling = false;
         var status = document.getElementById('sheer-webp-run-status');
         if (status) {
-            status.textContent = 'Ошибка запроса';
+            status.textContent = 'Ошибка запроса' + (detail ? ': ' + detail : '');
+        }
+        if (window.console) {
+            console.error('Sheer WebP:', detail);
         }
     }
 
-    function postFallback(action, cb) {
+    function shortText(text) {
+        // Фатальная ошибка PHP приходит HTML-страницей — показываем её текст.
+        return String(text || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 400);
+    }
+
+    function postFallback(action, cb, firstError) {
         var body = 'sessid=' + encodeURIComponent(sessid) + '&ajax_action=' + encodeURIComponent(action);
         fetch(ajaxUrl, {
             method: 'POST',
@@ -398,7 +408,35 @@ $tabControl->Begin();
             },
             credentials: 'same-origin',
             body: body
-        }).then(function (r) { return r.json(); }).then(cb).catch(showAjaxError);
+        }).then(function (r) {
+            return r.text().then(function (text) {
+                var data;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    throw new Error('HTTP ' + r.status + ' ' + shortText(text));
+                }
+                if (data && data.error) {
+                    throw new Error('HTTP ' + r.status + ' ' + data.error);
+                }
+                return data;
+            });
+        }).then(function (data) {
+            try {
+                cb(data);
+            } catch (e) {
+                showAjaxError('JS: ' + e.message);
+            }
+        }).catch(function (e) {
+            showAjaxError((e && e.message ? e.message : String(e)) + (firstError ? ' | runAction: ' + firstError : ''));
+        });
+    }
+
+    function runActionError(err) {
+        if (err && err.errors && err.errors.length) {
+            return err.errors.map(function (x) { return x.message; }).join('; ');
+        }
+        return err && err.message ? err.message : String(err);
     }
 
     function post(action, cb) {
@@ -409,12 +447,17 @@ $tabControl->Begin();
                 .then(function (response) {
                     var data = response && response.data ? response.data : response;
                     if (data && (data.ok || data.phase || data.engine !== undefined)) {
-                        cb(data);
+                        try {
+                            cb(data);
+                        } catch (e) {
+                            showAjaxError('JS: ' + e.message);
+                        }
                         return;
                     }
-                    postFallback(action, cb);
-                })
-                .catch(function () { postFallback(action, cb); });
+                    postFallback(action, cb, 'пустой ответ');
+                }, function (err) {
+                    postFallback(action, cb, runActionError(err));
+                });
             return;
         }
         postFallback(action, cb);

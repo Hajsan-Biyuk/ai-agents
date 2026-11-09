@@ -83,7 +83,7 @@ class Converter
             'PATH_HASH' => RegistryTable::pathHash($relative),
             'WEBP_PATH' => Path::webpRelative($relative),
             'STATUS' => 'processing',
-            'ERROR_TEXT' => null,
+            'ERROR_TEXT' => '',
         ]);
     }
 
@@ -180,7 +180,7 @@ class Converter
             'PATH_HASH' => RegistryTable::pathHash($relative),
             'WEBP_PATH' => Path::webpRelative($relative),
             'STATUS' => 'pending',
-            'ERROR_TEXT' => null,
+            'ERROR_TEXT' => '',
         ]);
 
         Agent::wake();
@@ -567,7 +567,7 @@ class Converter
             'ORIGINAL_SIZE' => (int)$originalSize,
             'WEBP_SIZE' => (int)$webpSize,
             'STATUS' => $status,
-            'ERROR_TEXT' => $error !== '' ? self::clipError($error) : null,
+            'ERROR_TEXT' => $error !== '' ? self::clipError($error) : '',
         ]);
     }
 

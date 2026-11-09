@@ -51,8 +51,10 @@ class RegistryTable extends DataManager
                 'default_value' => 'pending',
                 'size' => 30,
             ]),
+            // Битрикс создаёт колонки NOT NULL — «нет ошибки» пишем пустой строкой.
             'ERROR_TEXT' => new StringField('ERROR_TEXT', [
                 'size' => 255,
+                'default_value' => '',
             ]),
             'DATE_CREATE' => new DatetimeField('DATE_CREATE'),
             'DATE_UPDATE' => new DatetimeField('DATE_UPDATE'),
@@ -117,7 +119,7 @@ class RegistryTable extends DataManager
         $helper = $connection->getSqlHelper();
         $connection->queryExecute(
             'UPDATE ' . $helper->quote(self::getTableName())
-            . " SET STATUS = 'processing', ERROR_TEXT = NULL, DATE_UPDATE = " . $helper->getCurrentDateTimeFunction()
+            . " SET STATUS = 'processing', ERROR_TEXT = '', DATE_UPDATE = " . $helper->getCurrentDateTimeFunction()
             . ' WHERE ID = ' . (int)$id . " AND STATUS = 'pending'"
         );
 
