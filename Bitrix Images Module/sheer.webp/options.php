@@ -295,7 +295,7 @@ $tabControl->Begin();
                     <input type="button" class="adm-btn-save" id="sheer-webp-start" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_START')); ?>">
                     <input type="button" id="sheer-webp-stop" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_STOP')); ?>">
                 </p>
-                <p id="sheer-webp-run-status"></p>
+                <p id="sheer-webp-run-status" class="sheer-webp-status"></p>
             <?php endif; ?>
         </td>
     </tr>
@@ -312,6 +312,7 @@ $tabControl->Begin();
                 <p>
                     <input type="button" id="sheer-webp-rollback" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_ROLLBACK')); ?>">
                 </p>
+                <p id="sheer-webp-rollback-status" class="sheer-webp-status"></p>
             <?php endif; ?>
         </td>
     </tr>
@@ -390,13 +391,22 @@ $tabControl->Begin();
     var rolling = false;
     var sessid = '<?= CUtil::JSEscape(bitrix_sessid()); ?>';
 
+    // Статус пишем на обе вкладки: кнопки отката и конвертации на разных вкладках.
+    function setStatus(text) {
+        var nodes = document.querySelectorAll('.sheer-webp-status');
+        for (var i = 0; i < nodes.length; i++) {
+            nodes[i].textContent = text;
+        }
+    }
+
     function showAjaxError(detail) {
         running = false;
         rolling = false;
-        var status = document.getElementById('sheer-webp-run-status');
-        if (status) {
-            status.textContent = 'Ошибка запроса' + (detail ? ': ' + detail : '');
+        var rb = document.getElementById('sheer-webp-rollback');
+        if (rb) {
+            rb.disabled = false;
         }
+        setStatus('Ошибка запроса' + (detail ? ': ' + detail : ''));
         if (window.console) {
             console.error('Sheer WebP:', detail);
         }
@@ -545,24 +555,33 @@ $tabControl->Begin();
                 setTimeout(loopChunk, 350);
             } else {
                 running = false;
-                var ready = document.getElementById('sheer-webp-run-status');
-                if (ready) {
-                    ready.textContent = 'Готово';
-                }
+                setStatus('Готово');
             }
         });
     }
+
+    var rolledBack = 0;
 
     function loopRollback() {
         if (!rolling) return;
         post('rollback_chunk', function (data) {
             renderStats(data);
+            if (data.deleted > 0) {
+                rolledBack += data.deleted;
+            }
             if (!data.done) {
+                setStatus(data.busy
+                    ? 'Откат… ждём, пока агент закончит текущую порцию. Обработано записей: ' + rolledBack
+                    : 'Откат… обработано записей: ' + rolledBack);
                 setTimeout(loopRollback, data.busy ? 1000 : 250);
             } else {
                 rolling = false;
-                document.getElementById('sheer-webp-run-status').textContent =
-                    'Откат завершён. Модуль выключен — включите его в настройках, если нужно конвертировать заново.';
+                var rb = document.getElementById('sheer-webp-rollback');
+                if (rb) {
+                    rb.disabled = false;
+                }
+                setStatus('Откат завершён: обработано записей ' + rolledBack
+                    + ', WebP-копии модуля удалены, оригиналы на месте. Модуль выключен — включите его на вкладке «Настройки», если нужно конвертировать заново.');
                 var enabledBox = document.querySelector('input[name="enabled"]');
                 if (enabledBox) {
                     enabledBox.checked = false;
@@ -579,7 +598,7 @@ $tabControl->Begin();
     if (startBtn) {
         startBtn.onclick = function () {
             running = true;
-            document.getElementById('sheer-webp-run-status').textContent = 'Работает…';
+            setStatus('Работает…');
             post('start', function (data) {
                 renderStats(data);
                 loopChunk();
@@ -591,7 +610,7 @@ $tabControl->Begin();
             running = false;
             post('stop', function (data) {
                 renderStats(data);
-                document.getElementById('sheer-webp-run-status').textContent = 'Остановлено';
+                setStatus('Остановлено');
             });
         };
     }
@@ -600,7 +619,9 @@ $tabControl->Begin();
             if (!confirm('Удалить все WebP-копии, созданные модулем? Модуль будет выключен, оригиналы останутся.')) return;
             rolling = true;
             running = false;
-            document.getElementById('sheer-webp-run-status').textContent = 'Откат…';
+            rolledBack = 0;
+            rollbackBtn.disabled = true;
+            setStatus('Откат…');
             loopRollback();
         };
     }
