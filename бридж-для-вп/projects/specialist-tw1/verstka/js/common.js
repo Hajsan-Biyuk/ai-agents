@@ -127,15 +127,26 @@ $(function () {
     });
   });
 
+  // Вопрос-ответ: открыт один пункт (по умолчанию первый), повторный клик закрывает его
+  function faqSet($item, open) {
+    var $answer = $item.find(".hp-faq__a");
+    $item.toggleClass("is-open", open).find(".hp-faq__q").attr("aria-expanded", open ? "true" : "false");
+    if ($.trim($answer.text()).length) {
+      $answer.stop(true, true)[open ? "slideDown" : "slideUp"](200);
+    }
+  }
+
   $(document).on("click", ".hp-faq__q", function () {
     var $item = $(this).closest(".hp-faq__item");
-    var $answer = $item.find(".hp-faq__a");
-    var open = $item.hasClass("is-open");
-    $item.toggleClass("is-open", !open);
-    $(this).attr("aria-expanded", open ? "false" : "true");
-    if ($.trim($answer.text()).length) {
-      $answer.stop(true, true).slideToggle(200);
-    }
+    var open = !$item.hasClass("is-open");
+    $item.siblings(".is-open").each(function () { faqSet($(this), false); });
+    faqSet($item, open);
+  });
+
+  $(".hp-faq__list").each(function () {
+    var $first = $(this).children(".hp-faq__item").first();
+    $first.addClass("is-open").find(".hp-faq__q").attr("aria-expanded", "true");
+    $first.find(".hp-faq__a").removeAttr("hidden").show();
   });
 
   function footerMode() {
