@@ -132,6 +132,7 @@
   .hp-header__logo img { width: 180px; height: 48px; }
   .hp-hero__fade { width: 900px; height: 600px; left: -180px; }
   .hp-hero__title br { display: none; }
+  .hp-hero__pills li { background: #fff; border: 1px solid #dee4ec; }
   .hp-hero__actions,
   .hp-tractor__actions,
   .hp-companies__actions { flex-direction: column; }

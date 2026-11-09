@@ -192,7 +192,9 @@
   .ks-hero__actions .hp-btn { width: 100%; }
   .ks-hero__side { flex-direction: column; }
   .ks-hero__photo img { height: 200px; }
-  .hp .ks-price__value { font-size: 32px; line-height: 40px; }
+  .hp .ks-price__value { font-size: 28px; line-height: 36px; }
+  .ks-price { gap: 14px; padding: 16px; }
+  .ks-price > img { width: 56px; height: 56px; flex-basis: 56px; }
   .hp .ks-h3 { font-size: 22px; line-height: 1.35; }
   .ks-prose, .ks-list li, .ks-step p { font-size: 17px; line-height: 1.5; }
   .ks-list { padding: 18px 16px; }
