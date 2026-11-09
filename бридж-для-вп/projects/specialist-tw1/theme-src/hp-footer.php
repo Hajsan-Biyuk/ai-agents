@@ -49,6 +49,15 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
             </div>
         </div>
     </footer>
+    <?php if (function_exists('hp_cf7_shortcode')) : ?>
+    <dialog class="hp-modal" id="hp-modal-consult" aria-labelledby="hp-modal-title">
+        <div class="hp-modal__box hp-form" data-selected="<?php echo esc_attr(is_singular('uslugi') ? get_the_title() : ''); ?>">
+            <button class="hp-modal__close" type="button" aria-label="Закрыть"></button>
+            <h3 id="hp-modal-title"><?php echo esc_html(hp_t('consult_form_title', hp_front_id())); ?></h3>
+            <?php echo hp_cf7_shortcode(); ?>
+        </div>
+    </dialog>
+    <?php endif; ?>
 </div>
 <?php wp_footer(); ?>
 </body>

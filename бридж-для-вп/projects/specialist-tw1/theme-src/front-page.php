@@ -191,7 +191,8 @@ get_header();
             <div class="hp-container">
                 <h2 class="hp-title"><?php echo esc_html(hp_t('polygon_title')); ?></h2>
                 <div class="hp-polygon__gallery">
-                    <div class="hp-shot hp-shot--main">
+                    <?php $video = hp_t('polygon_video'); ?>
+                    <div class="hp-shot hp-shot--main"<?php echo $video ? ' data-video' : ''; ?>>
                         <img src="<?php echo esc_url(hp_img('img_polygon', 'polygon-main.png')); ?>" alt="<?php echo esc_attr(hp_t('polygon_alt')); ?>">
                         <button class="hp-play" type="button" aria-label="<?php echo esc_attr(hp_t('polygon_video_title')); ?>">
                             <?php hp_icon('icon-play.svg', 98, 98); ?>
@@ -200,6 +201,17 @@ get_header();
                             <p class="hp-shot__caption-title"><?php echo esc_html(hp_t('polygon_video_title')); ?></p>
                             <p><?php echo esc_html(hp_t('polygon_video_text')); ?></p>
                         </div>
+                        <?php if ($video) : ?>
+                        <div class="hp-vplayer" hidden>
+                            <video src="<?php echo esc_url($video); ?>" preload="none" playsinline></video>
+                            <div class="hp-vplayer__bar">
+                                <button class="hp-vplayer__btn hp-vplayer__toggle" type="button" aria-label="Пуск или пауза"></button>
+                                <input class="hp-vplayer__seek" type="range" min="0" max="100" step="0.1" value="0" aria-label="Перемотка">
+                                <button class="hp-vplayer__btn hp-vplayer__mute" type="button" aria-label="Включить или выключить звук"></button>
+                                <input class="hp-vplayer__vol" type="range" min="0" max="1" step="0.05" value="1" aria-label="Громкость">
+                            </div>
+                        </div>
+                        <?php endif; ?>
                     </div>
                     <div class="hp-polygon__side">
                         <?php foreach (hp_rows('polygon_shots') as $shot) : ?>

@@ -655,6 +655,32 @@ body.hp-menu-open { overflow: hidden; }
   transform: translate(-50%, -50%);
 }
 .hp-play img { width: 97px; height: 97px; }
+/* Плеер в блоке «Видео о полигоне» */
+.hp-vplayer { position: absolute; inset: 0; z-index: 3; background: #000; }
+.hp-vplayer video { width: 100%; height: 100%; object-fit: contain; }
+.hp-vplayer__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 16px 12px;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+}
+.hp-vplayer__btn { width: 32px; height: 32px; flex: 0 0 32px; background: center / 24px no-repeat; }
+.hp-vplayer__toggle { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M7 4.5v15l13-7.5z'/%3E%3C/svg%3E"); }
+.hp-vplayer.is-playing .hp-vplayer__toggle { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M6 4h4v16H6zM14 4h4v16h-4z'/%3E%3C/svg%3E"); }
+.hp-vplayer__mute { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M3 9v6h4l5 4V5L7 9zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z'/%3E%3C/svg%3E"); }
+.hp-vplayer.is-muted .hp-vplayer__mute { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M3 9v6h4l5 4V5L7 9z'/%3E%3Cpath d='M15 9l6 6m0-6l-6 6' stroke='%23fff' stroke-width='2' fill='none'/%3E%3C/svg%3E"); }
+.hp-vplayer__seek { flex: 1; min-width: 0; accent-color: #00b0c7; cursor: pointer; }
+.hp-vplayer__vol { width: 90px; flex: 0 0 90px; accent-color: #00b0c7; cursor: pointer; }
+.hp-shot.is-video::after,
+.hp-shot.is-video .hp-play,
+.hp-shot.is-video .hp-shot__caption { display: none; }
+.hp-shot[data-video] { cursor: pointer; }
+
 .hp-shot__caption {
   position: absolute;
   left: 33px;
@@ -1098,6 +1124,22 @@ body.hp-menu-open { overflow: hidden; }
 }
 .hp-form input.wpcf7-submit.hp-btn--submit:hover { filter: brightness(0.95); }
 .hp-form .wpcf7-form.submitting input.wpcf7-submit { opacity: 0.6; pointer-events: none; }
+
+/* Модальное окно с формой заявки */
+.hp-modal { margin: auto; max-width: none; max-height: none; padding: 0; border: 0; background: transparent; overflow: visible; }
+.hp-modal::backdrop { background: rgba(9, 23, 54, 0.6); }
+.hp-modal__box.hp-form { position: relative; flex: none; width: min(481px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); min-height: 0; overflow-y: auto; }
+.hp-modal__box h3 { padding-right: 40px; }
+.hp-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #edf3fa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23091736' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / 20px no-repeat;
+}
+html:has(.hp-modal[open]) { overflow: hidden; }
 
 .hp-contacts { padding: 60px 0; background: #f0f4fb; }
 .hp-contacts__grid { display: flex; gap: 24px; }

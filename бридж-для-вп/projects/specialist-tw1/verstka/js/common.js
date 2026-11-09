@@ -39,9 +39,26 @@ $(function () {
     }
   });
 
+  // Кнопки «заявка» (ссылки на #consult) открывают модальное окно с формой
+  var modal = document.getElementById("hp-modal-consult");
+  if (modal) {
+    $(modal).find(".hp-modal__close").on("click", function () { modal.close(); });
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        modal.close();
+      }
+    });
+  }
+
   $(document).on("click", "a[href^='#']", function (e) {
     var id = $(this).attr("href");
     if (!id || id.length < 2) {
+      return;
+    }
+    if (id === "#consult" && modal && modal.showModal) {
+      e.preventDefault();
+      closeMenu();
+      modal.showModal();
       return;
     }
     var $target = $(id);
@@ -53,6 +70,45 @@ $(function () {
     $("html, body").animate({ scrollTop: top }, 600);
     closeMenu();
     $(".hp-nav__item--drop").removeClass("is-open");
+  });
+
+  // Видео о полигоне: клик по блоку — плеер, повторный клик — пауза и возврат к обложке
+  $(".hp-shot[data-video]").each(function () {
+    var $shot = $(this), $box = $shot.find(".hp-vplayer"), v = $box.find("video")[0];
+    var $seek = $box.find(".hp-vplayer__seek"), $vol = $box.find(".hp-vplayer__vol");
+    function show(on) {
+      $shot.toggleClass("is-video", on);
+      $box.prop("hidden", !on);
+    }
+    function play() {
+      show(true);
+      var p = v.play();
+      if (p && p.catch) {
+        p.catch(function () { show(false); });
+      }
+    }
+    $shot.on("click", function (e) {
+      if ($(e.target).closest(".hp-vplayer__bar").length) {
+        return;
+      }
+      if (v.paused) {
+        play();
+      } else {
+        v.pause();
+        show(false);
+      }
+    });
+    $box.find(".hp-vplayer__toggle").on("click", function () { v.paused ? play() : v.pause(); });
+    $box.find(".hp-vplayer__mute").on("click", function () { v.muted = !v.muted; });
+    $seek.on("input", function () { v.currentTime = this.value; });
+    $vol.on("input", function () { v.volume = this.value; v.muted = false; });
+    $(v).on("loadedmetadata durationchange timeupdate", function () {
+        if (isFinite(v.duration)) { $seek.attr("max", v.duration); }
+        $seek.val(v.currentTime);
+      })
+      .on("play pause", function () { $box.toggleClass("is-playing", !v.paused); })
+      .on("volumechange", function () { $box.toggleClass("is-muted", v.muted || v.volume === 0); })
+      .on("ended", function () { v.currentTime = 0; show(false); });
   });
 
   $(".hp-slider").each(function () {
