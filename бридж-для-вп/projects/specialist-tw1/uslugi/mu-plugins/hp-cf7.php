@@ -81,6 +81,10 @@ add_action('wpcf7_before_send_mail', function ($form) {
     if ($form->id() !== hp_cf7_form_id() || !class_exists('WPCF7_Submission')) {
         return;
     }
+    // Тестовый режим формы (skip_mail / demo_mode): ничего не отправляем и в Telegram
+    if ($form->is_true('skip_mail') || $form->is_true('demo_mode')) {
+        return;
+    }
     $sub = WPCF7_Submission::get_instance();
     $file = get_template_directory() . '/telegram-lead.php';
     if (!$sub || !is_readable($file)) {
