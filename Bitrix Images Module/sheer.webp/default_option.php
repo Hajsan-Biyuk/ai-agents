@@ -12,7 +12,8 @@ $sheer_webp_default_option = [
     'skip_min_px' => '120',
     'batch_size' => '8',
     'apache_htaccess' => 'N',
-    'max_source_mb' => '8',
-    'max_megapixels' => '24',
+    'max_side' => '2560',
+    'max_source_mb' => '30',
+    'max_megapixels' => '80',
     'phase' => 'idle',
 ];

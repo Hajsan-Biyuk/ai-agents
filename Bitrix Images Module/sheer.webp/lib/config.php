@@ -137,14 +137,29 @@ class Config
         return $size;
     }
 
+    /**
+     * Длинная сторона WebP-копии: крупнее — уменьшаем (оригинал не трогаем).
+     * 0 — не уменьшать.
+     */
+    public static function getMaxSide()
+    {
+        $px = (int)Option::get(self::MODULE_ID, 'max_side', '2560');
+        if ($px <= 0) {
+            return 0;
+        }
+
+        return max(1000, min(8000, $px));
+    }
+
+    /** Аварийный потолок: такие файлы не обрабатываются вовсе. */
     public static function getMaxSourceBytes()
     {
-        $mb = (int)Option::get(self::MODULE_ID, 'max_source_mb', '8');
+        $mb = (int)Option::get(self::MODULE_ID, 'max_source_mb', '30');
         if ($mb < 1) {
             $mb = 1;
         }
-        if ($mb > 25) {
-            $mb = 25;
+        if ($mb > 60) {
+            $mb = 60;
         }
 
         return $mb * 1024 * 1024;
@@ -152,12 +167,12 @@ class Config
 
     public static function getMaxPixels()
     {
-        $mp = (int)Option::get(self::MODULE_ID, 'max_megapixels', '24');
+        $mp = (int)Option::get(self::MODULE_ID, 'max_megapixels', '80');
         if ($mp < 4) {
             $mp = 4;
         }
-        if ($mp > 50) {
-            $mp = 50;
+        if ($mp > 200) {
+            $mp = 200;
         }
 
         return $mp * 1000000;

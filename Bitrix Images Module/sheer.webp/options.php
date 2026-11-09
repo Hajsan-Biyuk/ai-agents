@@ -115,8 +115,10 @@ if (
     Option::set($module_id, 'skip_min_px', (string)max(48, min(240, (int)$request->getPost('skip_min_px'))));
     Option::set($module_id, 'scan_roots', (string)$request->getPost('scan_roots'));
     Option::set($module_id, 'batch_size', (string)max(3, min(40, (int)$request->getPost('batch_size'))));
-    Option::set($module_id, 'max_source_mb', (string)max(1, min(25, (int)$request->getPost('max_source_mb'))));
-    Option::set($module_id, 'max_megapixels', (string)max(4, min(50, (int)$request->getPost('max_megapixels'))));
+    $maxSide = (int)$request->getPost('max_side');
+    Option::set($module_id, 'max_side', (string)($maxSide <= 0 ? 0 : max(1000, min(8000, $maxSide))));
+    Option::set($module_id, 'max_source_mb', (string)max(1, min(60, (int)$request->getPost('max_source_mb'))));
+    Option::set($module_id, 'max_megapixels', (string)max(4, min(200, (int)$request->getPost('max_megapixels'))));
     Option::set($module_id, 'apache_htaccess', $request->getPost('apache_htaccess') === 'Y' ? 'Y' : 'N');
 
     if (Option::get($module_id, 'apache_htaccess', 'Y') === 'Y') {
@@ -247,16 +249,23 @@ $tabControl->Begin();
         </td>
     </tr>
     <tr>
+        <td><?= Loc::getMessage('SHEER_WEBP_MAX_SIDE'); ?></td>
+        <td>
+            <input type="number" name="max_side" min="0" max="8000" step="10" value="<?= (int)Option::get($module_id, 'max_side', '2560'); ?>">
+            <br><small><?= Loc::getMessage('SHEER_WEBP_MAX_SIDE_HINT'); ?></small>
+        </td>
+    </tr>
+    <tr>
         <td><?= Loc::getMessage('SHEER_WEBP_MAX_MB'); ?></td>
         <td>
-            <input type="number" name="max_source_mb" min="1" max="25" value="<?= (int)Option::get($module_id, 'max_source_mb', '8'); ?>">
+            <input type="number" name="max_source_mb" min="1" max="60" value="<?= (int)Option::get($module_id, 'max_source_mb', '30'); ?>">
             <br><small><?= Loc::getMessage('SHEER_WEBP_MAX_MB_HINT'); ?></small>
         </td>
     </tr>
     <tr>
         <td><?= Loc::getMessage('SHEER_WEBP_MAX_MP'); ?></td>
         <td>
-            <input type="number" name="max_megapixels" min="4" max="50" value="<?= (int)Option::get($module_id, 'max_megapixels', '24'); ?>">
+            <input type="number" name="max_megapixels" min="4" max="200" value="<?= (int)Option::get($module_id, 'max_megapixels', '80'); ?>">
         </td>
     </tr>
     <tr>

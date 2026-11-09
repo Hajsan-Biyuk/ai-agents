@@ -544,6 +544,52 @@ namespace {
     $opt['max_megapixels'] = '24';
     $opt['skip_min_px'] = '120';
 
+    // Уменьшение тяжёлых фото.
+    t('target 6048x4032 -> 2560x1707', Converter::targetSize(6048, 4032, 2560) === [2560, 1707]);
+    t('target portrait keeps ratio', Converter::targetSize(3000, 6000, 2560) === [1280, 2560]);
+    t('target small image untouched', Converter::targetSize(800, 600, 2560) === null);
+    t('target disabled with 0', Converter::targetSize(6048, 4032, 0) === null);
+    t('gd memory: downscale cheaper than rotate full', Converter::gdMemoryFits(6048, 4032, 4 * $mb, true, 256 * $mb, 40 * $mb, [2560, 1707]) === true
+        && Converter::gdMemoryFits(6048, 4032, 4 * $mb, true, 256 * $mb, 40 * $mb) === false);
+
+    $opt['max_side'] = '1200';
+    $bigPhoto = $root . '/upload/iblock/abc/camera.jpg';
+    $im = imagecreatetruecolor(3000, 2000);
+    for ($i = 0; $i < 3000; $i += 3) {
+        imageline($im, $i, 0, 3000 - $i, 2000, imagecolorallocate($im, $i % 255, ($i * 7) % 255, ($i * 13) % 255));
+    }
+    imagejpeg($im, $bigPhoto, 92);
+    $status = Converter::convertRelative('/upload/iblock/abc/camera.jpg');
+    $info = @getimagesize($bigPhoto . '.webp');
+    t('heavy jpeg downscaled to webp', $status === 'done' && is_array($info) && $info[0] === 1200 && $info[1] === 800, $status . ' ' . json_encode($info));
+    t('heavy jpeg original untouched', getimagesize($bigPhoto)[0] === 3000);
+
+    $bigPng = $root . '/upload/iblock/abc/banner.png';
+    $im = imagecreatetruecolor(2400, 1600);
+    imagealphablending($im, false);
+    imagesavealpha($im, true);
+    imagefilledrectangle($im, 0, 0, 2400, 1600, imagecolorallocatealpha($im, 0, 0, 0, 127));
+    // «Фото» (шум) в центре, прозрачные поля по краям.
+    mt_srand(42);
+    for ($y = 200; $y < 1400; $y += 2) {
+        for ($x = 300; $x < 2100; $x += 6) {
+            imagefilledrectangle($im, $x, $y, $x + 5, $y + 1, imagecolorallocatealpha($im, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255), 0));
+        }
+    }
+    imagepng($im, $bigPng);
+    $status = Converter::convertRelative('/upload/iblock/abc/banner.png');
+    $info = @getimagesize($bigPng . '.webp');
+    t('heavy png downscaled', in_array($status, ['done'], true) && is_array($info) && $info[0] === 1200 && $info[1] === 800, $status . ' ' . json_encode($info));
+    if (is_file($bigPng . '.webp') && function_exists('imagecreatefromwebp')) {
+        $w = imagecreatefromwebp($bigPng . '.webp');
+        $corner = imagecolorsforindex($w, imagecolorat($w, 2, 2));
+        t('downscaled png keeps transparency', $corner['alpha'] >= 120, json_encode($corner));
+    }
+    $opt['max_side'] = '0';
+    $status = Converter::convertRelative('/upload/iblock/abc/camera.jpg');
+    t('max_side=0: existing copy kept as is', $status === 'done');
+    unset($opt['max_side']);
+
     // 3. Откат: модуль выключается, композит чищен, чужое остаётся.
     $cleanedBefore = CHTMLPagesCache::$cleaned;
     $guard = 0;

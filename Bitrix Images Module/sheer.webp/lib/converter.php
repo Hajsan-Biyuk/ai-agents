@@ -315,7 +315,9 @@ class Converter
             return 'error';
         }
 
-        if ($engine === 'gd' && !self::gdMemoryFits($width, $height, $originalSize, self::needsRotation($absolute, $format))) {
+        $target = self::targetSize($width, $height, Config::getMaxSide());
+
+        if ($engine === 'gd' && !self::gdMemoryFits($width, $height, $originalSize, self::needsRotation($absolute, $format), null, null, $target)) {
             self::store($relative, $fileId, 'error', $originalSize, 0, 'Не хватит memory_limit для GD');
             return 'error';
         }
@@ -333,9 +335,9 @@ class Converter
 
         try {
             if ($engine === 'imagick') {
-                $ok = self::convertWithImagick($absolute, $tmp, $format);
+                $ok = self::convertWithImagick($absolute, $tmp, $format, $target);
             } else {
-                $ok = self::convertWithGd($absolute, $tmp);
+                $ok = self::convertWithGd($absolute, $tmp, $target);
             }
         } catch (\Throwable $e) {
             $ok = false;
@@ -400,7 +402,7 @@ class Converter
      * при повороте по EXIF — вторая копия. Fatal по memory_limit не ловится
      * try/catch и роняет весь cron-запуск, поэтому проверяем заранее.
      */
-    public static function gdMemoryFits($width, $height, $fileSize = 0, $rotate = false, $limit = null, $used = null)
+    public static function gdMemoryFits($width, $height, $fileSize = 0, $rotate = false, $limit = null, $used = null, $target = null)
     {
         $limit = $limit === null ? self::memoryLimitBytes() : (int)$limit;
         if ($limit <= 0) {
@@ -409,9 +411,33 @@ class Converter
         $used = $used === null ? memory_get_usage(true) : (int)$used;
 
         $bitmap = (int)$width * (int)$height * 5;
-        $need = $bitmap * ($rotate ? 2 : 1) + (int)$fileSize * 2 + 16 * 1024 * 1024;
+        if (is_array($target)) {
+            // Исходник + уменьшенная копия; поворот делается уже на копии.
+            $small = (int)$target[0] * (int)$target[1] * 5;
+            $need = $bitmap + $small * ($rotate ? 2 : 1);
+        } else {
+            $need = $bitmap * ($rotate ? 2 : 1);
+        }
+        $need += (int)$fileSize * 2 + 16 * 1024 * 1024;
 
         return $used + $need < $limit;
+    }
+
+    /**
+     * Размер уменьшенной копии по длинной стороне или null, если уменьшать
+     * не нужно. Пропорции сохраняются.
+     */
+    public static function targetSize($width, $height, $maxSide)
+    {
+        $width = (int)$width;
+        $height = (int)$height;
+        $maxSide = (int)$maxSide;
+        if ($maxSide <= 0 || $width <= 0 || $height <= 0 || max($width, $height) <= $maxSide) {
+            return null;
+        }
+        $ratio = $maxSide / max($width, $height);
+
+        return [max(1, (int)round($width * $ratio)), max(1, (int)round($height * $ratio))];
     }
 
     public static function memoryLimitBytes()
@@ -443,7 +469,7 @@ class Converter
         return in_array((int)($exif['Orientation'] ?? 1), [3, 6, 8], true);
     }
 
-    private static function convertWithImagick($source, $destination, $format)
+    private static function convertWithImagick($source, $destination, $format, $target = null)
     {
         $binary = @file_get_contents($source);
         if ($binary === false || $binary === '') {
@@ -451,6 +477,10 @@ class Converter
         }
 
         $image = new \Imagick();
+        if (is_array($target) && $format === 'jpeg') {
+            // Подсказка libjpeg: декодировать сразу в уменьшенном масштабе — меньше памяти.
+            $image->setOption('jpeg:size', $target[0] . 'x' . $target[1]);
+        }
         // Префикс формата жёстко задаёт декодер (без автоопределения по
         // содержимому), а blob убирает разбор имени файла вида «a[1].jpg».
         $image->readImageBlob($binary, $format . ':source');
@@ -464,6 +494,11 @@ class Converter
 
         if (method_exists($image, 'autoOrient')) {
             $image->autoOrient();
+        }
+
+        $maxSide = Config::getMaxSide();
+        if ($maxSide > 0 && max($image->getImageWidth(), $image->getImageHeight()) > $maxSide) {
+            $image->resizeImage($maxSide, $maxSide, \Imagick::FILTER_LANCZOS, 1, true);
         }
 
         $image->setImageFormat('webp');
@@ -480,7 +515,7 @@ class Converter
         return $ok;
     }
 
-    private static function convertWithGd($source, $destination)
+    private static function convertWithGd($source, $destination, $target = null)
     {
         $binary = @file_get_contents($source);
         if ($binary === false || $binary === '') {
@@ -493,11 +528,26 @@ class Converter
             return false;
         }
 
-        $image = self::applyExifOrientation($image, $source);
-
         if (function_exists('imagepalettetotruecolor') && function_exists('imageistruecolor') && !imageistruecolor($image)) {
             imagepalettetotruecolor($image);
         }
+
+        if (is_array($target)) {
+            // Сначала уменьшаем, потом поворачиваем — поворот на маленькой копии.
+            $small = self::gdResize($image, (int)$target[0], (int)$target[1]);
+            if (!$small) {
+                if (PHP_VERSION_ID < 80500) {
+                    imagedestroy($image);
+                }
+                return false;
+            }
+            if (PHP_VERSION_ID < 80500) {
+                imagedestroy($image);
+            }
+            $image = $small;
+        }
+
+        $image = self::applyExifOrientation($image, $source);
 
         imagealphablending($image, false);
         imagesavealpha($image, true);
@@ -508,6 +558,27 @@ class Converter
         }
 
         return $ok;
+    }
+
+    private static function gdResize($image, $width, $height)
+    {
+        $dst = imagecreatetruecolor($width, $height);
+        if (!$dst) {
+            return false;
+        }
+        // Прозрачность PNG сохраняется.
+        imagealphablending($dst, false);
+        imagesavealpha($dst, true);
+        imagefill($dst, 0, 0, imagecolorallocatealpha($dst, 0, 0, 0, 127));
+
+        if (!imagecopyresampled($dst, $image, 0, 0, 0, 0, $width, $height, imagesx($image), imagesy($image))) {
+            if (PHP_VERSION_ID < 80500) {
+                imagedestroy($dst);
+            }
+            return false;
+        }
+
+        return $dst;
     }
 
     private static function applyExifOrientation($image, $source)

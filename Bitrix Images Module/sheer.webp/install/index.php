@@ -129,7 +129,7 @@ class sheer_webp extends CModule
             'enabled', 'quality', 'skip_if_larger', 'rewrite_html', 'convert_on_upload',
             'scan_templates', 'scan_resize_cache', 'scan_roots', 'skip_min_px',
             'batch_size', 'apache_htaccess', 'phase', 'dir_queue',
-            'max_source_mb', 'max_megapixels',
+            'max_source_mb', 'max_megapixels', 'max_side',
         ];
         foreach ($names as $name) {
             Option::delete($this->MODULE_ID, $name);
