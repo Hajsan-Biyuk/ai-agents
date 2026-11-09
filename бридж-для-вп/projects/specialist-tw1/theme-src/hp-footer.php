@@ -33,7 +33,7 @@ $logo = hp_img('img_logo', 'logo-4faf96.png');
                             <?php endforeach; ?>
                         </ul>
                         <?php if ($col['title'] === 'Документы') : ?>
-                            <button class="hp-footer__vi hp-vi" type="button" aria-pressed="false"><?php echo esc_html(hp_t('vi_label')); ?></button>
+                            <button class="hp-footer__vi bvi-open" type="button"><?php echo esc_html(hp_t('vi_label')); ?></button>
                         <?php endif; ?>
                     </div>
                 </div>

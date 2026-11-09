@@ -165,12 +165,6 @@ $(function () {
     $content.stop(true, true).slideToggle(200);
   });
 
-  $(".hp-vi").on("click", function () {
-    $(".hp").toggleClass("hp--vi");
-    var on = $(".hp").hasClass("hp--vi");
-    $(".hp-vi").attr("aria-pressed", on ? "true" : "false");
-  });
-
   // Заявка идёт через Contact Form 7: после отправки — страница «Спасибо»
   document.addEventListener("wpcf7mailsent", function () {
     window.location.href = "/spasibo/";
