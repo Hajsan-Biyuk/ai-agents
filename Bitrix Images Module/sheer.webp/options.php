@@ -103,7 +103,8 @@ if (
     $request->isPost()
     && $canWrite
     && check_bitrix_sessid()
-    && ($request->getPost('Update') || $request->getPost('Apply'))
+    // $tabControl->Buttons() рисует кнопки save/apply; Update/Apply — классические имена.
+    && ($request->getPost('save') || $request->getPost('apply') || $request->getPost('Update') || $request->getPost('Apply'))
 ) {
     Option::set($module_id, 'enabled', $request->getPost('enabled') === 'Y' ? 'Y' : 'N');
     Option::set($module_id, 'quality', (string)max(80, min(100, (int)$request->getPost('quality'))));
