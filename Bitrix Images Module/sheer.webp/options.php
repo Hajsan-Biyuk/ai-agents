@@ -90,6 +90,13 @@ if (!function_exists('sheer_webp_render_stats')) {
         if ($webpSize > 0) {
             $html .= ' · WebP: ' . htmlspecialcharsbx(sheer_webp_format_bytes($webpSize));
         }
+        if (class_exists('\\Sheer\\Webp\\AjaxService')) {
+            $m = \Sheer\Webp\AjaxService::mode();
+            $html .= '<br><b>Фон (cron):</b> ' . ($m['paused']
+                ? '<span style="color:#c00">пауза</span>'
+                : ($m['night'] ? 'ночной режим' : 'дневной режим') . ' · ' . (int)$m['per_minute'] . ' картинок в минуту'
+                    . ($m['warm_night_only'] ? ' · прогрев только ночью (' . (int)$m['night_from'] . '–' . (int)$m['night_to'] . ' ч)' : ''));
+        }
         if (($warm['total'] ?? 0) > 0) {
             $warmLabels = ['run' => 'идёт', 'done' => 'завершён', 'idle' => 'остановлен'];
             $html .= '<br><b>Прогрев по sitemap:</b> ' . htmlspecialcharsbx($warmLabels[$warm['state']] ?? $warm['state'])
@@ -131,6 +138,11 @@ if (
     Option::set($module_id, 'max_megapixels', (string)max(4, min(200, (int)$request->getPost('max_megapixels'))));
     Option::set($module_id, 'warm_threads', (string)max(1, min(8, (int)$request->getPost('warm_threads'))));
     Option::set($module_id, 'cron_per_minute', (string)max(10, min(500, (int)$request->getPost('cron_per_minute'))));
+    Option::set($module_id, 'night_enabled', $request->getPost('night_enabled') === 'Y' ? 'Y' : 'N');
+    Option::set($module_id, 'night_from', (string)max(0, min(23, (int)$request->getPost('night_from'))));
+    Option::set($module_id, 'night_to', (string)max(0, min(23, (int)$request->getPost('night_to'))));
+    Option::set($module_id, 'night_per_minute', (string)max(10, min(500, (int)$request->getPost('night_per_minute'))));
+    Option::set($module_id, 'warm_night_only', $request->getPost('warm_night_only') === 'Y' ? 'Y' : 'N');
     Option::set($module_id, 'apache_htaccess', $request->getPost('apache_htaccess') === 'Y' ? 'Y' : 'N');
 
     if (Option::get($module_id, 'apache_htaccess', 'Y') === 'Y') {
@@ -291,8 +303,19 @@ $tabControl->Begin();
     <tr>
         <td><?= Loc::getMessage('SHEER_WEBP_CRON_PER_MINUTE'); ?></td>
         <td>
-            <input type="number" name="cron_per_minute" min="10" max="500" value="<?= \Sheer\Webp\Config::getCronPerMinute(); ?>">
+            <input type="number" name="cron_per_minute" min="10" max="500" value="<?= (int)Option::get($module_id, 'cron_per_minute', '50'); ?>">
             <br><small><?= Loc::getMessage('SHEER_WEBP_CRON_PER_MINUTE_HINT'); ?></small>
+        </td>
+    </tr>
+    <tr>
+        <td><?= Loc::getMessage('SHEER_WEBP_NIGHT'); ?></td>
+        <td>
+            <input type="checkbox" name="night_enabled" value="Y" <?= Option::get($module_id, 'night_enabled', 'N') === 'Y' ? 'checked' : ''; ?>>
+            с <input type="number" name="night_from" min="0" max="23" style="width:56px" value="<?= (int)Option::get($module_id, 'night_from', '1'); ?>"> ч
+            до <input type="number" name="night_to" min="0" max="23" style="width:56px" value="<?= (int)Option::get($module_id, 'night_to', '7'); ?>"> ч,
+            картинок в минуту: <input type="number" name="night_per_minute" min="10" max="500" style="width:72px" value="<?= (int)Option::get($module_id, 'night_per_minute', '100'); ?>">
+            <br><label><input type="checkbox" name="warm_night_only" value="Y" <?= Option::get($module_id, 'warm_night_only', 'Y') === 'Y' ? 'checked' : ''; ?>> <?= Loc::getMessage('SHEER_WEBP_WARM_NIGHT_ONLY'); ?></label>
+            <br><small><?= Loc::getMessage('SHEER_WEBP_NIGHT_HINT'); ?> <?= htmlspecialcharsbx(date('H:i')); ?>.</small>
         </td>
     </tr>
     <tr>
@@ -322,6 +345,7 @@ $tabControl->Begin();
                     <input type="button" class="adm-btn-save" id="sheer-webp-start" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_START')); ?>">
                     <input type="button" id="sheer-webp-stop" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_STOP')); ?>">
                     <input type="button" id="sheer-webp-clear" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_CLEAR_QUEUE')); ?>">
+                    <input type="button" id="sheer-webp-pause" value="<?= htmlspecialcharsbx(Loc::getMessage(\Sheer\Webp\Config::isPaused() ? 'SHEER_WEBP_RESUME' : 'SHEER_WEBP_PAUSE')); ?>">
                 </p>
                 <p>
                     <input type="button" id="sheer-webp-warm" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_WARM_START')); ?>">
@@ -573,6 +597,18 @@ $tabControl->Begin();
         if (data.queue_dirs) {
             html += ' · каталогов в очереди: ' + data.queue_dirs;
         }
+        var m = data.mode;
+        if (m) {
+            html += '<br><b>Фон (cron):</b> ' + (m.paused
+                ? '<span style="color:#c00">пауза</span>'
+                : (m.night ? 'ночной режим' : 'дневной режим') + ' · ' + m.per_minute + ' картинок в минуту'
+                    + (m.warm_night_only ? ' · прогрев только ночью (' + m.night_from + '–' + m.night_to + ' ч)' : ''));
+            var pb = document.getElementById('sheer-webp-pause');
+            if (pb) {
+                pb.value = m.paused ? '<?= CUtil::JSEscape(Loc::getMessage('SHEER_WEBP_RESUME')); ?>' : '<?= CUtil::JSEscape(Loc::getMessage('SHEER_WEBP_PAUSE')); ?>';
+                pb.setAttribute('data-paused', m.paused ? 'Y' : 'N');
+            }
+        }
         var w = data.warm || {};
         if (w.total > 0) {
             var wl = { run: 'идёт', done: 'завершён', idle: 'остановлен' };
@@ -659,6 +695,20 @@ $tabControl->Begin();
     }
     pollWarm({ warm: <?= CUtil::PhpToJSObject(\Sheer\Webp\Warmer::state()); ?> });
 
+    var pauseBtn = document.getElementById('sheer-webp-pause');
+    if (pauseBtn) {
+        pauseBtn.setAttribute('data-paused', '<?= \Sheer\Webp\Config::isPaused() ? 'Y' : 'N'; ?>');
+        pauseBtn.onclick = function () {
+            var paused = pauseBtn.getAttribute('data-paused') === 'Y';
+            post(paused ? 'resume' : 'pause', function (data) {
+                renderStats(data);
+                setStatus(paused
+                    ? 'Фоновая работа продолжена.'
+                    : 'Пауза: cron не кодирует и не прогревает. Очередь копится, сайт работает как обычно.');
+            });
+        };
+    }
+
     if (warmBtn) {
         warmBtn.onclick = function () {
             if (!confirm('Обойти страницы из sitemap.xml? Работает в фоне через cron, страницу можно закрыть.')) return;
@@ -669,7 +719,10 @@ $tabControl->Begin();
                 renderStats(data);
                 setStatus(data.warm_error
                     ? 'Прогрев не запущен: ' + data.warm_error
-                    : 'Прогрев запущен: ' + fmtNum(data.warm.total) + ' страниц. Идёт в фоне через cron.');
+                    : (data.warm.pos > 0
+                        ? 'Прогрев продолжен с ' + fmtNum(data.warm.pos) + ' из ' + fmtNum(data.warm.total) + ' страниц.'
+                        : 'Прогрев запущен: ' + fmtNum(data.warm.total) + ' страниц.')
+                      + ' Идёт в фоне через cron.');
                 pollWarm(data);
             });
         };

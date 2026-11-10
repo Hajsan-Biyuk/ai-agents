@@ -46,6 +46,15 @@ class Warmer
      */
     public static function start($base)
     {
+        // Остановленный и недоделанный прогрев продолжаем с того же места.
+        $prev = self::state();
+        if ($prev['state'] !== 'run' && $prev['pos'] > 0 && $prev['pos'] < $prev['total'] && is_file(self::listFile())) {
+            Option::set(Config::MODULE_ID, 'warm_state', 'run');
+            Agent::ensureWarm();
+
+            return self::state() + ['resumed' => true];
+        }
+
         $base = rtrim((string)$base, '/');
         if (!preg_match('~^https?://[^/]+$~i', $base)) {
             return self::state() + ['error' => 'Не удалось определить адрес сайта'];

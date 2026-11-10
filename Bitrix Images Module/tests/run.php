@@ -632,6 +632,33 @@ namespace {
     t('max_side=0: existing copy kept as is', $status === 'done');
     unset($opt['max_side']);
 
+    // Ночной режим и пауза.
+    $C = '\\Sheer\\Webp\\Config';
+    t('night off by default', $C::isNight(3) === false && $C::getCronPerMinute(3) === 50);
+    $opt['night_enabled'] = 'Y';
+    t('night 1-7: 3h is night', $C::isNight(3) === true && $C::getCronPerMinute(3) === 100);
+    t('night 1-7: 7h and 0h are day', $C::isNight(7) === false && $C::isNight(0) === false);
+    $opt['night_from'] = '23';
+    $opt['night_to'] = '6';
+    t('night over midnight 23-6', $C::isNight(23) && $C::isNight(2) && !$C::isNight(6) && !$C::isNight(12));
+    $opt['night_per_minute'] = '200';
+    $opt['cron_per_minute'] = '10';
+    t('day/night rates', $C::getCronPerMinute(1) === 200 && $C::getCronPerMinute(14) === 10);
+    t('warm night only default on', $C::isWarmNightOnly() === true);
+    unset($opt['night_enabled'], $opt['night_from'], $opt['night_to'], $opt['night_per_minute'], $opt['cron_per_minute']);
+    t('warm night only needs night mode', $C::isWarmNightOnly() === false);
+
+    $pp = $root . '/upload/iblock/abc/paused.jpg';
+    copy($photo, $pp);
+    Converter::enqueue('/upload/iblock/abc/paused.jpg');
+    $C::setPaused(true);
+    t('pause: convert agent stays, nothing converted', \Sheer\Webp\Agent::convertBatch() === \Sheer\Webp\Agent::CALLBACK
+        && RegistryTable::getByOriginal('/upload/iblock/abc/paused.jpg')['STATUS'] === 'pending' && !is_file($pp . '.webp'));
+    t('pause: warm agent waits', \Sheer\Webp\Agent::warmBatch() === \Sheer\Webp\Warmer::CALLBACK);
+    $C::setPaused(false);
+    t('resume clears pause', $C::isPaused() === false);
+    Scanner::clearQueue();
+
     // Прогрев по sitemap: сортировка и обход через настоящий HTTP-сервер.
     $sorted = \Sheer\Webp\Warmer::sortByDepth(['https://s.ru/a/b/c/', 'https://s.ru/a/', 'https://s.ru/', 'https://s.ru/a/b/']);
     t('warm: sections before products', $sorted === ['https://s.ru/', 'https://s.ru/a/', 'https://s.ru/a/b/', 'https://s.ru/a/b/c/'], json_encode($sorted));
@@ -659,6 +686,10 @@ namespace {
     t('warm: step opens all pages', $more === false && $st['state'] === 'done' && $st['pos'] === 4, json_encode($st));
     t('warm: missing page counted', $st['errors'] === 1, json_encode($st));
     t('warm: stop removes agent', \Sheer\Webp\Warmer::stop()['state'] === 'idle' && !in_array(\Sheer\Webp\Warmer::CALLBACK, CAgent::$list, true));
+    \Bitrix\Main\Config\Option::set('sheer.webp', 'warm_pos', '2');
+    $st = \Sheer\Webp\Warmer::start($srvBase);
+    t('warm: restart resumes from position', $st['state'] === 'run' && $st['pos'] === 2 && !empty($st['resumed']), json_encode($st));
+    \Sheer\Webp\Warmer::stop();
     proc_terminate($srv);
     array_map('unlink', glob($web . '/cat/sub/*') ?: []);
     array_map('unlink', glob($web . '/cat/*.html') ?: []);

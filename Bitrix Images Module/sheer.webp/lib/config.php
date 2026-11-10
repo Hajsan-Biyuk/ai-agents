@@ -125,10 +125,68 @@ class Config
         return $quality;
     }
 
-    /** Сколько картинок агент из cron кодирует за запуск (запуск — раз в минуту). */
-    public static function getCronPerMinute()
+    /**
+     * Сколько картинок агент из cron кодирует за запуск (запуск — раз в минуту).
+     * В ночном окне — своё значение.
+     */
+    public static function getCronPerMinute($hour = null)
     {
+        if (self::isNight($hour)) {
+            return max(10, min(500, (int)Option::get(self::MODULE_ID, 'night_per_minute', '100')));
+        }
+
         return max(10, min(500, (int)Option::get(self::MODULE_ID, 'cron_per_minute', '50')));
+    }
+
+    public static function isNightModeEnabled()
+    {
+        return Option::get(self::MODULE_ID, 'night_enabled', 'N') === 'Y';
+    }
+
+    public static function getNightFrom()
+    {
+        return max(0, min(23, (int)Option::get(self::MODULE_ID, 'night_from', '1')));
+    }
+
+    public static function getNightTo()
+    {
+        return max(0, min(23, (int)Option::get(self::MODULE_ID, 'night_to', '7')));
+    }
+
+    /**
+     * Сейчас ночное окно? Часы по времени сервера; окно может переходить
+     * через полночь (23 → 6). from == to — окно выключено.
+     */
+    public static function isNight($hour = null)
+    {
+        if (!self::isNightModeEnabled()) {
+            return false;
+        }
+        $hour = $hour === null ? (int)date('G') : (int)$hour;
+        $from = self::getNightFrom();
+        $to = self::getNightTo();
+        if ($from === $to) {
+            return false;
+        }
+
+        return $from < $to ? ($hour >= $from && $hour < $to) : ($hour >= $from || $hour < $to);
+    }
+
+    /** Прогрев только ночью (если ночной режим включён). */
+    public static function isWarmNightOnly()
+    {
+        return self::isNightModeEnabled() && Option::get(self::MODULE_ID, 'warm_night_only', 'Y') === 'Y';
+    }
+
+    /** Пауза фоновой работы: cron ничего не кодирует и не прогревает. */
+    public static function isPaused()
+    {
+        return Option::get(self::MODULE_ID, 'paused', 'N') === 'Y';
+    }
+
+    public static function setPaused($paused)
+    {
+        Option::set(self::MODULE_ID, 'paused', $paused ? 'Y' : 'N');
     }
 
     public static function getBatchSize()

@@ -22,6 +22,7 @@ class AjaxService
         $result = self::dispatch((string)$action);
         if (is_array($result)) {
             $result['warm'] = Warmer::state();
+            $result['mode'] = self::mode();
         }
 
         return $result;
@@ -38,9 +39,31 @@ class AjaxService
         return $host === '' ? '' : ($https ? 'https' : 'http') . '://' . $host;
     }
 
+    /** Режим фоновой работы для строки статуса. */
+    public static function mode()
+    {
+        return [
+            'paused' => Config::isPaused(),
+            'night_enabled' => Config::isNightModeEnabled(),
+            'night' => Config::isNight(),
+            'per_minute' => Config::getCronPerMinute(),
+            'warm_night_only' => Config::isWarmNightOnly(),
+            'night_from' => Config::getNightFrom(),
+            'night_to' => Config::getNightTo(),
+        ];
+    }
+
     private static function dispatch($action)
     {
         switch ($action) {
+            case 'pause':
+            case 'resume':
+                Config::setPaused($action === 'pause');
+                $result = RegistryTable::getStats();
+                $result['phase'] = Config::getPhase();
+                $result['ok'] = true;
+                return $result;
+
             case 'warm_start':
             case 'warmStart':
                 $st = Warmer::start(self::currentBase());

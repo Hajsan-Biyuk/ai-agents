@@ -58,6 +58,10 @@ class Agent
         if (!self::isBackgroundContext()) {
             return Warmer::CALLBACK;
         }
+        // Пауза или «прогрев только ночью» днём — ждём, агент остаётся.
+        if (Config::isPaused() || (Config::isWarmNightOnly() && !Config::isNight())) {
+            return Warmer::CALLBACK;
+        }
 
         return Warmer::step() ? Warmer::CALLBACK : '';
     }
@@ -104,6 +108,12 @@ class Agent
         }
 
         if (!self::isBackgroundContext()) {
+            return self::CALLBACK;
+        }
+
+        // Пауза: очередь копится, но ничего не кодируем. Посетители агента не будят —
+        // агент жив и просто ждёт, пока паузу снимут в админке.
+        if (Config::isPaused()) {
             return self::CALLBACK;
         }
 

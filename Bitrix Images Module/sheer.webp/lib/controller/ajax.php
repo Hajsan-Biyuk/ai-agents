@@ -28,6 +28,8 @@ class Ajax extends Controller
             'clearQueue' => $cfg,
             'warmStart' => $cfg,
             'warmStop' => $cfg,
+            'pause' => $cfg,
+            'resume' => $cfg,
             'status' => $cfg,
         ];
     }
@@ -70,6 +72,16 @@ class Ajax extends Controller
     public function warmStopAction()
     {
         return $this->execute('warm_stop');
+    }
+
+    public function pauseAction()
+    {
+        return $this->execute('pause');
+    }
+
+    public function resumeAction()
+    {
+        return $this->execute('resume');
     }
 
     public function statusAction()
