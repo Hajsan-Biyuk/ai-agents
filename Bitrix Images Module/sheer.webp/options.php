@@ -281,7 +281,7 @@ $tabControl->Begin();
     <tr>
         <td valign="top"><?= Loc::getMessage('SHEER_WEBP_NGINX'); ?></td>
         <td>
-            <textarea readonly cols="72" rows="10"><?= htmlspecialcharsbx(WebServer::nginxSnippet()); ?></textarea>
+            <textarea readonly cols="90" rows="22"><?= htmlspecialcharsbx(WebServer::nginxSnippet()); ?></textarea>
         </td>
     </tr>
 

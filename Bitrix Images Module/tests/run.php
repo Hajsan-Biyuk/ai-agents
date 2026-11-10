@@ -339,7 +339,9 @@ namespace {
 
     $ht = WebServer::apacheBlock();
     t('apache block markers', strpos($ht, 'SHEER_WEBP_START') !== false && strpos($ht, '.webp') !== false);
-    t('nginx try_files', strpos(WebServer::nginxSnippet(), 'try_files $uri$sheer_webp_suffix $uri') !== false);
+    $ng = WebServer::nginxSnippet();
+    t('nginx snippet: named location with webp', strpos($ng, 'try_files $uri.webp $uri') !== false && strpos($ng, 'error_page 418 = @sheer_webp') !== false);
+    t('nginx snippet: no try_files inside if', !preg_match('/if \\(\$http_accept[^}]*try_files/s', $ng));
 
     Config::setDirQueue(['/upload', '/upload/iblock']);
     t('queue stored in file', is_file(Config::queueFilePath()));

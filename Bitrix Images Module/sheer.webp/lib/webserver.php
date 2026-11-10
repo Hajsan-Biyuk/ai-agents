@@ -27,18 +27,29 @@ class WebServer
 
     public static function nginxSnippet()
     {
+        // Только блок server { } — подходит для панелей (FASTPANEL, ISPmanager), где
+        // нет доступа к http { }. try_files внутри if не работает, поэтому if
+        // только переводит запрос в именованный location (безопасное использование if).
         return implode("\n", [
-            '# map — в блоке http { }',
-            'map $http_accept $sheer_webp_suffix {',
-            '    default "";',
-            '    "~*image/webp" ".webp";',
+            '# В блок server { } ВЫШЕ общего location для статики (jpg|png|...).',
+            '# Если в server есть свои add_header (например HSTS) — повторите их в обоих блоках.',
+            'location ~* ^/upload/.+\.(jpe?g|png)$ {',
+            '    error_page 418 = @sheer_webp;',
+            '    if ($http_accept ~* "image/webp") {',
+            '        return 418;',
+            '    }',
+            '    add_header Vary Accept;',
+            '    expires 365d;',
+            '    try_files $uri =404;',
             '}',
             '',
-            '# location — в блоке server { }',
-            'location ~* ^/(upload|local/templates|bitrix/templates)/.*\.(jpe?g|png|bmp)$ {',
+            'location @sheer_webp {',
             '    add_header Vary Accept;',
-            '    try_files $uri$sheer_webp_suffix $uri =404;',
+            '    expires 365d;',
+            '    try_files $uri.webp $uri =404;',
             '}',
+            '',
+            '# Если статика у вас уходит на бэкенд через @fallback — замените =404 на @fallback.',
         ]);
     }
 
