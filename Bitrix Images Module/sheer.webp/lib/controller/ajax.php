@@ -26,6 +26,8 @@ class Ajax extends Controller
             'rollbackChunk' => $cfg,
             'installHtaccess' => $cfg,
             'clearQueue' => $cfg,
+            'warmStart' => $cfg,
+            'warmStop' => $cfg,
             'status' => $cfg,
         ];
     }
@@ -58,6 +60,16 @@ class Ajax extends Controller
     public function clearQueueAction()
     {
         return $this->execute('clear_queue');
+    }
+
+    public function warmStartAction()
+    {
+        return $this->execute('warm_start');
+    }
+
+    public function warmStopAction()
+    {
+        return $this->execute('warm_stop');
     }
 
     public function statusAction()

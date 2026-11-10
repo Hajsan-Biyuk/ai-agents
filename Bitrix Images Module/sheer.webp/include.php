@@ -13,6 +13,7 @@ Loader::registerAutoLoadClasses('sheer.webp', [
     'Sheer\\Webp\\Controller\\Ajax' => 'lib/controller/ajax.php',
     'Sheer\\Webp\\Converter' => 'lib/converter.php',
     'Sheer\\Webp\\Handler' => 'lib/handler.php',
+    'Sheer\\Webp\\Warmer' => 'lib/warmer.php',
     'Sheer\\Webp\\Lock' => 'lib/lock.php',
     'Sheer\\Webp\\Path' => 'lib/path.php',
     'Sheer\\Webp\\RegistryTable' => 'lib/registrytable.php',

@@ -156,6 +156,7 @@ class Scanner
 
     private static function beginRollback()
     {
+        Warmer::stop();
         $wasEnabled = Config::isEnabled();
         if ($wasEnabled) {
             Config::setEnabled(false);
@@ -201,7 +202,7 @@ class Scanner
             self::truncateRegistry();
             Config::setPhase('idle');
             Config::setDirQueue([]);
-            Agent::remove();
+            Agent::removeAll();
             self::clearPageCache();
             return 0;
         }

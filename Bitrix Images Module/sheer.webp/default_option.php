@@ -13,6 +13,7 @@ $sheer_webp_default_option = [
     'batch_size' => '8',
     'apache_htaccess' => 'N',
     'max_side' => '2560',
+    'warm_threads' => '4',
     'max_source_mb' => '30',
     'max_megapixels' => '80',
     'phase' => 'idle',

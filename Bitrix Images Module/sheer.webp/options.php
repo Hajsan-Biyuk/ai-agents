@@ -37,7 +37,7 @@ if (!function_exists('sheer_webp_format_bytes')) {
 }
 
 if (!function_exists('sheer_webp_render_stats')) {
-    function sheer_webp_render_stats(array $stats, $phase)
+    function sheer_webp_render_stats(array $stats, $phase, array $warm = [])
     {
         $labels = [
             'idle' => Loc::getMessage('SHEER_WEBP_PHASE_IDLE'),
@@ -90,6 +90,12 @@ if (!function_exists('sheer_webp_render_stats')) {
         if ($webpSize > 0) {
             $html .= ' · WebP: ' . htmlspecialcharsbx(sheer_webp_format_bytes($webpSize));
         }
+        if (($warm['total'] ?? 0) > 0) {
+            $warmLabels = ['run' => 'идёт', 'done' => 'завершён', 'idle' => 'остановлен'];
+            $html .= '<br><b>Прогрев по sitemap:</b> ' . htmlspecialcharsbx($warmLabels[$warm['state']] ?? $warm['state'])
+                . ' · ' . number_format((int)$warm['pos'], 0, ',', ' ') . ' из ' . number_format((int)$warm['total'], 0, ',', ' ') . ' страниц'
+                . ((int)$warm['errors'] > 0 ? ' · не открылось: ' . (int)$warm['errors'] : '');
+        }
         $html .= '</div>';
 
         return $html;
@@ -120,6 +126,7 @@ if (
     Option::set($module_id, 'max_side', (string)($maxSide <= 0 ? 0 : max(1000, min(8000, $maxSide))));
     Option::set($module_id, 'max_source_mb', (string)max(1, min(60, (int)$request->getPost('max_source_mb'))));
     Option::set($module_id, 'max_megapixels', (string)max(4, min(200, (int)$request->getPost('max_megapixels'))));
+    Option::set($module_id, 'warm_threads', (string)max(1, min(8, (int)$request->getPost('warm_threads'))));
     Option::set($module_id, 'apache_htaccess', $request->getPost('apache_htaccess') === 'Y' ? 'Y' : 'N');
 
     if (Option::get($module_id, 'apache_htaccess', 'Y') === 'Y') {
@@ -165,7 +172,7 @@ $tabControl->Begin();
     <tr>
         <td colspan="2">
             <div class="sheer-webp-stats">
-                <?= sheer_webp_render_stats($stats, $phase); ?>
+                <?= sheer_webp_render_stats($stats, $phase, \Sheer\Webp\Warmer::state()); ?>
             </div>
             <?php
             echo BeginNote();
@@ -270,6 +277,13 @@ $tabControl->Begin();
         </td>
     </tr>
     <tr>
+        <td><?= Loc::getMessage('SHEER_WEBP_WARM_THREADS'); ?></td>
+        <td>
+            <input type="number" name="warm_threads" min="1" max="8" value="<?= (int)Option::get($module_id, 'warm_threads', '4'); ?>">
+            <br><small><?= Loc::getMessage('SHEER_WEBP_WARM_THREADS_HINT'); ?></small>
+        </td>
+    </tr>
+    <tr>
         <td><?= Loc::getMessage('SHEER_WEBP_APACHE'); ?></td>
         <td>
             <input type="checkbox" name="apache_htaccess" value="Y" <?= Option::get($module_id, 'apache_htaccess', 'N') === 'Y' ? 'checked' : ''; ?>>
@@ -289,13 +303,18 @@ $tabControl->Begin();
     <tr>
         <td colspan="2">
             <div class="sheer-webp-stats">
-                <?= sheer_webp_render_stats($stats, $phase); ?>
+                <?= sheer_webp_render_stats($stats, $phase, \Sheer\Webp\Warmer::state()); ?>
             </div>
             <?php if ($canWrite): ?>
                 <p>
                     <input type="button" class="adm-btn-save" id="sheer-webp-start" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_START')); ?>">
                     <input type="button" id="sheer-webp-stop" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_STOP')); ?>">
                     <input type="button" id="sheer-webp-clear" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_CLEAR_QUEUE')); ?>">
+                </p>
+                <p>
+                    <input type="button" id="sheer-webp-warm" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_WARM_START')); ?>">
+                    <input type="button" id="sheer-webp-warm-stop" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_WARM_STOP')); ?>">
+                    <br><small><?= Loc::getMessage('SHEER_WEBP_WARM_HINT'); ?></small>
                 </p>
                 <p id="sheer-webp-run-status" class="sheer-webp-status"></p>
             <?php endif; ?>
@@ -542,6 +561,13 @@ $tabControl->Begin();
         if (data.queue_dirs) {
             html += ' · каталогов в очереди: ' + data.queue_dirs;
         }
+        var w = data.warm || {};
+        if (w.total > 0) {
+            var wl = { run: 'идёт', done: 'завершён', idle: 'остановлен' };
+            html += '<br><b>Прогрев по sitemap:</b> ' + (wl[w.state] || w.state)
+                + ' · ' + fmtNum(w.pos) + ' из ' + fmtNum(w.total) + ' страниц'
+                + (w.errors > 0 ? ' · не открылось: ' + w.errors : '');
+        }
         html += '</div>';
         var nodes = document.querySelectorAll('.sheer-webp-stats');
         for (var i = 0; i < nodes.length; i++) {
@@ -596,6 +622,55 @@ $tabControl->Begin();
     var stopBtn = document.getElementById('sheer-webp-stop');
     var rollbackBtn = document.getElementById('sheer-webp-rollback');
     var clearBtn = document.getElementById('sheer-webp-clear');
+    var warmBtn = document.getElementById('sheer-webp-warm');
+    var warmStopBtn = document.getElementById('sheer-webp-warm-stop');
+    var warmTimer = null;
+
+    // Пока идёт прогрев, обновляем цифры раз в 15 с (работу делает cron, не страница).
+    function pollWarm(data) {
+        if (warmTimer) {
+            clearTimeout(warmTimer);
+            warmTimer = null;
+        }
+        if (data && data.warm && data.warm.state === 'run') {
+            warmTimer = setTimeout(function () {
+                if (running || rolling) {
+                    pollWarm(data);
+                    return;
+                }
+                post('status', function (d) {
+                    renderStats(d);
+                    pollWarm(d);
+                });
+            }, 15000);
+        }
+    }
+    pollWarm({ warm: <?= CUtil::PhpToJSObject(\Sheer\Webp\Warmer::state()); ?> });
+
+    if (warmBtn) {
+        warmBtn.onclick = function () {
+            if (!confirm('Обойти страницы из sitemap.xml? Работает в фоне через cron, страницу можно закрыть.')) return;
+            warmBtn.disabled = true;
+            setStatus('Собираю список страниц из sitemap…');
+            post('warm_start', function (data) {
+                warmBtn.disabled = false;
+                renderStats(data);
+                setStatus(data.warm_error
+                    ? 'Прогрев не запущен: ' + data.warm_error
+                    : 'Прогрев запущен: ' + fmtNum(data.warm.total) + ' страниц. Идёт в фоне через cron.');
+                pollWarm(data);
+            });
+        };
+    }
+    if (warmStopBtn) {
+        warmStopBtn.onclick = function () {
+            post('warm_stop', function (data) {
+                renderStats(data);
+                setStatus('Прогрев остановлен.');
+                pollWarm(data);
+            });
+        };
+    }
     var htaccessBtn = document.getElementById('sheer-webp-htaccess');
 
     if (startBtn) {

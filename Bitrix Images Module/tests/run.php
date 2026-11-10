@@ -172,6 +172,11 @@ namespace {
             self::$list = [];
         }
 
+        public static function RemoveAgent($name, $module = '')
+        {
+            self::$list = array_values(array_diff(self::$list, [$name]));
+        }
+
         public static function GetList($a = [], $b = [])
         {
             return new class {
@@ -188,6 +193,7 @@ namespace {
     require $lib . '/path.php';
     require $lib . '/agent.php';
     require $lib . '/lock.php';
+    require $lib . '/warmer.php';
     require $lib . '/rewriter.php';
     require $lib . '/converter.php';
     require $lib . '/handler.php';
@@ -625,6 +631,38 @@ namespace {
     $status = Converter::convertRelative('/upload/iblock/abc/camera.jpg');
     t('max_side=0: existing copy kept as is', $status === 'done');
     unset($opt['max_side']);
+
+    // Прогрев по sitemap: сортировка и обход через настоящий HTTP-сервер.
+    $sorted = \Sheer\Webp\Warmer::sortByDepth(['https://s.ru/a/b/c/', 'https://s.ru/a/', 'https://s.ru/', 'https://s.ru/a/b/']);
+    t('warm: sections before products', $sorted === ['https://s.ru/', 'https://s.ru/a/', 'https://s.ru/a/b/', 'https://s.ru/a/b/c/'], json_encode($sorted));
+    t('warm: parse loc with entities', \Sheer\Webp\Warmer::parseLocs('<loc> https://s.ru/?a=1&amp;b=2 </loc>') === ['https://s.ru/?a=1&b=2']);
+
+    $web = sys_get_temp_dir() . '/sheer-warm-' . bin2hex(random_bytes(3));
+    mkdir($web . '/cat/sub', 0755, true);
+    $port = 18000 + random_int(0, 900);
+    $srvBase = 'http://127.0.0.1:' . $port;
+    file_put_contents($web . '/sitemap.xml', '<sitemapindex><sitemap><loc>' . $srvBase . '/sm-1.xml</loc></sitemap></sitemapindex>');
+    file_put_contents($web . '/sm-1.xml', '<urlset><url><loc>' . $srvBase . '/cat/sub/</loc></url><url><loc>' . $srvBase . '/cat/</loc></url>'
+        . '<url><loc>' . $srvBase . '/</loc></url><url><loc>https://other.host/x/</loc></url><url><loc>' . $srvBase . '/missing.html</loc></url></urlset>');
+    file_put_contents($web . '/index.html', 'home');
+    file_put_contents($web . '/cat/index.html', 'cat');
+    file_put_contents($web . '/cat/sub/index.html', 'sub');
+    // Роутер: встроенный сервер иначе отдаёт index.html на любой несуществующий адрес.
+    file_put_contents($web . '/router.php', '<?php if (parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) === "/missing.html") { http_response_code(404); echo "nf"; return true; } return false;');
+    $srv = proc_open([PHP_BINARY, '-S', '127.0.0.1:' . $port, '-t', $web, $web . '/router.php'], [['pipe', 'r'], ['file', '/dev/null', 'w'], ['file', '/dev/null', 'w']], $pipes);
+    usleep(400000);
+    $st = \Sheer\Webp\Warmer::start($srvBase);
+    t('warm: start collects own-host pages', $st['state'] === 'run' && $st['total'] === 4 && empty($st['error']), json_encode($st));
+    t('warm: agent registered', in_array(\Sheer\Webp\Warmer::CALLBACK, CAgent::$list, true));
+    $more = \Sheer\Webp\Warmer::step(20);
+    $st = \Sheer\Webp\Warmer::state();
+    t('warm: step opens all pages', $more === false && $st['state'] === 'done' && $st['pos'] === 4, json_encode($st));
+    t('warm: missing page counted', $st['errors'] === 1, json_encode($st));
+    t('warm: stop removes agent', \Sheer\Webp\Warmer::stop()['state'] === 'idle' && !in_array(\Sheer\Webp\Warmer::CALLBACK, CAgent::$list, true));
+    proc_terminate($srv);
+    array_map('unlink', glob($web . '/cat/sub/*') ?: []);
+    array_map('unlink', glob($web . '/cat/*.html') ?: []);
+    array_map('unlink', glob($web . '/*.*') ?: []);
 
     // 3. Откат: модуль выключается, композит чищен, чужое остаётся.
     $cleanedBefore = CHTMLPagesCache::$cleaned;

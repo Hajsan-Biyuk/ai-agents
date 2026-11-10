@@ -26,9 +26,40 @@ class Agent
         );
     }
 
+    /** Снять только агента конвертации (агент прогрева живёт отдельно). */
     public static function remove()
     {
+        CAgent::RemoveAgent(self::CALLBACK, Config::MODULE_ID);
+    }
+
+    /** Все агенты модуля — при удалении модуля и откате. */
+    public static function removeAll()
+    {
         CAgent::RemoveModuleAgents(Config::MODULE_ID);
+    }
+
+    public static function ensureWarm()
+    {
+        self::removeWarm();
+        CAgent::AddAgent(Warmer::CALLBACK, Config::MODULE_ID, 'N', 60, '', 'Y', '', 40);
+    }
+
+    public static function removeWarm()
+    {
+        CAgent::RemoveAgent(Warmer::CALLBACK, Config::MODULE_ID);
+    }
+
+    /** Агент прогрева по sitemap: порция страниц за запуск из cron. */
+    public static function warmBatch()
+    {
+        if (!Config::isEnabled()) {
+            return '';
+        }
+        if (!self::isBackgroundContext()) {
+            return Warmer::CALLBACK;
+        }
+
+        return Warmer::step() ? Warmer::CALLBACK : '';
     }
 
     public static function isBackgroundContext()

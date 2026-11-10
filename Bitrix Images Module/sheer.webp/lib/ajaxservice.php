@@ -19,7 +19,47 @@ class AjaxService
 
     public static function run($action)
     {
-        switch ((string)$action) {
+        $result = self::dispatch((string)$action);
+        if (is_array($result)) {
+            $result['warm'] = Warmer::state();
+        }
+
+        return $result;
+    }
+
+    /** https://host текущего запроса — с него и открываем страницы при прогреве. */
+    private static function currentBase()
+    {
+        $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+            || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https')
+            || (int)($_SERVER['SERVER_PORT'] ?? 0) === 443;
+        $host = preg_replace('/[^a-z0-9.:\-]/i', '', (string)($_SERVER['HTTP_HOST'] ?? ''));
+
+        return $host === '' ? '' : ($https ? 'https' : 'http') . '://' . $host;
+    }
+
+    private static function dispatch($action)
+    {
+        switch ($action) {
+            case 'warm_start':
+            case 'warmStart':
+                $st = Warmer::start(self::currentBase());
+                $result = RegistryTable::getStats();
+                $result['phase'] = Config::getPhase();
+                $result['ok'] = empty($st['error']);
+                if (!empty($st['error'])) {
+                    $result['warm_error'] = $st['error'];
+                }
+                return $result;
+
+            case 'warm_stop':
+            case 'warmStop':
+                Warmer::stop();
+                $result = RegistryTable::getStats();
+                $result['phase'] = Config::getPhase();
+                $result['ok'] = true;
+                return $result;
+
             case 'start':
                 Scanner::start();
                 $result = Scanner::processChunk(Config::getBatchSize());

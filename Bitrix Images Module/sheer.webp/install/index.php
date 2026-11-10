@@ -130,6 +130,7 @@ class sheer_webp extends CModule
             'scan_templates', 'scan_resize_cache', 'scan_roots', 'skip_min_px',
             'batch_size', 'apache_htaccess', 'phase', 'dir_queue',
             'max_source_mb', 'max_megapixels', 'max_side',
+            'warm_threads', 'warm_state', 'warm_pos', 'warm_total', 'warm_errors',
         ];
         foreach ($names as $name) {
             Option::delete($this->MODULE_ID, $name);
@@ -172,7 +173,7 @@ class sheer_webp extends CModule
         }
 
         if (Loader::includeModule($this->MODULE_ID)) {
-            Agent::remove();
+            Agent::removeAll();
         }
 
         return true;
