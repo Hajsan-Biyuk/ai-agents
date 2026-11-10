@@ -56,9 +56,10 @@ class Config
         return $px;
     }
 
+    /** Сколько новых картинок одна страница может поставить в очередь. */
     public static function getEnqueuePerRequest()
     {
-        return 20;
+        return 60;
     }
 
     public static function getScanRoots()

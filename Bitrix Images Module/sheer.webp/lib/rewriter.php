@@ -60,12 +60,10 @@ class Rewriter
         return false;
     }
 
+    private const PATTERN = '~((?:https?:)?//[^/\"\'\s]+)?(/(?:upload|local/templates|bitrix/templates)/[^\"\'\s\?\#<>]+?)\.(jpe?g|png|bmp)(?!\.webp)~i';
+
     public static function rewrite($content)
     {
-        if (self::isCompositeOn()) {
-            return $content;
-        }
-
         if (strlen($content) > 8 * 1024 * 1024) {
             return $content;
         }
@@ -75,6 +73,14 @@ class Rewriter
             && strpos($content, '/local/templates/') === false
             && strpos($content, '/bitrix/templates/') === false
         ) {
+            return $content;
+        }
+
+        if (self::isCompositeOn()) {
+            // HTML уходит в композитный кеш для всех браузеров — не переписываем.
+            // Но страница собирается для кеша здесь, в PHP: ставим её картинки
+            // в очередь, чтобы WebP появился для показываемых превью (отдаёт nginx).
+            self::queueFromContent($content);
             return $content;
         }
 
@@ -88,18 +94,9 @@ class Rewriter
             return $content;
         }
 
-        $pattern = '~((?:https?:)?//[^/\"\'\s]+)?(/(?:upload|local/templates|bitrix/templates)/[^\"\'\s\?\#<>]+?)\.(jpe?g|png|bmp)(?!\.webp)~i';
-
-        $rewritten = preg_replace_callback($pattern, static function ($m) {
-            $prefix = $m[1] ?? '';
-            if ($prefix !== '' && !Rewriter::isOwnHost($prefix)) {
-                return $m[0];
-            }
-
-            $path = $m[2] . '.' . $m[3];
-            $relative = Path::normalizeRelative($path);
-
-            if (!Path::isConvertibleExtension($relative) || Path::isExcludedPath($relative) || Path::isTinyResizeFromPath($relative)) {
+        $rewritten = preg_replace_callback(self::PATTERN, static function ($m) {
+            $relative = self::candidate($m);
+            if ($relative === null) {
                 return $m[0];
             }
 
@@ -108,7 +105,7 @@ class Rewriter
                 return $m[0];
             }
 
-            return $prefix . $relative . '.webp';
+            return ($m[1] ?? '') . $relative . '.webp';
         }, $content);
 
         if (!is_string($rewritten)) {
@@ -116,6 +113,39 @@ class Rewriter
         }
 
         return $rewritten;
+    }
+
+    /** Только постановка в очередь, без изменения HTML. */
+    public static function queueFromContent($content)
+    {
+        if (!preg_match_all(self::PATTERN, (string)$content, $matches, PREG_SET_ORDER)) {
+            return;
+        }
+        foreach ($matches as $m) {
+            if (self::$enqueued >= Config::getEnqueuePerRequest()) {
+                return;
+            }
+            $relative = self::candidate($m);
+            if ($relative !== null && !self::webpExists($relative)) {
+                self::enqueueMissing($relative);
+            }
+        }
+    }
+
+    /** Свой URL картинки, которую имеет смысл конвертировать, или null. */
+    private static function candidate(array $m)
+    {
+        $prefix = $m[1] ?? '';
+        if ($prefix !== '' && !self::isOwnHost($prefix)) {
+            return null;
+        }
+
+        $relative = Path::normalizeRelative($m[2] . '.' . $m[3]);
+        if (!Path::isConvertibleExtension($relative) || Path::isExcludedPath($relative) || Path::isTinyResizeFromPath($relative)) {
+            return null;
+        }
+
+        return $relative;
     }
 
     private static function webpExists($relative)
@@ -149,8 +179,11 @@ class Rewriter
             return;
         }
 
-        Converter::enqueue($relative);
-        self::$enqueued++;
+        // Считаем только реально поставленные: уже стоящие в очереди не должны
+        // съедать лимит, иначе дальние картинки страницы никогда не попадут.
+        if (Converter::enqueue($relative)) {
+            self::$enqueued++;
+        }
     }
 
     public static function isOwnHost($prefix)

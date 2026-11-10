@@ -295,6 +295,7 @@ $tabControl->Begin();
                 <p>
                     <input type="button" class="adm-btn-save" id="sheer-webp-start" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_START')); ?>">
                     <input type="button" id="sheer-webp-stop" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_STOP')); ?>">
+                    <input type="button" id="sheer-webp-clear" value="<?= htmlspecialcharsbx(Loc::getMessage('SHEER_WEBP_CLEAR_QUEUE')); ?>">
                 </p>
                 <p id="sheer-webp-run-status" class="sheer-webp-status"></p>
             <?php endif; ?>
@@ -460,7 +461,7 @@ $tabControl->Begin();
     }
 
     function post(action, cb) {
-        var map = { rollback_chunk: 'rollbackChunk', install_htaccess: 'installHtaccess' };
+        var map = { rollback_chunk: 'rollbackChunk', install_htaccess: 'installHtaccess', clear_queue: 'clearQueue' };
         var engineAction = map[action] || action;
         if (window.BX && BX.ajax && typeof BX.ajax.runAction === 'function') {
             BX.ajax.runAction('sheer:webp.ajax.' + engineAction, { data: {} })
@@ -594,6 +595,7 @@ $tabControl->Begin();
     var startBtn = document.getElementById('sheer-webp-start');
     var stopBtn = document.getElementById('sheer-webp-stop');
     var rollbackBtn = document.getElementById('sheer-webp-rollback');
+    var clearBtn = document.getElementById('sheer-webp-clear');
     var htaccessBtn = document.getElementById('sheer-webp-htaccess');
 
     if (startBtn) {
@@ -612,6 +614,21 @@ $tabControl->Begin();
             post('stop', function (data) {
                 renderStats(data);
                 setStatus('Остановлено');
+            });
+        };
+    }
+    if (clearBtn) {
+        clearBtn.onclick = function () {
+            if (!confirm('Очистить очередь? Сканирование остановится, ожидающие записи удалятся. Готовые WebP и оригиналы не трогаются.')) return;
+            running = false;
+            clearBtn.disabled = true;
+            setStatus('Очистка очереди…');
+            post('clear_queue', function (data) {
+                clearBtn.disabled = false;
+                renderStats(data);
+                setStatus(data.busy
+                    ? 'Сейчас работает агент — повторите через минуту.'
+                    : 'Очередь очищена: удалено записей ' + (data.removed || 0) + '.');
             });
         };
     }

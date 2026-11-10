@@ -155,6 +155,8 @@ class Converter
     /**
      * @param bool $force true — ручное сканирование из админки: повторить и
      *                    error/skipped_*, даже если оригинал не менялся.
+     * @return bool true — картинка поставлена в очередь сейчас; false — уже
+     *              в очереди или ставить не нужно.
      */
     public static function enqueue($relative, $fileId = 0, $force = false)
     {
@@ -166,11 +168,11 @@ class Converter
         $existing = RegistryTable::getByOriginal($relative);
         if ($existing && in_array($existing['STATUS'], ['pending', 'processing'], true)) {
             Agent::wake();
-            return true;
+            return false;
         }
 
         if ($existing && !self::needsRequeue($existing, $relative, (bool)$force)) {
-            return true;
+            return false;
         }
 
         // ORIGINAL_SIZE/WEBP_SIZE не обнуляем: по WEBP_SIZE узнаём «свою» копию.

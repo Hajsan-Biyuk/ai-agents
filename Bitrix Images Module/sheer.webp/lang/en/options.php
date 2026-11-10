@@ -31,6 +31,7 @@ $MESS['SHEER_WEBP_ENGINE'] = 'Conversion engine';
 $MESS['SHEER_WEBP_ENGINE_NONE'] = 'Not found. Enable PHP GD with imagewebp or ImageMagick with WEBP.';
 $MESS['SHEER_WEBP_START'] = 'Start batch conversion';
 $MESS['SHEER_WEBP_STOP'] = 'Stop';
+$MESS['SHEER_WEBP_CLEAR_QUEUE'] = 'Clear queue';
 $MESS['SHEER_WEBP_ROLLBACK'] = 'Delete all WebP copies';
 $MESS['SHEER_WEBP_ROLLBACK_HINT'] = 'Original JPEG/PNG files are never changed. Only file.jpg.webp copies created by this module are removed; foreign .webp files stay. Rollback disables the module and clears the composite cache.';
 $MESS['SHEER_WEBP_INSTALL_HTACCESS'] = 'Write Apache rules now';

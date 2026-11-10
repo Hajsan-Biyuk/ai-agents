@@ -126,6 +126,23 @@ class RegistryTable extends DataManager
         return $connection->getAffectedRowsCount() > 0;
     }
 
+    /**
+     * Удалить из очереди записи без своей копии (WEBP_SIZE = 0) одним запросом.
+     * Перепоставленные готовые копии остаются: по их записи откат узнаёт свой файл.
+     * @return int сколько удалено
+     */
+    public static function clearPending()
+    {
+        $connection = Application::getConnection();
+        $helper = $connection->getSqlHelper();
+        $connection->queryExecute(
+            'DELETE FROM ' . $helper->quote(self::getTableName())
+            . " WHERE STATUS = 'pending' AND (WEBP_SIZE IS NULL OR WEBP_SIZE = 0)"
+        );
+
+        return (int)$connection->getAffectedRowsCount();
+    }
+
     /** Время последней записи строки (unix), 0 — неизвестно. */
     public static function rowTimestamp($row)
     {

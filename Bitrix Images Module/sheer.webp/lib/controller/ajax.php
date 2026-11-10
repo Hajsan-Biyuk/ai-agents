@@ -25,6 +25,7 @@ class Ajax extends Controller
             'chunk' => $cfg,
             'rollbackChunk' => $cfg,
             'installHtaccess' => $cfg,
+            'clearQueue' => $cfg,
             'status' => $cfg,
         ];
     }
@@ -52,6 +53,11 @@ class Ajax extends Controller
     public function installHtaccessAction()
     {
         return $this->execute('install_htaccess');
+    }
+
+    public function clearQueueAction()
+    {
+        return $this->execute('clear_queue');
     }
 
     public function statusAction()

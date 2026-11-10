@@ -31,6 +31,7 @@ $MESS['SHEER_WEBP_ENGINE'] = 'Движок конвертации';
 $MESS['SHEER_WEBP_ENGINE_NONE'] = 'Не найден. Установите PHP GD с imagewebp или ImageMagick с WEBP.';
 $MESS['SHEER_WEBP_START'] = 'Запустить массовую конвертацию';
 $MESS['SHEER_WEBP_STOP'] = 'Остановить';
+$MESS['SHEER_WEBP_CLEAR_QUEUE'] = 'Очистить очередь';
 $MESS['SHEER_WEBP_ROLLBACK'] = 'Удалить все WebP-копии';
 $MESS['SHEER_WEBP_ROLLBACK_HINT'] = 'Оригиналы JPEG/PNG не изменяются. Удаляются только копии имя.jpg.webp, созданные этим модулем; чужие .webp остаются. При откате модуль выключается (включить обратно — в настройках), композитный кеш очищается.';
 $MESS['SHEER_WEBP_INSTALL_HTACCESS'] = 'Записать правила Apache сейчас';

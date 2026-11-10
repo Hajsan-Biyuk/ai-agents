@@ -86,6 +86,18 @@ namespace Sheer\Webp {
             };
         }
 
+        public static function clearPending()
+        {
+            $n = 0;
+            foreach (self::$rows as $path => $row) {
+                if (($row['STATUS'] ?? '') === 'pending' && (int)($row['WEBP_SIZE'] ?? 0) === 0) {
+                    unset(self::$rows[$path]);
+                    $n++;
+                }
+            }
+            return $n;
+        }
+
         public static function getStats()
         {
             return ['total' => count(self::$rows)];
@@ -475,7 +487,21 @@ namespace {
     Rewriter::clearCache();
     $cmp = '<img src="/upload/iblock/abc/photo.jpg">';
     t('composite on: html not rewritten', Rewriter::rewrite($cmp) === $cmp);
+
+    // При композите страница не переписывается, но её картинки встают в очередь.
+    $q1 = $root . '/upload/iblock/abc/queue1.jpg';
+    copy($photo, $q1);
+    Rewriter::clearCache();
+    $cmpQ = '<img src="/upload/iblock/abc/queue1.jpg"><div style="background:url(/upload/iblock/abc/queue1.jpg)"></div>';
+    t('composite on: html still untouched', Rewriter::rewrite($cmpQ) === $cmpQ);
+    t('composite on: page images queued', (RegistryTable::getByOriginal('/upload/iblock/abc/queue1.jpg')['STATUS'] ?? '') === 'pending');
+    t('enqueue: already queued returns false', Converter::enqueue('/upload/iblock/abc/queue1.jpg') === false);
     CHTMLPagesCache::$on = false;
+
+    $removed = Scanner::clearQueue();
+    t('clear queue removes pending rows', $removed >= 1 && RegistryTable::getByOriginal('/upload/iblock/abc/queue1.jpg') === false, (string)$removed);
+    t('clear queue keeps done rows', (RegistryTable::getByOriginal('/upload/iblock/abc/photo.jpg')['STATUS'] ?? '') === 'done');
+    t('clear queue stops scan', \Sheer\Webp\Config::getPhase() === 'idle' && \Sheer\Webp\Config::getDirQueue() === []);
 
     clearstatcache();
     touch($photo, time() + 5);

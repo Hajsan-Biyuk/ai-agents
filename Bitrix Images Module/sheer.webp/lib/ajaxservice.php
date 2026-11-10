@@ -50,6 +50,17 @@ class AjaxService
                 $result['done'] = $deleted === 0;
                 return $result;
 
+            case 'clear_queue':
+            case 'clearQueue':
+                $removed = Scanner::clearQueue();
+                $result = RegistryTable::getStats();
+                $result['removed'] = $removed;
+                $result['busy'] = $removed < 0;
+                $result['phase'] = Config::getPhase();
+                $result['queue_dirs'] = count(Config::getDirQueue());
+                $result['ok'] = $removed >= 0;
+                return $result;
+
             case 'install_htaccess':
             case 'installHtaccess':
                 return [

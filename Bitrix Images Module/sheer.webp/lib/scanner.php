@@ -108,6 +108,31 @@ class Scanner
     }
 
     /**
+     * Очистить очередь: остановить сканирование и удалить ожидающие записи.
+     * Файлы, готовые копии и оригиналы не трогаются.
+     * @return int сколько записей удалено, -1 — занято другим процессом
+     */
+    public static function clearQueue()
+    {
+        // Агент из cron держит блокировку до ~40 с — дожидаемся его порции.
+        if (function_exists('set_time_limit')) {
+            @set_time_limit(120);
+        }
+        if (!Lock::acquire(50)) {
+            return -1;
+        }
+        try {
+            Config::setDirQueue([]);
+            Config::setPhase('idle');
+            Agent::remove();
+
+            return RegistryTable::clearPending();
+        } finally {
+            Lock::release();
+        }
+    }
+
+    /**
      * Откат порцией. Первым делом выключает модуль: иначе хиты и агент
      * сразу создают копии заново, и откат ничего не откатывает.
      * Включить модуль обратно — вручную в настройках.
