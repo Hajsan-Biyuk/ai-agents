@@ -503,7 +503,8 @@ class Converter
 
         $image->setImageFormat('webp');
         $image->setImageCompressionQuality(Config::getQuality());
-        $image->setOption('webp:method', '6');
+        // method 4 — в 2–3 раза быстрее 6 при +1–3% к размеру (как у GD/libwebp по умолчанию).
+        $image->setOption('webp:method', '4');
         $image->setOption('webp:alpha-quality', '100');
         $image->setOption('webp:use-sharp-yuv', 'true');
         $image->setOption('webp:lossless', 'false');

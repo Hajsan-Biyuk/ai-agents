@@ -8,6 +8,9 @@ class Agent
 {
     public const CALLBACK = '\\Sheer\\Webp\\Agent::convertBatch();';
 
+    /** Секунд кодирования за один запуск агента из cron (интервал 60 с). */
+    public const CRON_BUDGET = 40;
+
     public static function ensure()
     {
         self::remove();
@@ -73,7 +76,9 @@ class Agent
             return self::CALLBACK;
         }
 
-        $result = Scanner::processChunk(Config::getBatchSize());
+        // В cron посетителей нет: агент работает ~40 с из минутного интервала,
+        // а не 12 с, как запрос из админки. Лимит файлов — только страховка.
+        $result = Scanner::processChunk(max(Config::getBatchSize(), 200), self::CRON_BUDGET);
         if (($result['phase'] ?? 'idle') === 'idle') {
             return '';
         }

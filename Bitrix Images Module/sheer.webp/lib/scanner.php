@@ -35,11 +35,16 @@ class Scanner
         }
     }
 
-    public static function processChunk($limit = 15)
+    /**
+     * @param int $budget секунд на кодирование за вызов: 12 — для админки
+     *                    (ответ не должен висеть), больше — для cron.
+     */
+    public static function processChunk($limit = 15, $budget = 12)
     {
+        $budget = max(5, (int)$budget);
         @ignore_user_abort(true);
         if (function_exists('set_time_limit')) {
-            @set_time_limit(60);
+            @set_time_limit(max(60, $budget + 30));
         }
 
         $limit = max(1, (int)$limit);
@@ -51,13 +56,13 @@ class Scanner
         }
 
         try {
-            return self::processChunkLocked($limit);
+            return self::processChunkLocked($limit, $budget);
         } finally {
             Lock::release();
         }
     }
 
-    private static function processChunkLocked($limit)
+    private static function processChunkLocked($limit, $budget)
     {
         RegistryTable::failStaleProcessing(120);
 
@@ -70,7 +75,7 @@ class Scanner
         }
 
         if ($phase === 'scan') {
-            self::scanDirectories(max(30, $limit * 8), $started);
+            self::scanDirectories(max(30, $limit * 8), $started, $budget >= 30 ? $budget - 10 : 8);
             if (count(Config::getDirQueue()) === 0) {
                 Config::setPhase('convert');
                 $phase = 'convert';
@@ -79,7 +84,7 @@ class Scanner
 
         $converted = 0;
         if ($phase === 'convert') {
-            $converted = self::convertPending($limit, $started);
+            $converted = self::convertPending($limit, $started, $budget);
             if ($converted === 0 && !self::hasPending()) {
                 Config::setPhase('idle');
                 Agent::remove();
@@ -233,12 +238,12 @@ class Scanner
         return array_values(array_unique($existing));
     }
 
-    private static function scanDirectories($fileLimit, $started)
+    private static function scanDirectories($fileLimit, $started, $budget = 8)
     {
         $queue = Config::getDirQueue();
         $added = 0;
 
-        while ($queue && $added < $fileLimit && (time() - $started) < 8) {
+        while ($queue && $added < $fileLimit && (time() - $started) < $budget) {
             $dir = array_shift($queue);
             $absDir = Path::toAbsolute($dir);
             if (!is_dir($absDir)) {
@@ -280,7 +285,7 @@ class Scanner
         return $added;
     }
 
-    private static function convertPending($limit, $started)
+    private static function convertPending($limit, $started, $budget = 12)
     {
         $converted = 0;
         $rows = RegistryTable::getList([
@@ -290,7 +295,7 @@ class Scanner
         ]);
 
         while ($row = $rows->fetch()) {
-            if ((time() - $started) >= 12) {
+            if ((time() - $started) >= $budget) {
                 break;
             }
 
