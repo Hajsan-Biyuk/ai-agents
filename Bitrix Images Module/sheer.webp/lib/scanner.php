@@ -222,6 +222,19 @@ class Scanner
             $roots[] = '/local/templates';
             $roots[] = '/bitrix/templates';
         }
+        // Галочка resize_cache сама добавляет каталог, если его нет в списке:
+        // при композите превью Aspro с хитов в очередь не попадают.
+        if (Config::scanResizeCache()) {
+            $has = false;
+            foreach ($roots as $root) {
+                if (strpos(strtolower(Path::normalizeRelative($root)), '/upload/resize_cache') === 0) {
+                    $has = true;
+                }
+            }
+            if (!$has) {
+                $roots[] = '/upload/resize_cache';
+            }
+        }
 
         $existing = [];
         foreach ($roots as $root) {

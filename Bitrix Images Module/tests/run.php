@@ -376,6 +376,14 @@ namespace {
     t('scan roots skip full upload', !in_array('/upload', $roots, true));
     t('scan roots skip resize_cache', !in_array('/upload/resize_cache', $roots, true));
     t('scan roots skip templates by default', !in_array('/local/templates', $roots, true));
+    \Bitrix\Main\Config\Option::$data['scan_resize_cache'] = 'Y';
+    $rootsRc = Scanner::scanRoots();
+    t('resize_cache checkbox adds the root', in_array('/upload/resize_cache', $rootsRc, true), json_encode($rootsRc));
+    \Bitrix\Main\Config\Option::$data['scan_roots'] = "/upload/iblock\n/upload/resize_cache/iblock";
+    $rootsRc = Scanner::scanRoots();
+    t('resize_cache not duplicated when listed', !in_array('/upload/resize_cache', $rootsRc, true) && in_array('/upload/resize_cache/iblock', $rootsRc, true), json_encode($rootsRc));
+    unset(\Bitrix\Main\Config\Option::$data['scan_roots']);
+    \Bitrix\Main\Config\Option::$data['scan_resize_cache'] = 'N';
 
     $cb = null;
     $tmp = '';
