@@ -125,6 +125,12 @@ class Config
         return $quality;
     }
 
+    /** Сколько картинок агент из cron кодирует за запуск (запуск — раз в минуту). */
+    public static function getCronPerMinute()
+    {
+        return max(10, min(500, (int)Option::get(self::MODULE_ID, 'cron_per_minute', '50')));
+    }
+
     public static function getBatchSize()
     {
         $size = (int)Option::get(self::MODULE_ID, 'batch_size', '8');

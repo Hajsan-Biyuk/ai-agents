@@ -107,9 +107,9 @@ class Agent
             return self::CALLBACK;
         }
 
-        // В cron посетителей нет: агент работает ~40 с из минутного интервала,
-        // а не 12 с, как запрос из админки. Лимит файлов — только страховка.
-        $result = Scanner::processChunk(max(Config::getBatchSize(), 200), self::CRON_BUDGET);
+        // В cron посетителей нет: до ~40 с из минутного интервала, но не больше
+        // N картинок за запуск (настройка «Картинок в минуту»), чтобы держать нагрузку.
+        $result = Scanner::processChunk(Config::getCronPerMinute(), self::CRON_BUDGET);
         if (($result['phase'] ?? 'idle') === 'idle') {
             return '';
         }

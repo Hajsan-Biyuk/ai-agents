@@ -112,6 +112,9 @@ if (
     // $tabControl->Buttons() рисует кнопки save/apply; Update/Apply — классические имена.
     && ($request->getPost('save') || $request->getPost('apply') || $request->getPost('Update') || $request->getPost('Apply'))
 ) {
+    // Композитный кеш чистим только если меняется то, что влияет на HTML:
+    // очистка заставляет пересобрать все страницы и нагружает сайт.
+    $htmlStateBefore = Option::get($module_id, 'enabled', 'Y') . Option::get($module_id, 'rewrite_html', 'Y');
     Option::set($module_id, 'enabled', $request->getPost('enabled') === 'Y' ? 'Y' : 'N');
     Option::set($module_id, 'quality', (string)max(80, min(100, (int)$request->getPost('quality'))));
     Option::set($module_id, 'skip_if_larger', $request->getPost('skip_if_larger') === 'Y' ? 'Y' : 'N');
@@ -127,6 +130,7 @@ if (
     Option::set($module_id, 'max_source_mb', (string)max(1, min(60, (int)$request->getPost('max_source_mb'))));
     Option::set($module_id, 'max_megapixels', (string)max(4, min(200, (int)$request->getPost('max_megapixels'))));
     Option::set($module_id, 'warm_threads', (string)max(1, min(8, (int)$request->getPost('warm_threads'))));
+    Option::set($module_id, 'cron_per_minute', (string)max(10, min(500, (int)$request->getPost('cron_per_minute'))));
     Option::set($module_id, 'apache_htaccess', $request->getPost('apache_htaccess') === 'Y' ? 'Y' : 'N');
 
     if (Option::get($module_id, 'apache_htaccess', 'Y') === 'Y') {
@@ -135,7 +139,8 @@ if (
         WebServer::removeApacheRules();
     }
 
-    if (class_exists('CHTMLPagesCache') && method_exists('CHTMLPagesCache', 'CleanAll')) {
+    $htmlStateAfter = Option::get($module_id, 'enabled', 'Y') . Option::get($module_id, 'rewrite_html', 'Y');
+    if ($htmlStateBefore !== $htmlStateAfter && class_exists('CHTMLPagesCache') && method_exists('CHTMLPagesCache', 'CleanAll')) {
         CHTMLPagesCache::CleanAll();
     }
 }
@@ -281,6 +286,13 @@ $tabControl->Begin();
         <td>
             <input type="number" name="warm_threads" min="1" max="8" value="<?= (int)Option::get($module_id, 'warm_threads', '4'); ?>">
             <br><small><?= Loc::getMessage('SHEER_WEBP_WARM_THREADS_HINT'); ?></small>
+        </td>
+    </tr>
+    <tr>
+        <td><?= Loc::getMessage('SHEER_WEBP_CRON_PER_MINUTE'); ?></td>
+        <td>
+            <input type="number" name="cron_per_minute" min="10" max="500" value="<?= \Sheer\Webp\Config::getCronPerMinute(); ?>">
+            <br><small><?= Loc::getMessage('SHEER_WEBP_CRON_PER_MINUTE_HINT'); ?></small>
         </td>
     </tr>
     <tr>
