@@ -661,6 +661,8 @@ namespace {
     $opt['night_per_minute'] = '200';
     $opt['cron_per_minute'] = '10';
     t('day/night rates', $C::getCronPerMinute(1) === 200 && $C::getCronPerMinute(14) === 10);
+    $opt['cron_per_minute'] = '0';
+    t('day 0 = no daytime conversion', $C::getCronPerMinute(14) === 0 && $C::getCronPerMinute(1) === 200);
     t('warm night only default on', $C::isWarmNightOnly() === true);
     unset($opt['night_enabled'], $opt['night_from'], $opt['night_to'], $opt['night_per_minute'], $opt['cron_per_minute']);
     t('warm night only needs night mode', $C::isWarmNightOnly() === false);

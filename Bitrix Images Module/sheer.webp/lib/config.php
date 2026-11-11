@@ -141,7 +141,10 @@ class Config
             return max(10, min(500, (int)Option::get(self::MODULE_ID, 'night_per_minute', '100')));
         }
 
-        return max(10, min(500, (int)Option::get(self::MODULE_ID, 'cron_per_minute', '50')));
+        // 0 — днём не конвертировать (только ночной режим).
+        $day = (int)Option::get(self::MODULE_ID, 'cron_per_minute', '50');
+
+        return $day <= 0 ? 0 : max(10, min(500, $day));
     }
 
     public static function isNightModeEnabled()

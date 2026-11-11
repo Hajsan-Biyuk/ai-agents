@@ -137,7 +137,7 @@ if (
     Option::set($module_id, 'max_source_mb', (string)max(1, min(60, (int)$request->getPost('max_source_mb'))));
     Option::set($module_id, 'max_megapixels', (string)max(4, min(200, (int)$request->getPost('max_megapixels'))));
     Option::set($module_id, 'warm_threads', (string)max(1, min(8, (int)$request->getPost('warm_threads'))));
-    Option::set($module_id, 'cron_per_minute', (string)max(10, min(500, (int)$request->getPost('cron_per_minute'))));
+    Option::set($module_id, 'cron_per_minute', (string)((int)$request->getPost('cron_per_minute') <= 0 ? 0 : max(10, min(500, (int)$request->getPost('cron_per_minute')))));
     Option::set($module_id, 'night_enabled', $request->getPost('night_enabled') === 'Y' ? 'Y' : 'N');
     Option::set($module_id, 'night_from', (string)max(0, min(23, (int)$request->getPost('night_from'))));
     Option::set($module_id, 'night_to', (string)max(0, min(23, (int)$request->getPost('night_to'))));
@@ -303,7 +303,7 @@ $tabControl->Begin();
     <tr>
         <td><?= Loc::getMessage('SHEER_WEBP_CRON_PER_MINUTE'); ?></td>
         <td>
-            <input type="number" name="cron_per_minute" min="10" max="500" value="<?= (int)Option::get($module_id, 'cron_per_minute', '50'); ?>">
+            <input type="number" name="cron_per_minute" min="0" max="500" value="<?= (int)Option::get($module_id, 'cron_per_minute', '50'); ?>">
             <br><small><?= Loc::getMessage('SHEER_WEBP_CRON_PER_MINUTE_HINT'); ?></small>
         </td>
     </tr>

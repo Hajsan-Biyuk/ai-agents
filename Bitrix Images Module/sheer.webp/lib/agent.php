@@ -117,13 +117,14 @@ class Agent
 
         // Пауза: очередь копится, но ничего не кодируем. Посетители агента не будят —
         // агент жив и просто ждёт, пока паузу снимут в админке.
-        if (Config::isPaused()) {
+        $perMinute = Config::getCronPerMinute();
+        if (Config::isPaused() || $perMinute <= 0) {
             return self::CALLBACK;
         }
 
         // В cron посетителей нет: до ~40 с из минутного интервала, но не больше
         // N картинок за запуск (настройка «Картинок в минуту»), чтобы держать нагрузку.
-        $result = Scanner::processChunk(Config::getCronPerMinute(), self::CRON_BUDGET);
+        $result = Scanner::processChunk($perMinute, self::CRON_BUDGET);
         if (($result['phase'] ?? 'idle') === 'idle') {
             return '';
         }
