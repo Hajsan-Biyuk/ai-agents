@@ -474,7 +474,8 @@ $tabControl->Begin();
         return String(text || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 400);
     }
 
-    function postFallback(action, cb, firstError) {
+    // onError — для фоновых запросов: свой обработчик вместо сообщения об ошибке.
+    function postFallback(action, cb, firstError, onError) {
         var body = 'sessid=' + encodeURIComponent(sessid) + '&ajax_action=' + encodeURIComponent(action);
         fetch(ajaxUrl, {
             method: 'POST',
@@ -504,7 +505,12 @@ $tabControl->Begin();
                 showAjaxError('JS: ' + e.message);
             }
         }).catch(function (e) {
-            showAjaxError((e && e.message ? e.message : String(e)) + (firstError ? ' | runAction: ' + firstError : ''));
+            var msg = (e && e.message ? e.message : String(e)) + (firstError ? ' | runAction: ' + firstError : '');
+            if (onError) {
+                onError(msg);
+                return;
+            }
+            showAjaxError(msg);
         });
     }
 
@@ -515,8 +521,14 @@ $tabControl->Begin();
         return err && err.message ? err.message : String(err);
     }
 
-    function post(action, cb) {
-        var map = { rollback_chunk: 'rollbackChunk', install_htaccess: 'installHtaccess', clear_queue: 'clearQueue' };
+    function post(action, cb, onError) {
+        var map = {
+            rollback_chunk: 'rollbackChunk',
+            install_htaccess: 'installHtaccess',
+            clear_queue: 'clearQueue',
+            warm_start: 'warmStart',
+            warm_stop: 'warmStop'
+        };
         var engineAction = map[action] || action;
         if (window.BX && BX.ajax && typeof BX.ajax.runAction === 'function') {
             BX.ajax.runAction('sheer:webp.ajax.' + engineAction, { data: {} })
@@ -530,13 +542,13 @@ $tabControl->Begin();
                         }
                         return;
                     }
-                    postFallback(action, cb, 'пустой ответ');
+                    postFallback(action, cb, 'пустой ответ', onError);
                 }, function (err) {
-                    postFallback(action, cb, runActionError(err));
+                    postFallback(action, cb, runActionError(err), onError);
                 });
             return;
         }
-        postFallback(action, cb);
+        postFallback(action, cb, '', onError);
     }
 
     function fmtBytes(n) {
@@ -689,6 +701,9 @@ $tabControl->Begin();
                 post('status', function (d) {
                     renderStats(d);
                     pollWarm(d);
+                }, function () {
+                    // Сбой сети (сон компьютера, обрыв) — молча повторяем, работа идёт в cron.
+                    pollWarm(data);
                 });
             }, 15000);
         }
