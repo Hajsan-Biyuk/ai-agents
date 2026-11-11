@@ -10,6 +10,9 @@ class Converter
     /** Ошибочные файлы с хитов повторяем не чаще раза в сутки. */
     public const ERROR_RETRY_SECONDS = 86400;
 
+    /** Второй проход без потерь — только до 1 Мп (превью); крупные PNG слишком дорогие. */
+    public const LOSSLESS_MAX_PIXELS = 1000000;
+
     /** Типы, которые реально читаем: проверка по содержимому, не по расширению. */
     private const IMAGE_TYPES = [
         IMAGETYPE_JPEG => 'jpeg',
@@ -361,7 +364,10 @@ class Converter
             return 'error';
         }
 
-        if (Config::isSkipIfLarger() && $webpSize >= $originalSize && $format === 'png' && Config::isPngLossless()) {
+        $pixels = is_array($target) ? $target[0] * $target[1] : $width * $height;
+        // Без потерь — дорого по CPU (в 1.7.1 клал сервер), поэтому только мелкие превью.
+        if (Config::isSkipIfLarger() && $webpSize >= $originalSize && $format === 'png' && Config::isPngLossless()
+            && $pixels <= self::LOSSLESS_MAX_PIXELS) {
             // Плоская графика (превью на белом фоне) без потерь обычно сильно легче PNG.
             $tmp2 = $webpAbs . '.sheer-' . bin2hex(random_bytes(6)) . '.tmp';
             try {
@@ -526,7 +532,8 @@ class Converter
         $image->setImageFormat('webp');
         $image->setImageCompressionQuality(Config::getQuality());
         // method 4 — в 2–3 раза быстрее 6 при +1–3% к размеру (как у GD/libwebp по умолчанию).
-        $image->setOption('webp:method', '4');
+        // Без потерь method 4 очень медленный; 1 — в разы быстрее при близком размере.
+        $image->setOption('webp:method', $lossless ? '1' : '4');
         $image->setOption('webp:alpha-quality', '100');
         $image->setOption('webp:use-sharp-yuv', 'true');
         $image->setOption('webp:lossless', $lossless ? 'true' : 'false');

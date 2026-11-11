@@ -460,6 +460,13 @@ namespace {
     $status = Converter::convertRelative('/upload/iblock/abc/flat-ll.png');
     $llInfo = @getimagesize($flatLl . '.webp');
     t('flat png converted losslessly', $status === 'done' && is_array($llInfo) && $llInfo[2] === IMAGETYPE_WEBP && filesize($flatLl . '.webp') < filesize($flatLl), $status);
+    // Крупнее 1 Мп второй проход без потерь не делаем — бережём CPU.
+    $bigFlat = $root . '/upload/iblock/abc/flat-big.png';
+    $im2 = imagecreate(1100, 1000);
+    imagecolorallocate($im2, 255, 255, 255);
+    imagepng($im2, $bigFlat, 9);
+    $status = Converter::convertRelative('/upload/iblock/abc/flat-big.png');
+    t('big flat png: no lossless pass', $status === 'skipped_larger', $status);
 
     // Дальше проверяем поведение пропусков — без попытки lossless.
     $opt['png_lossless'] = 'N';
