@@ -361,6 +361,26 @@ class Converter
             return 'error';
         }
 
+        if (Config::isSkipIfLarger() && $webpSize >= $originalSize && $format === 'png' && Config::isPngLossless()) {
+            // Плоская графика (превью на белом фоне) без потерь обычно сильно легче PNG.
+            $tmp2 = $webpAbs . '.sheer-' . bin2hex(random_bytes(6)) . '.tmp';
+            try {
+                $ok2 = $engine === 'imagick'
+                    ? self::convertWithImagick($absolute, $tmp2, $format, $target, true)
+                    : self::convertWithGd($absolute, $tmp2, $target, true);
+            } catch (\Throwable $e) {
+                $ok2 = false;
+            }
+            $size2 = ($ok2 && is_file($tmp2)) ? (int)filesize($tmp2) : 0;
+            if ($size2 > 0 && $size2 < $originalSize) {
+                @unlink($tmp);
+                $tmp = $tmp2;
+                $webpSize = $size2;
+            } elseif (is_file($tmp2)) {
+                @unlink($tmp2);
+            }
+        }
+
         if (Config::isSkipIfLarger() && $webpSize >= $originalSize) {
             @unlink($tmp);
             self::store($relative, $fileId, 'skipped_larger', $originalSize, $webpSize, '');
@@ -471,7 +491,7 @@ class Converter
         return in_array((int)($exif['Orientation'] ?? 1), [3, 6, 8], true);
     }
 
-    private static function convertWithImagick($source, $destination, $format, $target = null)
+    private static function convertWithImagick($source, $destination, $format, $target = null, $lossless = false)
     {
         $binary = @file_get_contents($source);
         if ($binary === false || $binary === '') {
@@ -509,7 +529,7 @@ class Converter
         $image->setOption('webp:method', '4');
         $image->setOption('webp:alpha-quality', '100');
         $image->setOption('webp:use-sharp-yuv', 'true');
-        $image->setOption('webp:lossless', 'false');
+        $image->setOption('webp:lossless', $lossless ? 'true' : 'false');
 
         $ok = (bool)file_put_contents($destination, $image->getImagesBlob());
         $image->clear();
@@ -518,7 +538,7 @@ class Converter
         return $ok;
     }
 
-    private static function convertWithGd($source, $destination, $target = null)
+    private static function convertWithGd($source, $destination, $target = null, $lossless = false)
     {
         $binary = @file_get_contents($source);
         if ($binary === false || $binary === '') {
@@ -555,7 +575,8 @@ class Converter
         imagealphablending($image, false);
         imagesavealpha($image, true);
 
-        $ok = imagewebp($image, $destination, Config::getQuality());
+        $quality = ($lossless && defined('IMG_WEBP_LOSSLESS')) ? IMG_WEBP_LOSSLESS : Config::getQuality();
+        $ok = ($lossless && !defined('IMG_WEBP_LOSSLESS')) ? false : imagewebp($image, $destination, $quality);
         if (PHP_VERSION_ID < 80500) {
             imagedestroy($image);
         }

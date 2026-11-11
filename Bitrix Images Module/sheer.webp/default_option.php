@@ -4,6 +4,7 @@ $sheer_webp_default_option = [
     'enabled' => 'Y',
     'quality' => '90',
     'skip_if_larger' => 'Y',
+    'png_lossless' => 'Y',
     'rewrite_html' => 'Y',
     'convert_on_upload' => 'Y',
     'scan_templates' => 'N',

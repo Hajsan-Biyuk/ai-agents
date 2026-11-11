@@ -15,7 +15,7 @@ class Warmer
     public const CALLBACK = '\\Sheer\\Webp\\Agent::warmBatch();';
 
     /** Секунд на порцию за один запуск агента. */
-    public const BUDGET = 40;
+    public const BUDGET = 25;
 
     public const USER_AGENT = 'Mozilla/5.0 (compatible; SheerWebP-Warmup/1.0)';
 

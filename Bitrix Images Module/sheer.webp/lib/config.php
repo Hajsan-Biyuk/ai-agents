@@ -28,6 +28,12 @@ class Config
         return Option::get(self::MODULE_ID, 'convert_on_upload', 'Y') === 'Y';
     }
 
+    /** PNG, у которого WebP с потерями тяжелее, пробовать сжать без потерь. */
+    public static function isPngLossless()
+    {
+        return Option::get(self::MODULE_ID, 'png_lossless', 'Y') === 'Y';
+    }
+
     public static function isSkipIfLarger()
     {
         return Option::get(self::MODULE_ID, 'skip_if_larger', 'Y') === 'Y';

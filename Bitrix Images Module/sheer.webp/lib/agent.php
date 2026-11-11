@@ -8,8 +8,12 @@ class Agent
 {
     public const CALLBACK = '\\Sheer\\Webp\\Agent::convertBatch();';
 
-    /** Секунд кодирования за один запуск агента из cron (интервал 60 с). */
-    public const CRON_BUDGET = 40;
+    /**
+     * Секунд кодирования за один запуск агента из cron. 25 с, а не 40: в одном
+     * запуске cron_events агенты конвертации и прогрева идут друг за другом,
+     * и вместе они должны укладываться в минуту.
+     */
+    public const CRON_BUDGET = 25;
 
     public static function ensure()
     {

@@ -454,6 +454,15 @@ namespace {
     $im = imagecreate(400, 400);
     imagecolorallocate($im, 255, 255, 255);
     imagepng($im, $flat, 9);
+    // Плоский PNG: без потерь WebP легче — модуль берёт его вместо пропуска.
+    $flatLl = $root . '/upload/iblock/abc/flat-ll.png';
+    copy($flat, $flatLl);
+    $status = Converter::convertRelative('/upload/iblock/abc/flat-ll.png');
+    $llInfo = @getimagesize($flatLl . '.webp');
+    t('flat png converted losslessly', $status === 'done' && is_array($llInfo) && $llInfo[2] === IMAGETYPE_WEBP && filesize($flatLl . '.webp') < filesize($flatLl), $status);
+
+    // Дальше проверяем поведение пропусков — без попытки lossless.
+    $opt['png_lossless'] = 'N';
     $status = Converter::convertRelative('/upload/iblock/abc/flat.png');
     t('flat png skipped_larger', $status === 'skipped_larger', $status);
     Rewriter::clearCache();
@@ -468,6 +477,7 @@ namespace {
     Converter::enqueue('/upload/iblock/abc/flat.png');
     t('changed original requeued', RegistryTable::getByOriginal('/upload/iblock/abc/flat.png')['STATUS'] === 'pending');
 
+    unset($opt['png_lossless']);
     $opt['max_megapixels'] = '4';
     $status = Converter::convertRelative('/upload/iblock/abc/huge.jpg');
     $opt['max_megapixels'] = '24';
