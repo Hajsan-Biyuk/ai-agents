@@ -13,6 +13,35 @@
 		initToc(article);
 		wrapTables(article);
 		initCallback(article);
+		initStickyAside(article);
+	}
+
+	// Sticky-сайдбар. Если он выше экрана: при прокрутке вниз доезжает до своего низа,
+	// при прокрутке вверх — до своего верха (форма снова видна). top меняется на величину прокрутки.
+	function initStickyAside(article) {
+		var aside = article.querySelector('.lam-article__aside');
+		if (!aside) return;
+		var top = headerOffset();
+		var lastY = window.pageYOffset;
+		var ticking = false;
+		function update() {
+			ticking = false;
+			var maxTop = headerOffset();
+			var minTop = Math.min(maxTop, window.innerHeight - aside.offsetHeight - 20);
+			var y = window.pageYOffset;
+			top = Math.max(minTop, Math.min(maxTop, top - (y - lastY)));
+			lastY = y;
+			article.style.setProperty('--lam-aside-top', top + 'px');
+		}
+		update();
+		window.addEventListener('scroll', function () {
+			if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+		}, { passive: true });
+		window.addEventListener('resize', update);
+		window.addEventListener('load', update);
+		Array.prototype.forEach.call(aside.querySelectorAll('img'), function (img) {
+			if (!img.complete) img.addEventListener('load', update);
+		});
 	}
 
 	function headerOffset() {
@@ -57,20 +86,6 @@
 			scrollToTarget(target);
 			if (history.replaceState) history.replaceState(null, '', '#' + target.id);
 		});
-
-		// Подсветка текущего раздела
-		if ('IntersectionObserver' in window) {
-			var links = list.querySelectorAll('a');
-			var io = new IntersectionObserver(function (entries) {
-				entries.forEach(function (entry) {
-					if (!entry.isIntersecting) return;
-					Array.prototype.forEach.call(links, function (l) {
-						l.classList.toggle('is-active', l.getAttribute('href') === '#' + entry.target.id);
-					});
-				});
-			}, { rootMargin: '0px 0px -70% 0px' });
-			Array.prototype.forEach.call(headings, function (h) { if (h.id) io.observe(h); });
-		}
 
 		// Пришли по ссылке с якорем — доскроллить с учётом шапки
 		if (location.hash) {
