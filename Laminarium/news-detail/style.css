@@ -68,12 +68,13 @@ a.lam-article__author:hover { color: var(--lam-accent); }
 .lam-article__body h2, .lam-h2 { margin: 40px 0 20px; padding: 10px 0 10px 24px; border-left: 4px solid var(--lam-accent); color: var(--lam-text); font-size: 26px; font-weight: 700; line-height: 1.25; text-transform: none; scroll-margin-top: 100px; }
 .lam-article__body h3 { margin: 28px 0 12px; font-size: 20px; font-weight: 500; line-height: 1.4; }
 .lam-article__body img { max-width: 100%; height: auto; border-radius: 12px; }
-.lam-article__body ul, .lam-article__body ol { margin: 0 0 20px; padding: 0 0 0 16px; list-style: none; }
-.lam-article__body li { position: relative; margin: 0 0 12px; padding: 0 0 0 18px; background: none; }
-.lam-article__body ul > li::before { content: "•"; position: absolute; top: -2px; left: 0; width: auto; margin: 0; padding: 0; background: none; color: var(--lam-accent); font-size: 20px; line-height: 1.6; }
-.lam-article__body ol { padding-left: 0; counter-reset: lam-step; }
-.lam-article__body ol > li { display: flex; align-items: flex-start; gap: 14px; padding: 0; counter-increment: lam-step; }
-.lam-article__body ol > li::before { content: counter(lam-step); position: static; display: inline-flex; flex: 0 0 28px; align-items: center; justify-content: center; width: 28px; height: 28px; margin: 0; padding: 0; border-radius: 50%; background: var(--lam-accent); color: #fff; font-size: 13px; font-weight: 700; line-height: 1; }
+/* Списки: префикс .lam-article перебивает .right_block ul li:before и ol li:before { content: … !important } сайта */
+.lam-article .lam-article__body ul, .lam-article .lam-article__body ol { margin: 0 0 20px; padding: 0 0 0 16px; list-style: none; }
+.lam-article .lam-article__body li { position: relative; margin: 0 0 12px; padding: 0 0 0 18px; background: none; }
+.lam-article .lam-article__body ul > li::before { content: "•"; position: absolute; top: -2px; left: 0; width: auto; margin: 0; padding: 0; background: none; color: var(--lam-accent); font-size: 20px; line-height: 1.6; }
+.lam-article .lam-article__body ol { padding-left: 0; counter-reset: lam-step; }
+.lam-article .lam-article__body ol > li { display: flex; align-items: flex-start; gap: 14px; padding: 0; counter-increment: lam-step; }
+.lam-article .lam-article__body ol > li::before { content: counter(lam-step) !important; position: static; display: inline-flex; flex: 0 0 28px; align-items: center; justify-content: center; width: 28px; height: 28px; margin: 0; padding: 0 !important; border-radius: 50%; background: var(--lam-accent); color: #fff; font-size: 13px; font-weight: 700; line-height: 1; }
 .lam-article__body blockquote { margin: 0 0 20px; padding: 20px; border: 0; border-radius: 10px; background: var(--lam-soft); color: #727271; font-size: 14px; font-style: normal; line-height: 1.5; }
 .lam-article__body blockquote strong, .lam-article__body blockquote b { display: block; margin-bottom: 4px; color: var(--lam-text); }
 .lam-table-wrap { margin: 0 0 20px; overflow-x: auto; border: 1px solid var(--lam-line); border-radius: 8px; }
