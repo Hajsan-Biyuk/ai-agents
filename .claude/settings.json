@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(**/node_modules/**)",
+      "Read(**/vendor/**)",
+      "Read(**/bitrix/cache/**)",
+      "Read(**/bitrix/backup/**)",
+      "Read(**/upload/**)",
+      "Read(**/uploads/**)",
+      "Read(**/*.zip)",
+      "Read(**/*.tar)",
+      "Read(**/*.min.js)",
+      "Read(**/*.min.css)"
+    ]
+  }
+}
