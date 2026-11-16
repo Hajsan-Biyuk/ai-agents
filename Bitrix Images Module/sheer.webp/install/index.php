@@ -131,7 +131,7 @@ class sheer_webp extends CModule
             'batch_size', 'apache_htaccess', 'phase', 'dir_queue',
             'max_source_mb', 'max_megapixels', 'max_side',
             'warm_threads', 'cron_per_minute', 'night_enabled', 'night_from', 'night_to',
-            'night_per_minute', 'warm_night_only', 'paused', 'png_lossless', 'warm_state', 'warm_pos', 'warm_total', 'warm_errors',
+            'night_per_minute', 'warm_night_only', 'paused', 'png_lossless', 'warm_state', 'warm_pos', 'warm_total', 'warm_errors', 'site_tz',
         ];
         foreach ($names as $name) {
             Option::delete($this->MODULE_ID, $name);

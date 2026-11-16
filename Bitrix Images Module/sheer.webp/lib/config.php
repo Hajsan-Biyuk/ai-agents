@@ -166,12 +166,41 @@ class Config
      * Сейчас ночное окно? Часы по времени сервера; окно может переходить
      * через полночь (23 → 6). from == to — окно выключено.
      */
+    /**
+     * Текущий час по часовому поясу сайта. PHP в cron (CLI) часто живёт в UTC,
+     * а сайт — в Москве: без этого ночной режим уезжал на 3 часа (4–10 вместо 1–7).
+     */
+    public static function hour()
+    {
+        $tz = (string)Option::get(self::MODULE_ID, 'site_tz', '');
+        if ($tz !== '') {
+            try {
+                return (int)(new \DateTime('now', new \DateTimeZone($tz)))->format('G');
+            } catch (\Throwable $e) {
+            }
+        }
+
+        return (int)date('G');
+    }
+
+    /** Запомнить пояс веб-PHP (админка), чтобы cron считал часы так же. */
+    public static function rememberTimezone()
+    {
+        if (PHP_SAPI === 'cli') {
+            return;
+        }
+        $tz = (string)date_default_timezone_get();
+        if ($tz !== '' && Option::get(self::MODULE_ID, 'site_tz', '') !== $tz) {
+            Option::set(self::MODULE_ID, 'site_tz', $tz);
+        }
+    }
+
     public static function isNight($hour = null)
     {
         if (!self::isNightModeEnabled()) {
             return false;
         }
-        $hour = $hour === null ? (int)date('G') : (int)$hour;
+        $hour = $hour === null ? self::hour() : (int)$hour;
         $from = self::getNightFrom();
         $to = self::getNightTo();
         if ($from === $to) {

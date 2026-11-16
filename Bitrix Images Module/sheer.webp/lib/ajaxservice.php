@@ -19,6 +19,7 @@ class AjaxService
 
     public static function run($action)
     {
+        Config::rememberTimezone();
         $result = self::dispatch((string)$action);
         if (is_array($result)) {
             $result['warm'] = Warmer::state();

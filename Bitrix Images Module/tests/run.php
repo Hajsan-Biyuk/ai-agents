@@ -660,6 +660,14 @@ namespace {
     t('night off by default', $C::isNight(3) === false && $C::getCronPerMinute(3) === 50);
     $opt['night_enabled'] = 'Y';
     t('night 1-7: 3h is night', $C::isNight(3) === true && $C::getCronPerMinute(3) === 100);
+    // cron в UTC, сайт в другом поясе — час берём по поясу сайта.
+    $tzWas = date_default_timezone_get();
+    date_default_timezone_set('UTC');
+    $opt['site_tz'] = 'Asia/Tokyo';
+    $tokyo = (int)(new DateTime('now', new DateTimeZone('Asia/Tokyo')))->format('G');
+    t('night hour uses site timezone', $C::hour() === $tokyo && $C::hour() !== (int)date('G'));
+    unset($opt['site_tz']);
+    date_default_timezone_set($tzWas);
     t('night 1-7: 7h and 0h are day', $C::isNight(7) === false && $C::isNight(0) === false);
     $opt['night_from'] = '23';
     $opt['night_to'] = '6';

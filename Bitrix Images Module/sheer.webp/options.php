@@ -17,6 +17,7 @@ if ($APPLICATION->GetGroupRight($module_id) < 'R') {
 }
 
 Loader::includeModule($module_id);
+Config::rememberTimezone();
 
 if (!function_exists('sheer_webp_format_bytes')) {
     function sheer_webp_format_bytes($bytes)
