@@ -179,10 +179,16 @@ namespace {
 
         public static function GetList($a = [], $b = [])
         {
-            return new class {
+            $found = isset($b['NAME']) && in_array($b['NAME'], self::$list, true);
+            return new class($found) {
+                private $found;
+                public function __construct($found)
+                {
+                    $this->found = $found;
+                }
                 public function Fetch()
                 {
-                    return false;
+                    return $this->found ? ['ID' => 1] : false;
                 }
             };
         }
@@ -708,6 +714,14 @@ namespace {
     \Bitrix\Main\Config\Option::set('sheer.webp', 'warm_pos', '2');
     $st = \Sheer\Webp\Warmer::start($srvBase);
     t('warm: restart resumes from position', $st['state'] === 'run' && $st['pos'] === 2 && !empty($st['resumed']), json_encode($st));
+    // Агент пропал, а прогрев «идёт» — восстанавливается сам, позиция та же.
+    \Sheer\Webp\Agent::removeWarm();
+    t('warm: lost agent restored', \Sheer\Webp\Agent::restoreWarm() === true && in_array(\Sheer\Webp\Warmer::CALLBACK, CAgent::$list, true)
+        && \Sheer\Webp\Warmer::state()['pos'] === 2);
+    t('warm: no double restore', \Sheer\Webp\Agent::restoreWarm() === false);
+    $opt['enabled'] = 'N';
+    t('warm: disabled module keeps warm agent', \Sheer\Webp\Agent::warmBatch() === \Sheer\Webp\Warmer::CALLBACK);
+    $opt['enabled'] = 'Y';
     \Sheer\Webp\Warmer::stop();
     proc_terminate($srv);
     array_map('unlink', glob($web . '/cat/sub/*') ?: []);

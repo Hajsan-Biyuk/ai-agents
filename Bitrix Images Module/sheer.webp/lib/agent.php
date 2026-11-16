@@ -56,8 +56,9 @@ class Agent
     /** Агент прогрева по sitemap: порция страниц за запуск из cron. */
     public static function warmBatch()
     {
+        // Выключенный модуль не убивает начатый прогрев: агент ждёт включения.
         if (!Config::isEnabled()) {
-            return '';
+            return Warmer::state()['state'] === 'run' ? Warmer::CALLBACK : '';
         }
         if (!self::isBackgroundContext()) {
             return Warmer::CALLBACK;
@@ -104,8 +105,36 @@ class Agent
         }
     }
 
+    /**
+     * Прогрев «идёт», а агента нет (удалили вручную, выключение модуля в 1.7.x) —
+     * вернуть агента; продолжит с сохранённой позиции.
+     * @return bool true — агент был восстановлен
+     */
+    public static function restoreWarm()
+    {
+        if (Warmer::state()['state'] !== 'run' || self::isWarmRegistered()) {
+            return false;
+        }
+        self::ensureWarm();
+
+        return true;
+    }
+
+    public static function isWarmRegistered()
+    {
+        return (bool)CAgent::GetList([], [
+            'MODULE_ID' => Config::MODULE_ID,
+            'NAME' => Warmer::CALLBACK,
+        ])->Fetch();
+    }
+
     public static function convertBatch()
     {
+        try {
+            self::restoreWarm();
+        } catch (\Throwable $e) {
+        }
+
         if (!Config::isEnabled()) {
             Config::setPhase('idle');
             return '';

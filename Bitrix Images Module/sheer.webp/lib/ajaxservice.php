@@ -136,6 +136,7 @@ class AjaxService
                 $result['phase'] = Config::getPhase();
                 $result['engine'] = Converter::engine();
                 $result['agent'] = Agent::isRegistered();
+                $result['warm_restored'] = Agent::restoreWarm();
                 $result['queue_dirs'] = count(Config::getDirQueue());
                 $result['ok'] = true;
                 return $result;
