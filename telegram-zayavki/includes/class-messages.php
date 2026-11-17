@@ -96,7 +96,8 @@ class TZ_Messages {
 		}
 
 		if ($page_url !== '' && empty($used['url-adress'])) {
-			$lines[] = '<b>Страница:</b> ' . self::escape($page_url);
+			// Без ?ysclid / ?yclid / utm — по ним заказчик сам поймёт источник.
+			$lines[] = '<b>Страница:</b> ' . self::escape(preg_replace('/[?#].*$/', '', $page_url));
 		}
 		$lines = array_merge($lines, TZ_Source::lines());
 

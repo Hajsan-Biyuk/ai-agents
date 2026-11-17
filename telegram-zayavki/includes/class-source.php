@@ -28,31 +28,41 @@ class TZ_Source {
 	}
 
 	/**
-	 * HTML-строки для Telegram из cookie текущего запроса.
+	 * Строка для Telegram из cookie текущего запроса.
+	 * Группа обычно общая с заказчиком, поэтому источник зашифрован: ДДЧЧММ-XY,
+	 * X — этот визит, Y — первый заход. Легенда — правило студии tg-zayavki-istochnik.md.
 	 *
 	 * @return array<int, string>
 	 */
 	public static function lines() {
 		$first = self::cookie(self::FIRST);
 		$visit = self::cookie(self::VISIT);
-		if ($first === null && $visit === null) {
-			return array('<b>Источник:</b> не определён (cookie отключены или JS не сработал)');
-		}
 		if ($visit === null) {
 			$visit = $first;
 		}
 		if ($first === null) {
 			$first = $visit;
 		}
+		return array('<b>Номер заявки:</b> ' . wp_date('dHi') . '-' . self::code($visit) . self::code($first));
+	}
 
-		$lines = array(
-			'<b>Источник:</b> ' . TZ_Messages::escape(self::describe($visit)),
-			'<b>Вход на сайт:</b> ' . TZ_Messages::escape($visit['l']),
-		);
-		if ($first !== $visit) {
-			$lines[] = '<b>Первый заход:</b> ' . TZ_Messages::escape(self::describe($first) . ' → ' . $first['l']);
+	/**
+	 * Цифра источника: 1 поиск Яндекс, 2 другой поиск, 3 реклама, 4 карты, 5 соцсеть,
+	 * 6 ссылка, 7 метка, 8 прямой, 0 не определён.
+	 *
+	 * @param array{r: string, l: string}|null $touch Касание.
+	 */
+	public static function code($touch) {
+		if ($touch === null) {
+			return 0;
 		}
-		return $lines;
+		$text = self::describe($touch);
+		foreach (array('Поиск (SEO) — Яндекс' => 1, 'Поиск (SEO)' => 2, 'Реклама' => 3, 'Карты' => 4, 'Соцсеть' => 5, 'Переход' => 6, 'Метка' => 7, 'Прямой' => 8) as $prefix => $code) {
+			if (strpos($text, $prefix) === 0) {
+				return $code;
+			}
+		}
+		return 0;
 	}
 
 	/**

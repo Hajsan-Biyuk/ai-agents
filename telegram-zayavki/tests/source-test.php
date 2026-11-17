@@ -27,13 +27,16 @@ foreach ($cases as $c) {
 	assert($got === $c[2], "{$c[0]} {$c[1]}: $got");
 }
 
+function wp_date($f) { return date($f); }
 $_COOKIE = array();
-assert(strpos(implode('', TZ_Source::lines()), 'не определён') !== false);
+assert(substr(TZ_Source::lines()[0], -3) === '-00');
 $_COOKIE['tz_src'] = json_encode(array('r' => 'https://yandex.ru/', 'l' => 'https://s.ru/a/'));
-$_COOKIE['tz_src_s'] = json_encode(array('r' => '', 'l' => 'https://s.ru/<b>'));
-$text = implode("\n", TZ_Source::lines());
-assert(strpos($text, 'Прямой заход') !== false && strpos($text, 'Первый заход:</b> Поиск (SEO) — Яндекс → https://s.ru/a/') !== false, $text);
-assert(strpos($text, '&lt;b&gt;') !== false, 'cookie должны экранироваться');
-$_COOKIE['tz_src_s'] = $_COOKIE['tz_src'];
-assert(count(TZ_Source::lines()) === 2, 'одинаковые касания — без строки «Первый заход»');
+$_COOKIE['tz_src_s'] = json_encode(array('r' => '', 'l' => 'https://s.ru/?yclid=1'));
+assert(substr(TZ_Source::lines()[0], -3) === '-31', TZ_Source::lines()[0]);
+unset($_COOKIE['tz_src_s']);
+assert(substr(TZ_Source::lines()[0], -3) === '-11');
+foreach (array(array('https://www.google.com/', 2), array('https://yandex.ru/maps/1', 4), array('https://vk.com/', 5), array('https://avito.ru/', 6), array('', 8)) as $c) {
+	assert(TZ_Source::code(array('r' => $c[0], 'l' => 'https://s.ru/')) === $c[1], $c[0]);
+}
+assert(TZ_Source::code(array('r' => '', 'l' => 'https://s.ru/?utm_source=x')) === 7);
 echo "OK\n";
