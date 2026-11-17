@@ -62,3 +62,5 @@ $MESS['SHEER_WEBP_STAT_SAVED_VOLUME'] = 'Transfer saved';
 $MESS['SHEER_WEBP_STAT_OF'] = 'of';
 $MESS['SHEER_WEBP_STAT_EMPTY'] = 'Start batch conversion — numbers appear after the scan.';
 $MESS['SHEER_WEBP_NOTE'] = 'Aspro MAX catalog profile: mass-convert originals only, not all of /upload. resize_cache thumbs are queued after a page view. Visitor hits never encode WebP. City subdomains share the same files. Originals stay. Cron agents required. SVG, GIF and icons are skipped.';
+$MESS['SHEER_WEBP_NIGHT_WORKERS'] = 'converters:';
+$MESS['SHEER_WEBP_NIGHT_WORKERS_HINT'] = 'How many processes encode images at night at once (1–4). Each takes one CPU core. Works when cron runs PHP from the command line (cron_events.php).';

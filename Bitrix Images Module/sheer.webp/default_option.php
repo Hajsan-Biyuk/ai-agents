@@ -20,6 +20,7 @@ $sheer_webp_default_option = [
     'night_from' => '1',
     'night_to' => '7',
     'night_per_minute' => '100',
+    'night_workers' => '1',
     'warm_night_only' => 'Y',
     'paused' => 'N',
     'max_source_mb' => '30',

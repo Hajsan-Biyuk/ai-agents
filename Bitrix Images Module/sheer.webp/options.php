@@ -96,6 +96,7 @@ if (!function_exists('sheer_webp_render_stats')) {
             $html .= '<br><b>Фон (cron):</b> ' . ($m['paused']
                 ? '<span style="color:#c00">пауза</span>'
                 : ($m['night'] ? 'ночной режим' : 'дневной режим') . ' · ' . (int)$m['per_minute'] . ' картинок в минуту'
+                    . ($m['workers'] > 1 ? ' · конвертеров: ' . (int)$m['workers'] : '')
                     . ($m['warm_night_only'] ? ' · прогрев только ночью (' . (int)$m['night_from'] . '–' . (int)$m['night_to'] . ' ч)' : ''));
         }
         if (($warm['total'] ?? 0) > 0) {
@@ -143,6 +144,7 @@ if (
     Option::set($module_id, 'night_from', (string)max(0, min(23, (int)$request->getPost('night_from'))));
     Option::set($module_id, 'night_to', (string)max(0, min(23, (int)$request->getPost('night_to'))));
     Option::set($module_id, 'night_per_minute', (string)max(10, min(500, (int)$request->getPost('night_per_minute'))));
+    Option::set($module_id, 'night_workers', (string)max(1, min(4, (int)$request->getPost('night_workers'))));
     Option::set($module_id, 'warm_night_only', $request->getPost('warm_night_only') === 'Y' ? 'Y' : 'N');
     Option::set($module_id, 'apache_htaccess', $request->getPost('apache_htaccess') === 'Y' ? 'Y' : 'N');
 
@@ -314,7 +316,9 @@ $tabControl->Begin();
             <input type="checkbox" name="night_enabled" value="Y" <?= Option::get($module_id, 'night_enabled', 'N') === 'Y' ? 'checked' : ''; ?>>
             с <input type="number" name="night_from" min="0" max="23" style="width:56px" value="<?= (int)Option::get($module_id, 'night_from', '1'); ?>"> ч
             до <input type="number" name="night_to" min="0" max="23" style="width:56px" value="<?= (int)Option::get($module_id, 'night_to', '7'); ?>"> ч,
-            картинок в минуту: <input type="number" name="night_per_minute" min="10" max="500" style="width:72px" value="<?= (int)Option::get($module_id, 'night_per_minute', '100'); ?>">
+            картинок в минуту: <input type="number" name="night_per_minute" min="10" max="500" style="width:72px" value="<?= (int)Option::get($module_id, 'night_per_minute', '100'); ?>">,
+            <?= Loc::getMessage('SHEER_WEBP_NIGHT_WORKERS'); ?> <input type="number" name="night_workers" min="1" max="4" style="width:56px" value="<?= (int)Option::get($module_id, 'night_workers', '1'); ?>">
+            <br><small><?= Loc::getMessage('SHEER_WEBP_NIGHT_WORKERS_HINT'); ?></small>
             <br><label><input type="checkbox" name="warm_night_only" value="Y" <?= Option::get($module_id, 'warm_night_only', 'Y') === 'Y' ? 'checked' : ''; ?>> <?= Loc::getMessage('SHEER_WEBP_WARM_NIGHT_ONLY'); ?></label>
             <br><small><?= Loc::getMessage('SHEER_WEBP_NIGHT_HINT'); ?> <?= htmlspecialcharsbx(date('H:i')); ?>.</small>
         </td>
@@ -615,6 +619,7 @@ $tabControl->Begin();
             html += '<br><b>Фон (cron):</b> ' + (m.paused
                 ? '<span style="color:#c00">пауза</span>'
                 : (m.night ? 'ночной режим' : 'дневной режим') + ' · ' + m.per_minute + ' картинок в минуту'
+                    + (m.workers > 1 ? ' · конвертеров: ' + m.workers : '')
                     + (m.warm_night_only ? ' · прогрев только ночью (' + m.night_from + '–' + m.night_to + ' ч)' : ''));
             var pb = document.getElementById('sheer-webp-pause');
             if (pb) {

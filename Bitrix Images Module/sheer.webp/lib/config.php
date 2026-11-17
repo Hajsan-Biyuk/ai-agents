@@ -147,6 +147,16 @@ class Config
         return $day <= 0 ? 0 : max(10, min(500, $day));
     }
 
+    /** Сколько процессов кодируют одновременно: ночью — настройка, днём всегда 1. */
+    public static function getWorkers($hour = null)
+    {
+        if (!self::isNight($hour)) {
+            return 1;
+        }
+
+        return max(1, min(4, (int)Option::get(self::MODULE_ID, 'night_workers', '1')));
+    }
+
     public static function isNightModeEnabled()
     {
         return Option::get(self::MODULE_ID, 'night_enabled', 'N') === 'Y';

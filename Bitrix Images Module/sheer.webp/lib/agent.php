@@ -9,11 +9,20 @@ class Agent
     public const CALLBACK = '\\Sheer\\Webp\\Agent::convertBatch();';
 
     /**
-     * Секунд кодирования за один запуск агента из cron. 25 с, а не 40: в одном
-     * запуске cron_events агенты конвертации и прогрева идут друг за другом,
-     * и вместе они должны укладываться в минуту.
+     * Секунд кодирования за один запуск агента из cron, когда в эту же минуту
+     * работает прогрев: агенты идут друг за другом и вместе укладываются в минуту.
      */
     public const CRON_BUDGET = 25;
+
+    /** Прогрев в эту минуту не работает (днём, завершён) — минута вся конвертации. */
+    public const CRON_BUDGET_SOLO = 50;
+
+    public static function cronBudget()
+    {
+        $warming = Warmer::state()['state'] === 'run' && !(Config::isWarmNightOnly() && !Config::isNight());
+
+        return $warming ? self::CRON_BUDGET : self::CRON_BUDGET_SOLO;
+    }
 
     public static function ensure()
     {
@@ -151,9 +160,10 @@ class Agent
             return self::CALLBACK;
         }
 
-        // В cron посетителей нет: до ~40 с из минутного интервала, но не больше
+        // В cron посетителей нет: 25–50 с из минутного интервала, но не больше
         // N картинок за запуск (настройка «Картинок в минуту»), чтобы держать нагрузку.
-        $result = Scanner::processChunk($perMinute, self::CRON_BUDGET);
+        // Ночью — несколько конвертеров параллельно (настройка «Конвертеров ночью»).
+        $result = Scanner::processChunk($perMinute, self::cronBudget(), Config::getWorkers());
         if (($result['phase'] ?? 'idle') === 'idle') {
             return '';
         }

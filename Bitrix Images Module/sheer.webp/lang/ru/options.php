@@ -62,3 +62,5 @@ $MESS['SHEER_WEBP_STAT_SAVED_VOLUME'] = 'Экономия трафика';
 $MESS['SHEER_WEBP_STAT_OF'] = 'из';
 $MESS['SHEER_WEBP_STAT_EMPTY'] = 'Запустите массовую конвертацию — цифры появятся после сканирования.';
 $MESS['SHEER_WEBP_NOTE'] = 'Профиль под каталог Aspro MAX (atriumceramic.ru): массово только оригиналы, не весь /upload. Превью resize_cache кодируются в фоне после просмотра. На хите посетителя PHP не жмёт WebP. Городские поддомены отдают те же файлы. Оригиналы остаются. Нужен cron-агент. SVG, GIF и иконки не трогаются.';
+$MESS['SHEER_WEBP_NIGHT_WORKERS'] = 'конвертеров:';
+$MESS['SHEER_WEBP_NIGHT_WORKERS_HINT'] = 'Сколько процессов кодируют картинки ночью одновременно (1–4). Каждый занимает одно ядро CPU. Работает, если cron запускает PHP из командной строки (cron_events.php).';

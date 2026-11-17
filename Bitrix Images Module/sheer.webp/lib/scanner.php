@@ -39,7 +39,7 @@ class Scanner
      * @param int $budget секунд на кодирование за вызов: 12 — для админки
      *                    (ответ не должен висеть), больше — для cron.
      */
-    public static function processChunk($limit = 15, $budget = 12)
+    public static function processChunk($limit = 15, $budget = 12, $workers = 1)
     {
         $budget = max(5, (int)$budget);
         @ignore_user_abort(true);
@@ -56,13 +56,13 @@ class Scanner
         }
 
         try {
-            return self::processChunkLocked($limit, $budget);
+            return self::processChunkLocked($limit, $budget, max(1, (int)$workers));
         } finally {
             Lock::release();
         }
     }
 
-    private static function processChunkLocked($limit, $budget)
+    private static function processChunkLocked($limit, $budget, $workers = 1)
     {
         RegistryTable::failStaleProcessing(120);
 
@@ -84,7 +84,11 @@ class Scanner
 
         $converted = 0;
         if ($phase === 'convert') {
-            $converted = self::convertPending($limit, $started, $budget);
+            // Доп. процессы берут строки через claim() и живут, пока мы держим Lock.
+            $perWorker = (int)ceil($limit / $workers);
+            $procs = $workers > 1 ? self::spawnWorkers($workers - 1, $perWorker, $budget - (time() - $started)) : [];
+            $converted = self::convertPending($procs ? $perWorker : $limit, $started, $budget);
+            self::waitWorkers($procs, $budget);
             if ($converted === 0 && !self::hasPending()) {
                 Config::setPhase('idle');
                 Agent::remove();
@@ -93,6 +97,59 @@ class Scanner
         }
 
         return self::statsResult($converted, false);
+    }
+
+    /**
+     * Порция доп. конвертера (tools/worker.php). Работает только пока родительский
+     * агент держит Lock: иначе админка или откат могли бы идти одновременно.
+     */
+    public static function workerChunk($limit, $budget)
+    {
+        if (Lock::acquire(0)) {
+            Lock::release();
+            return 0;
+        }
+
+        return self::convertPending(max(1, (int)$limit), time(), max(5, (int)$budget));
+    }
+
+    /** Запустить доп. конвертеры: только из CLI-cron, где есть бинарник PHP. */
+    private static function spawnWorkers($count, $limit, $budget)
+    {
+        $script = dirname(__DIR__) . '/tools/worker.php';
+        if ($count < 1 || $budget < 5 || PHP_SAPI !== 'cli' || !function_exists('proc_open')
+            || PHP_BINARY === '' || !is_file($script)) {
+            return [];
+        }
+
+        $cmd = escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($script) . ' '
+            . escapeshellarg(Config::getDocumentRoot()) . ' ' . (int)$limit . ' ' . (int)$budget;
+        $null = DIRECTORY_SEPARATOR === '\\' ? 'NUL' : '/dev/null';
+        $io = [0 => ['file', $null, 'r'], 1 => ['file', $null, 'w'], 2 => ['file', $null, 'w']];
+        $procs = [];
+        for ($i = 0; $i < $count; $i++) {
+            $proc = @proc_open($cmd, $io, $pipes);
+            if (is_resource($proc)) {
+                $procs[] = $proc;
+            }
+        }
+
+        return $procs;
+    }
+
+    /** Дождаться доп. конвертеров; зависший снимаем, его строку потом закроет failStaleProcessing. */
+    private static function waitWorkers(array $procs, $budget)
+    {
+        $deadline = time() + $budget + 90;
+        foreach ($procs as $proc) {
+            while (($st = proc_get_status($proc)) && $st['running'] && time() < $deadline) {
+                usleep(200000);
+            }
+            if (!empty($st['running'])) {
+                @proc_terminate($proc);
+            }
+            @proc_close($proc);
+        }
     }
 
     private static function statsResult($converted, $busy)
@@ -114,11 +171,11 @@ class Scanner
      */
     public static function clearQueue()
     {
-        // Агент из cron держит блокировку до ~40 с — дожидаемся его порции.
+        // Агент из cron держит блокировку до ~50 с — дожидаемся его порции.
         if (function_exists('set_time_limit')) {
-            @set_time_limit(120);
+            @set_time_limit(150);
         }
-        if (!Lock::acquire(50)) {
+        if (!Lock::acquire(80)) {
             return -1;
         }
         try {

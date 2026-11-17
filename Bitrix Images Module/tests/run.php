@@ -681,6 +681,35 @@ namespace {
     unset($opt['night_enabled'], $opt['night_from'], $opt['night_to'], $opt['night_per_minute'], $opt['cron_per_minute']);
     t('warm night only needs night mode', $C::isWarmNightOnly() === false);
 
+    // 1.7.6: параллельные конвертеры ночью и бюджет минуты.
+    $opt['night_enabled'] = 'Y';
+    $opt['night_workers'] = '3';
+    t('workers: night setting, day always 1', $C::getWorkers(3) === 3 && $C::getWorkers(14) === 1);
+    $opt['night_workers'] = '9';
+    t('workers: clamped to 4', $C::getWorkers(3) === 4);
+    $h = $C::hour();
+    $opt['night_from'] = (string)$h;
+    $opt['night_to'] = (string)(($h + 1) % 24);
+    $opt['warm_state'] = 'run';
+    t('budget: warm runs now -> 25 s', \Sheer\Webp\Agent::cronBudget() === 25);
+    $opt['night_from'] = (string)(($h + 1) % 24);
+    $opt['night_to'] = (string)(($h + 2) % 24);
+    t('budget: warm night-only, day -> 50 s', \Sheer\Webp\Agent::cronBudget() === 50);
+    $opt['warm_state'] = 'done';
+    t('budget: no warm -> 50 s', \Sheer\Webp\Agent::cronBudget() === 50);
+    unset($opt['night_enabled'], $opt['night_from'], $opt['night_to'], $opt['night_workers'], $opt['warm_state']);
+    $wp = $root . '/upload/iblock/abc/worker.jpg';
+    copy($photo, $wp);
+    Converter::enqueue('/upload/iblock/abc/worker.jpg');
+    t('worker without parent lock does nothing', Scanner::workerChunk(10, 10) === 0
+        && RegistryTable::getByOriginal('/upload/iblock/abc/worker.jpg')['STATUS'] === 'pending');
+    // Доп. процесс здесь без Битрикса сразу падает — родитель не виснет и делает свою долю (10 / 2).
+    Config::setPhase('convert');
+    $t0 = time();
+    $r = Scanner::processChunk(10, 10, 2);
+    t('parallel: parent does its share, waits workers', $r['converted_chunk'] === 5 && time() - $t0 < 15, json_encode($r));
+    Scanner::clearQueue();
+
     $pp = $root . '/upload/iblock/abc/paused.jpg';
     copy($photo, $pp);
     Converter::enqueue('/upload/iblock/abc/paused.jpg');
