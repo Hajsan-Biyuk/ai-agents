@@ -121,7 +121,9 @@
 					<div class="phones-wr">
 						<a class="active" href="tel:+79787877391"><span>+7 (978) 787-73-91</span></a>
 					</div>
-					<a class="mainHeader__max" href="https://max.ru/u/f9LHodD0cOLqV_Ttv1RgCZYMdTGmsV1P3JffsB5dH2JrZmLs-vU6V6bSCSQ" target="_blank" rel="noopener noreferrer nofollow"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/max.svg" width="44" height="44" alt="MAX ПНК"></a>
+					<?php if ($max_link = get_field('max_link', 'option')) : ?>
+					<a class="mainHeader__max" href="<?php echo esc_url($max_link); ?>" target="_blank" rel="noopener noreferrer nofollow"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/max.svg" width="44" height="44" alt="MAX ПНК"></a>
+					<?php endif; ?>
 					<div class="btn_wr callback_header">
 						<a href="#callback" class="btn__main fancybox">Заказать звонок</a>
 					</div>

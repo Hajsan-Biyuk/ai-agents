@@ -22,10 +22,13 @@
 					<?php endif; ?>
 						<p>Кровельные материалы от<br /> производителя в Крыму</p>
 						<p>Подпишитесь на наши социальные сети:</p>
+						<?php $max_link = get_field('max_link', 'option'); $vk_link = get_field('vk_link', 'option'); ?>
+						<?php if ($max_link || $vk_link) : ?>
 						<div class="footer__soc">
-							<a href="https://max.ru/u/f9LHodD0cOLqV_Ttv1RgCZYMdTGmsV1P3JffsB5dH2JrZmLs-vU6V6bSCSQ" target="_blank" rel="noopener noreferrer nofollow"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/max-footer.svg" width="44" height="44" alt="MAX ПНК" /></a>
-							<a href="https://vk.com/pnk_crimea" target="_blank" rel="noopener noreferrer nofollow"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/vk.svg" width="44" height="44" alt="Вконтакте ПНК" /></a>
+							<?php if ($max_link) : ?><a href="<?php echo esc_url($max_link); ?>" target="_blank" rel="noopener noreferrer nofollow"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/max-footer.svg" width="44" height="44" alt="MAX ПНК" /></a><?php endif; ?>
+							<?php if ($vk_link) : ?><a href="<?php echo esc_url($vk_link); ?>" target="_blank" rel="noopener noreferrer nofollow"><img src="<?php echo get_template_directory_uri(); ?>/images/icons/vk.svg" width="44" height="44" alt="Вконтакте ПНК" /></a><?php endif; ?>
 						</div>
+						<?php endif; ?>
 				</div>
                 </div>
                 <div class="col-lg-3 col-md-6  col-xs-6 footer__catalog">
