@@ -2633,3 +2633,11 @@ body:has(> .Holder.sk-on) .fancybox-container .fancybox-content .fancybox-close-
 	.sk-on .LeftBlock .FilterBlock .bx-filter-parameters-box-container > .Labels,
 	.sk-on .LeftBlock .FilterBlock .bx-filter-parameters-box-container:not(:has(> .Labels)) { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Доводка после QA (итерация 2): шаг ссылок ≥40px, подкатегории колонкой, размер файла без переноса */
+.sk-on .FilesList .Icon { white-space: nowrap; }
+@media (max-width: 767px) {
+	.sk-on .sk-breadcrumbs,
+	.sk-on .sk-footer__docs { row-gap: 12px; }
+	.sk-on .CatalogIndex .Items .Item .Desc ul { flex-direction: column !important; flex-wrap: nowrap !important; }
+}
