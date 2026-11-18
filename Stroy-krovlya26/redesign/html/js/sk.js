@@ -112,6 +112,82 @@
 		}
 	});
 
+	/* ---------- Карточка товара: покрытие → толщина → цвет, цена ---------- */
+	// Чистая функция подбора предложения (тест: Stroy-krovlya26/redesign/tests/variants-test.js)
+	function skPick(offers, sel) {
+		var s = { coat: sel.coat || '', thick: sel.thick || '', color: sel.color || '' };
+		if (!offers.length) return { sel: s, offer: null, thicks: [] };
+		var has = function (k, v) { return offers.some(function (o) { return o[k] === v; }); };
+		if (!has('coat', s.coat)) s.coat = offers[0].coat;
+		var thicks = [];
+		offers.forEach(function (o) { if (o.coat === s.coat && thicks.indexOf(o.thick) < 0) thicks.push(o.thick); });
+		if (thicks.indexOf(s.thick) < 0) s.thick = thicks[0];
+		var offer = null;
+		offers.forEach(function (o) { if (!offer && o.coat === s.coat && o.thick === s.thick) offer = o; });
+		if (!offer || offer.colors.indexOf(s.color) < 0) s.color = '';
+		return { sel: s, offer: offer, thicks: thicks };
+	}
+	window.skPick = skPick;
+
+	function money(v) {
+		return Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+	}
+
+	$('.sk-js-variants').each(function () {
+		var $root = $(this);
+		var d = $root.data('sk') || {};
+		var offers = d.offers || [];
+		var colors = d.colors || {};
+		var sel = {};
+
+		function render() {
+			var r = skPick(offers, sel);
+			sel = r.sel;
+			var o = r.offer;
+			$root.find('[data-group="coat"] .sk-variants__opt').each(function () {
+				var on = this.getAttribute('data-value') === sel.coat;
+				$(this).toggleClass('is-active', on).attr('aria-pressed', on);
+			});
+			$root.find('[data-group="thick"] .sk-variants__opt').each(function () {
+				var v = this.getAttribute('data-value');
+				$(this).toggleClass('is-active', v === sel.thick).attr('aria-pressed', v === sel.thick).prop('disabled', r.thicks.indexOf(v) < 0);
+			});
+			$root.find('.sk-variants__color').each(function () {
+				var v = this.getAttribute('data-value');
+				$(this).prop('hidden', !o || o.colors.indexOf(v) < 0).toggleClass('is-active', v === sel.color).attr('aria-pressed', v === sel.color);
+			});
+			$root.find('[data-group="coat"] .sk-js-v-value').text(sel.coat || '');
+			$root.find('[data-group="thick"] .sk-js-v-value').text(sel.thick || '');
+			$root.find('[data-group="color"] .sk-js-v-value').text(sel.color && colors[sel.color] ? colors[sel.color].name : 'выберите');
+			$root.find('[data-group="color"]').prop('hidden', !o || !o.colors.length);
+
+			var price = o ? o.price : d.base;
+			var old = o ? o.old : d.old;
+			var unit = ' ₽' + (d.measure ? '/' + d.measure : '');
+			$root.find('.sk-js-v-price').text(price ? money(price) + unit : 'Цена по запросу');
+			$root.find('.sk-js-v-old').text(old && price && old > price ? money(old) + unit : '');
+			$root.find('.sk-js-v-note').prop('hidden', !offers.length || !!o);
+
+			var parts = [d.name];
+			if (sel.coat) parts.push('Покрытие: ' + sel.coat);
+			if (sel.thick) parts.push('Толщина: ' + sel.thick);
+			if (sel.color && colors[sel.color]) parts.push('Цвет: ' + colors[sel.color].name);
+			if (price) parts.push('Цена: ' + money(price) + unit);
+			$root.data('order-text', parts.join('; '));
+		}
+
+		$root.on('click', '.sk-variants__opt, .sk-variants__color', function () {
+			sel[$(this).closest('.sk-variants__group').data('group')] = this.getAttribute('data-value');
+			render();
+		});
+		$root.on('click', '.sk-js-v-order', function () {
+			var t = $root.data('order-text');
+			$('.sk-js-order-product').val(t);
+			$('.sk-js-order-product-text').text(t);
+		});
+		render();
+	});
+
 	$doc.on('input change', '.sk-form .is-error', function () {
 		$(this).removeClass('is-error');
 	});

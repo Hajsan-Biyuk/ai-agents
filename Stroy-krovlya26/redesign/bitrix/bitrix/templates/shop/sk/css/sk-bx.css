@@ -2,9 +2,38 @@
 .sk-on #Blocks,
 .sk-on #BlocksContacts,
 .sk-on.Cont #Blocks { padding-bottom: 0 !important; }
-.Holder.sk-on.CatalogPage { margin-top: 0; }
 .sk-on .Header.sk-oldheader { position: relative; z-index: 60; height: 0; padding: 0; background: none; }
 .sk-on .sk-header--solid { position: relative; }
 .sk-on .sk-pagehead + .Conteiner { padding-top: 0; }
 body.sk-menu-open { overflow: hidden; }
 .sk-scope .sk-form__error { margin: 0 0 16px; padding: 10px 14px; border-radius: 8px; background: rgba(232, 8, 7, .15); color: #fff; font-size: 14px; line-height: 1.4; }
+
+/* ---------- Карточка товара: варианты (покрытие, толщина, цвет), цена, «Заказать» ---------- */
+.sk-scope.sk-variants { margin: 24px 0 0; color: var(--sk-dark); font-family: var(--sk-font); }
+.sk-variants__group { margin: 0 0 20px; }
+.sk-variants__group[hidden] { display: none; }
+.sk-scope .sk-variants__label { margin: 0 0 10px; padding: 0; font-size: 15px; line-height: 1.4; color: var(--sk-gray); }
+.sk-scope .sk-variants__label b { color: var(--sk-dark); font-weight: 600; font-family: inherit; }
+.sk-variants__opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.sk-scope .sk-variants__opt { min-height: 44px; padding: 10px 16px; border: 1px solid var(--sk-line); border-radius: 10px; background: #fff; color: var(--sk-dark); font: 500 15px/1.3 var(--sk-font); cursor: pointer; transition: border-color .2s, background-color .2s, color .2s; }
+.sk-scope .sk-variants__opt:hover { border-color: var(--sk-dark); }
+.sk-scope .sk-variants__opt.is-active { border-color: var(--sk-red); background: var(--sk-red); color: #fff; }
+.sk-scope .sk-variants__opt:disabled { opacity: .35; cursor: not-allowed; border-color: var(--sk-line); background: #fff; color: var(--sk-dark); }
+.sk-variants__opts--colors { gap: 10px; }
+.sk-scope .sk-variants__color { position: relative; width: 44px; height: 44px; padding: 3px; border: 2px solid transparent; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 1px var(--sk-line-2); cursor: pointer; transition: border-color .2s; }
+.sk-scope .sk-variants__color[hidden] { display: none; }
+.sk-scope .sk-variants__color img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.sk-scope .sk-variants__color:hover { border-color: var(--sk-line); }
+.sk-scope .sk-variants__color.is-active { border-color: var(--sk-red); }
+.sk-variants__buy { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin: 28px 0 0; padding: 24px 0 0; border-top: 1px solid var(--sk-line-2); }
+.sk-variants__prices { display: flex; flex-direction: column; margin-right: auto; }
+.sk-variants__price { font-size: 32px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.sk-variants__old { font-size: 16px; color: var(--sk-gray); text-decoration: line-through; }
+.sk-variants__old:empty { display: none; }
+.sk-scope .sk-variants__note { margin: 12px 0 0; padding: 0; font-size: 14px; color: var(--sk-red); }
+.sk-variants__note[hidden] { display: none; }
+@media (max-width: 575px) {
+	.sk-variants__price { font-size: 26px; }
+	.sk-variants__buy .sk-btn { flex: 1 1 100%; }
+	.sk-variants__prices { margin-right: 0; }
+}
