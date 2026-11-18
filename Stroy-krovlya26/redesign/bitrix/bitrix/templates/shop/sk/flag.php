@@ -1,7 +1,7 @@
 <?php
 // Редизайн 2026 под флагом: ?sk_preview=1 — включить себе, ?sk_preview=0 — выключить. Для всех — SK_DEFAULT_ON = true.
 if (!defined('SK_NEW')) {
-	define('SK_DEFAULT_ON', false);
+	define('SK_DEFAULT_ON', true); // 18.11.2026 включено для всех по команде заказчика; откат — false
 	define('SK_V', '7');
 	if (isset($_GET['sk_preview']) && ($_GET['sk_preview'] === '1' || $_GET['sk_preview'] === '0')) {
 		setcookie('sk_preview', $_GET['sk_preview'], time() + 86400 * 30, '/');
