@@ -72,12 +72,12 @@ body:has(> .Holder.sk-on) .fancybox-container .fancybox-content * {
 	max-width: 100%;
 }
 
-.sk-on .Conteiner a:not([class*="sk-"]):not(.sk-scope a) {
+.sk-on .Conteiner a:not([class*="sk-"]):not(.sk-scope a):not(.Btn):not(.HomeLink a) {
 	color: var(--sk-dark);
 	transition: color .2s;
 }
 
-.sk-on .Conteiner a:not([class*="sk-"]):not(.sk-scope a):hover {
+.sk-on .Conteiner a:not([class*="sk-"]):not(.sk-scope a):not(.Btn):not(.HomeLink a):hover {
 	color: var(--sk-red);
 }
 
