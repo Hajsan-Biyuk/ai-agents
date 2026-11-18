@@ -43,6 +43,92 @@ class TZ_Messages {
 	}
 
 	/**
+	 * Адрес страницы для сообщения: без ?query и #, домен и путь кириллицей.
+	 *
+	 * @param string $url Адрес.
+	 */
+	public static function page_url($url) {
+		$url = (string) preg_replace('/[?#].*$/', '', (string) $url);
+		if (!preg_match('~^(https?://)([^/:]+)(.*)$~i', $url, $m)) {
+			return $url;
+		}
+		$host = implode('.', array_map(array(__CLASS__, 'idn_label'), explode('.', strtolower($m[2]))));
+		$path = rawurldecode($m[3]);
+		// Битый %-код в пути даёт не-UTF-8 — тогда оставляем путь как был.
+		if (!preg_match('//u', $path)) {
+			$path = $m[3];
+		}
+		return $m[1] . $host . $path;
+	}
+
+	/**
+	 * Метка домена xn--… в Unicode (RFC 3492). Ошибка — метка без изменений.
+	 *
+	 * @param string $label Метка домена.
+	 */
+	public static function idn_label($label) {
+		if (strpos($label, 'xn--') !== 0) {
+			return $label;
+		}
+		if (function_exists('idn_to_utf8')) {
+			$utf = idn_to_utf8($label, 0, defined('INTL_IDNA_VARIANT_UTS46') ? INTL_IDNA_VARIANT_UTS46 : 0);
+			if (is_string($utf) && $utf !== '') {
+				return $utf;
+			}
+		}
+		if (!function_exists('mb_chr')) {
+			return $label;
+		}
+
+		$input = substr($label, 4);
+		$delim = strrpos($input, '-');
+		$out = $delim === false ? array() : str_split(substr($input, 0, $delim));
+		$pos = $delim === false ? 0 : $delim + 1;
+		$len = strlen($input);
+		$n = 128;
+		$i = 0;
+		$bias = 72;
+		while ($pos < $len) {
+			$old = $i;
+			$w = 1;
+			for ($k = 36; ; $k += 36) {
+				if ($pos >= $len) {
+					return $label;
+				}
+				$c = ord($input[$pos++]);
+				if ($c >= 48 && $c <= 57) {
+					$digit = $c - 22;
+				} elseif ($c >= 97 && $c <= 122) {
+					$digit = $c - 97;
+				} else {
+					return $label;
+				}
+				$i += $digit * $w;
+				$t = $k <= $bias ? 1 : ($k >= $bias + 26 ? 26 : $k - $bias);
+				if ($digit < $t) {
+					break;
+				}
+				$w *= 36 - $t;
+			}
+			$count = count($out) + 1;
+			$delta = $old === 0 ? intdiv($i - $old, 700) : intdiv($i - $old, 2);
+			$delta += intdiv($delta, $count);
+			for ($bias = 0; $delta > 455; $bias += 36) {
+				$delta = intdiv($delta, 35);
+			}
+			$bias += intdiv(36 * $delta, $delta + 38);
+			$n += intdiv($i, $count);
+			$i %= $count;
+			if ($n > 0x10FFFF) {
+				return $label;
+			}
+			array_splice($out, $i, 0, array(mb_chr($n, 'UTF-8')));
+			$i++;
+		}
+		return implode('', $out);
+	}
+
+	/**
 	 * Сообщение о заявке Contact Form 7.
 	 *
 	 * @param WPCF7_ContactForm $form       Форма.
@@ -97,7 +183,7 @@ class TZ_Messages {
 
 		if ($page_url !== '' && empty($used['url-adress'])) {
 			// Без ?ysclid / ?yclid / utm — по ним заказчик сам поймёт источник.
-			$lines[] = '<b>Страница:</b> ' . self::escape(preg_replace('/[?#].*$/', '', $page_url));
+			$lines[] = '<b>Страница:</b> ' . self::escape(self::page_url($page_url));
 		}
 		$lines = array_merge($lines, TZ_Source::lines());
 

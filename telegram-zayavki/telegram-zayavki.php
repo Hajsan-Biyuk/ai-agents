@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Telegram заявки
  * Description: Отправляет заявки Contact Form 7 и заказы WooCommerce в группу Telegram.
- * Version: 1.2.0
+ * Version: 1.2.1
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Sheer
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-define('TZ_VERSION', '1.2.0');
+define('TZ_VERSION', '1.2.1');
 define('TZ_FILE', __FILE__);
 define('TZ_DIR', plugin_dir_path(__FILE__));
 define('TZ_URL', plugin_dir_url(__FILE__));

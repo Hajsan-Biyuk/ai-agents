@@ -39,4 +39,13 @@ foreach (array(array('https://www.google.com/', 2), array('https://yandex.ru/map
 	assert(TZ_Source::code(array('r' => $c[0], 'l' => 'https://s.ru/')) === $c[1], $c[0]);
 }
 assert(TZ_Source::code(array('r' => '', 'l' => 'https://s.ru/?utm_source=x')) === 7);
+foreach (array(
+	'https://xn----7sbbumahgdz5aibf1d4b3e.xn--p1ai/?utm_source=x#f' => 'https://шархинский-карьер.рф/',
+	'https://www.xn--e1afmkfd.xn--p1ai/%D0%BA%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3/' => 'https://www.пример.рф/каталог/',
+	'https://xn--bcher-kva.de' => 'https://bücher.de',
+	'https://s.ru/a%FF/' => 'https://s.ru/a%FF/',
+	'https://xn--!!.ru/' => 'https://xn--!!.ru/',
+) as $in => $want) {
+	assert(TZ_Messages::page_url($in) === $want, TZ_Messages::page_url($in));
+}
 echo "OK\n";
