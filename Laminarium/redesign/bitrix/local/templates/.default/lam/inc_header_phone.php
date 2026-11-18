@@ -1,0 +1,1 @@
+<a class="lam-header__phone" href="tel:+79180227999"><span class="lam-header__phone-text">+7 (918) 022-79-99</span><img src="/local/templates/.default/lam/img/ic-phone.svg" alt="" width="36" height="36"></a>

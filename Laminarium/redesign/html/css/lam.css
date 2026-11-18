@@ -629,3 +629,82 @@
 	.lam-footer .lam-footer__logo img{width:240px;}
 	.lam-footer .lam-footer__col{flex-basis:100%;}
 }
+
+/* ========== Ховеры: подъём, тени, блик на кнопках (18.11.2026) ========== */
+/* Только для мыши и без «уменьшить движение» — на тач-экранах и для чувствительных к анимации остаются простые цветовые ховеры выше */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+	/* Оранжевые кнопки: подъём, тёплая тень, пробегающий блик */
+	:is(.lam-home,.lam-footer) .lam-btn,
+	.lam-header .lam-header__catalog,
+	.lam-header .lam-header__hot{position:relative;overflow:hidden;transition:background-color .25s,color .25s,box-shadow .25s,transform .25s;}
+	:is(.lam-home,.lam-footer) .lam-btn::before,
+	.lam-header .lam-header__catalog::before,
+	.lam-header .lam-header__hot::before{
+		content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;pointer-events:none;
+		background:linear-gradient(120deg,rgba(255,255,255,0),rgba(255,255,255,.35),rgba(255,255,255,0));
+		transform:skewX(-20deg);transition:left .6s ease;
+	}
+	:is(.lam-home,.lam-footer) .lam-btn:hover,
+	.lam-header .lam-header__catalog:hover,
+	.lam-header .lam-header__hot:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(253,101,1,.32);}
+	:is(.lam-home,.lam-footer) .lam-btn:hover::before,
+	.lam-header .lam-header__catalog:hover::before,
+	.lam-header .lam-header__hot:hover::before{left:125%;}
+	:is(.lam-home,.lam-footer) .lam-btn:active,
+	.lam-header .lam-header__catalog:active,
+	.lam-header .lam-header__hot:active{transform:translateY(0);box-shadow:0 4px 10px rgba(253,101,1,.25);}
+
+	/* Вкладки и «Все новости» */
+	.lam-home .lam-tab,
+	.lam-home .lam-pill{transition:color .2s,background-color .2s,box-shadow .2s,transform .2s;}
+	.lam-home .lam-tab:hover,
+	.lam-home .lam-pill:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(251,134,1,.22);}
+
+	/* Стрелки каруселей: заливка оранжевым, иконка белая */
+	.lam-home .lam-arrow{transition:background-color .2s,box-shadow .2s,transform .2s;}
+	.lam-home .lam-arrow img{transition:filter .2s;}
+	.lam-home .lam-arrow:hover:not(:disabled){background:#FD6501;box-shadow:0 6px 16px rgba(253,101,1,.3);transform:scale(1.06);}
+	.lam-home .lam-arrow:hover:not(:disabled) img{filter:brightness(0) invert(1);}
+
+	/* Карточки категорий, товаров, новостей: подъём + тень */
+	.lam-home .lam-cat,
+	.lam-home .lam-card,
+	.lam-home .lam-news-card{transition:box-shadow .3s,transform .3s;}
+	.lam-home .lam-cat:hover,
+	.lam-home .lam-card:hover,
+	.lam-home .lam-news-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(48,48,48,.14);}
+	.lam-home .lam-cat__name{transition:color .2s;}
+	.lam-home .lam-cat:hover .lam-cat__name{color:#FD6501;}
+	.lam-home .lam-cat__arrow{transition:background-color .2s,transform .25s;}
+	.lam-home .lam-cat:hover .lam-cat__arrow{transform:translateX(4px);}
+
+	/* Преимущества: иконка подпрыгивает */
+	.lam-home .lam-adv__item img{transition:transform .3s;}
+	.lam-home .lam-adv__item:hover img{transform:translateY(-3px) scale(1.08);}
+
+	/* Образцы оттенков в баннере */
+	.lam-home .lam-swatch img{transition:transform .25s,box-shadow .25s;}
+	.lam-home .lam-swatch:hover img{transform:translateY(-3px);box-shadow:0 8px 16px rgba(0,0,0,.18);}
+
+	/* Бренды: лёгкое увеличение вместо прозрачности */
+	.lam-home .lam-brand{transition:transform .3s,opacity .3s;}
+	.lam-home .lam-brand:hover{opacity:1;transform:scale(1.06);}
+
+	/* Иконки шапки, мессенджеры */
+	.lam-header .lam-header__login img,
+	.lam-header .lam-header__tool img,
+	.lam-header .lam-header__cart img,
+	.lam-header .lam-header__phone img{transition:transform .2s;}
+	.lam-header .lam-header__login:hover img,
+	.lam-header .lam-header__tool:hover img,
+	.lam-header .lam-header__cart:hover img{transform:translateY(-2px);}
+	.lam-header .lam-header__phone:hover img{transform:rotate(-12deg) scale(1.06);}
+	.lam-header .lam-header__messenger,
+	.lam-footer .lam-footer__messengers-list a{display:inline-block;transition:transform .2s,opacity .2s;}
+	.lam-header .lam-header__messenger:hover,
+	.lam-footer .lam-footer__messengers-list a:hover{opacity:1;transform:translateY(-2px) scale(1.08);}
+
+	/* Ссылки меню подвала: сдвиг вправо */
+	.lam-footer .lam-footer__menu a{display:inline-block;transition:color .2s,transform .2s;}
+	.lam-footer .lam-footer__menu a:hover{transform:translateX(4px);}
+}

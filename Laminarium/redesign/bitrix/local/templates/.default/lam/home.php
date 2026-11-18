@@ -14,7 +14,7 @@ $lamImg = $lamDir . '/img/';
 				<div class="lam-hero__art" aria-hidden="true">
 					<img class="lam-hero__shape lam-hero__shape--blue" src="<?=$lamImg?>hero-shape-blue.svg" alt="">
 					<img class="lam-hero__shape lam-hero__shape--outline" src="<?=$lamImg?>hero-shape-outline.svg" alt="">
-					<img class="lam-hero__photo" src="<?=$lamImg?>hero-photo.webp" alt="" width="1122" height="515" fetchpriority="high">
+					<?php $APPLICATION->IncludeFile($lamDir . '/inc_hero_photo.php', array(), array('MODE' => 'html', 'NAME' => 'фото баннера')); ?>
 				</div>
 				<img class="lam-hero__shape lam-hero__shape--yellow" src="<?=$lamImg?>hero-shape-yellow.svg" alt="" aria-hidden="true">
 
@@ -28,31 +28,14 @@ $lamImg = $lamDir . '/img/';
 	<!-- LAM HOME: Преимущества (полоса под баннером) -->
 	<section class="lam-advantages" aria-label="Преимущества">
 		<div class="lam-container">
-			<ul class="lam-adv">
-				<li class="lam-adv__item"><img src="<?=$lamImg?>adv-delivery.svg" alt="" width="36" height="36"><span class="lam-adv__text">Бесплатная доставка от&nbsp;5&nbsp;000&nbsp;₽</span></li>
-				<li class="lam-adv__item"><img src="<?=$lamImg?>adv-calendar.svg" alt="" width="36" height="36"><span class="lam-adv__text">Рассрочка до 10 месяцев</span></li>
-				<li class="lam-adv__item"><img src="<?=$lamImg?>adv-pin.svg" alt="" width="36" height="36"><span class="lam-adv__text">4 шоу-рума<br>в Краснодаре</span></li>
-				<li class="lam-adv__item"><img src="<?=$lamImg?>adv-ruler.svg" alt="" width="36" height="36"><span class="lam-adv__text">Профессиональная укладка</span></li>
-				<li class="lam-adv__item"><img src="<?=$lamImg?>adv-road.svg" alt="" width="36" height="36"><span class="lam-adv__text">Быстрая доставка в любой город РФ</span></li>
-			</ul>
+			<?php $APPLICATION->IncludeFile($lamDir . '/inc_adv.php', array(), array('MODE' => 'html', 'NAME' => 'преимущества')); ?>
 		</div>
 	</section>
 
 	<!-- LAM HOME: Категории каталога -->
 	<section class="lam-section lam-cats">
 		<div class="lam-container">
-			<div class="lam-head">
-				<h2 class="lam-title">Выберите категорию</h2>
-				<p class="lam-subtitle">Напольные покрытия и все необходимое для укладки</p>
-			</div>
-			<ul class="lam-cats__grid">
-				<li><a class="lam-cat" href="/catalog/laminat/"><span class="lam-cat__media"><img class="lam-cat__photo" src="<?=$lamImg?>cat-1.webp" alt="" width="595" height="446" loading="lazy"><img class="lam-cat__shape" src="<?=$lamImg?>cat-shape-1.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Ламинат</span><span class="lam-cat__arrow" aria-hidden="true"><img src="<?=$lamImg?>ic-arrow-right.svg" alt=""></span></span></a></li>
-				<li><a class="lam-cat" href="/catalog/aksessuar/podlojka/"><span class="lam-cat__media"><img class="lam-cat__photo" src="<?=$lamImg?>cat-2.webp" alt="" width="531" height="398" loading="lazy"><img class="lam-cat__shape" src="<?=$lamImg?>cat-shape-2.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Подложка</span><span class="lam-cat__arrow" aria-hidden="true"><img src="<?=$lamImg?>ic-arrow-right.svg" alt=""></span></span></a></li>
-				<li><a class="lam-cat" href="/catalog/aksessuar/plintus/"><span class="lam-cat__media"><img class="lam-cat__photo" src="<?=$lamImg?>cat-3.webp" alt="" width="557" height="418" loading="lazy"><img class="lam-cat__shape" src="<?=$lamImg?>cat-shape-3.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Плинтус</span><span class="lam-cat__arrow" aria-hidden="true"><img src="<?=$lamImg?>ic-arrow-right.svg" alt=""></span></span></a></li>
-				<li><a class="lam-cat" href="/catalog/laminat/laminat_33_klassa/"><span class="lam-cat__media"><img class="lam-cat__photo" src="<?=$lamImg?>cat-4.webp" alt="" width="558" height="419" loading="lazy"><img class="lam-cat__shape" src="<?=$lamImg?>cat-shape-4.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Ламинат 33 класс</span><span class="lam-cat__arrow" aria-hidden="true"><img src="<?=$lamImg?>ic-arrow-right.svg" alt=""></span></span></a></li>
-				<li><a class="lam-cat" href="/catalog/oboi/"><span class="lam-cat__media"><img class="lam-cat__photo" src="<?=$lamImg?>cat-5.webp" alt="" width="531" height="306" loading="lazy"><img class="lam-cat__shape" src="<?=$lamImg?>cat-shape-5.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Обои</span><span class="lam-cat__arrow" aria-hidden="true"><img src="<?=$lamImg?>ic-arrow-right.svg" alt=""></span></span></a></li>
-				<li><a class="lam-cat" href="/catalog/katalog_spc_laminata/"><span class="lam-cat__media"><img class="lam-cat__photo" src="<?=$lamImg?>cat-6.webp" alt="" width="554" height="416" loading="lazy"><img class="lam-cat__shape" src="<?=$lamImg?>cat-shape-6.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Каталог винил (SPC)</span><span class="lam-cat__arrow" aria-hidden="true"><img src="<?=$lamImg?>ic-arrow-right.svg" alt=""></span></span></a></li>
-			</ul>
+			<?php $APPLICATION->IncludeFile($lamDir . '/inc_cats.php', array(), array('MODE' => 'html', 'NAME' => 'категории')); ?>
 		</div>
 	</section>
 

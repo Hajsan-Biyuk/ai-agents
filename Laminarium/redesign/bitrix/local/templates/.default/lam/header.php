@@ -7,7 +7,7 @@ $lamDir = '/local/templates/.default/lam';
 $lamImg = $lamDir . '/img/';
 $lamCfg = include __DIR__ . '/config.php';
 
-$APPLICATION->SetAdditionalCSS($lamDir . '/css/lam.css?ver=3', true);
+$APPLICATION->SetAdditionalCSS($lamDir . '/css/lam.css?ver=4', true);
 $APPLICATION->SetAdditionalCSS($lamDir . '/css/lam-bx.css?ver=2', true);
 $APPLICATION->AddHeadString('<link rel="preload" href="' . $lamDir . '/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>');
 $APPLICATION->AddHeadString('<link rel="preload" href="' . $lamDir . '/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>');
@@ -24,7 +24,6 @@ $lamMsgFile = $_SERVER['DOCUMENT_ROOT'] . SITE_DIR . 'include/messengers-links.p
 if (is_file($lamMsgFile)) {
 	include $lamMsgFile;
 }
-$lamPhoneHref = 'tel:+' . preg_replace('/\D/', '', $lamCfg['PHONE']);
 ?>
 <!-- LAM HEADER START -->
 <header class="lam-header">
@@ -70,7 +69,7 @@ $lamPhoneHref = 'tel:+' . preg_replace('/\D/', '', $lamCfg['PHONE']);
 					<?php endif;?>
 					<a class="lam-header__messenger" href="<?=$lamCfg['TG_URL']?>" target="_blank" rel="noopener" aria-label="Написать в Telegram"><img src="<?=$lamImg?>msg-2.svg" alt="" width="32" height="32"></a>
 				</div>
-				<a class="lam-header__phone" href="<?=$lamPhoneHref?>"><span class="lam-header__phone-text"><?=$lamCfg['PHONE']?></span><img src="<?=$lamImg?>ic-phone.svg" alt="" width="36" height="36"></a>
+				<?php $APPLICATION->IncludeFile($lamDir . '/inc_header_phone.php', array(), array('MODE' => 'html', 'NAME' => 'телефон в шапке')); ?>
 			</div>
 
 			<button class="lam-header__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="lam-header-nav">
