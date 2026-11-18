@@ -37,6 +37,7 @@ if (!headers_sent()) {
 	<script src="<?=SITE_TEMPLATE_PATH?>/js/moremenu.js"></script>
 	<link href="<?=SITE_TEMPLATE_PATH?>/owl.carousel.min.css" rel="stylesheet" type="text/css">
 	<link href="<?=SITE_TEMPLATE_PATH?>/media-queries.css" rel="stylesheet" type="text/css">
+	<script src="/include/sk_source.js?v=1"></script><?// источник заявки для Telegram (cookie tz_src) ?>
 	<?if (SK_NEW):?>
 	<link href="<?=SK_PATH?>/css/fonts.css?v=<?=SK_V?>" rel="stylesheet" type="text/css">
 	<link href="<?=SK_PATH?>/css/sk.css?v=<?=SK_V?>" rel="stylesheet" type="text/css">

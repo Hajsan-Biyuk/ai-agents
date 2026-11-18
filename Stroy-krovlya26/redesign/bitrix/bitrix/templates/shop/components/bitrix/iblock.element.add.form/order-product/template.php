@@ -354,7 +354,7 @@
 						<?endif?>
 					<?endif?>
 					<div class="Checkbox">
-						<input type="checkbox" id="check">
+						<input type="checkbox" id="check" name="agree" required>
 						<label for="check">
 							<span class="Text">Даю согласие на обработку моих данных.<br>
 							<a href="/soglashenie-na-obrabotku-personalnykh-dannykh/" target="_blank">Соглашение на обработку персональных данных</a>, <a href="/politika-konfidentsialnosti/" target="_blank">политика конфиденциальности</a>. Оператор: ООО «СТРОЙ КРОВЛЯ», ИНН 2636805780.</span>
