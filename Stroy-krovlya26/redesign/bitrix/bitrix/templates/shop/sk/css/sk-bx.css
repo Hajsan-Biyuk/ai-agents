@@ -37,3 +37,11 @@ body.sk-menu-open { overflow: hidden; }
 	.sk-variants__buy .sk-btn { flex: 1 1 100%; }
 	.sk-variants__prices { margin-right: 0; }
 }
+
+/* Крестик попапов .sk-modal: в шаблоне сайта он <span> со старой рамкой/картинкой — рисуем белый крест */
+.sk-modal.fancybox-content .fancybox-close-small { top: 14px !important; right: 14px !important; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 8px; background: transparent; opacity: .85; line-height: 0; }
+.sk-modal.fancybox-content .fancybox-close-small:hover { opacity: 1; background: rgba(255, 255, 255, .1); }
+.sk-modal.fancybox-content .fancybox-close-small span { display: none; }
+.sk-modal.fancybox-content .fancybox-close-small::before,
+.sk-modal.fancybox-content .fancybox-close-small::after { content: ''; position: absolute; top: 50%; left: 50%; width: 22px; height: 2px; margin: -1px 0 0 -11px; border-radius: 1px; background: #fff; transform: rotate(45deg); }
+.sk-modal.fancybox-content .fancybox-close-small::after { transform: rotate(-45deg); }
