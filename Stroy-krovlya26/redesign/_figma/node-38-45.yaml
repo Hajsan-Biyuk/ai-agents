@@ -1,0 +1,1226 @@
+NAME: "СТРОЙКРОВЛЯ"
+
+GLOBAL_VARS:
+fill_658ab2fa:
+  - '#FFFFFF'
+fill_a7745cf9:
+  - rgba(255, 255, 255, 0.3)
+layout_a111c4b6:
+  mode: none
+  sizing:
+    horizontal: fixed
+    vertical: fixed
+  dimensions:
+    width: 24
+    height: 24
+layout_177c5efc:
+  mode: none
+  sizing:
+    horizontal: hug
+    vertical: hug
+style_922c4193:
+  fontFamily: Inter
+  fontStyle: Medium
+  fontWeight: 500
+  fontSize: 16
+  lineHeight: 1.4em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+layout_bee36b52:
+  mode: none
+  sizing:
+    horizontal: fixed
+    vertical: fixed
+  dimensions:
+    width: 20
+    height: 20
+fill_053df6ed:
+  - type: GRADIENT_LINEAR
+    gradient: linear-gradient(90deg, rgba(254, 64, 21, 1) 0%, rgba(232, 8, 7, 1) 100%)
+layout_56d3c81c:
+  mode: none
+  sizing:
+    horizontal: fill
+    vertical: hug
+style_ba5d58f3:
+  fontFamily: Inter
+  fontStyle: Semi Bold
+  fontWeight: 600
+  fontSize: 16
+  lineHeight: 1.4em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+layout_188f99ec:
+  mode: row
+  padding: 16px 32px
+  justifyContent: center
+  alignItems: center
+  gap: 10px
+  sizing:
+    horizontal: hug
+    vertical: hug
+ts1:
+  fontStyle: Semi Bold
+ts2:
+  fontStyle: Bold
+  fontWeight: 700
+style_0ef97aea:
+  fontFamily: Inter
+  fontStyle: Regular
+  fontWeight: 400
+  fontSize: 16
+  lineHeight: 1.4em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+fill_4b6ccca7:
+  - '#2B2B2B'
+style_3022557b:
+  fontFamily: Inter
+  fontStyle: Semi Bold
+  fontWeight: 600
+  fontSize: 20
+  lineHeight: 1.4em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+style_6827b3e4:
+  fontFamily: Inter
+  fontStyle: Regular
+  fontWeight: 400
+  fontSize: 14
+  letterSpacing: 0.03em
+  textCase: UPPER
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+fill_73aea8e7:
+  - '#F8F8F8'
+style_d6226fef:
+  fontFamily: Inter
+  fontStyle: Regular
+  fontWeight: 400
+  fontSize: 14
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+fill_54dc72c5:
+  - '#727271'
+fill_97d170e1: []
+ts3:
+  fontFamily: Inter
+  paragraphSpacing: 8
+  fills:
+    - '#FFFFFF'
+  lineHeight: 1.3em
+style_16fe72e3:
+  fontFamily: Inter
+  fontStyle: Semi Bold
+  fontWeight: 600
+  fontSize: 64
+  lineHeight: 1.4em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+style_42139aee:
+  fontFamily: Inter
+  fontStyle: Regular
+  fontWeight: 400
+  fontSize: 20
+  lineHeight: 1.6em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+layout_db7c362b:
+  mode: column
+  padding: 48px
+  gap: 32px
+  sizing:
+    horizontal: fill
+    vertical: hug
+fill_b0a7574b:
+  - '#AFAFAF'
+style_3121d2b8:
+  fontFamily: Inter
+  fontStyle: Bold
+  fontWeight: 700
+  fontSize: 56
+  lineHeight: 1em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+style_65feb04a:
+  fontFamily: Inter
+  fontStyle: Regular
+  fontWeight: 400
+  fontSize: 18
+  lineHeight: 1.4em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+style_f659e46c:
+  fontFamily: Inter
+  fontStyle: Semi Bold
+  fontWeight: 600
+  fontSize: 42
+  lineHeight: 1.4em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+layout_4e9e5176:
+  mode: none
+  sizing:
+    horizontal: fill
+    vertical: fixed
+  dimensions:
+    height: 249
+layout_48b6cb3a:
+  mode: none
+  sizing:
+    horizontal: fixed
+    vertical: fixed
+  dimensions:
+    width: 9
+    height: 9
+style_465bf818:
+  fontFamily: Inter
+  fontStyle: Medium
+  fontWeight: 500
+  fontSize: 20
+  lineHeight: 1.4em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+layout_dd467520:
+  mode: row
+  padding: 90px 160px 40px
+  gap: 165px
+  sizing:
+    horizontal: fixed
+    vertical: hug
+  dimensions:
+    width: 1920
+layout_483257d3:
+  mode: none
+  sizing: {}
+  locationRelativeToParent:
+    x: 0
+    y: 0
+  dimensions:
+    width: 375
+    height: 375
+Light/100%:
+  - '#FFFFFF'
+style_91b83a4f:
+  fontFamily: Inter
+  fontStyle: Bold
+  fontWeight: 700
+  fontSize: 24
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+fill_54389156:
+  - '#FE4015'
+style_e5f5c9d8:
+  fontFamily: Inter
+  fontStyle: Semi Bold
+  fontWeight: 600
+  fontSize: 32
+  lineHeight: 1em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+layout_1bb28ad6:
+  mode: none
+  sizing:
+    horizontal: fill
+    vertical: fixed
+  dimensions:
+    height: 380
+layout_3cdeda1d:
+  mode: none
+  sizing:
+    horizontal: fill
+    vertical: fixed
+  dimensions:
+    height: 0
+fill_b2d05603:
+  - type: GRADIENT_LINEAR
+    gradient: linear-gradient(180deg, rgba(9, 18, 31, 0) 58%, rgba(9, 18, 31, 1) 100%)
+style_e86dbff6:
+  fontFamily: Inter
+  fontStyle: Medium
+  fontWeight: 500
+  fontSize: 16
+  lineHeight: 1.6em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+style_6992895d:
+  fontFamily: Inter
+  fontStyle: Regular
+  fontWeight: 400
+  fontSize: 20
+  lineHeight: 1.6em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+  paragraphSpacing: 16
+style_4b34f7f6:
+  fontFamily: Inter
+  fontStyle: Bold
+  fontWeight: 700
+  fontSize: 24
+  lineHeight: 1.4em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+style_50c5fcd4:
+  fontFamily: Inter
+  fontStyle: Regular
+  fontWeight: 400
+  fontSize: 18
+  lineHeight: 1.6em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+  paragraphSpacing: 16
+ts4:
+  fontFamily: LINE Seed JP
+  textDecoration: UNDERLINE
+  fills:
+    - '#AFAFAF'
+ts5:
+  fontFamily: LINE Seed JP
+  fills:
+    - '#AFAFAF'
+
+ELEMENTS:
+EL-1bc16580:
+  type: FRAME
+  layout:
+    mode: column
+    alignSelf: stretch
+    gap: 24px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-a1051f5e:
+  type: FRAME
+  layout:
+    mode: row
+    padding: 16px 24px
+    justifyContent: center
+    alignItems: center
+    gap: 10px
+    sizing:
+      horizontal: hug
+      vertical: hug
+  fills: fill_a7745cf9
+  borderRadius: 12px
+EL-60bc5d72:
+  type: FRAME
+  layout:
+    mode: row
+    alignSelf: stretch
+    alignItems: center
+    gap: 24px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-d8a3e5e9:
+  type: FRAME
+  layout:
+    mode: column
+    alignSelf: stretch
+    alignItems: stretch
+    gap: 16px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-ec811d8b:
+  type: FRAME
+  layout:
+    mode: row
+    alignSelf: stretch
+    padding: 16px
+    alignItems: center
+    sizing:
+      horizontal: fill
+      vertical: fixed
+    dimensions:
+      height: 52
+  fills: fill_73aea8e7
+  borderRadius: 8px
+EL-bc40306a:
+  type: FRAME
+  layout:
+    mode: column
+    alignSelf: stretch
+    alignItems: stretch
+    gap: 8px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-309bbf21:
+  type: RECTANGLE
+  layout:
+    mode: none
+    sizing:
+      horizontal: fixed
+      vertical: fixed
+    dimensions:
+      width: 100
+      height: 6
+  fills: fill_053df6ed
+  borderRadius: 6px
+EL-a7c79ccf:
+  type: FRAME
+  layout: layout_db7c362b
+EL-be639282:
+  type: FRAME
+  layout:
+    mode: column
+    padding: 40px 160px 60px
+    gap: 40px
+    sizing:
+      horizontal: fixed
+      vertical: hug
+    dimensions:
+      width: 1920
+  fills: fill_73aea8e7
+EL-74d859ee:
+  type: TEXT
+  layout: layout_56d3c81c
+  text: Каталог
+  textStyle: style_f659e46c
+  fills: fill_4b6ccca7
+EL-0d17f23d:
+  type: FRAME
+  layout:
+    mode: row
+    alignSelf: stretch
+    alignItems: center
+    gap: 10px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-48227c7a:
+  type: INSTANCE
+  layout: layout_188f99ec
+  fills: fill_053df6ed
+  borderRadius: 12px
+  componentId: 42:75
+EL-ecbe8d54:
+  type: INSTANCE
+  layout: layout_188f99ec
+  fills: fill_658ab2fa
+  strokes: fill_4b6ccca7
+  strokeWeight: 1px
+  strokeAlign: CENTER
+  borderRadius: 12px
+  componentId: 42:80
+EL-57d608d9:
+  type: FRAME
+  layout:
+    mode: column
+    padding: 0px 0px 16px
+    gap: 16px
+    sizing:
+      horizontal: fixed
+      vertical: hug
+    dimensions:
+      width: 302
+  strokes: fill_b0a7574b
+  strokeWeight: 0px 0px 1px
+EL-fadedb79:
+  type: FRAME
+  layout:
+    mode: column
+    alignItems: stretch
+    gap: 13px
+    sizing:
+      horizontal: fixed
+      vertical: hug
+    dimensions:
+      width: 283
+EL-f96bbce8:
+  type: FRAME
+  layout:
+    mode: row
+    alignSelf: stretch
+    gap: 8px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-c928c916:
+  type: FRAME
+  layout:
+    mode: row
+    padding: 10px 0px 0px
+    alignItems: center
+    gap: 10px
+    sizing:
+      horizontal: hug
+      vertical: hug
+EL-96d00899:
+  type: ELLIPSE
+  layout: layout_48b6cb3a
+  fills:
+    - '#E80807'
+EL-27a0bbe5:
+  type: TEXT
+  layout: layout_56d3c81c
+  text: 9 подкатегорий
+  textStyle: style_65feb04a
+  fills: fill_54dc72c5
+EL-ff34ade0:
+  type: ELLIPSE
+  layout:
+    mode: none
+    sizing: {}
+    locationRelativeToParent:
+      x: 12
+      y: 25
+    dimensions:
+      width: 350
+      height: 350
+  fills:
+    - '#3B3B3B'
+  strokes: fill_54dc72c5
+  strokeWeight: 1px
+EL-f2bb82e6:
+  type: FRAME
+  layout:
+    mode: column
+    gap: 35px
+    sizing:
+      horizontal: fixed
+      vertical: hug
+    locationRelativeToParent:
+      x: 35
+      y: 297
+    dimensions:
+      width: 327
+EL-45862e56:
+  type: FRAME
+  layout:
+    mode: row
+    justifyContent: center
+    alignItems: center
+    sizing:
+      horizontal: fixed
+      vertical: fixed
+    dimensions:
+      width: 56
+      height: 56
+  fills: Light/100%
+  borderRadius: 100px
+EL-d6bd849d:
+  type: GROUP
+  layout:
+    mode: none
+    sizing:
+      horizontal: fixed
+      vertical: fixed
+    dimensions:
+      width: 375
+      height: 549
+EL-9472eaf7:
+  type: FRAME
+  layout:
+    mode: row
+    padding: 16px 32px
+    justifyContent: center
+    alignItems: center
+    gap: 10px
+    sizing:
+      horizontal: fixed
+      vertical: hug
+    dimensions:
+      width: 314
+  fills: fill_053df6ed
+  borderRadius: 12px
+EL-a810da50:
+  type: FRAME
+  layout:
+    mode: column
+    padding: 0px 0px 16px
+    alignItems: stretch
+    gap: 16px
+    sizing:
+      horizontal: fill
+      vertical: hug
+  strokes: fill_b0a7574b
+  strokeWeight: 0px 0px 1px
+EL-ce563b5c:
+  type: RECTANGLE
+  layout: layout_1bb28ad6
+  fills:
+    - type: IMAGE
+      imageRef: 84a1f46f3733332ab986a3a860e53be1b3d1cf38
+      scaleMode: FILL
+      objectFit: cover
+      isBackground: false
+      imageDownloadArguments:
+        needsCropping: false
+        requiresImageDimensions: false
+EL-dd86ff37:
+  type: FRAME
+  layout:
+    mode: column
+    alignSelf: stretch
+    gap: 13px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-dfda644f:
+  type: FRAME
+  layout:
+    mode: row
+    padding: 4px 6px
+    justifyContent: center
+    alignItems: center
+    gap: 10px
+    sizing:
+      horizontal: hug
+      vertical: hug
+  fills:
+    - '#ECF2F6'
+  borderRadius: 3px
+EL-d3c1815f:
+  type: TEXT
+  layout: layout_177c5efc
+  text: Технониколь
+  textStyle: style_65feb04a
+  fills: fill_54dc72c5
+EL-b4669f59:
+  type: TEXT
+  layout: layout_56d3c81c
+  text: Отсечная гидроизоляция 20х0,4 м\n
+  textStyle: style_465bf818
+  fills: fill_4b6ccca7
+EL-b4752361:
+  type: LINE
+  layout: layout_3cdeda1d
+  strokes:
+    - '#E3E4E4'
+  strokeWeight: 1px
+  strokeAlign: CENTER
+EL-93c53713:
+  type: FRAME
+  layout:
+    mode: column
+    alignSelf: stretch
+    gap: 10px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-7c834624:
+  type: FRAME
+  layout:
+    mode: row
+    alignItems: center
+    gap: 8px
+    sizing:
+      horizontal: fixed
+      vertical: hug
+    dimensions:
+      width: 283
+EL-7acd8eeb:
+  type: ELLIPSE
+  layout: layout_48b6cb3a
+  fills:
+    - '#56BF36'
+EL-e6c59186:
+  type: TEXT
+  layout: layout_177c5efc
+  text: В наличии
+  textStyle:
+    fontFamily: Inter
+    fontStyle: Medium
+    fontWeight: 500
+    fontSize: 15
+    lineHeight: 1.4em
+    textAlignHorizontal: LEFT
+    textAlignVertical: TOP
+  fills: fill_4b6ccca7
+EL-9c630579:
+  type: TEXT
+  layout: layout_177c5efc
+  text: Цена по запросу
+  textStyle:
+    fontFamily: Inter
+    fontStyle: Bold
+    fontWeight: 700
+    fontSize: 20
+    lineHeight: 1.4em
+    textAlignHorizontal: LEFT
+    textAlignVertical: TOP
+  fills: fill_4b6ccca7
+EL-f1b7971b:
+  type: RECTANGLE
+  layout: layout_1bb28ad6
+  fills:
+    - type: IMAGE
+      imageRef: cbac92469e9ba3f1c7389aaa0de62979abfd002c
+      scaleMode: FILL
+      objectFit: cover
+      isBackground: false
+      imageDownloadArguments:
+        needsCropping: false
+        requiresImageDimensions: false
+    - '#FFFFFF'
+EL-e074d64c:
+  type: TEXT
+  layout: layout_177c5efc
+  text: Folder
+  textStyle: style_65feb04a
+  fills: fill_54dc72c5
+EL-3839acac:
+  type: TEXT
+  layout: layout_56d3c81c
+  text: Односторонняя клейкая лента Folder Bondtape
+  textStyle: style_465bf818
+  fills: fill_4b6ccca7
+EL-5d197b60:
+  type: FRAME
+  layout:
+    mode: row
+    alignItems: center
+    gap: 10px
+    sizing:
+      horizontal: hug
+      vertical: hug
+EL-5f4445f0:
+  type: COMPONENT
+  layout: layout_bee36b52
+  fills: fill_97d170e1
+EL-cf838479:
+  type: IMAGE-SVG
+  layout:
+    mode: none
+    sizing: {}
+    locationRelativeToParent:
+      x: 0
+      y: 0
+    dimensions:
+      width: 20
+      height: 20
+EL-cea0d6e4:
+  type: TEXT
+  layout: layout_177c5efc
+  text: Частный дом
+  textStyle: style_e86dbff6
+  fills: fill_658ab2fa
+EL-45c34bb1:
+  type: FRAME
+  layout:
+    mode: row
+    alignSelf: stretch
+    alignItems: center
+    gap: 20px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-6cccef8d:
+  type: FRAME
+  layout:
+    mode: none
+    sizing:
+      horizontal: fixed
+      vertical: fixed
+    dimensions:
+      width: 394
+      height: 245
+  fills: fill_658ab2fa
+EL-91d3e6e1:
+  type: RECTANGLE
+  layout:
+    mode: none
+    sizing: {}
+    locationRelativeToParent:
+      x: 0
+      y: 0
+    dimensions:
+      width: 394
+      height: 245
+  fills: fill_b2d05603
+EL-f9ea7b2f:
+  type: FRAME
+  layout:
+    mode: row
+    padding: 0px 24px 20px
+    alignItems: center
+    gap: 444px
+    sizing:
+      horizontal: hug
+      vertical: hug
+    locationRelativeToParent:
+      x: 0
+      y: 199
+EL-ec357ce4:
+  type: IMAGE-SVG
+  layout: layout_bee36b52
+  fills: fill_97d170e1
+  componentId: 62:331
+EL-ecd9240b:
+  type: FRAME
+  layout:
+    mode: column
+    alignSelf: stretch
+    alignItems: stretch
+    gap: 24px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-81e76f09:
+  type: FRAME
+  layout:
+    mode: column
+    alignItems: stretch
+    gap: 24px
+    sizing:
+      horizontal: fixed
+      vertical: hug
+    dimensions:
+      width: 310
+
+COMPONENTS:
+3:15:
+  id: 3:15
+  key: d9f0f1cde1d83dcb0b7ed1acc7283755379624e8
+  name: Menu / Hamburger_LG
+42:75:
+  id: 42:75
+  key: 1d057ef4b8c38029491eb66b5e5ff4b8e13ceeb3
+  name: Property 1=Frame 4639
+  componentSetId: 42:77
+42:80:
+  id: 42:80
+  key: a727a9b05ce7bfc3afd5fb71d56d4af6707bbaff
+  name: Property 1=Frame 4638
+  componentSetId: 42:81
+62:321:
+  id: 62:321
+  key: 200dfdf764c013fbff214dc91f342ae77d8e154b
+  name: remix-icons/line/map/map-pin-line
+62:331:
+  id: 62:331
+  key: f31e82774b30e30e80bed034517659a67e24a2fa
+  name: remix-icons/line/buildings/home-8-line
+64:454:
+  id: 64:454
+  key: b895f2ba0ae000d310e3fd06c624b3072daa5924
+  name: remix-icons/line/system/arrow-down-line
+
+COMPONENT_SETS:
+42:77:
+  id: 42:77
+  key: bffb4996fe2f1a3c2fee23f3c8b3741f91de0a75
+  name: Component 1
+  description: ''
+42:81:
+  id: 42:81
+  key: 6eb8204149a5df75ef9f5a1cecf5aefab0f1accd
+  name: Component 2
+  description: ''
+
+NODES:
+[FRAME] "ГЛАВНАЯ" #38:45 layout={"mode":"column","sizing":{"horizontal":"contextual","vertical":"hug"},"designedWidth":"1920px"} fills=fill_658ab2fa
+  [FRAME] #38:40 layout={"mode":"column","padding":"20px 160px 180px","alignItems":"stretch","gap":"121px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":1920}} fills=[{"type":"GRADIENT_LINEAR","gradient":"linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 19%)"},"rgba(0, 0, 0, 0.3)",{"type":"IMAGE","imageRef":"b9e76dd62e22f496277c7c4a5e77af5fc67a4e61","scaleMode":"STRETCH","backgroundSize":"100% 100%","backgroundRepeat":"no-repeat","isBackground":true,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[1,0,0],[0,0.8861042261123657,0.032860562205314636]],"filenameSuffix":"54df57"}}]
+    [FRAME] #38:37 layout={"mode":"row","alignSelf":"stretch","alignItems":"center","gap":"213px","sizing":{"horizontal":"fill","vertical":"hug"}}
+      [RECTANGLE] "logo 1" #1:8 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":129,"height":68}} fills=[{"type":"IMAGE","imageRef":"118927a5df7476a2abf00c2a20c46c1253446f15","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+      [FRAME] #3:29 layout={"mode":"row","padding":"16px 24px","alignItems":"center","gap":"36px","sizing":{"horizontal":"hug","vertical":"hug"}} fills=fill_a7745cf9 borderRadius=12px
+        [IMAGE-SVG] "Menu / Hamburger_LG" #3:19 layout=layout_a111c4b6 componentId=3:15
+        [FRAME] #3:28 layout={"mode":"row","alignItems":"center","gap":"36px","sizing":{"horizontal":"hug","vertical":"hug"}}
+          [TEXT] #3:5 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_922c4193 text="Кровля"
+          [TEXT] #3:6 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_922c4193 text="Фасады"
+          [TEXT] #3:7 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_922c4193 text="Забор"
+          [TEXT] #3:8 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_922c4193 text="Комплектующие"
+          [TEXT] #3:9 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_922c4193 text="Акции"
+      [FRAME] #5:55 layout={"mode":"row","alignItems":"center","gap":"32px","sizing":{"horizontal":"hug","vertical":"hug"}}
+        [IMAGE-SVG] "search" #3:24 layout=layout_bee36b52
+        [TEXT] #3:27 layout=layout_177c5efc fills=fill_658ab2fa textStyle={"fontFamily":"Inter","fontStyle":"Semi Bold","fontWeight":600,"fontSize":18,"lineHeight":"1.4em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="+7 \\(8652\\) 33-40-41"
+        [FRAME] #3:31 layout={"mode":"row","padding":"12px 32px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"hug","vertical":"hug"}} fills=fill_053df6ed borderRadius=12px
+          [TEXT] #3:30 layout=layout_177c5efc fills=fill_658ab2fa textStyle={"fontFamily":"Inter","fontStyle":"Semi Bold","fontWeight":600,"fontSize":14,"lineHeight":"1.4em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="Заказать звонок"
+    [FRAME] #38:39 layout={"mode":"row","alignSelf":"stretch","alignItems":"flex-end","gap":"299px","sizing":{"horizontal":"fill","vertical":"hug"}}
+      [FRAME] #38:38 layout={"mode":"column","gap":"49px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":856}}
+        [FRAME] #5:90 layout={"mode":"column","alignSelf":"stretch","gap":"32px","sizing":{"horizontal":"fill","vertical":"hug"}}
+          [FRAME] #3:48 layout={"mode":"row","padding":"12px 16px","alignItems":"center","gap":"16px","sizing":{"horizontal":"hug","vertical":"hug"}} fills=fill_a7745cf9 borderRadius=16px
+            [IMAGE-SVG] #3:49 layout=layout_a111c4b6
+            [TEXT] #3:52 layout=layout_177c5efc fills=fill_658ab2fa textStyle={"fontFamily":"Inter","fontStyle":"Extra Bold","fontWeight":800,"fontSize":14,"lineHeight":"1.4em","letterSpacing":"0.06em","textCase":"UPPER","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="СтройКровля · Ставрополь"
+          [FRAME] #5:89 template=EL-1bc16580
+            [TEXT] #1:9 layout=layout_56d3c81c fills=fill_658ab2fa textStyle={"fontFamily":"Inter","fontStyle":"Semi Bold","fontWeight":600,"fontSize":48,"lineHeight":"1.4em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="Кровля под ваш дом — без ошибок в комплектации"
+            [TEXT] #1:10 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":682}} fills=fill_658ab2fa textStyle={"fontFamily":"Inter","fontStyle":"Regular","fontWeight":400,"fontSize":24,"lineHeight":"1.4em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="Подберём материал под климат и бюджет, сравним варианты и соберём полную комплектацию объекта — от покрытия до водостока"
+          [FRAME] #3:47 layout={"mode":"row","alignItems":"center","gap":"12px","sizing":{"horizontal":"hug","vertical":"hug"}}
+            [FRAME] #3:41 template=EL-a1051f5e
+              [TEXT] #3:42 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="Экспертный подбор"
+            [FRAME] #3:43 template=EL-a1051f5e
+              [TEXT] #3:44 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="Бесплатный замер"
+            [FRAME] #3:45 template=EL-a1051f5e
+              [TEXT] #3:46 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="Гарантия до 50 лет"
+        [FRAME] #5:91 layout={"mode":"column","gap":"18px","sizing":{"horizontal":"hug","vertical":"hug"}}
+          [FRAME] #3:40 template=EL-60bc5d72
+            [FRAME] #3:37 layout={"mode":"row","padding":"16px 32px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fill","vertical":"hug"}} fills=fill_053df6ed borderRadius=12px
+              [TEXT] #3:38 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="Получить расчёт за 15 минут"
+            [FRAME] #3:39 layout=layout_188f99ec fills=["rgba(255, 255, 255, 0.1)"] strokes=fill_658ab2fa strokeWeight=1px borderRadius=12px
+              [TEXT] #1:13 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="Позвонить"
+          [TEXT] #1:14 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":488}} fills=fill_658ab2fa textStyle=style_0ef97aea boldWeight=600 text="{ts1}**16 лет**{/ts1} на рынке{ts2} **·** {/ts2}{ts1}**150+**{/ts1} видов материалов{ts2} **·** {/ts2}{ts1}**0 ₽**{/ts1} замер по краю"
+      [FRAME] #5:88 layout={"mode":"column","padding":"32px","alignItems":"stretch","gap":"24px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":445}} fills=fill_4b6ccca7 borderRadius=12px
+        [TEXT] #5:61 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_3022557b text="Быстрый расчёт стоимости кровли"
+        [FRAME] #5:62 template=EL-d8a3e5e9
+          [FRAME] #5:63 layout={"mode":"column","alignSelf":"stretch","alignItems":"stretch","gap":"14px","sizing":{"horizontal":"fill","vertical":"hug"}}
+            [FRAME] #5:64 layout={"mode":"column","alignSelf":"stretch","gap":"8px","sizing":{"horizontal":"fill","vertical":"hug"}}
+              [TEXT] #5:65 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_6827b3e4 text="Имя"
+              [FRAME] "Frame" #5:66 template=EL-ec811d8b
+                [TEXT] #5:67 layout=layout_56d3c81c fills=fill_54dc72c5 textStyle=style_d6226fef text="Ваше имя"
+            [FRAME] #5:68 template=EL-bc40306a
+              [TEXT] #5:69 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_6827b3e4 text="почта"
+              [FRAME] "Frame" #5:70 template=EL-ec811d8b
+                [TEXT] #5:71 layout=layout_56d3c81c fills=fill_54dc72c5 textStyle=style_d6226fef text="your@email.ru"
+            [FRAME] #5:72 template=EL-bc40306a
+              [TEXT] #5:73 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_6827b3e4 text="телефон"
+              [FRAME] "Frame" #5:74 template=EL-ec811d8b
+                [TEXT] #5:75 layout=layout_56d3c81c fills=fill_54dc72c5 textStyle=style_d6226fef text="+7 \\(\\_\\_\\_\\) \\_\\_\\_-\\_\\_-\\_\\_"
+        [FRAME] #5:76 layout={"mode":"column","alignSelf":"stretch","padding":"16px 0px 0px","justifyContent":"flex-end","alignItems":"stretch","gap":"24px","sizing":{"horizontal":"fill","vertical":"hug"}}
+          [FRAME] #5:82 layout={"mode":"row","alignSelf":"stretch","gap":"10px","sizing":{"horizontal":"fill","vertical":"hug"}}
+            [IMAGE-SVG] "check-square 1" #5:83 layout=layout_a111c4b6 fills=fill_97d170e1
+            [TEXT] #5:85 layout=layout_56d3c81c fills=fill_658ab2fa textStyle={"fontFamily":"Onest","fontStyle":"Regular","fontWeight":400,"fontSize":14,"lineHeight":"1.4em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="{ts3}Я согласен\\(а\\) с политикой конфиденциальности и на обработку персональных данных{/ts3}"
+          [FRAME] #5:86 layout={"mode":"row","alignSelf":"stretch","padding":"16px 24px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fill","vertical":"hug"}} fills=fill_053df6ed borderRadius=12px
+            [TEXT] #5:87 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="Получить расчёт"
+  [FRAME] #38:35 layout={"mode":"row","padding":"90px 160px","gap":"165px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":1920}} fills=fill_658ab2fa
+    [FRAME] #38:10 layout={"mode":"column","alignItems":"stretch","gap":"48px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":739}}
+      [TEXT] #38:11 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_16fe72e3 text="Почему кровлю покупают у нас"
+      [TEXT] #38:12 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_42139aee text="Мы сотрудничаем с ведущими кровельными производителями и гарантируем надежность и качество поставляемой продукции. \\n\\nМы осуществляем поставки и реализацию различных кровельных и фасадных материалов, водосточных систем, гибкой черепицы, сайдинга винилового."
+    [FRAME] #38:34 layout={"mode":"column","gap":"-1px","sizing":{"horizontal":"hug","vertical":"hug"}}
+      [FRAME] #38:32 layout={"mode":"row","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":696}}
+        [FRAME] #38:19 layout=layout_db7c362b strokes=fill_b0a7574b strokeWeight="0px 1px 1px 0px"
+          [TEXT] #38:13 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_3121d2b8 text="16"
+          [RECTANGLE] #38:15 template=EL-309bbf21
+          [TEXT] #38:14 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_65feb04a text="лет опыта на рынке кровельных материалов"
+        [FRAME] #38:20 template=EL-a7c79ccf
+          [TEXT] #38:21 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_3121d2b8 text="1200"
+          [RECTANGLE] #38:22 template=EL-309bbf21
+          [TEXT] #38:23 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_65feb04a text="наименований материалов \\nв наличии и под заказ"
+      [FRAME] #38:33 layout={"mode":"row","alignItems":"center","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":696}}
+        [FRAME] #38:24 template=EL-a7c79ccf
+          [TEXT] #38:25 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_3121d2b8 text="1500+"
+          [RECTANGLE] #38:26 template=EL-309bbf21
+          [TEXT] #38:27 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_65feb04a text="объектов мы обеспечили поставками материалов"
+        [FRAME] #38:28 layout=layout_db7c362b strokes=fill_b0a7574b strokeWeight="1px 0px 0px 1px"
+          [TEXT] #38:29 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_3121d2b8 text="800+"
+          [RECTANGLE] #38:30 template=EL-309bbf21
+          [TEXT] #38:31 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_65feb04a text="тыс. м2 кровли \\nсмонтировано"
+  [FRAME] #42:185 template=EL-be639282
+    [FRAME] #42:184 layout={"mode":"column","alignItems":"stretch","gap":"35px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":360}}
+      [TEXT] #40:50 template=EL-74d859ee
+      [FRAME] #42:87 template=EL-0d17f23d
+        [INSTANCE] #44:10 template=EL-48227c7a
+          [TEXT] #I44:10;42:65 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="По материалам"
+        [INSTANCE] #42:85 template=EL-ecbe8d54
+          [TEXT] #I42:85;42:63 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_ba5d58f3 text="По брендам"
+    [FRAME] #42:183 layout={"mode":"column","padding":"0px 0px 40px","alignItems":"stretch","gap":"24px","sizing":{"horizontal":"hug","vertical":"hug"}}
+      [FRAME] #42:181 template=EL-60bc5d72
+        [FRAME] #42:96 template=EL-57d608d9
+          [RECTANGLE] #42:88 layout=layout_4e9e5176 fills=[{"type":"IMAGE","imageRef":"cf2fac57c9f2fe942d7a4430cd3719d23770899b","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #42:95 template=EL-fadedb79
+            [FRAME] #42:100 template=EL-f96bbce8
+              [FRAME] #42:97 template=EL-c928c916
+                [ELLIPSE] #42:98 template=EL-96d00899
+              [TEXT] #40:47 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_465bf818 text="Кровельные материалы"
+            [TEXT] #40:49 template=EL-27a0bbe5
+        [FRAME] #42:101 template=EL-57d608d9
+          [RECTANGLE] #42:102 layout=layout_4e9e5176 fills=[{"type":"IMAGE","imageRef":"29ce6e6fc2767d8f449600ebec5c95bc4b71919a","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #42:103 template=EL-fadedb79
+            [FRAME] #42:104 template=EL-f96bbce8
+              [FRAME] #42:105 template=EL-c928c916
+                [ELLIPSE] #42:106 template=EL-96d00899
+              [TEXT] #42:107 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_465bf818 text="Фасадные материалы"
+            [TEXT] #42:108 template=EL-27a0bbe5
+        [FRAME] #42:109 template=EL-57d608d9
+          [RECTANGLE] #42:110 layout=layout_4e9e5176 fills=[{"type":"IMAGE","imageRef":"18e7c04996d21063f8752a29ce0f98f3b309ef79","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #42:111 template=EL-fadedb79
+            [FRAME] #42:112 template=EL-f96bbce8
+              [FRAME] #42:113 template=EL-c928c916
+                [ELLIPSE] #42:114 template=EL-96d00899
+              [TEXT] #42:115 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_465bf818 text="Гидро- и пароизоляция"
+            [TEXT] #42:116 template=EL-27a0bbe5
+        [FRAME] #42:125 template=EL-57d608d9
+          [RECTANGLE] #42:126 layout=layout_4e9e5176 fills=[{"type":"IMAGE","imageRef":"f37b052bcdc61711ba8533b5abc148a69be3984b","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #42:127 template=EL-fadedb79
+            [FRAME] #42:128 template=EL-f96bbce8
+              [FRAME] #42:129 template=EL-c928c916
+                [ELLIPSE] #42:130 template=EL-96d00899
+              [TEXT] #42:131 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_465bf818 text="Тепло- и звукоизоляция"
+            [TEXT] #42:132 template=EL-27a0bbe5
+        [FRAME] #42:133 template=EL-57d608d9
+          [RECTANGLE] #42:134 layout=layout_4e9e5176 fills=[{"type":"IMAGE","imageRef":"3db2d51e20de74d273e1ccf122c93bf80493a166","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #42:135 template=EL-fadedb79
+            [FRAME] #42:136 template=EL-f96bbce8
+              [FRAME] #42:137 template=EL-c928c916
+                [ELLIPSE] #42:138 template=EL-96d00899
+              [TEXT] #42:139 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_465bf818 text="Чердачные лестницы"
+            [TEXT] #42:140 template=EL-27a0bbe5
+      [FRAME] #42:182 template=EL-60bc5d72
+        [FRAME] #42:141 template=EL-57d608d9
+          [RECTANGLE] #42:142 layout=layout_4e9e5176 fills=[{"type":"IMAGE","imageRef":"f3f60b3f5583c8e8c87cd3fb3bba33e4de0e93ca","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #42:143 template=EL-fadedb79
+            [FRAME] #42:144 template=EL-f96bbce8
+              [FRAME] #42:145 template=EL-c928c916
+                [ELLIPSE] #42:146 template=EL-96d00899
+              [TEXT] #42:147 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_465bf818 text="Мансардные окна"
+            [TEXT] #42:148 template=EL-27a0bbe5
+        [FRAME] #42:149 template=EL-57d608d9
+          [RECTANGLE] #42:150 layout=layout_4e9e5176 fills=[{"type":"IMAGE","imageRef":"12aa5587f114f84afa0f86352e5ba62683d7e74b","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #42:151 template=EL-fadedb79
+            [FRAME] #42:152 template=EL-f96bbce8
+              [FRAME] #42:153 template=EL-c928c916
+                [ELLIPSE] #42:154 template=EL-96d00899
+              [TEXT] #42:155 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_465bf818 text="Ограждения"
+            [TEXT] #42:156 template=EL-27a0bbe5
+        [FRAME] #42:157 template=EL-57d608d9
+          [RECTANGLE] #42:158 layout=layout_4e9e5176 fills=[{"type":"IMAGE","imageRef":"c3d522f0f5d941829913b3c2babf439a625c2587","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #42:159 template=EL-fadedb79
+            [FRAME] #42:160 template=EL-f96bbce8
+              [FRAME] #42:161 template=EL-c928c916
+                [ELLIPSE] #42:162 template=EL-96d00899
+              [TEXT] #42:163 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_465bf818 text="Водосточные системы"
+            [TEXT] #42:164 template=EL-27a0bbe5
+        [FRAME] #42:165 template=EL-57d608d9
+          [RECTANGLE] #42:166 layout=layout_4e9e5176 fills=[{"type":"IMAGE","imageRef":"f872f3c8a7402d6f12c47b40d880ca0557030912","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #42:167 template=EL-fadedb79
+            [FRAME] #42:168 template=EL-f96bbce8
+              [FRAME] #42:169 template=EL-c928c916
+                [ELLIPSE] #42:170 template=EL-96d00899
+              [TEXT] #42:171 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_465bf818 text="Системы водоотведения"
+            [TEXT] #42:172 layout=layout_56d3c81c fills=fill_54dc72c5 textStyle=style_65feb04a text="2 подкатегорий"
+        [FRAME] #42:173 template=EL-57d608d9
+          [RECTANGLE] #42:174 layout=layout_4e9e5176 fills=[{"type":"IMAGE","imageRef":"6b1ba6941b1cd0c4b8826f00c264f689f0a468a7","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #42:175 template=EL-fadedb79
+            [FRAME] #42:176 template=EL-f96bbce8
+              [FRAME] #42:177 template=EL-c928c916
+                [ELLIPSE] #42:178 template=EL-96d00899
+              [TEXT] #42:179 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_465bf818 text="Террасная доска"
+            [TEXT] #42:180 layout=layout_56d3c81c fills=fill_54dc72c5 textStyle=style_65feb04a text="1 подкатегорий"
+  [FRAME] #59:215 layout={"mode":"column","sizing":{"horizontal":"hug","vertical":"hug"}}
+    [FRAME] #58:32 layout=layout_dd467520 fills=fill_4b6ccca7
+      [FRAME] #58:33 layout={"mode":"column","alignItems":"stretch","gap":"32px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":1023}}
+        [TEXT] #58:34 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_16fe72e3 text="Как мы работаем"
+        [TEXT] #58:35 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_42139aee text="Оказываем полный цикл услуг по комплектации и поставке всех видов кровельных материалов. Проводим консультации и предлагаем варианты которые будут наиболее выгодными для вас"
+    [FRAME] #59:108 layout={"mode":"column","padding":"0px 160px 90px","gap":"32px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":1920}} fills=fill_4b6ccca7
+      [FRAME] #59:109 layout={"mode":"row","alignSelf":"stretch","padding":"0px 0px 40px","gap":"32px","sizing":{"horizontal":"fill","vertical":"hug"}}
+        [GROUP] #59:107 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":375,"height":524}}
+          [ELLIPSE] #59:69 template=EL-ff34ade0
+          [RECTANGLE] "01-consultation 1" #58:56 layout=layout_483257d3 fills=[{"type":"IMAGE","imageRef":"ce2e1e1caf089d9dccb9adfba6e2e0a063234689","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #59:74 template=EL-f2bb82e6
+            [FRAME] "Номер шага" #59:65 template=EL-45862e56
+              [TEXT] #59:66 layout=layout_177c5efc fills=fill_54389156 textStyle=style_91b83a4f text="01"
+            [FRAME] #59:73 template=EL-1bc16580
+              [TEXT] #59:62 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_e5f5c9d8 text="Консультация"
+              [RECTANGLE] #58:40 template=EL-309bbf21
+              [TEXT] #58:41 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_65feb04a text="Обсудим детали проекта и ответим на все интересующие Вас вопросы"
+        [GROUP] #59:106 template=EL-d6bd849d
+          [ELLIPSE] #59:75 template=EL-ff34ade0
+          [FRAME] #59:77 template=EL-f2bb82e6
+            [FRAME] "Номер шага" #59:78 template=EL-45862e56
+              [TEXT] #59:79 layout=layout_177c5efc fills=fill_54389156 textStyle=style_91b83a4f text="02"
+            [FRAME] #59:80 template=EL-1bc16580
+              [TEXT] #59:81 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_e5f5c9d8 text="Расчёты"
+              [RECTANGLE] #59:82 template=EL-309bbf21
+              [TEXT] #59:83 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_65feb04a text="Рассчитаем количество материалов для выполнения работ и их стоимость"
+          [RECTANGLE] "02-calculation 1" #58:57 layout=layout_483257d3 fills=[{"type":"IMAGE","imageRef":"f1c06a5f1c999ea276f007274146a6e1f02fc1df","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+        [GROUP] #59:105 template=EL-d6bd849d
+          [ELLIPSE] #59:84 template=EL-ff34ade0
+          [RECTANGLE] "03-contract-and-delivery 1" #58:58 layout=layout_483257d3 fills=[{"type":"IMAGE","imageRef":"6b2e294ce2de92bd3f02bb865d59dc682c5a65f5","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #59:85 template=EL-f2bb82e6
+            [FRAME] "Номер шага" #59:86 template=EL-45862e56
+              [TEXT] #59:87 layout=layout_177c5efc fills=fill_54389156 textStyle=style_91b83a4f text="03"
+            [FRAME] #59:88 template=EL-1bc16580
+              [TEXT] #59:89 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_e5f5c9d8 text="Договор и поставка"
+              [RECTANGLE] #59:90 template=EL-309bbf21
+              [TEXT] #59:91 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_65feb04a text="Составим и подпишем договор. Поставим материалы в полном объеме точно в срок"
+        [GROUP] #59:104 template=EL-d6bd849d
+          [ELLIPSE] #59:93 template=EL-ff34ade0
+          [RECTANGLE] "04-installation 1" #58:55 layout=layout_483257d3 fills=[{"type":"IMAGE","imageRef":"12baeb85ae1ca4426f14b556f2fbc89cbafdac5b","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [FRAME] #59:95 template=EL-f2bb82e6
+            [FRAME] "Номер шага" #59:96 template=EL-45862e56
+              [TEXT] #59:97 layout=layout_177c5efc fills=fill_54389156 textStyle=style_91b83a4f text="04"
+            [FRAME] #59:98 template=EL-1bc16580
+              [TEXT] #59:99 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_e5f5c9d8 text="Монтаж"
+              [RECTANGLE] #59:100 template=EL-309bbf21
+              [TEXT] #59:101 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_65feb04a text="Выполним монтажные работы качественно, в короткие сроки \\nи по выгодной цене."
+      [FRAME] #59:102 template=EL-9472eaf7
+        [TEXT] #59:103 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="Получить консультацию"
+  [FRAME] #59:110 template=EL-be639282
+    [FRAME] #59:111 layout={"mode":"column","alignItems":"stretch","gap":"35px","sizing":{"horizontal":"hug","vertical":"hug"}}
+      [TEXT] #59:112 template=EL-74d859ee
+      [FRAME] #59:113 template=EL-0d17f23d
+        [INSTANCE] #59:114 template=EL-48227c7a
+          [TEXT] #I59:114;42:65 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="Акции"
+        [INSTANCE] #59:115 template=EL-ecbe8d54
+          [TEXT] #I59:115;42:63 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_ba5d58f3 text="Рекомендуем"
+        [INSTANCE] #59:219 template=EL-ecbe8d54
+          [TEXT] #I59:219;42:63 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_ba5d58f3 text="Хит"
+        [INSTANCE] #59:221 template=EL-ecbe8d54
+          [TEXT] #I59:221;42:63 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_ba5d58f3 text="Новинка"
+    [FRAME] #59:116 layout={"mode":"column","alignSelf":"stretch","padding":"0px 0px 40px","alignItems":"stretch","gap":"24px","sizing":{"horizontal":"fill","vertical":"hug"}}
+      [FRAME] #59:117 template=EL-60bc5d72
+        [FRAME] #59:118 template=EL-a810da50
+          [RECTANGLE] #59:119 template=EL-ce563b5c
+          [FRAME] #59:120 template=EL-dd86ff37
+            [FRAME] #60:223 template=EL-dfda644f
+              [TEXT] #59:125 template=EL-d3c1815f
+            [TEXT] #59:124 template=EL-b4669f59
+          [LINE] #60:230 template=EL-b4752361
+          [FRAME] #60:229 template=EL-93c53713
+            [FRAME] #60:225 template=EL-7c834624
+              [ELLIPSE] #60:227 template=EL-7acd8eeb
+              [TEXT] #60:228 template=EL-e6c59186
+            [TEXT] #60:224 template=EL-9c630579
+        [FRAME] #60:231 template=EL-a810da50
+          [RECTANGLE] #60:232 template=EL-f1b7971b
+          [FRAME] #60:233 template=EL-dd86ff37
+            [FRAME] #60:234 template=EL-dfda644f
+              [TEXT] #60:235 template=EL-e074d64c
+            [TEXT] #60:236 template=EL-3839acac
+          [LINE] #60:237 template=EL-b4752361
+          [FRAME] #60:238 template=EL-93c53713
+            [FRAME] #60:239 template=EL-7c834624
+              [ELLIPSE] #60:240 template=EL-7acd8eeb
+              [TEXT] #60:241 template=EL-e6c59186
+            [TEXT] #60:242 template=EL-9c630579
+        [FRAME] #60:267 template=EL-a810da50
+          [RECTANGLE] #60:268 template=EL-ce563b5c
+          [FRAME] #60:269 template=EL-dd86ff37
+            [FRAME] #60:270 template=EL-dfda644f
+              [TEXT] #60:271 template=EL-d3c1815f
+            [TEXT] #60:272 template=EL-b4669f59
+          [LINE] #60:273 template=EL-b4752361
+          [FRAME] #60:274 template=EL-93c53713
+            [FRAME] #60:275 template=EL-7c834624
+              [ELLIPSE] #60:276 template=EL-7acd8eeb
+              [TEXT] #60:277 template=EL-e6c59186
+            [TEXT] #60:278 template=EL-9c630579
+        [FRAME] #60:279 template=EL-a810da50
+          [RECTANGLE] #60:280 template=EL-f1b7971b
+          [FRAME] #60:281 template=EL-dd86ff37
+            [FRAME] #60:282 template=EL-dfda644f
+              [TEXT] #60:283 template=EL-e074d64c
+            [TEXT] #60:284 template=EL-3839acac
+          [LINE] #60:285 template=EL-b4752361
+          [FRAME] #60:286 template=EL-93c53713
+            [FRAME] #60:287 template=EL-7c834624
+              [ELLIPSE] #60:288 template=EL-7acd8eeb
+              [TEXT] #60:289 template=EL-e6c59186
+            [TEXT] #60:290 template=EL-9c630579
+  [FRAME] #60:291 layout=layout_dd467520 fills=fill_658ab2fa
+    [FRAME] #60:292 layout={"mode":"column","alignItems":"stretch","gap":"48px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":987}}
+      [TEXT] #60:293 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_16fe72e3 text="Наши объекты"
+      [TEXT] #60:294 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_42139aee text="За 12 лет работы на рынке кровельных материалов нашей компанией было выполненно более 100 проектов различной сложности, смонтировано более 4 тысяч кв.м. кровли."
+  [FRAME] #62:397 layout={"mode":"row","alignSelf":"stretch","padding":"0px 160px 90px","alignItems":"center","gap":"20px","sizing":{"horizontal":"fill","vertical":"hug"}}
+    [FRAME] #62:328 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":780,"height":510}} fills=fill_658ab2fa
+      [RECTANGLE] "3f533843d055c75fb251f6e830d33e51 1" #62:329 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":-45,"y":-20},"dimensions":{"width":870,"height":550}} fills=[{"type":"IMAGE","imageRef":"c3978551c6458d5c178926cb75dddf03e5e349b2","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+      [RECTANGLE] #62:330 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":780,"height":510}} fills=fill_b2d05603
+      [TEXT] #62:319 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":24,"y":425},"dimensions":{"width":424,"height":28}} fills=fill_658ab2fa textStyle=style_3022557b text="Монтаж гибкой черепицы в частном доме"
+      [FRAME] #62:342 layout={"mode":"row","padding":"0px 24px 20px","justifyContent":"space-between","alignItems":"center","sizing":{"horizontal":"fixed","vertical":"hug"},"locationRelativeToParent":{"x":0,"y":464},"dimensions":{"width":780}}
+        [FRAME] #62:327 template=EL-5d197b60
+          [COMPONENT] "remix-icons/line/map/map-pin-line" #62:321 template=EL-5f4445f0
+            [IMAGE-SVG] "Group" #62:322 template=EL-cf838479
+          [TEXT] #62:326 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_e86dbff6 text="Ставрополь"
+        [FRAME] #62:336 template=EL-5d197b60
+          [COMPONENT] "remix-icons/line/buildings/home-8-line" #62:331 template=EL-5f4445f0
+            [IMAGE-SVG] "Group" #62:332 template=EL-cf838479
+          [TEXT] #62:338 template=EL-cea0d6e4
+    [FRAME] #62:396 layout={"mode":"column","alignItems":"stretch","gap":"20px","sizing":{"horizontal":"hug","vertical":"hug"}}
+      [FRAME] #62:394 template=EL-45c34bb1
+        [FRAME] #62:343 template=EL-6cccef8d
+          [RECTANGLE] "f03c6016e43202d284eb4bd29958abfd 1" #62:360 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":-16,"y":-10},"dimensions":{"width":420,"height":265}} fills=[{"type":"IMAGE","imageRef":"9b057f7e83f9268a39dcf57690fcb67127b09ada","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #62:345 template=EL-91d3e6e1
+          [FRAME] #62:347 template=EL-f9ea7b2f
+            [FRAME] #62:351 template=EL-5d197b60
+              [IMAGE-SVG] "remix-icons/line/buildings/home-8-line" #62:352 template=EL-ec357ce4
+              [TEXT] #62:353 template=EL-cea0d6e4
+        [FRAME] #62:361 template=EL-6cccef8d
+          [RECTANGLE] "309ec029ecaa393f4e4db79a4cc45863 1" #62:392 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":-6,"y":-10},"dimensions":{"width":409,"height":259}} fills=[{"type":"IMAGE","imageRef":"1c1354a03a9f5f6fab55018cc6b66786fc264d6f","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #62:363 template=EL-91d3e6e1
+          [FRAME] #62:364 template=EL-f9ea7b2f
+            [FRAME] #62:365 template=EL-5d197b60
+              [IMAGE-SVG] "remix-icons/line/buildings/home-8-line" #62:366 template=EL-ec357ce4
+              [TEXT] #62:367 template=EL-cea0d6e4
+      [FRAME] #62:395 template=EL-45c34bb1
+        [FRAME] #62:372 template=EL-6cccef8d
+          [RECTANGLE] "2c8ccb89e4ed79263963d1d2e0e9be44 1" #62:393 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":-16,"y":-10},"dimensions":{"width":420,"height":266}} fills=[{"type":"IMAGE","imageRef":"8f896e7e4b3c37d1e81c585795f5bf4dca008882","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #62:374 template=EL-91d3e6e1
+          [FRAME] #62:375 template=EL-f9ea7b2f
+            [FRAME] #62:376 template=EL-5d197b60
+              [IMAGE-SVG] "remix-icons/line/buildings/home-8-line" #62:377 template=EL-ec357ce4
+              [TEXT] #62:378 template=EL-cea0d6e4
+        [FRAME] #62:379 template=EL-6cccef8d
+          [RECTANGLE] "4efdd69abe3a7e53ace767fb734a3898 1" #62:380 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":-16,"y":-10},"dimensions":{"width":419,"height":265}} fills=[{"type":"IMAGE","imageRef":"07998a199776219d7f7987fd33db5dec21fc4c5d","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #62:381 template=EL-91d3e6e1
+          [FRAME] #62:382 template=EL-f9ea7b2f
+            [FRAME] #62:383 template=EL-5d197b60
+              [IMAGE-SVG] "remix-icons/line/buildings/home-8-line" #62:384 template=EL-ec357ce4
+              [TEXT] #62:385 template=EL-cea0d6e4
+  [FRAME] #63:400 layout={"mode":"row","padding":"90px 160px","gap":"90px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":1920}} fills=fill_73aea8e7
+    [FRAME] #63:401 layout={"mode":"column","justifyContent":"space-between","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":1035,"height":678}}
+      [TEXT] #63:402 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_f659e46c text="Кровельные и фасадные материалы \\nв Ставрополе"
+      [FRAME] #63:434 template=EL-ecd9240b
+        [TEXT] #63:403 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle={"fontFamily":"Inter","fontStyle":"Semi Bold","fontWeight":600,"fontSize":20,"lineHeight":"1.6em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="«Строй Кровля» - официальный дистрибьютор ведущих российских и иностранных производителей кровельных материалов."
+        [TEXT] #63:423 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_6992895d text="Компания «Строй-Кровля», стабильно работающая на рынке предлагает продукцию ведущих мировых производителей кровельных и фасадных материалов. Будучи одним из самых ответственных и надежных дистрибьюторов, мы дорожим своей репутацией и делаем все, чтобы оправдать высокое доверие наших клиентов.\\nОсновным направлением деятельности компании является продажа кровельных и фасадных материалов оптом и в розницу. Мы делаем акцент на широком ассортименте и достаточных товарных запасах, поддерживая статус надежного поставщика высококачественной продукции!\\nМы будем рады работать с Вами!"
+      [FRAME] #64:452 layout={"mode":"row","gap":"16px","sizing":{"horizontal":"hug","vertical":"hug"}}
+        [FRAME] #62:398 template=EL-9472eaf7
+          [TEXT] #62:399 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="Получить расчет кровли"
+        [FRAME] #64:450 layout=layout_188f99ec fills=[{"type":"GRADIENT_RADIAL","gradient":"radial-gradient(circle at 2% 0%, rgba(232, 8, 7, 1) 0%, rgba(43, 43, 43, 1) 100%)"}] borderRadius=12px
+          [TEXT] #64:451 layout=layout_177c5efc fills=fill_658ab2fa textStyle=style_ba5d58f3 text="Скачать прайс"
+          [COMPONENT] "remix-icons/line/system/arrow-down-line" #64:454 layout=layout_a111c4b6 fills=fill_97d170e1
+            [IMAGE-SVG] "Group" #64:455 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":24,"height":24}}
+    [FRAME] #64:459 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":483,"height":678}} fills=fill_658ab2fa
+      [RECTANGLE] "Премиальная гибкая черепица крупным планом 1" #63:436 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":-4,"y":-49},"dimensions":{"width":492,"height":369}} fills=[{"type":"IMAGE","imageRef":"16e854e7d9f51659a2b27ba4cb48d48552b8bc65","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+      [FRAME] #63:441 layout={"mode":"row","alignItems":"center","gap":"26px","sizing":{"horizontal":"hug","vertical":"hug"},"locationRelativeToParent":{"x":9,"y":11}}
+      [FRAME] #63:442 layout={"mode":"row","padding":"12px 32px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"hug","vertical":"hug"},"locationRelativeToParent":{"x":9,"y":11}} fills=fill_053df6ed borderRadius=12px
+        [TEXT] #63:443 layout=layout_177c5efc fills=fill_658ab2fa textStyle={"fontFamily":"Inter","fontStyle":"Semi Bold","fontWeight":600,"fontSize":18,"lineHeight":"1.4em","textCase":"UPPER","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="Акция"
+      [FRAME] #64:464 layout={"mode":"column","gap":"33px","sizing":{"horizontal":"fixed","vertical":"hug"},"locationRelativeToParent":{"x":28,"y":345},"dimensions":{"width":427}}
+        [FRAME] #64:460 template=EL-ecd9240b
+          [FRAME] #64:461 template=EL-93c53713
+            [TEXT] #63:444 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_0ef97aea text="до конца 2026 года "
+            [TEXT] #63:448 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_4b34f7f6 text="Акция на гибкую черепицу"
+          [TEXT] #64:449 layout=layout_56d3c81c fills=fill_4b6ccca7 textStyle=style_6992895d text="Внимание акция! Скидка 20% на всю гибкую черепицу премиум-класса. Акция действует с 1 февраля по 30 апреля 2023 года."
+        [INSTANCE] #64:462 template=EL-ecbe8d54
+          [TEXT] #I64:462;42:63 layout=layout_177c5efc fills=fill_4b6ccca7 textStyle=style_ba5d58f3 text="Все акции"
+  [FRAME] #65:551 layout={"mode":"row","alignSelf":"stretch","padding":"40px 160px","gap":"100px","sizing":{"horizontal":"fill","vertical":"hug"}} fills=fill_4b6ccca7
+    [FRAME] #64:465 template=EL-81e76f09
+      [TEXT] #64:468 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_4b34f7f6 text="Компания"
+      [FRAME] "Frame" #65:470 layout={"mode":"column","alignSelf":"stretch","alignItems":"stretch","gap":"12px","sizing":{"horizontal":"fill","vertical":"hug"}}
+        [TEXT] #65:471 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="О компании"
+        [TEXT] #65:472 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Услуги и сервис"
+        [TEXT] #65:473 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Прайс-листы"
+        [TEXT] #65:474 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Статьи"
+        [TEXT] #65:475 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Наши объекты"
+        [TEXT] #65:476 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Акции"
+        [TEXT] #65:477 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Контакты"
+        [TEXT] #65:478 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Согласие на обработку персональных данных"
+    [FRAME] #65:479 template=EL-81e76f09
+      [TEXT] #65:480 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_4b34f7f6 text="Каталог"
+      [FRAME] "Frame" #65:491 template=EL-d8a3e5e9
+        [TEXT] #65:492 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Кровельные материалы"
+        [TEXT] #65:493 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Фасадные материалы"
+        [TEXT] #65:494 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Гидро и пароизоляция"
+        [TEXT] #65:495 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Тепло- и звукоизоляция"
+        [TEXT] #65:496 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Чердачные лестницы"
+        [TEXT] #65:497 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Мансардные окна"
+        [TEXT] #65:498 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Ограждения"
+        [TEXT] #65:499 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Водосточные системы"
+        [TEXT] #65:500 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Системы водоотведения"
+        [TEXT] #65:501 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Террасная доска"
+    [FRAME] #65:502 layout={"mode":"column","alignItems":"stretch","gap":"24px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":245}}
+      [TEXT] #65:503 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_4b34f7f6 text="Производители"
+      [FRAME] "Frame" #65:515 template=EL-d8a3e5e9
+        [TEXT] #65:516 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Металл Профиль"
+        [TEXT] #65:517 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="GrandLine"
+        [TEXT] #65:518 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Braas"
+        [TEXT] #65:519 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Katepal"
+        [TEXT] #65:520 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Технониколь"
+        [TEXT] #65:521 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="RoofShield"
+        [TEXT] #65:522 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="Fakro"
+        [TEXT] #65:523 layout=layout_56d3c81c fills=fill_658ab2fa textStyle={"fontFamily":"Inter","fontStyle":"Regular","fontWeight":400,"fontSize":18,"lineHeight":"1.6em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP","textDecoration":"UNDERLINE","paragraphSpacing":16} text="Все бренды"
+    [FRAME] #65:550 layout={"mode":"column","alignItems":"stretch","gap":"58px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":427}}
+      [FRAME] #65:524 template=EL-1bc16580
+        [TEXT] #65:525 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_4b34f7f6 text="Контакты"
+        [FRAME] "Frame" #65:526 layout={"mode":"column","alignItems":"stretch","gap":"16px","sizing":{"horizontal":"hug","vertical":"hug"}}
+          [TEXT] #65:527 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="+7 \\(8652\\) 33-40-41"
+          [TEXT] #65:528 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="info@stroy-krovlya26.ru"
+          [TEXT] #65:529 layout=layout_56d3c81c fills=fill_658ab2fa textStyle=style_50c5fcd4 text="﻿г. Ставрополь, Старомарьевское шоссе, 6"
+          [TEXT] #65:530 layout=layout_56d3c81c fills=fill_658ab2fa textStyle={"fontFamily":"Inter","fontStyle":"Regular","fontWeight":400,"fontSize":20,"lineHeight":"1.6em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP","textDecoration":"UNDERLINE","paragraphSpacing":16} text="Как проехать"
+      [TEXT] #65:549 layout=layout_56d3c81c fills=fill_658ab2fa textStyle={"fontFamily":"Inter","fontStyle":"Regular","fontWeight":400,"fontSize":14,"lineHeight":"1.6em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP","paragraphSpacing":16} text="Обращаем ваше внимание на то, что данный интернет-сайт, а также вся информация о товарах и ценах, предоставленная на нём, носит исключительно информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437 Гражданского кодекса Российской Федерации."
+  [FRAME] #65:552 layout={"mode":"column","padding":"0px 0px 32px","gap":"12px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":1920}} fills=fill_4b6ccca7
+    [FRAME] #65:553 layout={"mode":"column","alignSelf":"stretch","alignItems":"stretch","gap":"10px","sizing":{"horizontal":"fill","vertical":"fixed"},"dimensions":{"height":20}}
+      [LINE] #65:554 layout=layout_3cdeda1d strokes=fill_b0a7574b strokeWeight=1px
+    [FRAME] #65:555 layout={"mode":"row","padding":"0px 160px","alignItems":"center","gap":"1px","sizing":{"horizontal":"hug","vertical":"hug"}}
+      [TEXT] #65:556 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":1106,"height":21}} fills=["#6E718A"] textStyle={"fontFamily":"Onest","fontStyle":"Regular","fontWeight":400,"fontSize":14,"lineHeight":"21px","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="{ts4}Политика конфиденциальности{/ts4}{ts5}    {/ts5}{ts4}Согласие на обработку персональных данных {/ts4}{ts5}                      © Copyright  2026 г.                                Сделано в {/ts5}"
+      [IMAGE-SVG] "лого шер 2" #65:557 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":57,"height":13}} fills=fill_97d170e1

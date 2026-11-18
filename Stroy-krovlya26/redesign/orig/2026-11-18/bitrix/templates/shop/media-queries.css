@@ -1,0 +1,1003 @@
+ @media screen and (max-width:1700px) 
+{
+	.InfoBlock::after
+	{
+		display:none;
+	}
+}
+@media screen and (max-width:1180px) 
+{
+	.BannerBlock
+	{
+		display:none;
+	}
+}
+@media screen and (max-width:1280px) 
+{
+	.InfoBlock 
+	{
+		background-position: 30% 0%;
+		background-size: cover;
+	}
+	.Wrapper
+	{
+		padding:0 20px;
+	}
+	.Conteiner .Contacts
+	{
+		padding:0 20px;
+	}
+	.InfoBlock .FormBlock
+	{
+		overflow:hidden;
+	}
+}
+@media screen and (max-width:1024px) 
+{
+	.InfoBlock .FormBlock 
+	{
+		padding: 28px 0 0;
+		width: 34%;
+	}
+	.InfoBlock .FormBlock .Form::before
+	{
+		max-width: 307px;
+	}
+	.InfoBlock .Benefits .Item
+	{
+		max-width:none;
+	}
+	.Catalog .Item
+	{
+		max-width:100%;
+	}
+	.Stages .Items .Item .Item_Inner::before
+	{
+		display:none ;
+	}
+}
+@media screen and (max-width:960px) 
+{
+	.AboutBlock .About 
+	{
+		width: 65%;
+		margin:0 5% 0 0;
+	}
+	.CatalogIndex .Items .Item
+	{
+		width:33.333%;
+	}
+	.LeftBlock 
+	{
+		width: 30%;
+	}
+	.ContBlock 
+	{
+		width: 70%;
+	}
+	.Catalog .Items .Item 
+	{
+		width: 47.333%;
+	}
+	.Brends .Items .Item
+	{
+		width:25%;
+	}
+	.NewsCont .Item, .GalleryCont .Item
+	{
+		width:46%;
+	}
+	.Conteiner .Contacts .Flex 
+	{
+		display: block !important;
+	}
+	.Conteiner .Contacts .Flex > div
+	{
+		width:50%;
+		margin:0 0 35px;
+		float:left;
+	}
+	.Stages .Items .Item
+	{
+		width:100%;
+		margin: 0 0 20px 0;
+	}
+	.Stages .Items .Item .Item_Inner
+	{
+		display: -webkit-box !important;
+		display: -webkit-flex !important;
+		display: -moz-box !important;
+		display: -ms-flexbox !important;
+		display: flex !important;
+		justify-content: flex-start;
+		max-width:none;
+	}
+	.Stages .Items .Item .Item_Inner .Icon
+	{
+		margin:0;
+	}
+	.Stages .Items .Item .Item_Inner .Icon img
+	{ 
+		max-width: none;
+		display:inline-block;
+	}
+	.Stages .Items .Item .Item_Inner .Desc
+	{
+		padding: 0 0 0 20px;
+	}
+	.Stages .Items .Item .Item_Inner .Name
+	{
+		margin:30px 0 20px;
+	} 
+	.Stages .Items .Item .Item_Inner::before
+	{
+		display:none !important;
+	}
+	.PopupColor ul 
+	{
+		text-align: center;
+	}
+}
+@media screen and (max-width:900px) 
+{	
+	body
+	{
+		overflow-x:hidden;
+		font-size:100%;
+	}
+	.Header .Info .TopBlock .Cart a
+	{
+		padding: 0 25px 0;
+	}
+	.MainMenu
+	{
+		display:none;
+	}
+	.Header .Info .MenuBlock
+	{
+		position:inherit;
+	}
+	.PopupMenu
+	{
+		top: 8px;
+		left: 20px;
+		max-width: none;
+		right: 20px;
+		width: auto;
+	}
+	.PopupMenu .AllMenu
+	{
+		width:100% !important;
+	}
+	.Header .Info .MenuBlock .PopupMenu .AllMenu a 
+	{
+		line-height: 45px;
+		padding: 10px 15px;
+	}
+	.Header .Info .MenuBlock .PopupMenu .AllMenu a:hover
+	{
+		line-height: 45px;
+		padding: 10px 15px;
+	}
+	.Header .Info .MenuBlock .PopupMenu .AllMenu a span
+	{
+		text-indent: -9999px;
+		width: 19px;
+		height: 19px;
+		overflow: hidden;
+		padding: 0;
+		min-height: 19px;
+		display: flex;
+	}
+	.Portfolio .Items .Item:first-child
+	{
+		width:100%;
+		display:block;
+		max-width:900px;
+	}
+	.Portfolio .Items .Item
+	{
+		width:50%;
+		max-width:none;
+	}
+	.PopupSearch .Search .Box 
+	{
+		width: 20px;
+	}
+	.PopupSearch .Search .SearchForm 
+	{
+		width: 100%;
+	}
+	.PopupSearch .SearchClose
+	{
+		margin: 0 20px 0 10px;
+	}
+}
+@media screen and (max-width:800px) 
+{
+	.bx-filter .bx-filter-parameters-box 
+	{
+		position: relative;
+		border-top: 1px solid #E8E8E8;
+		padding: 15px 0 0;
+	}
+	.bx-filter .bx-filter-parameters-box:first-child 
+	{
+		border-top: none;
+		padding:0;
+	}
+	#Blocks
+	{
+		padding:0 !important;
+	}
+	#BlocksContacts
+	{
+		padding:0 !important;
+	}
+	#BlocksContacts .Conteiner
+	{
+		padding:40px 0 0 !important;
+	}
+	.Header .Info .TopBlock .Cart a
+	{
+		padding: 0 15px 0;
+	}
+	.InfoBlock .FormBlock 
+	{
+		width: 40%;
+	}
+	.LeftBlock
+	{
+		width:100%;
+	}
+	.LeftMenu
+	{
+		background:none;
+	}
+	.LeftMenu ul li 
+	{ 
+		background-color: #fff;
+		margin:0 5px 8px 0;
+		display:inline-block;
+		border:none;
+		padding:10px 15px;
+	}
+	.FilterBlock .bx-filter-parameters-box-title
+	{
+		font-size: 14px;
+		margin: 0 0 15px;
+	}
+	.BannerCalc, .Conteiner .Benefits
+	{
+		display:none;
+	}
+	.Brends .Items .Item
+	{
+		width:33%;
+	}
+	.Advantages
+	{
+		padding: 63px 0 40px;
+	}
+	.Advantages .Items .Item
+	{
+		width:50%;
+		margin:0 0 50px 0;
+	}
+	.ContBlock 
+	{
+		width:100%;
+	}
+	.ContBlock .Content
+	{
+		padding:0;
+	}
+	.Catalog .Items
+	{
+		margin: 0 0 70px -15px;
+	}
+	.AboutBlock
+	{
+		margin: 0 0 50px 0;
+	}
+	.startshop-order-buttons-wrapper .Flex
+	{
+		display: block !important;
+	}
+	.Agreement .Checkbox input[type="checkbox"] + label span
+	{
+		background-position:0 0;
+	}
+	.Agreement .Checkbox input[type="checkbox"]:checked + label span
+	{
+		background-position:0 0;
+	}
+	.FooterInfo.Flex
+	{
+		display:none !important;
+	}
+	.Footer
+	{
+		position: relative;
+		height: auto;
+	}
+	.Portfolio .Items .Item .Desc
+	{
+	 top: 75px;
+		top:75px
+	}
+	
+}
+@media screen and (max-width:768px) 
+{
+	.AboutBlock .Flex 
+	{
+		display: block !important;
+	}
+	.AboutBlock .About 
+	{
+		width: 100%;
+		margin: 0 0 25px 0;
+	}
+	.Social 
+	{
+		margin: 0 0 0 25px;
+	}
+	.AboutBlock .Article 
+	{
+		width:100%;
+		line-height: 1.6em;
+		max-width: none;
+	}
+	.AboutBlock .Article .Item
+	{
+		width:100%;
+	}
+	.Brends .Items .Item
+	{
+		width:33%;
+	}
+	.NewsCont .Item, .GalleryCont .Item
+	{
+		width:46%;
+	}
+	.ContBlock .Content
+	{
+		min-height: 300px;
+	}
+	.Dev
+	{
+		display:none !important;
+	}
+	.Agreement .Checkbox input[type="checkbox"] + label span
+	{
+		display:inline-block;
+		margin:0 0 15px;
+		line-height:normal;
+	}
+	.startshop-basket-column-picture .Stiker
+	{
+		left: 0;
+		right: auto;
+		text-align: left;
+	}
+	.startshop-basket-column-name .Brend
+	{
+		margin:0;
+	}
+	.startshop-basket.default .startshop-basket-table tbody .startshop-basket-column.startshop-basket-column-total span, .startshop-basket-column-price span
+	{
+		font-size:16px;
+	}
+	.startshop-basket .Availability
+	{
+		display:none;
+	}
+	.startshop-basket tbody tr:first-child td
+	{
+		border-top: none;
+	}
+	.startshop-basket tbody tr td
+	{
+		border-top: 1px solid #efefef;
+	}
+	.startshop-basket.default .startshop-basket-sum
+	{
+		padding:45px 40px 45px 0;
+	}
+	.startshop-basket.default .startshop-basket-table .startshop-basket-column
+	{
+		padding:30px 0 30px;
+	}
+	.startshop-basket.default .startshop-basket-table tbody .startshop-basket-column.startshop-basket-column-quantity
+	{
+		padding: 20px 0;
+	}
+	.startshop-basket-column-picture .Stiker 
+	{
+		right: 15px;
+		top: 15px;
+	}
+	.startshop-basket-cell .startshop-input-numeric
+	{
+		width: 60px;
+	}
+	.startshop-input-numeric input
+	{
+		width: 35px !important;
+	}
+	.startshop-input-numeric .plus
+	{
+		right: 5px;
+	}
+	.startshop-input-numeric .minus
+	{
+		right: 5px;
+	}
+}
+@media screen and (max-width:720px) 
+{
+	.InfoBlock .TextBlock 
+	{
+		width:100%;
+	}
+	.InfoBlock .Benefits .Item
+	{
+		max-width:290px;
+	}
+	.InfoBlock .FormBlock 
+	{
+		display:none;
+	}
+	.Social 
+	{
+		margin: 0 0 0 15px;
+	}
+	.Portfolio .Items .Item
+	{
+		max-width:none; 
+	}
+	.CatalogDetail .PropsTabs .Anonse
+	{
+		width:100%;
+		float:none;
+	}
+	.CatalogDetail .PropsTabs .Anonse .Text
+	{
+		padding:0;
+	}
+	.CatalogDetail .PropsTabs .Files
+	{
+		border-top: 1px solid #EFEFEF;
+		padding:35px 0 0;
+		width:100%;
+	}
+	.startshop-basket-column-picture
+	{
+		width:100%;
+	}
+	.startshop-basket.default .startshop-basket-table .startshop-basket-cell .startshop-image
+	{
+		width:100%;
+		height:100%;
+	}
+	.startshop-basket-column-name
+	{
+		width:100%;
+	}
+	.startshop-basket-column-picture .Stiker
+	{
+		right:15px;
+	}
+}
+@media screen and (max-width:640px) 
+{
+	.PopupMenu .Menu
+	{
+		padding: 0 30px 25px !important;
+	}
+	.PopupMenu .Item:first-child
+	{
+		border-top: none;
+		padding:0 0 0;
+	}
+	.PopupMenu .Title
+	{
+		margin:0 0 20px;
+	}
+	.PopupMenu .Item
+	{
+		border-top: 1px solid #ebeef0;
+		width:100%;
+		padding: 30px 0 0;
+		margin: 0 0 10px;
+	}
+	.PopupMenu .Contacts .AllMenu
+	{
+		display: block !important;
+	}
+	.PopupMenu .Contacts .Flex.Start
+	{
+		display: block !important;
+	}
+	.PopupMenu .Contacts .Box
+	{
+		width:100% !important;
+	}
+	.Header .OrderCall
+	{
+		display:none;
+	}
+	.CatalogIndex .Items .Item
+	{
+		width:50%;
+	}
+	.startshop-basket-column-name .Brend, .startshop-basket.default .startshop-basket-table .startshop-basket-property
+	{
+		display:none;
+	}
+	.Brends .Items .Item
+	{
+		width:33%;
+	}
+	.LeftMenu ul li
+	{
+		padding: 5px 10px;
+	}
+	.Catalog .Items
+	{
+		margin: 0 0 70px -10px;
+	}
+	.startshop-order
+	{
+		padding:35px;
+	}
+	.CatalogDetail
+	{
+		padding:30px;
+	}
+	.CatalogDetail .ImagesBlock
+	{
+		width: 100%;
+		float: none;
+	}
+	.CatalogDetail .DescBlock
+	{
+		width: 100%;
+		float: none;
+	}
+	.CatalogDetail .DescBlock .Info
+	{
+		width: 100%;
+		float: none;
+		padding: 0;
+	}
+	.CatalogDetail .AddCart .startshop-order
+	{
+		padding: 0;
+	}
+	.Portfolio .Items .Item .Desc
+	{
+		top:30px;
+		line-height: 1.5em;
+	}
+}
+@media screen and (max-width:600px) 
+{
+	.Header .Wrapper > .Flex
+	{
+		display: block !important;
+	}
+	.Conteiner .Contacts .Flex > div 
+	{
+		width: 100%;
+		margin: 0 0 35px;
+	}
+	.PopupColor ul li
+	{
+		width:30%;
+	}
+	.Portfolio .Items .Item
+	{
+		width:100%;
+		max-width: none;
+	}
+	.Header .Logo
+	{
+		width:100%;
+	}
+	.Header .Info
+	{
+		width:100%;
+	}
+	.Header .TopBlock
+	{
+		position: absolute;
+		right: 0;
+		top: 15px;
+	}
+	.Header .Info .TopBlock .Tel
+	{
+		margin: 0 0 20px 0;
+		text-align:right;
+	}
+	.Header .Info .TopBlock .Tel a
+	{
+		margin: 0 20px 0 0;
+	}
+	.Header .TopBlock > .Flex
+	{
+		display: block !important;
+	}
+	.Header .Info .TopBlock .Tel
+	{
+		display: inline-block;
+	}
+	.Header .Info .TopBlock .Social
+	{
+		display: inline-block;
+	}
+	.Header .Info .Cart
+	{
+		text-align:right;
+	}
+	.Header .IconBlock 
+	{
+		margin:0 !important;
+		width:100%;
+	}
+	.Header .AllMenu
+	{
+		width:92%;
+	}
+	.Header .Info .TopBlock .Cart a
+	{
+		margin: 0 20px 0 0;
+	}
+	.Header .IconBlock .Search
+	{
+		width:8%;
+		min-width: 45px;
+	}
+	.CatalogIndex .Items .Item 
+	{
+		width: 100%;
+	}
+	.CatalogIndex .Brends .Items .Item
+	{
+		width:50%;
+	}
+	.CatalogIndex .Items .Item ul li
+	{
+		display: inline-block;
+		margin: 0 15px 15px 0;
+	}
+	.CatalogDetail .PropsTabs .Links li
+	{
+		padding: 0 25px;
+	}
+	.startshop-basket-column-price
+	{
+		display:none;
+	}
+	#slidebox
+	{
+		display:none !important;
+	}
+}
+@media screen and (max-width:480px) 
+{
+	.Header .Info .TopBlock .Tel 
+	{
+		display: block;
+		text-align: right;
+	}
+	.Header .Info .TopBlock .Social 
+	{
+		text-align: right;
+		display: block;
+	}
+	.Header .Info .Cart
+	{
+		display:none;
+	}
+	.Header .Info .MenuBlock .Cart
+	{
+		display:inline-block;
+	}
+	.Brends .Items .Item
+	{
+		width:50%;
+	}
+	.startshop-basket.default .startshop-basket-table .startshop-basket-cell
+	{
+		overflow:visible !important;
+	}
+	.FilterBlock
+	{
+		padding: 20px;
+	}
+	.Advantages .Items .Item
+	{
+		width:100%;
+		margin:0 0 50px 0;
+	}
+	.Advantages .Items .Item .Item_Inner
+	{
+		max-width:none;
+	}
+	.AboutBlock .About .File
+	{
+		margin:0 0 30px;
+	}
+	.NewsCont .Item, .GalleryCont .Item
+	{
+		width:100%;
+	}
+	.ViewsBlock .Sort span 
+	{
+		display: block;
+	}
+	.ViewsBlock .Sort a
+	{
+		margin: 0 20px 0 0;
+	}
+	.CatalogDetail .PropsTabs .Links
+	{
+		border:none;
+		height:auto;
+	}
+	.Portfolio .Items .Item .Desc
+	{
+		top:auto;
+		bottom:30px;
+	}
+	.Portfolio .Items .Item .Desc .Anonse
+	{
+		display:none;
+	}
+	.CatalogDetail .PropsTabs .Links li
+	{
+		margin:0 0 5px;
+	}
+	.Catalog .Items .Item 
+	{
+		width:100%;
+		margin:0 0 20px;
+	}
+	.Catalog .Items
+	{
+		margin: 0 0 70px;
+	}
+	.Catalog.List .Items .Item
+	{
+		margin: 0 0 20px;
+	}
+	.startshop-catalog .startshop-item .startshop-information .startshop-order .startshop-buy > .to-cart span
+	{
+		font-size: 14px;
+		padding: 12px 15px;
+	}
+	.Pagination ul li.PrevPage
+	{
+		display:none;
+	}
+	.Pagination ul li.NextPage
+	{
+		display:none;
+	}
+	.intec-form-value
+	{
+		margin: 0 0 20px;
+	}
+	.intec-form-field.field2, .intec-form-field.field3
+	{
+		float:none;
+		margin:0;
+		width:100%;
+	}
+	.startshop-basket-information .Flex
+	{
+		display: block !important;
+		text-align: center;
+	}
+	.startshop-basket-information
+	{
+		margin:0 0 60px;
+	}
+	.intec-content .Title
+	{
+		text-align: center;
+	}
+	.startshop-basket.default .startshop-basket-sum
+	{
+		text-align: center;
+		padding: 40px 0 0;
+		line-height: normal;
+	}
+	.startshop-basket.default .startshop-basket-sum .intec-button
+	{
+		float:none !important;
+		display:inline-block;
+	}
+	.startshop-order-buttons-wrapper .Flex
+	{
+		text-align:left;
+	}
+	.PopupColor ul li 
+	{
+		width: 46%;
+	}
+	.Pages .Prev span
+	{
+		display:none !important;
+	}
+	.Pages .Next span
+	{
+		display:none !important;
+	}
+}
+@media screen and (max-width:420px) 
+{
+	.PopupColor ul li
+	{
+		min-width:auto;
+	}
+	.Portfolio .Items .Item .Opacity
+	{
+		display:block;
+		z-index:200;
+	}
+	.TableInfo td
+	{
+		display:block !important;
+	}
+	.Catalog.List .Items .Flex
+	{
+		display:block !important;
+	}
+	.Catalog.List .Items .Image
+	{
+		width:100%;
+		height:auto;
+	}
+	.Catalog .Item .Name
+	{
+		margin: 0 0 15px;
+	}
+	.CatalogIndex ul.Links li
+	{
+		padding: 0 15px;
+	}
+	.Catalog.List .Items .Desc 
+	{
+		width: 100%;
+	}
+	.Stages .Items .Item
+	{
+		margin: 0 0 45px;
+	}
+	.Stages .Items .Item .Item_Inner
+	{
+		display: block !important;
+	}
+	.Btn span
+	{
+		padding: 10px 35px;
+	}
+}
+@media screen and (max-width:380px) 
+{
+	.Header .Info .TopBlock .Social 
+	{
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.TopBlock
+	{
+		display: block;
+		left: 0;
+		top: 105px !important;
+	}
+	.Header .Info .MenuBlock .AllMenu a
+	{
+		display:block;
+	}
+	.Header .Info .MenuBlock .Cart, .Header .Info .MenuBlock .Search
+	{
+		margin:0 0 0 10px;
+	}
+	.Header .Info .TopBlock .Tel
+	{
+		text-align:center;
+	}
+	.Header .Info .TopBlock .Cart 
+	{
+		display: none !important;
+	}
+	.Header .Logo
+	{
+		text-align:center;
+		padding: 15px 0 40px;
+	}
+	.Header .Logo img
+	{
+		display:inline-block;
+	}
+	.Header .Info .MenuBlock .AllMenu a
+	{
+		padding:1px 16px;
+	}
+	.Header .Info .MenuBlock .AllMenu a:hover
+	{
+		padding:0px 15px;
+	}
+	.Brends .Items .Item
+	{
+		width:100%;
+	}
+	.PopupColor ul li img
+	{
+		width:50px;
+		height:50px;
+	}
+	.CatalogIndex .Brends .Items .Item
+	{
+		width:100%;
+	}
+	.Brends .Items .Item .Item_Inner a
+	{
+		height:150px;
+	}
+	.ViewsBlock .Views
+	{
+		max-width: 44px;
+	}
+	.ViewsBlock .Views .List
+	{
+		border-top: 1px solid #dae0e3;
+		border-left:none;
+	}
+	.CatalogIndex ul.Links
+	{
+		border:none;
+		height:auto;
+	}
+	.CatalogIndex ul.Links li
+	{
+		margin:0 0 5px;
+	}
+	.CatalogDetail .AddCart .Flex
+	{
+		display: block !important;
+	}
+	.startshop-catalog .startshop-item .startshop-information .startshop-order .startshop-input-numeric
+	{
+		margin:0 0 15px;
+	}
+	.startshop-catalog .startshop-item .startshop-information .startshop-order .startshop-buy > .to-cart span
+	{
+		font-size:16px;
+	}
+}
+@media screen and (max-width:320px) 
+{
+	.PopupColor ul li 
+	{
+		width: 100%;
+	}
+	.PopupColor ul li img
+	{
+		width:80px;
+		height:80px;
+	}
+	.Portfolio .Items .Item .Desc .Name
+	{
+		font-size:14px;
+	}
+	.Portfolio .Items .Item .Desc .InfoText
+	{
+		font-size:13px;
+	}
+}

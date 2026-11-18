@@ -1,0 +1,316 @@
+*, ::before, ::after 
+{
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ box-sizing: border-box;
+}
+html 
+{
+	height:100%;
+ -webkit-transition: .2s ease-in-out;
+ -moz-transition: .2s ease-in-out;
+ -o-transition: .2s ease-in-out;
+ transition: .2s ease-in-out;
+}
+body 
+{
+ font-family: "LatoRegular";
+	font-size:14px;
+	line-height:1.6em;
+	color:#212121;
+	margin:0;
+	padding:0;
+	height:100%;
+	overflow-x:hidden;
+}
+table 
+{
+	border-collapse: collapse;
+	border-width: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+td
+{
+	margin: 0px;
+	padding: 0px;
+}
+form
+{
+	padding: 0px;
+	margin: 0px;
+}
+h1
+{
+ font-family: "LatoHeavy";
+	font-size:38px;
+	font-weight:normal;
+	line-height:normal;
+	color: #212121;
+	margin: 0 0 35px;
+}
+h2
+{
+ font-family: "LatoBold";
+	font-size:28px;
+	font-weight:normal;
+	line-height:normal;
+	color: #212121;
+	margin:30px 0 30px;
+}
+h3
+{
+ font-family: "LatoBold";
+	font-size:26px;
+	font-weight:normal;
+	line-height:normal;
+	color: #212121;
+	margin:30px 0 30px;
+}
+p
+{
+	padding: 0 0 30px;
+	margin: 0px;
+}
+strong, b
+{
+ font-family: "LatoBold";
+	font-weight: normal;
+}
+a
+{
+	outline:none;
+	color: #1b6fbd;
+	text-decoration:none;
+}
+a:hover
+{
+	color: #212121;
+	text-decoration:none;
+	border-bottom:none;
+}
+a img
+{
+	border: 0px;
+}
+.Holder img, .Holder iframe 
+{
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+@font-face 
+{
+ font-family: "LatoRegular";
+ src: url('fonts/LatoRegular.eot');
+ src: url('fonts/LatoRegular.eot?#iefix') format('embedded-opentype'),
+ url('fonts/LatoRegular.woff') format('woff'),
+ url('fonts/LatoRegular.ttf') format('truetype'),
+ url('fonts/LatoRegular.svg#LatoRegular') format('svg');
+ font-weight: normal;
+ font-style: normal;
+	font-display: swap;
+}
+@font-face 
+{
+ font-family: "LatoBold";
+ src: url('fonts/LatoBold.eot');
+ src: url('fonts/LatoBold.eot?#iefix') format('embedded-opentype'),
+ url('fonts/LatoBold.woff') format('woff'),
+ url('fonts/LatoBold.ttf') format('truetype'),
+ url('fonts/LatoBold.svg#LatoBold') format('svg');
+ font-weight: normal;
+ font-style: normal;
+	font-display: swap;
+}
+@font-face 
+{
+ font-family: "LatoItalic";
+ src: url('fonts/LatoItalic.eot');
+ src: url('fonts/LatoItalic.eot?#iefix') format('embedded-opentype'),
+ url('fonts/LatoItalic.woff') format('woff'),
+ url('fonts/LatoItalic.ttf') format('truetype'),
+ url('fonts/LatoItalic.svg#LatoItalic') format('svg');
+ font-weight: normal;
+ font-style: normal; 
+	font-display: swap;
+}
+@font-face 
+{
+ font-family: "LatoLight";
+ src: url('fonts/LatoLight.eot');
+ src: url('fonts/LatoLight.eot?#iefix') format('embedded-opentype'),
+ url('fonts/LatoLight.woff') format('woff'),
+ url('fonts/LatoLight.ttf') format('truetype'),
+ url('fonts/LatoLight.svg#LatoLight') format('svg');
+ font-weight: normal;
+ font-style: normal;
+	font-display: swap;
+}
+@font-face 
+{
+ font-family: "LatoBoldItalic";
+ src: url('fonts/LatoBoldItalic.eot');
+ src: url('fonts/LatoBoldItalic.eot?#iefix') format('embedded-opentype'),
+ url('fonts/LatoBoldItalic.woff') format('woff'),
+ url('fonts/LatoBoldItalic.ttf') format('truetype'),
+ url('fonts/LatoBoldItalic.svg#LatoBoldItalic') format('svg');
+ font-weight: normal;
+ font-style: normal;
+	font-display: swap;
+}
+@font-face 
+{
+ font-family: "LatoLightItalic";
+ src: url('fonts/LatoLightItalic.eot');
+ src: url('fonts/LatoLightItalic.eot?#iefix') format('embedded-opentype'),
+ url('fonts/LatoLightItalic.woff') format('woff'),
+ url('fonts/LatoLightItalic.ttf') format('truetype'),
+ url('fonts/LatoLightItalic.svg#LatoLightItalic') format('svg');
+ font-weight: normal;
+ font-style: normal;
+	font-display: swap;
+}
+@font-face 
+{
+ font-family: "LatoHeavy";
+ src: url('fonts/LatoHeavy.eot');
+ src: url('fonts/LatoHeavy.eot?#iefix') format('embedded-opentype'),
+ url('fonts/LatoHeavy.woff') format('woff'),
+ url('fonts/LatoHeavy.ttf') format('truetype'),
+ url('fonts/LatoHeavy.svg#LatoHeavy') format('svg');
+ font-weight: normal;
+ font-style: normal;
+	font-display: swap;
+}
+@font-face 
+{
+ font-family: "LatoBlack";
+ src: url('fonts/LatoBlack.eot');
+ src: url('fonts/LatoBlack.eot?#iefix') format('embedded-opentype'),
+ url('fonts/LatoBlack.woff') format('woff'),
+ url('fonts/LatoBlack.ttf') format('truetype'),
+ url('fonts/LatoBlack.svg#LatoBlack') format('svg');
+ font-weight: normal;
+ font-style: normal;
+	font-display: swap;
+}
+@font-face 
+{
+ font-family: "LatoMedium";
+ src: url('fonts/LatoMedium.eot');
+ src: url('fonts/LatoMedium.eot?#iefix') format('embedded-opentype'),
+ url('fonts/LatoMedium.woff') format('woff'),
+ url('fonts/LatoMedium.ttf') format('truetype'),
+ url('fonts/LatoMedium.svg#LatoMedium') format('svg');
+ font-weight: normal;
+ font-style: normal;
+	font-display: swap;
+}
+@font-face 
+{
+ font-family: "LatoSemibold";
+ src: url('fonts/LatoSemibold.eot');
+ src: url('fonts/LatoSemibold.eot?#iefix') format('embedded-opentype'),
+ url('fonts/LatoSemibold.woff') format('woff'),
+ url('fonts/LatoSemibold.ttf') format('truetype'),
+ url('fonts/LatoSemibold.svg#LatoSemibold') format('svg');
+ font-weight: normal;
+ font-style: normal;
+	font-display: swap;
+}
+@font-face 
+{
+	font-family: 'CodeProBold';
+	src: url('fonts/Code-Pro-Bold.eot');
+	src: url('fonts/Code-Pro-Bold.eot?#iefix') format('embedded-opentype'),
+	url('fonts/Code-Pro-Bold.woff') format('woff'),
+	url('fonts/Code-Pro-Bold.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+[id^="wait_comp_"]
+{
+ display: none;
+}
+hr 
+{ 
+	color: #e6e6e6;
+	background-color:#e6e6e6;
+	border:0px none; 
+	height:1px;
+	margin:16px 0 15px;
+} 
+.TableInfo
+{
+	line-height:normal;
+}
+.TableInfo td
+{
+	border:none !important;
+	padding:0 0 10px;
+}
+.TableInfo td:first-child
+{
+ width: 150px;
+ vertical-align: top !important;
+}
+.TableInfo td b
+{
+	display:block;
+}
+.TableStyle
+{
+	line-height:normal;
+ font-size: 14px;
+}
+.TableStyle strong
+{
+	color:#484848;
+}
+.TableStyle td
+{
+	border:1px solid #e0e0e0;
+	vertical-align:middle !important;
+	padding:10px;
+}
+table p
+{
+	padding:0 !important;
+}
+.TableStyle tr:first-child td
+{
+	background: #e7ebf2;
+ font-family: "LatoBold";
+	font-size:16px;
+ vertical-align: middle;
+	border:1px solid #d7dbe2;
+	font-weight:normal;
+} 
+.TableStyle tr:nth-child(1) 
+{
+	background:none;
+	font-size:12px;
+ vertical-align: middle;
+	border:1px solid #e0e0e0;
+	font-weight:normal;
+} 
+.TableStyle tr:nth-child(2n) 
+{
+ background: #FAFAFA; 
+} 
+.TableInfo
+{
+	line-height:normal;
+}
+.TableInfo strong
+{
+	color:#484848;
+}
+.TableInfo td
+{
+	border:1px solid #d7dbe2;
+	vertical-align:middle !important;
+	padding:10px;
+}

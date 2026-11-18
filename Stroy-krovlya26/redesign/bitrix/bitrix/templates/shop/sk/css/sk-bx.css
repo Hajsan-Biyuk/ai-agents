@@ -1,0 +1,10 @@
+/* Стык редизайна 2026 со старым шаблоном shop (только при .sk-on). Вёрстка блоков — в sk.css. */
+.sk-on #Blocks,
+.sk-on #BlocksContacts,
+.sk-on.Cont #Blocks { padding-bottom: 0 !important; }
+.Holder.sk-on.CatalogPage { margin-top: 0; }
+.sk-on .Header.sk-oldheader { position: relative; z-index: 60; height: 0; padding: 0; background: none; }
+.sk-on .sk-header--solid { position: relative; }
+.sk-on .sk-pagehead + .Conteiner { padding-top: 0; }
+body.sk-menu-open { overflow: hidden; }
+.sk-scope .sk-form__error { margin: 0 0 16px; padding: 10px 14px; border-radius: 8px; background: rgba(232, 8, 7, .15); color: #fff; font-size: 14px; line-height: 1.4; }
