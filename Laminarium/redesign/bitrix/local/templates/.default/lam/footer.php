@@ -104,4 +104,4 @@ $lamFooterMenu = array(
 	</div>
 </footer>
 <!-- LAM FOOTER END -->
-<script src="<?=$lamDir?>/js/lam.js?ver=2"></script>
+<script src="<?=$lamDir?>/js/lam.js?ver=3"></script>

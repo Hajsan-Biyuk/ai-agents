@@ -8,7 +8,7 @@ $lamImg = $lamDir . '/img/';
 $lamCfg = include __DIR__ . '/config.php';
 
 $APPLICATION->SetAdditionalCSS($lamDir . '/css/lam.css?ver=3', true);
-$APPLICATION->SetAdditionalCSS($lamDir . '/css/lam-bx.css?ver=1', true);
+$APPLICATION->SetAdditionalCSS($lamDir . '/css/lam-bx.css?ver=2', true);
 $APPLICATION->AddHeadString('<link rel="preload" href="' . $lamDir . '/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>');
 $APPLICATION->AddHeadString('<link rel="preload" href="' . $lamDir . '/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>');
 
@@ -79,7 +79,7 @@ $lamPhoneHref = 'tel:+' . preg_replace('/\D/', '', $lamCfg['PHONE']);
 		</div>
 
 		<div class="lam-header__row lam-header__row--bottom">
-			<a class="lam-header__catalog" href="<?=SITE_DIR?>catalog/"><img src="<?=$lamImg?>ic-burger.svg" alt="" width="20" height="14">Каталог</a>
+			<a class="lam-header__catalog" href="<?=SITE_DIR?>catalog/" data-lam-catalog aria-controls="lam-catalog-menu" aria-expanded="false"><img src="<?=$lamImg?>ic-burger.svg" alt="" width="20" height="14">Каталог</a>
 
 			<nav class="lam-header__nav" id="lam-header-nav" aria-label="Основное меню">
 				<?php $APPLICATION->IncludeComponent("bitrix:menu", "lam_top", array(
@@ -115,6 +115,13 @@ $lamPhoneHref = 'tel:+' . preg_replace('/\D/', '', $lamCfg['PHONE']);
 				"SHOW_DELAY" => "Y",
 			), false, array("HIDE_ICONS" => "Y"));?>
 		</div>
+	</div>
+	<?php // Выпадающее меню каталога — тот же список разделов, что в старой шапке (include/_menu.top_catalog_multilevel.php). ?>
+	<div class="lam-catalog-menu" id="lam-catalog-menu" hidden>
+		<div class="lam-container"><div class="lam-catalog-menu__in">
+			<?php $lamCatalogMenu = $_SERVER['DOCUMENT_ROOT'] . SITE_DIR . 'include/_menu.top_catalog_multilevel.php';
+			if (is_file($lamCatalogMenu)) include $lamCatalogMenu; ?>
+		</div></div>
 	</div>
 </header>
 <!-- LAM HEADER END -->

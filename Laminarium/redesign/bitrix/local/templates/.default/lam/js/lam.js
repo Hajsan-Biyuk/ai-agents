@@ -28,6 +28,36 @@
 		});
 	});
 
+	/* ---------- Меню каталога (≥1200px; на мобильных кнопка — обычная ссылка на /catalog/) ---------- */
+	each(document.querySelectorAll('[data-lam-catalog]'), function (btn) {
+		var menu = document.getElementById(btn.getAttribute('aria-controls'));
+		if (!menu) return;
+		var desktop = window.matchMedia('(min-width: 1200px)');
+
+		function setOpen(open) {
+			menu.hidden = !open;
+			btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+		}
+
+		btn.addEventListener('click', function (e) {
+			if (!desktop.matches) return;
+			e.preventDefault();
+			setOpen(menu.hidden);
+		});
+		document.addEventListener('click', function (e) {
+			if (!menu.hidden && !menu.contains(e.target) && !btn.contains(e.target)) setOpen(false);
+		});
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape' && !menu.hidden) {
+				setOpen(false);
+				btn.focus();
+			}
+		});
+		if (desktop.addEventListener) {
+			desktop.addEventListener('change', function () { if (!desktop.matches) setOpen(false); });
+		}
+	});
+
 	/* ---------- Карусели: CSS scroll-snap + стрелки ---------- */
 	// В корне [data-lam-carousel] может быть несколько .lam-track (вкладки) — листаем видимый.
 	function visibleTrack(root) {

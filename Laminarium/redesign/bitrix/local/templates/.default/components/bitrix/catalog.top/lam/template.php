@@ -35,10 +35,10 @@ foreach ($arResult['ITEMS'] as $arItem):
 	$name = (!empty($arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE'])) ? $arItem['IPROPERTY_VALUES']['ELEMENT_PAGE_TITLE'] : $arItem['NAME'];
 	$url = $arItem['DETAIL_PAGE_URL'];
 
-	// Картинка: анонс, иначе детальная, иначе заглушка Аспро.
-	$pic = !empty($arItem['PREVIEW_PICTURE']) ? $arItem['PREVIEW_PICTURE'] : (!empty($arItem['DETAIL_PICTURE']) ? $arItem['DETAIL_PICTURE'] : null);
+	// Картинка: бóльшая из анонса и детальной (анонсы в каталоге ~170px — мылятся), иначе заглушка Аспро.
+	$pic = (!empty($arItem['DETAIL_PICTURE']['WIDTH']) && $arItem['DETAIL_PICTURE']['WIDTH'] > ($arItem['PREVIEW_PICTURE']['WIDTH'] ?? 0) ? $arItem['DETAIL_PICTURE'] : (!empty($arItem['PREVIEW_PICTURE']) ? $arItem['PREVIEW_PICTURE'] : (!empty($arItem['DETAIL_PICTURE']) ? $arItem['DETAIL_PICTURE'] : null)));
 	if ($pic) {
-		$picResized = CFile::ResizeImageGet($pic, array('width' => 400, 'height' => 400), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+		$picResized = CFile::ResizeImageGet($pic, array('width' => 800, 'height' => 800), BX_RESIZE_IMAGE_PROPORTIONAL, true);
 		$picSrc = $picResized['src'];
 	} else {
 		$picSrc = '/bitrix/templates/aspro_mshop/images/no_photo_medium.png';

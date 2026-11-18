@@ -12,8 +12,8 @@ if (empty($arResult['ITEMS'])) return;
 		<ul class="lam-news__grid">
 			<?php foreach ($arResult['ITEMS'] as $arItem):
 				$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem['IBLOCK_ID'], 'ELEMENT_EDIT'));
-				$lamPicSrc = !empty($arItem['PREVIEW_PICTURE']) ? $arItem['PREVIEW_PICTURE'] : (!empty($arItem['DETAIL_PICTURE']) ? $arItem['DETAIL_PICTURE'] : null);
-				$lamPic = $lamPicSrc ? CFile::ResizeImageGet($lamPicSrc, array('width' => 520, 'height' => 520), BX_RESIZE_IMAGE_EXACT, true) : null;
+				$lamPicSrc = (!empty($arItem['DETAIL_PICTURE']['WIDTH']) && $arItem['DETAIL_PICTURE']['WIDTH'] > ($arItem['PREVIEW_PICTURE']['WIDTH'] ?? 0) ? $arItem['DETAIL_PICTURE'] : (!empty($arItem['PREVIEW_PICTURE']) ? $arItem['PREVIEW_PICTURE'] : (!empty($arItem['DETAIL_PICTURE']) ? $arItem['DETAIL_PICTURE'] : null))); // анонсы новостей 190px — берём бóльшую
+				$lamPic = $lamPicSrc ? CFile::ResizeImageGet($lamPicSrc, array('width' => 1040, 'height' => 554), BX_RESIZE_IMAGE_EXACT, true) : null;
 				$lamTs = MakeTimeStamp($arItem['ACTIVE_FROM'] ?: $arItem['DATE_CREATE']);
 			?>
 				<li id="<?=$this->GetEditAreaId($arItem['ID'])?>">
