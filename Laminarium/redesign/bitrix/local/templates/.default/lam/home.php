@@ -326,3 +326,4 @@ $lamImg = $lamDir . '/img/';
 
 </div>
 <!-- /lam-home -->
+<?php if (is_file(__DIR__ . '/inc_old_blocks.php')) include __DIR__ . '/inc_old_blocks.php'; ?>

@@ -11,4 +11,8 @@ return array(
 	'CONSENT_URL' => '/soglasie/',
 	'TG_URL' => 'https://t.me/laminarium_krd',
 	'PHONE' => '+7 (918) 022-79-99',
+	// Блоки старой главной, которых нет в макете (inc_old_blocks.php): true — показать в старом виде Аспро.
+	'SHOW_PROMO' => false,   // слайдер акций
+	'SHOW_REVIEWS' => false, // отзывы
+	'SHOW_STORES' => false,  // магазины
 );
