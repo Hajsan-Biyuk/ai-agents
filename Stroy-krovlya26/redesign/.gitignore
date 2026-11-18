@@ -1,2 +1,5 @@
 _figma/raw/
 tests/shots/
+# секреты сайта (токен бота, ключ reCAPTCHA) — не коммитить
+**/include/sk_telegram_leads.php
+**/include/sk_recaptcha.php
