@@ -72,7 +72,7 @@ if ($view === 'stats'): ?>
 	<a class="sk-promo__img" href="<?= $it['DETAIL_PAGE_URL'] ?>" tabindex="-1" aria-hidden="true"><img src="<?= $src ?: SK_PATH . '/img/promo.webp' ?>" alt="" width="483" height="362" loading="lazy"></a>
 	<span class="sk-promo__label">Акция</span>
 	<div class="sk-promo__body">
-		<?php if ($it['ACTIVE_TO']): ?><span class="sk-promo__date">до <?= FormatDate('j F Y', MakeTimeStamp($it['ACTIVE_TO'])) ?></span><?php endif; ?>
+		<?php if ($it['ACTIVE_TO'] && MakeTimeStamp($it['ACTIVE_TO']) > time()): ?><span class="sk-promo__date">до <?= FormatDate('j F Y', MakeTimeStamp($it['ACTIVE_TO'])) ?></span><?php endif; ?>
 		<h3 class="sk-promo__title"><a href="<?= $it['DETAIL_PAGE_URL'] ?>"><?= $it['NAME'] ?></a></h3>
 		<?php if ($it['PREVIEW_TEXT']): ?><p class="sk-promo__text"><?= TruncateText(strip_tags($it['PREVIEW_TEXT']), 200) ?></p><?php endif; ?>
 		<a class="sk-btn sk-btn--outline sk-promo__more" href="/aktsii/">Все акции</a>

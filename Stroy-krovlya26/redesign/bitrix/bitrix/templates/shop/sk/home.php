@@ -160,7 +160,8 @@ $tabNames = array('sale' => 'Акции', 'recommend' => 'Рекомендуем
 					<a class="sk-btn sk-btn--dark" href="/prays-listy/">Скачать прайс <img src="<?= SK_PATH ?>/img/ic-arrow-down.svg" alt="" width="24" height="24"></a>
 				</div>
 			</div>
-			<?php $skList(9, 'promo', 1, array('SORT_BY1' => 'ACTIVE_FROM', 'SORT_ORDER1' => 'DESC', 'FIELD_CODE' => array('ACTIVE_TO'))); ?>
+			<?php $GLOBALS['skPromoFilter'] = array('PROPERTY_TYPE_VALUE' => 'Акция'); // акции = статьи с типом «Акция», как на старой главной
+			$skList(10, 'promo', 1, array('SORT_BY1' => 'ACTIVE_FROM', 'SORT_ORDER1' => 'DESC', 'FIELD_CODE' => array('ACTIVE_TO'), 'FILTER_NAME' => 'skPromoFilter')); ?>
 		</div>
 	</section>
 
