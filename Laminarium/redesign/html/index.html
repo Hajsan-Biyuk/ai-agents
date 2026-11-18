@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="description" content="Магазин ламината и напольных покрытий Ламинариум в Краснодаре. Качественный ламинат, винил, SPC ламинат и аксессуары для напольных покрытий с доставкой">
+	<title>Ламинариум — ламинат и напольные покрытия в Краснодаре</title>
+	<link rel="preload" href="fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+	<!-- На сайте lam.css подключать ПОСЛЕ template_styles.css Аспро -->
+	<link rel="stylesheet" href="css/lam.css?ver=3">
+</head>
+<body style="margin:0"><!-- margin:0 только для локального превью: на сайте body сбрасывает Аспро -->
+
+<!-- LAM HEADER START -->
+<header class="lam-header">
+	<div class="lam-container lam-header__in">
+		<div class="lam-header__row lam-header__row--top">
+			<a class="lam-header__logo" href="/"><img src="img/logo.svg" alt="Ламинариум — ламинат по реальным ценам" width="219" height="48"></a>
+
+			<div class="lam-header__center">
+				<form class="lam-header__search" action="/catalog/" method="get" role="search">
+					<label class="lam-visually-hidden" for="lam-header-q">Поиск по каталогу</label>
+					<input class="lam-header__search-input" id="lam-header-q" type="search" name="q" placeholder="Поиск" autocomplete="off">
+					<button class="lam-header__search-btn" type="submit" aria-label="Найти"><img src="img/ic-search.svg" alt="" width="20" height="20"></button>
+				</form>
+				<a class="lam-header__hot" href="#"><img src="img/ic-fire.svg" alt="" width="24" height="24">Горячее предложение</a>
+			</div>
+
+			<div class="lam-header__contacts">
+				<div class="lam-header__messengers">
+					<a class="lam-header__messenger" href="https://max.ru/join/QO4TbD9xnJsJmMytxml6rNG9hfotihauJ2xmDWULsAw" target="_blank" rel="noopener" aria-label="Написать в MAX"><img src="img/msg-1.svg" alt="" width="32" height="32"></a>
+					<a class="lam-header__messenger" href="https://t.me/laminarium_krd" target="_blank" rel="noopener" aria-label="Написать в Telegram"><img src="img/msg-2.svg" alt="" width="32" height="32"></a>
+				</div>
+				<a class="lam-header__phone" href="tel:+79180227999"><span class="lam-header__phone-text">+7 (918) 022-79-99</span><img src="img/ic-phone.svg" alt="" width="36" height="36"></a>
+			</div>
+
+			<button class="lam-header__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="lam-header-nav">
+				<span></span><span></span><span></span>
+			</button>
+		</div>
+
+		<div class="lam-header__row lam-header__row--bottom">
+			<a class="lam-header__catalog" href="/catalog/"><img src="img/ic-burger.svg" alt="" width="20" height="14">Каталог</a>
+
+			<nav class="lam-header__nav" id="lam-header-nav" aria-label="Основное меню">
+				<ul class="lam-header__menu">
+					<li><a href="#">О компании</a></li>
+					<li><a href="#">Услуги</a></li>
+					<li><a href="#">Партнёрам</a></li>
+					<li><a href="#">Оплата</a></li>
+					<li><a href="#">Доставка</a></li>
+					<li><a href="#">Гарантия</a></li>
+					<li><a href="#">Акции</a></li>
+					<li><a href="#">Вопрос-ответ</a></li>
+					<li><a href="/contacts/">Контакты</a></li>
+				</ul>
+			</nav>
+
+			<div class="lam-header__tools">
+				<a class="lam-header__login" href="#"><img src="img/ic-user.svg" alt="" width="24" height="24">Войти</a>
+				<a class="lam-header__tool lam-header__tool--compare" href="#"><img src="img/ic-compare.svg" alt="" width="24" height="24"><span class="lam-header__tool-text">Сравнение</span></a>
+				<a class="lam-header__tool lam-header__tool--fav" href="#"><img src="img/ic-heart.svg" alt="" width="24" height="24"><span class="lam-header__tool-text">Избранное</span></a>
+				<a class="lam-header__cart" href="#"><img src="img/ic-cart.svg" alt="" width="24" height="24"><span class="lam-visually-hidden">Корзина, товаров:</span><span class="lam-header__cart-count">1</span></a>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- LAM HEADER END -->
+
+<div class="lam-home">
+
+	<!-- LAM HOME: Hero (баннер «Идеальный пол») -->
+	<section class="lam-hero">
+		<div class="lam-container">
+			<div class="lam-hero__box">
+				<div class="lam-hero__art" aria-hidden="true">
+					<img class="lam-hero__shape lam-hero__shape--blue" src="img/hero-shape-blue.svg" alt="">
+					<img class="lam-hero__shape lam-hero__shape--outline" src="img/hero-shape-outline.svg" alt="">
+					<img class="lam-hero__photo" src="img/hero-photo.webp" alt="" width="1122" height="515" fetchpriority="high">
+				</div>
+				<img class="lam-hero__shape lam-hero__shape--yellow" src="img/hero-shape-yellow.svg" alt="" aria-hidden="true">
+
+				<div class="lam-hero__content">
+					<span class="lam-label lam-label--cyan">Популярные оттенки</span>
+					<h1 class="lam-hero__title">Идеальный пол — основа дома</h1>
+					<p class="lam-hero__text">Ламинат и напольные покрытия<br>в наличии по реальным ценам</p>
+					<a class="lam-btn lam-hero__btn" href="/catalog/">Выбрать покрытие</a>
+
+					<ul class="lam-hero__swatches">
+						<li><a class="lam-swatch" href="#"><img src="img/swatch-1.webp" alt="" width="130" height="56"><span class="lam-swatch__name">Дуб натуральный</span></a></li>
+						<li><a class="lam-swatch lam-swatch--cyan" href="#"><img src="img/swatch-2.webp" alt="" width="130" height="56"><span class="lam-swatch__name">Дуб Лацио</span></a></li>
+						<li><a class="lam-swatch" href="#"><img src="img/swatch-3.webp" alt="" width="130" height="56"><span class="lam-swatch__name">Сосна</span></a></li>
+						<li><a class="lam-swatch lam-swatch--cyan" href="#"><img src="img/swatch-4.webp" alt="" width="130" height="56"><span class="lam-swatch__name">Сосна Дакота</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- LAM HOME: Преимущества (полоса под баннером) -->
+	<section class="lam-advantages" aria-label="Преимущества">
+		<div class="lam-container">
+			<ul class="lam-adv">
+				<li class="lam-adv__item"><img src="img/adv-delivery.svg" alt="" width="36" height="36"><span class="lam-adv__text">Бесплатная доставка от&nbsp;5&nbsp;000&nbsp;₽</span></li>
+				<li class="lam-adv__item"><img src="img/adv-calendar.svg" alt="" width="36" height="36"><span class="lam-adv__text">Рассрочка до 10 месяцев</span></li>
+				<li class="lam-adv__item"><img src="img/adv-pin.svg" alt="" width="36" height="36"><span class="lam-adv__text">4 шоу-рума<br>в Краснодаре</span></li>
+				<li class="lam-adv__item"><img src="img/adv-ruler.svg" alt="" width="36" height="36"><span class="lam-adv__text">Профессиональная укладка</span></li>
+				<li class="lam-adv__item"><img src="img/adv-road.svg" alt="" width="36" height="36"><span class="lam-adv__text">Быстрая доставка в любой город РФ</span></li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- LAM HOME: Категории каталога -->
+	<section class="lam-section lam-cats">
+		<div class="lam-container">
+			<div class="lam-head">
+				<h2 class="lam-title">Выберите категорию</h2>
+				<p class="lam-subtitle">Напольные покрытия и все необходимое для укладки</p>
+			</div>
+			<ul class="lam-cats__grid">
+				<li><a class="lam-cat" href="#"><span class="lam-cat__media"><img class="lam-cat__photo" src="img/cat-1.webp" alt="" width="595" height="446" loading="lazy"><img class="lam-cat__shape" src="img/cat-shape-1.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Ламинат</span><span class="lam-cat__arrow" aria-hidden="true"><img src="img/ic-arrow-right.svg" alt=""></span></span></a></li>
+				<li><a class="lam-cat" href="#"><span class="lam-cat__media"><img class="lam-cat__photo" src="img/cat-2.webp" alt="" width="531" height="398" loading="lazy"><img class="lam-cat__shape" src="img/cat-shape-2.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Подложка</span><span class="lam-cat__arrow" aria-hidden="true"><img src="img/ic-arrow-right.svg" alt=""></span></span></a></li>
+				<li><a class="lam-cat" href="#"><span class="lam-cat__media"><img class="lam-cat__photo" src="img/cat-3.webp" alt="" width="557" height="418" loading="lazy"><img class="lam-cat__shape" src="img/cat-shape-3.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Плинтус</span><span class="lam-cat__arrow" aria-hidden="true"><img src="img/ic-arrow-right.svg" alt=""></span></span></a></li>
+				<li><a class="lam-cat" href="#"><span class="lam-cat__media"><img class="lam-cat__photo" src="img/cat-4.webp" alt="" width="558" height="419" loading="lazy"><img class="lam-cat__shape" src="img/cat-shape-4.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Ламинат 33 класс</span><span class="lam-cat__arrow" aria-hidden="true"><img src="img/ic-arrow-right.svg" alt=""></span></span></a></li>
+				<li><a class="lam-cat" href="#"><span class="lam-cat__media"><img class="lam-cat__photo" src="img/cat-5.webp" alt="" width="531" height="306" loading="lazy"><img class="lam-cat__shape" src="img/cat-shape-5.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Обои</span><span class="lam-cat__arrow" aria-hidden="true"><img src="img/ic-arrow-right.svg" alt=""></span></span></a></li>
+				<li><a class="lam-cat" href="#"><span class="lam-cat__media"><img class="lam-cat__photo" src="img/cat-6.webp" alt="" width="554" height="416" loading="lazy"><img class="lam-cat__shape" src="img/cat-shape-6.svg" alt=""></span><span class="lam-cat__footer"><span class="lam-cat__name">Каталог винил (SPC)</span><span class="lam-cat__arrow" aria-hidden="true"><img src="img/ic-arrow-right.svg" alt=""></span></span></a></li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- LAM HOME: Популярные предложения (вкладки + карусель товаров) -->
+	<section class="lam-section lam-popular" data-lam-carousel>
+		<div class="lam-container">
+			<div class="lam-head">
+				<h2 class="lam-title">Популярные предложения</h2>
+				<p class="lam-subtitle">Покрытия для дома по выгодной цене</p>
+			</div>
+			<div class="lam-popular__bar">
+				<div class="lam-tabs" role="tablist" aria-label="Подборки товаров">
+					<button class="lam-tab is-active" type="button" role="tab" id="lam-tab-sale" aria-selected="true" aria-controls="lam-panel-sale">Акция</button>
+					<button class="lam-tab" type="button" role="tab" id="lam-tab-hit" aria-selected="false" aria-controls="lam-panel-hit" tabindex="-1">Хит продаж</button>
+					<button class="lam-tab" type="button" role="tab" id="lam-tab-new" aria-selected="false" aria-controls="lam-panel-new" tabindex="-1">Новинка</button>
+					<button class="lam-tab" type="button" role="tab" id="lam-tab-recommend" aria-selected="false" aria-controls="lam-panel-recommend" tabindex="-1">Советуем</button>
+				</div>
+				<div class="lam-arrows">
+					<button class="lam-arrow lam-arrow--prev" type="button" data-lam-prev aria-label="Назад"><img src="img/ic-chevron-right.svg" alt=""></button>
+					<button class="lam-arrow" type="button" data-lam-next aria-label="Вперёд"><img src="img/ic-chevron-right.svg" alt=""></button>
+				</div>
+			</div>
+
+			<div class="lam-tabs__panel" role="tabpanel" id="lam-panel-sale" aria-labelledby="lam-tab-sale">
+				<ul class="lam-track">
+					<!-- LAM CARD (повторяемый блок товара) -->
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-1.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__badges">
+									<span class="lam-card__badge"><img src="img/badge-sale.svg" alt="Акция" width="42" height="42"></span>
+									<span class="lam-card__badge"><img src="img/badge-hit.svg" alt="Хит продаж" width="42" height="42"></span>
+								</div>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices">
+									<div class="lam-card__price">1 320 ₽/м2</div>
+									<div class="lam-card__old-price"><span class="lam-visually-hidden">Старая цена: </span>1 650 ₽/м2</div>
+								</div>
+							</div>
+						</article>
+					</li>
+					<!-- /LAM CARD -->
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-2.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__badges">
+									<span class="lam-card__badge"><img src="img/badge-sale.svg" alt="Акция" width="42" height="42"></span>
+									<span class="lam-card__badge"><img src="img/badge-hit.svg" alt="Хит продаж" width="42" height="42"></span>
+								</div>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices">
+									<div class="lam-card__price">1 320 ₽/м2</div>
+									<div class="lam-card__old-price"><span class="lam-visually-hidden">Старая цена: </span>1 650 ₽/м2</div>
+								</div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-3.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__badges">
+									<span class="lam-card__badge"><img src="img/badge-sale.svg" alt="Акция" width="42" height="42"></span>
+									<span class="lam-card__badge"><img src="img/badge-hit.svg" alt="Хит продаж" width="42" height="42"></span>
+								</div>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices">
+									<div class="lam-card__price">1 320 ₽/м2</div>
+									<div class="lam-card__old-price"><span class="lam-visually-hidden">Старая цена: </span>1 650 ₽/м2</div>
+								</div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-4.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__badges">
+									<span class="lam-card__badge"><img src="img/badge-sale.svg" alt="Акция" width="42" height="42"></span>
+									<span class="lam-card__badge"><img src="img/badge-hit.svg" alt="Хит продаж" width="42" height="42"></span>
+								</div>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices">
+									<div class="lam-card__price">1 320 ₽/м2</div>
+									<div class="lam-card__old-price"><span class="lam-visually-hidden">Старая цена: </span>1 650 ₽/м2</div>
+								</div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-2.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__badges">
+									<span class="lam-card__badge"><img src="img/badge-sale.svg" alt="Акция" width="42" height="42"></span>
+								</div>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices">
+									<div class="lam-card__price">1 320 ₽/м2</div>
+									<div class="lam-card__old-price"><span class="lam-visually-hidden">Старая цена: </span>1 650 ₽/м2</div>
+								</div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-1.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__badges">
+									<span class="lam-card__badge"><img src="img/badge-sale.svg" alt="Акция" width="42" height="42"></span>
+								</div>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices">
+									<div class="lam-card__price">1 320 ₽/м2</div>
+									<div class="lam-card__old-price"><span class="lam-visually-hidden">Старая цена: </span>1 650 ₽/м2</div>
+								</div>
+							</div>
+						</article>
+					</li>
+				</ul>
+			</div>
+
+			<div class="lam-tabs__panel" role="tabpanel" id="lam-panel-hit" aria-labelledby="lam-tab-hit" hidden>
+				<ul class="lam-track">
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-3.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__badges"><span class="lam-card__badge"><img src="img/badge-hit.svg" alt="Хит продаж" width="42" height="42"></span></div>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-4.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__badges"><span class="lam-card__badge"><img src="img/badge-hit.svg" alt="Хит продаж" width="42" height="42"></span></div>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-1.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__badges"><span class="lam-card__badge"><img src="img/badge-hit.svg" alt="Хит продаж" width="42" height="42"></span></div>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-2.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__badges"><span class="lam-card__badge"><img src="img/badge-hit.svg" alt="Хит продаж" width="42" height="42"></span></div>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+				</ul>
+			</div>
+
+			<div class="lam-tabs__panel" role="tabpanel" id="lam-panel-new" aria-labelledby="lam-tab-new" hidden>
+				<ul class="lam-track">
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-4.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-3.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-2.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-1.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+				</ul>
+			</div>
+
+			<div class="lam-tabs__panel" role="tabpanel" id="lam-panel-recommend" aria-labelledby="lam-tab-recommend" hidden>
+				<ul class="lam-track">
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-2.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-1.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-4.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+					<li class="lam-track__item">
+						<article class="lam-card">
+							<div class="lam-card__media">
+								<a class="lam-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/product-3.webp" alt="" width="400" height="400" loading="lazy"></a>
+								<div class="lam-card__actions">
+									<button class="lam-card__action lam-card__action--fav" type="button" aria-label="В избранное"><img src="img/ic-heart.svg" alt=""></button>
+									<button class="lam-card__action lam-card__action--compare" type="button" aria-label="Сравнить"><img src="img/ic-compare.svg" alt=""></button>
+								</div>
+							</div>
+							<div class="lam-card__body">
+								<a class="lam-card__name" href="#">Ламинат EGGER WOOD STYLE VIVA 10/33 V4 «Дуб Генезис»</a>
+								<div class="lam-card__stock"><img src="img/ic-check-green.svg" alt="" width="16" height="16">Много</div>
+								<div class="lam-card__prices"><div class="lam-card__price">1 320 ₽/м2</div></div>
+							</div>
+						</article>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- LAM HOME: Бренды (карусель логотипов) -->
+	<section class="lam-brands" aria-label="Бренды" data-lam-carousel>
+		<div class="lam-container lam-brands__in">
+			<button class="lam-arrow lam-arrow--white lam-arrow--prev" type="button" data-lam-prev aria-label="Предыдущие бренды"><img src="img/ic-chevron-right.svg" alt=""></button>
+			<ul class="lam-track lam-brands__track">
+				<li class="lam-track__item"><a class="lam-brand" href="#"><img src="img/brand-silverstone.webp" alt="Silverstone" width="198" height="120" loading="lazy"></a></li>
+				<li class="lam-track__item"><a class="lam-brand" href="#"><img src="img/brand-decora.webp" alt="Decora" width="198" height="120" loading="lazy"></a></li>
+				<li class="lam-track__item"><a class="lam-brand" href="#"><img src="img/brand-forbau.webp" alt="ForBau" width="198" height="120" loading="lazy"></a></li>
+				<li class="lam-track__item"><a class="lam-brand" href="#"><img src="img/brand-prowatt.webp" alt="Prowatt" width="198" height="120" loading="lazy"></a></li>
+				<li class="lam-track__item"><a class="lam-brand" href="#"><img src="img/brand-idelic.webp" alt="Idelic Horeca" width="198" height="120" loading="lazy"></a></li>
+				<li class="lam-track__item"><a class="lam-brand" href="#"><img src="img/brand-luara.webp" alt="Luara" width="198" height="120" loading="lazy"></a></li>
+			</ul>
+			<button class="lam-arrow lam-arrow--white" type="button" data-lam-next aria-label="Следующие бренды"><img src="img/ic-chevron-right.svg" alt=""></button>
+		</div>
+	</section>
+
+	<!-- LAM HOME: Новости компании -->
+	<section class="lam-section lam-news">
+		<div class="lam-container">
+			<div class="lam-head lam-head--row">
+				<h2 class="lam-title">Новости компании</h2>
+				<a class="lam-pill" href="#">Все новости</a>
+			</div>
+			<ul class="lam-news__grid">
+				<!-- LAM NEWS ITEM (повторяемый блок новости) -->
+				<li>
+					<article class="lam-news-card">
+						<a class="lam-news-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/news-1.webp" alt="" width="520" height="520" loading="lazy"></a>
+						<div class="lam-news-card__body">
+							<time class="lam-news-card__date" datetime="2026-11-16">16 ноября 2026</time>
+							<a class="lam-news-card__title" href="#">Толщина ламината: какая бывает и как выбрать</a>
+							<p class="lam-news-card__text">Толщина ламината влияет на прочность покрытия, устойчивость к нагрузкам и совместимость с тёплым полом. Одни выбирают тонкие планки для ровн...</p>
+						</div>
+					</article>
+				</li>
+				<!-- /LAM NEWS ITEM -->
+				<li>
+					<article class="lam-news-card">
+						<a class="lam-news-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/news-2.webp" alt="" width="520" height="520" loading="lazy"></a>
+						<div class="lam-news-card__body">
+							<time class="lam-news-card__date" datetime="2026-11-16">16 ноября 2026</time>
+							<a class="lam-news-card__title" href="#">Толщина ламината: какая бывает и как выбрать</a>
+							<p class="lam-news-card__text">Толщина ламината влияет на прочность покрытия, устойчивость к нагрузкам и совместимость с тёплым полом. Одни выбирают тонкие планки для ровн...</p>
+						</div>
+					</article>
+				</li>
+				<li>
+					<article class="lam-news-card">
+						<a class="lam-news-card__image" href="#" tabindex="-1" aria-hidden="true"><img src="img/news-3.webp" alt="" width="520" height="520" loading="lazy"></a>
+						<div class="lam-news-card__body">
+							<time class="lam-news-card__date" datetime="2026-11-16">16 ноября 2026</time>
+							<a class="lam-news-card__title" href="#">Толщина ламината: какая бывает и как выбрать</a>
+							<p class="lam-news-card__text">Толщина ламината влияет на прочность покрытия, устойчивость к нагрузкам и совместимость с тёплым полом. Одни выбирают тонкие планки для ровн...</p>
+						</div>
+					</article>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- LAM HOME: Подписка на рассылку -->
+	<section class="lam-subscribe">
+		<div class="lam-container">
+			<div class="lam-subscribe__box">
+				<img class="lam-subscribe__shape lam-subscribe__shape--blue1" src="img/sub-shape-blue1.svg" alt="" aria-hidden="true">
+				<img class="lam-subscribe__shape lam-subscribe__shape--orange" src="img/sub-shape-orange.svg" alt="" aria-hidden="true">
+				<img class="lam-subscribe__shape lam-subscribe__shape--blue2" src="img/sub-shape-blue2.svg" alt="" aria-hidden="true">
+				<img class="lam-subscribe__icon" src="img/subscribe-mail.svg" alt="" width="110" height="110" aria-hidden="true">
+
+				<div class="lam-subscribe__content">
+					<span class="lam-label lam-label--orange">Рассылка Ламинариум</span>
+					<h2 class="lam-title">Будьте в курсе новостей<br>и выгодных предложений</h2>
+					<p class="lam-subtitle">Рассказываем о новинках, скидках и полезных советах по выбору пола</p>
+				</div>
+
+				<form class="lam-subscribe__form" action="#" method="post">
+					<div class="lam-subscribe__row">
+						<label class="lam-visually-hidden" for="lam-subscribe-email">Ваша почта</label>
+						<input class="lam-input" id="lam-subscribe-email" type="email" name="email" placeholder="Ваша почта" autocomplete="email" required>
+						<button class="lam-btn" type="submit">Подписаться</button>
+					</div>
+					<label class="lam-consent">
+						<input class="lam-consent__input" type="checkbox" name="agree" value="Y" required>
+						<span class="lam-consent__box" aria-hidden="true"></span>
+						<span class="lam-consent__text">Я даю согласие на обработку моих персональных данных ИП Ипполитова (ИНН 344811221964) в целях обработки заявки и обратной связи. <a href="/soglasie/" target="_blank">Согласие на обработку</a>, политика конфиденциальности — <a href="/privacy-policy/" target="_blank">по ссылке</a></span>
+					</label>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<!-- LAM HOME: О магазине (SEO-текст) -->
+	<section class="lam-about">
+		<div class="lam-container lam-about__in">
+			<div class="lam-about__media">
+				<img src="img/about.webp" alt="Образцы ламината разных оттенков" width="543" height="624" loading="lazy">
+			</div>
+			<div class="lam-about__content">
+				<div class="lam-about__intro">
+					<h2 class="lam-title">Магазин ламината в Краснодаре</h2>
+					<div class="lam-about__text">
+						<p>Купить ламинат в Краснодаре стало проще! В сети специализированных магазинов "Ламинариум" вы найдете широкий ассортимент ламинированных покрытий для пола. Мы предлагаем более 1300 вариантов декоров, подходящих как для жилых, так и для коммерческих помещений.</p>
+						<p>Мы работаем 7 дней в неделю без перерывов, чтобы вы могли легко выбрать и купить ламинат в любое время. В "Ламинариум" вы можете приобрести ламинат как оптом, так и в розницу. Пользуйтесь нашим удобным онлайн-каталогом с возможностью оплаты, чтобы не выходя из дома, заказать ламинат по привлекательной цене за квадратный метр.</p>
+					</div>
+				</div>
+				<div class="lam-about__why">
+					<h3 class="lam-about__why-title">Почему выбирают Ламинариум</h3>
+					<ul class="lam-about__list">
+						<li>Широкий выбор ламината и аксессуаров</li>
+						<li>Конкурентные цены в Краснодаре</li>
+						<li>Профессиональная укладка</li>
+						<li>Онлайн-заказ и оплата</li>
+					</ul>
+				</div>
+				<ul class="lam-adv lam-adv--about">
+					<li class="lam-adv__item"><img src="img/adv-stack.svg" alt="" width="36" height="36"><span class="lam-adv__text">2000+<br>декоров</span></li>
+					<li class="lam-adv__item"><img src="img/adv-calendar.svg" alt="" width="36" height="36"><span class="lam-adv__text">7 дней<br>в неделю</span></li>
+					<li class="lam-adv__item"><img src="img/adv-pin.svg" alt="" width="36" height="36"><span class="lam-adv__text">4 шоу-рума<br>в Краснодаре</span></li>
+				</ul>
+				<a class="lam-btn lam-about__btn" href="#">Подробнее о компании</a>
+			</div>
+		</div>
+	</section>
+
+</div>
+<!-- /lam-home -->
+
+<!-- LAM FOOTER START -->
+<footer class="lam-footer">
+	<div class="lam-container lam-footer__in">
+		<div class="lam-footer__aside">
+			<div class="lam-footer__brand">
+				<a class="lam-footer__logo" href="/"><img src="img/logo.svg" alt="Ламинариум — ламинат по реальным ценам" width="338" height="74" loading="lazy"></a>
+				<p class="lam-footer__requisites">ИП Ипполитова<br>ИНН 344811221964<br>ОГРНИП 326010000029851<br>E-mail: <a href="mailto:laminarium93@mail.ru">laminarium93@mail.ru</a></p>
+			</div>
+
+			<form class="lam-footer__subscribe" action="#" method="post">
+				<p class="lam-footer__heading">Будьте в курсе новостей</p>
+				<p class="lam-footer__note">Подпишитесь на рассылку</p>
+				<div class="lam-footer__subscribe-row">
+					<label class="lam-visually-hidden" for="lam-footer-email">Ваша почта</label>
+					<input class="lam-input" id="lam-footer-email" type="email" name="email" placeholder="Ваша почта" autocomplete="email" required>
+					<button class="lam-btn lam-btn--sm" type="submit">Подписаться</button>
+				</div>
+				<label class="lam-consent">
+					<input class="lam-consent__input" type="checkbox" name="agree" value="Y" required>
+					<span class="lam-consent__box" aria-hidden="true"></span>
+					<span class="lam-consent__text">Даю <a href="/soglasie/" target="_blank">согласие на обработку персональных данных</a> ИП Ипполитова (ИНН 344811221964) и принимаю <a href="/privacy-policy/" target="_blank">политику конфиденциальности</a></span>
+				</label>
+			</form>
+
+			<div class="lam-footer__messengers">
+				<p class="lam-footer__heading">Наши мессенджеры</p>
+				<div class="lam-footer__messengers-list">
+					<a href="https://max.ru/join/QO4TbD9xnJsJmMytxml6rNG9hfotihauJ2xmDWULsAw" target="_blank" rel="noopener" aria-label="Написать в MAX"><img src="img/msg-1.svg" alt="" width="36" height="36" loading="lazy"></a>
+					<a href="https://t.me/laminarium_krd" target="_blank" rel="noopener" aria-label="Написать в Telegram"><img src="img/msg-2.svg" alt="" width="36" height="36" loading="lazy"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="lam-footer__cols">
+			<nav class="lam-footer__col lam-footer__col--company" aria-label="Компания">
+				<p class="lam-footer__title">Компания</p>
+				<ul class="lam-footer__menu">
+					<li><a href="#">О компании</a></li>
+					<li><a href="#">Новости</a></li>
+					<li><a href="#">Магазины</a></li>
+					<li><a href="#">Условия оплаты</a></li>
+					<li><a href="#">Условия доставки</a></li>
+					<li><a href="/contacts/">Контакты</a></li>
+					<li><a href="#">Производители</a></li>
+				</ul>
+			</nav>
+			<nav class="lam-footer__col" aria-label="Информация">
+				<p class="lam-footer__title">Информация</p>
+				<ul class="lam-footer__menu">
+					<li><a href="#">Помощь</a></li>
+					<li><a href="#">Гарантия на товар</a></li>
+					<li><a href="#">Вопрос-ответ</a></li>
+					<li><a href="#">Персональные данные</a></li>
+					<li><a href="#">Условия возврата</a></li>
+					<li><a href="#">Калькулятор ламината</a></li>
+				</ul>
+			</nav>
+			<nav class="lam-footer__col" aria-label="Каталог">
+				<p class="lam-footer__title"><a href="/catalog/">Каталог</a></p>
+				<ul class="lam-footer__menu">
+					<li><a href="#">Ламинат</a></li>
+					<li><a href="#">Ламинат 32 класс</a></li>
+					<li><a href="#">Ламинат 33 класс</a></li>
+					<li><a href="#">Кварцвиниловая плитка</a></li>
+					<li><a href="#">Кварвиниловый ламинат</a></li>
+					<li><a href="#">Виниловая плитка</a></li>
+					<li><a href="#">Виниловый ламинат</a></li>
+					<li><a href="#">SPC ламинат</a></li>
+				</ul>
+			</nav>
+			<div class="lam-footer__col lam-footer__col--contacts">
+				<p class="lam-footer__title"><a href="/contacts/">Контакты</a></p>
+				<div class="lam-footer__shop">
+					<p>г. Краснодар, ул. Уральская 126А<br>Пн - Вс: 10.00 - 19.00<br>без выходных и перерывов</p>
+					<a class="lam-footer__phone" href="tel:+79180227999">+7 (918) 022-79-99</a>
+				</div>
+				<div class="lam-footer__shop">
+					<p>г. Краснодар, ул. Российская 486<br>Пн - Вс: 10.00 - 19.00<br>без выходных и перерывов</p>
+					<a class="lam-footer__phone" href="tel:+78612467999">+7 (861) 246-79-99</a>
+					<a class="lam-footer__phone" href="tel:+79882467999">+7 (988) 246-79-99</a>
+				</div>
+				<div class="lam-footer__pay" aria-label="Способы оплаты">
+					<img src="img/pay-mir.svg" alt="Мир" width="101" height="31" loading="lazy">
+					<img src="img/pay-visa.webp" alt="Visa" width="92" height="51" loading="lazy">
+					<img src="img/pay-mastercard.svg" alt="Mastercard" width="48" height="29" loading="lazy">
+					<img src="img/pay-yoomoney.svg" alt="ЮMoney" width="34" height="33" loading="lazy">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="lam-footer__bottom">
+		<div class="lam-container lam-footer__bottom-in">
+			<ul class="lam-footer__legal">
+				<li><a href="/privacy-policy/">Политика конфиденциальности</a></li>
+				<li><a href="/soglasie/">Согласие на обработку моих персональных данных</a></li>
+				<li class="lam-footer__copy">© Copyright 2026 г.</li>
+			</ul>
+			<a class="lam-footer__dev" href="https://sheer.ru/" target="_blank" rel="noopener">Сделано в <img src="img/sheer.svg" alt="Sheer" width="57" height="13" loading="lazy"></a>
+		</div>
+	</div>
+</footer>
+<!-- LAM FOOTER END -->
+
+<script src="js/lam.js?ver=2"></script>
+</body>
+</html>
