@@ -10,7 +10,7 @@ if (!defined('SK_NEW')) {
 	$skCookie = isset($_COOKIE['sk_preview']) ? (string)$_COOKIE['sk_preview'] : '';
 	define('SK_NEW', SK_DEFAULT_ON ? $skCookie !== '0' : $skCookie === '1');
 	define('SK_PATH', '/bitrix/templates/shop/sk');
-	define('SK_INN', '2636805780'); // ИНН оператора «Строй-Кровля» (от заказчика 18.11.2026)
+	define('SK_INN', '2636805780'); // ИНН оператора ООО «СТРОЙ КРОВЛЯ» (от заказчика 18.11.2026)
 }
 
 function sk_menu($type, $class, $mod = '')

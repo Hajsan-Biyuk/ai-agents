@@ -33,7 +33,7 @@ $val = function ($code) use ($arResult) {
 		<label class="sk-check">
 			<input class="sk-check__input" type="checkbox" name="agree" checked required>
 			<span class="sk-check__box" aria-hidden="true"></span>
-			<span class="sk-check__text">Я согласен(а) с <a href="/politika-konfidentsialnosti/" target="_blank">политикой конфиденциальности</a> и на <a href="/soglashenie-na-obrabotku-personalnykh-dannykh/" target="_blank">обработку персональных данных</a>. Оператор: «Строй-Кровля»<?= SK_INN ? ', ИНН ' . SK_INN : '' ?></span>
+			<span class="sk-check__text">Я согласен(а) с <a href="/politika-konfidentsialnosti/" target="_blank">политикой конфиденциальности</a> и на <a href="/soglashenie-na-obrabotku-personalnykh-dannykh/" target="_blank">обработку персональных данных</a>. Оператор: ООО «СТРОЙ КРОВЛЯ»<?= SK_INN ? ', ИНН ' . SK_INN : '' ?></span>
 		</label>
 		<button class="sk-btn sk-btn--block" type="submit">Получить расчёт</button>
 	</div>

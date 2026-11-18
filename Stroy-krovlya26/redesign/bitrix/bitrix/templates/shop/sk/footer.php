@@ -33,7 +33,7 @@ global $APPLICATION;
 				<a class="sk-footer__doc" href="/politika-konfidentsialnosti/">Политика конфиденциальности</a>
 				<a class="sk-footer__doc" href="/soglashenie-na-obrabotku-personalnykh-dannykh/">Согласие на обработку персональных данных</a>
 			</div>
-			<span class="sk-footer__copy">© 2010—<?= date('Y') ?> «Строй-Кровля»<?= SK_INN ? ', ИНН ' . SK_INN : '' ?></span>
+			<span class="sk-footer__copy">© 2010—<?= date('Y') ?> ООО «СТРОЙ КРОВЛЯ»<?= SK_INN ? ', ИНН ' . SK_INN : '' ?></span>
 			<a class="sk-footer__dev" href="https://sheer.ru/" target="_blank" rel="noopener">Сделано в <img src="<?= SK_PATH ?>/img/sheer.svg" alt="Sheer" width="57" height="13"></a>
 		</div>
 	</div>
