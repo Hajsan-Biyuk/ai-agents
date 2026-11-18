@@ -1,0 +1,8 @@
+/* Ламинариум: стыковка новой вёрстки с шаблоном Аспро (грузится только под флагом lam_preview). */
+/* Подвал вынесен из #footer — липкий отступ Аспро (.wrapper padding-bottom 150px) не нужен. */
+body .wrapper{padding-bottom:0;}
+/* Избранное / сравнение в карточке: состояние «добавлено» (класс .added ставит JS Аспро). */
+.lam-home .lam-card__action.added{background:#FFE3CF;}
+.lam-home .lam-card__action.added:hover{background:#FFD3B3;}
+/* Выпадающий живой поиск Аспро над новой шапкой. */
+.title-search-result{z-index:100;}
