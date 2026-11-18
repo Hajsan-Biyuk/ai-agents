@@ -1,0 +1,2588 @@
+/* Внутренние страницы (редизайн 2026): старая разметка шаблона shop в стиле новой главной. Только под .sk-on.
+   Токены — из sk.css (:root --sk-*). Попапы fancybox живут вне .Holder, поэтому для них префикс
+   body:has(> .Holder.sk-on) — тоже срабатывает только при флаге. */
+
+/* ==========================================================================
+   1. БАЗА: фон, контейнер, шрифт
+   ========================================================================== */
+.sk-on .Conteiner,
+.sk-on .sk-pagehead + .Conteiner {
+	padding: 40px 0 100px;
+	background: var(--sk-bg);
+	color: var(--sk-dark);
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+/* шрифт Lato старого шаблона задан почти на каждом классе («LatoBold» и т.п.) — меняем разом */
+.sk-on .Conteiner,
+.sk-on .Conteiner *,
+body:has(> .Holder.sk-on) .fancybox-container .fancybox-content,
+body:has(> .Holder.sk-on) .fancybox-container .fancybox-content * {
+	font-family: var(--sk-font) !important;
+}
+
+.sk-on .Conteiner *,
+.sk-on .Conteiner *::before,
+.sk-on .Conteiner *::after {
+	box-sizing: border-box;
+}
+
+.sk-on .Conteiner > .Wrapper,
+.sk-on .Conteiner > .Contacts,
+.sk-on .Conteiner > div:not([class]) {
+	width: 100%;
+	max-width: 1920px;
+	margin: 0 auto;
+	padding: 0 var(--sk-pad);
+}
+
+/* две колонки: меню раздела + контент */
+.sk-on .Conteiner > .Wrapper > .LeftBlock {
+	float: left;
+	width: 300px;
+}
+
+.sk-on .Conteiner > .Wrapper > .ContBlock {
+	float: left;
+	width: calc(100% - 340px);
+	margin-left: 40px;
+}
+
+.sk-on .Conteiner > .Wrapper > .Clear,
+.sk-on .Conteiner > .Wrapper::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.sk-on .ContBlock .Content {
+	min-height: 0;
+	padding: 0;
+}
+
+/* вложенный .Wrapper (страница 404) — без своих полей */
+.sk-on .Content .Wrapper {
+	max-width: none;
+	padding: 0;
+}
+
+.sk-on .Conteiner img,
+.sk-on .Conteiner iframe {
+	max-width: 100%;
+}
+
+.sk-on .Conteiner a {
+	color: var(--sk-dark);
+	transition: color .2s;
+}
+
+.sk-on .Conteiner a:hover {
+	color: var(--sk-red);
+}
+
+/* ==========================================================================
+   2. ТИПОГРАФИКА КОНТЕНТА (как .sk-content)
+   ========================================================================== */
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) {
+	font-size: 18px;
+	line-height: 1.6;
+	color: var(--sk-dark);
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > p {
+	margin: 0 0 20px;
+	padding: 0;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > :is(h1, h2) {
+	margin: 48px 0 20px;
+	padding: 0;
+	font-size: 36px;
+	font-weight: 600;
+	line-height: 1.3;
+	color: var(--sk-dark);
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > h3 {
+	margin: 36px 0 16px;
+	padding: 0;
+	font-size: 26px;
+	font-weight: 600;
+	line-height: 1.3;
+	color: var(--sk-dark);
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > h4 {
+	margin: 28px 0 12px;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > :first-child {
+	margin-top: 0;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) :is(b, strong) {
+	font-weight: 600;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > :is(p, ul, ol, h2, h3, h4, table, blockquote, .seo-note) a:not(.Btn) {
+	color: var(--sk-red);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > :is(p, ul, ol, h2, h3, h4, table, blockquote, .seo-note) a:not(.Btn):hover {
+	color: var(--sk-red);
+	text-decoration: none;
+}
+
+/* списки: красные точки и оранжевые номера */
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > :is(ul:not([class]), ol) {
+	margin: 0 0 20px;
+	padding: 0;
+	list-style: none;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > :is(ul:not([class]), ol) > li {
+	position: relative;
+	margin: 0 0 10px;
+	padding: 0 0 0 28px;
+	background: none;
+	list-style: none;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > ul:not([class]) > li::before {
+	content: '';
+	position: absolute;
+	top: calc(.8em - 4.5px);
+	left: 4px;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: var(--sk-red);
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > ol {
+	counter-reset: sk-ol;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > ol > li {
+	counter-increment: sk-ol;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > ol > li::before {
+	content: counter(sk-ol) '.';
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-weight: 700;
+	color: var(--sk-orange);
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) img {
+	height: auto;
+	border-radius: 12px;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text, .BrendsDetail) > p > img,
+.sk-on .ContBlock .Content > div > img {
+	margin: 0 0 8px;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text) > blockquote {
+	margin: 0 0 20px;
+	padding: 24px 32px;
+	border-left: 6px solid var(--sk-orange);
+	border-radius: 0 12px 12px 0;
+	background: #fff;
+	font-size: 20px;
+}
+
+/* таблицы в тексте */
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text) > table {
+	width: 100%;
+	margin: 0 0 24px;
+	border-collapse: collapse;
+	background: #fff;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text) > table :is(th, td) {
+	padding: 14px 18px;
+	border: 1px solid var(--sk-line-2);
+	text-align: left;
+	vertical-align: top;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text) > table th {
+	background: var(--sk-dark);
+	color: #fff;
+	font-weight: 600;
+}
+
+.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text) > table tr:nth-child(even) td {
+	background: var(--sk-bg);
+}
+
+/* ==========================================================================
+   3. КНОПКИ И ФОРМЫ (старые .Btn, .Submit, поля)
+   ========================================================================== */
+.sk-on .Btn,
+.sk-on .Conteiner a.Btn,
+.sk-on .Conteiner .Submit input[type="submit"],
+.sk-on .Conteiner .Submit input[type="button"],
+.sk-on .Conteiner .HomeLink a,
+body:has(> .Holder.sk-on) .fancybox-container .Submit input[type="submit"] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 54px;
+	height: auto;
+	padding: 15px 32px;
+	border: 0 !important;
+	border-radius: 12px;
+	background: var(--sk-grad);
+	box-shadow: none;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.4;
+	text-align: center;
+	cursor: pointer;
+	-webkit-appearance: none;
+	appearance: none;
+	transition: filter .2s, box-shadow .2s;
+}
+
+.sk-on .Btn:hover,
+.sk-on .Conteiner a.Btn:hover,
+.sk-on .Conteiner .Submit input[type="submit"]:hover,
+.sk-on .Conteiner .Submit input[type="button"]:hover,
+.sk-on .Conteiner .HomeLink a:hover,
+body:has(> .Holder.sk-on) .fancybox-container .Submit input[type="submit"]:hover {
+	background: var(--sk-grad);
+	color: #fff;
+	filter: brightness(1.08);
+	box-shadow: 0 8px 24px rgba(232, 8, 7, .3);
+}
+
+.sk-on .Btn span,
+.sk-on .Conteiner .HomeLink a span {
+	padding: 0;
+	border: 0;
+	color: inherit;
+}
+
+/* обёртка .Submit старых форм была «кнопкой» — снимаем фон и рамку */
+.sk-on .Conteiner .Submit,
+.sk-on .Conteiner .Submit:hover,
+body:has(> .Holder.sk-on) .fancybox-container .Submit,
+body:has(> .Holder.sk-on) .fancybox-container .Submit:hover {
+	display: block;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: none;
+}
+
+/* поля */
+.sk-on .Conteiner :is(.Form, .search-page) :is(input[type="text"], input[type="email"], input[type="tel"], textarea),
+body:has(> .Holder.sk-on) .fancybox-container .Form :is(input[type="text"], input[type="email"], input[type="tel"], textarea) {
+	display: block;
+	width: 100%;
+	max-width: none;
+	height: 52px;
+	margin: 0;
+	padding: 0 16px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	background: var(--sk-bg);
+	box-shadow: none;
+	color: var(--sk-dark);
+	font-size: 15px;
+	line-height: 1.3;
+	outline: none;
+	transition: border-color .2s;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+/* нативный select (если jQuery Formstyler не подключился) */
+.sk-on .Conteiner .Form select:not(.jq-selectbox select),
+body:has(> .Holder.sk-on) .fancybox-container .Form select:not(.jq-selectbox select) {
+	display: block;
+	width: 100%;
+	height: 52px;
+	margin: 0;
+	padding: 0 12px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	background-color: var(--sk-bg);
+	color: var(--sk-dark);
+	font-size: 15px;
+	text-transform: none;
+	letter-spacing: normal;
+}
+
+.sk-on .Conteiner .Form textarea,
+body:has(> .Holder.sk-on) .fancybox-container .Form textarea {
+	height: 120px;
+	min-height: 120px;
+	max-height: none;
+	padding: 14px 16px;
+	resize: vertical;
+}
+
+.sk-on .Conteiner :is(.Form, .search-page) :is(input, textarea):focus,
+body:has(> .Holder.sk-on) .fancybox-container .Form :is(input, textarea):focus {
+	border-color: var(--sk-orange);
+}
+
+.sk-on .Conteiner .Form .Label,
+body:has(> .Holder.sk-on) .fancybox-container .Form .Label {
+	margin: 0;
+}
+
+.sk-on .Conteiner .Form .Label label,
+body:has(> .Holder.sk-on) .fancybox-container .Form .Label label {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.2;
+	letter-spacing: .03em;
+	text-transform: uppercase;
+}
+
+.sk-on .Conteiner .Form .Label label > *,
+body:has(> .Holder.sk-on) .fancybox-container .Form .Label label > * {
+	text-transform: none;
+	letter-spacing: normal;
+}
+
+/* чекбокс согласия: span.Text с картинкой → квадрат на ::before */
+.sk-on .Conteiner .Form .Checkbox,
+body:has(> .Holder.sk-on) .fancybox-container .Form .Checkbox {
+	margin: 8px 0 0;
+	color: var(--sk-gray);
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+.sk-on .Conteiner .Form .Checkbox input[type="checkbox"] + label span,
+body:has(> .Holder.sk-on) .fancybox-container .Form .Checkbox input[type="checkbox"] + label span {
+	position: relative;
+	display: block;
+	min-height: 24px;
+	padding: 2px 0 0 34px;
+	background: none;
+	cursor: pointer;
+}
+
+.sk-on .Conteiner .Form .Checkbox input[type="checkbox"] + label span::before,
+body:has(> .Holder.sk-on) .fancybox-container .Form .Checkbox input[type="checkbox"] + label span::before {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--sk-line);
+	border-radius: 4px;
+	background: #fff;
+	transition: background-color .2s, border-color .2s;
+}
+
+.sk-on .Conteiner .Form .Checkbox input[type="checkbox"] + label span::after,
+body:has(> .Holder.sk-on) .fancybox-container .Form .Checkbox input[type="checkbox"] + label span::after {
+	content: '';
+	position: absolute;
+	top: 6px;
+	left: 7px;
+	width: 6px;
+	height: 10px;
+	border: solid #fff;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+	opacity: 0;
+}
+
+.sk-on .Conteiner .Form .Checkbox input[type="checkbox"]:checked + label span::before,
+body:has(> .Holder.sk-on) .fancybox-container .Form .Checkbox input[type="checkbox"]:checked + label span::before {
+	border-color: var(--sk-red);
+	background: var(--sk-red);
+}
+
+.sk-on .Conteiner .Form .Checkbox input[type="checkbox"]:checked + label span::after,
+body:has(> .Holder.sk-on) .fancybox-container .Form .Checkbox input[type="checkbox"]:checked + label span::after {
+	opacity: 1;
+}
+
+.sk-on .Conteiner .Form .Checkbox a,
+body:has(> .Holder.sk-on) .fancybox-container .Form .Checkbox a {
+	color: inherit;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+/* селект jQuery Formstyler (форма «Заявка на расчёт») */
+.sk-on .Conteiner .Form .jq-selectbox,
+body:has(> .Holder.sk-on) .fancybox-container .Form .jq-selectbox {
+	width: 100%;
+	margin: 0;
+	text-transform: none;
+	letter-spacing: normal;
+}
+
+.sk-on .Conteiner .Form .jq-selectbox__select,
+body:has(> .Holder.sk-on) .fancybox-container .Form .jq-selectbox__select {
+	height: 52px;
+	padding: 0 44px 0 16px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	background: var(--sk-bg);
+	color: var(--sk-dark);
+	font-size: 15px;
+	line-height: 50px;
+}
+
+.sk-on .Conteiner .Form .jq-selectbox__trigger,
+body:has(> .Holder.sk-on) .fancybox-container .Form .jq-selectbox__trigger {
+	top: 22px;
+	right: 18px;
+}
+
+.sk-on .Conteiner .Form .jq-selectbox__dropdown,
+body:has(> .Holder.sk-on) .fancybox-container .Form .jq-selectbox__dropdown {
+	margin: 6px 0 0;
+	border: 1px solid var(--sk-line-2);
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, .15);
+}
+
+.sk-on .Conteiner .Form .jq-selectbox li,
+body:has(> .Holder.sk-on) .fancybox-container .Form .jq-selectbox li {
+	padding: 10px 16px !important;
+	color: var(--sk-dark);
+	font-size: 15px;
+}
+
+.sk-on .Conteiner .Form .jq-selectbox li:is(.selected, :hover),
+body:has(> .Holder.sk-on) .fancybox-container .Form .jq-selectbox li:is(.selected, :hover) {
+	background: var(--sk-bg);
+	color: var(--sk-red);
+}
+
+/* ==========================================================================
+   4. ЛЕВАЯ КОЛОНКА: меню раздела, фильтр, баннер, преимущества
+   ========================================================================== */
+.sk-on .LeftBlock .LeftMenu {
+	margin: 0 0 24px;
+	padding: 8px 0;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.sk-on .LeftBlock .LeftMenu ul li {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+}
+
+.sk-on .LeftBlock .LeftMenu ul li + li {
+	border-top: 1px solid var(--sk-line-2);
+}
+
+.sk-on .LeftBlock .LeftMenu ul li a {
+	display: block;
+	padding: 13px 24px;
+	color: var(--sk-dark);
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.35;
+}
+
+.sk-on .LeftBlock .LeftMenu ul li a:hover,
+.sk-on .LeftBlock .LeftMenu ul li.Active a {
+	color: var(--sk-red);
+}
+
+.sk-on .LeftBlock .LeftMenu ul li.Active a {
+	font-weight: 600;
+}
+
+.sk-on .LeftBlock .LeftMenu ul li.Active::before {
+	top: 10px;
+	right: auto;
+	left: 0;
+	width: 4px;
+	height: calc(100% - 20px);
+	border-radius: 0 4px 4px 0;
+	background: var(--sk-grad);
+}
+
+/* фильтр */
+.sk-on .LeftBlock .FilterBlock {
+	margin: 0 0 24px;
+	padding: 24px;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.sk-on .LeftBlock .FilterBlock .bx-filter-parameters-box + .bx-filter-parameters-box {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px solid var(--sk-line-2);
+}
+
+.sk-on .LeftBlock .FilterBlock .bx-filter-parameters-box-title {
+	margin: 0 0 16px;
+	padding-right: 24px;
+	color: var(--sk-dark);
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.sk-on .LeftBlock .FilterBlock .checkbox {
+	margin: 0 0 12px;
+}
+
+.sk-on .LeftBlock .FilterBlock input[type="checkbox"] + label span {
+	position: relative;
+	display: block;
+	height: auto;
+	min-height: 22px;
+	padding: 1px 0 0 32px;
+	background: none;
+	color: var(--sk-dark);
+	font-size: 15px;
+	line-height: 1.35;
+}
+
+.sk-on .LeftBlock .FilterBlock input[type="checkbox"] + label span::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--sk-line);
+	border-radius: 4px;
+	background: #fff;
+	transition: background-color .2s, border-color .2s;
+}
+
+.sk-on .LeftBlock .FilterBlock input[type="checkbox"] + label span::after {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 7px;
+	width: 6px;
+	height: 10px;
+	border: solid #fff;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+	opacity: 0;
+}
+
+.sk-on .LeftBlock .FilterBlock input[type="checkbox"]:checked + label span::before {
+	border-color: var(--sk-red);
+	background: var(--sk-red);
+}
+
+.sk-on .LeftBlock .FilterBlock input[type="checkbox"]:checked + label span::after {
+	opacity: 1;
+}
+
+.sk-on .LeftBlock .FilterBlock input[type="checkbox"]:disabled + label span {
+	opacity: .4;
+}
+
+.sk-on .LeftBlock .FilterBlock .bx-filter-button-box {
+	margin-top: 20px;
+}
+
+.sk-on .LeftBlock .FilterBlock .Submit {
+	position: relative;
+}
+
+.sk-on .LeftBlock .FilterBlock .Submit input[type="button"] {
+	width: 100%;
+}
+
+.sk-on .LeftBlock .FilterBlock .bx-filter-popup-result {
+	padding: 8px 12px;
+	border: 0;
+	border-radius: 8px;
+	background: var(--sk-dark);
+	box-shadow: 0 10px 24px rgba(0, 0, 0, .2);
+	color: #fff;
+	font-size: 14px;
+}
+
+.sk-on .LeftBlock .FilterBlock .bx-filter-popup-result a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+/* баннер «Заявка на расчёт» — тёмная карточка, как форма в hero */
+.sk-on .LeftBlock .BannerCalc {
+	margin: 0 0 24px;
+	padding: 32px;
+	border-radius: 12px;
+	background: var(--sk-dark);
+	color: #fff;
+	text-align: left;
+}
+
+.sk-on .LeftBlock .BannerCalc .Icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 64px;
+	margin: 0 0 20px;
+	border-radius: 50%;
+	background: #fff;
+}
+
+.sk-on .LeftBlock .BannerCalc .Icon img {
+	width: 40px;
+	height: auto;
+}
+
+.sk-on .LeftBlock .BannerCalc .Title {
+	margin: 0 0 24px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.sk-on .LeftBlock .BannerCalc .Btn {
+	width: 100%;
+}
+
+/* преимущества */
+.sk-on .LeftBlock .Benefits {
+	padding: 8px 24px;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.sk-on .LeftBlock .Benefits .Item {
+	margin: 0;
+	padding: 20px 0 20px 64px;
+	background-position: 0 20px;
+	background-size: 44px auto;
+	color: var(--sk-gray);
+	font-size: 15px;
+	line-height: 1.45;
+}
+
+.sk-on .LeftBlock .Benefits .Item + .Item {
+	border-top: 1px solid var(--sk-line-2);
+}
+
+.sk-on .LeftBlock .Benefits .Item .Name {
+	margin: 0 0 4px;
+	color: var(--sk-dark);
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+/* ==========================================================================
+   5. КАТАЛОГ: разделы (/catalog/)
+   ========================================================================== */
+.sk-on.Cont .CatalogIndex,
+.sk-on .CatalogIndex {
+	padding: 0;
+	overflow: visible;
+}
+
+.sk-on.Cont .CatalogIndex > ul.Items,
+.sk-on .CatalogIndex > ul.Items {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 24px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sk-on .CatalogIndex > ul.Items > li.Item {
+	display: flex;
+	width: auto;
+	margin: 0;
+	float: none;
+}
+
+.sk-on .CatalogIndex .Items .Item .Item_Inner {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 32px;
+	border-radius: 12px;
+	background: #fff;
+	transition: box-shadow .2s;
+}
+
+.sk-on .CatalogIndex .Items .Item .Item_Inner:hover {
+	box-shadow: 0 16px 40px rgba(0, 0, 0, .07);
+}
+
+.sk-on .CatalogIndex .Items .Item .Icon {
+	margin: 0 0 24px;
+}
+
+.sk-on .CatalogIndex .Items .Item .Icon img {
+	width: auto;
+	height: 56px;
+}
+
+.sk-on .CatalogIndex .Items .Item .Category {
+	margin: 0 0 20px;
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.sk-on .CatalogIndex .Items .Item .Category a {
+	color: var(--sk-dark);
+}
+
+.sk-on .CatalogIndex .Items .Item .Category a:hover {
+	color: var(--sk-red);
+}
+
+.sk-on .CatalogIndex .Items .Item .Desc ul {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+}
+
+.sk-on .CatalogIndex .Items .Item .Desc ul li {
+	position: relative;
+	margin: 0;
+	padding: 0 0 0 17px;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+.sk-on .CatalogIndex .Items .Item .Desc ul li::before {
+	content: '';
+	position: absolute;
+	top: calc(.7em - 4.5px);
+	left: 0;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: var(--sk-red);
+}
+
+.sk-on .CatalogIndex .Items .Item .Desc ul li a {
+	color: var(--sk-dark);
+}
+
+.sk-on .CatalogIndex .Items .Item .Desc ul li a:hover {
+	color: var(--sk-red);
+}
+
+/* ==========================================================================
+   6. СПИСОК ТОВАРОВ: сортировка, вид, карточки (.sk-good), пагинация
+   ========================================================================== */
+.sk-on .ViewsBlock {
+	margin: 0 0 24px;
+	padding: 0;
+}
+
+.sk-on .ViewsBlock > .Flex {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px 24px;
+}
+
+.sk-on .ViewsBlock .Sort {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	font-size: 15px;
+}
+
+.sk-on .ViewsBlock .Sort > span {
+	margin-right: 4px;
+	color: var(--sk-gray);
+}
+
+.sk-on .ViewsBlock .Sort a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 40px;
+	margin: 0;
+	padding: 8px 16px;
+	border: 1px solid var(--sk-line-2);
+	border-radius: 10px;
+	background: #fff;
+	color: var(--sk-dark);
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 1.3;
+	transition: border-color .2s, color .2s;
+}
+
+.sk-on .ViewsBlock .Sort a:hover {
+	border-color: var(--sk-dark);
+	color: var(--sk-dark);
+}
+
+.sk-on .ViewsBlock .Sort a.Active {
+	border-color: var(--sk-dark);
+	background: var(--sk-dark);
+	color: #fff;
+}
+
+.sk-on .ViewsBlock .Views {
+	display: flex;
+	margin-left: auto;
+	overflow: hidden;
+	border: 1px solid var(--sk-line-2);
+	border-radius: 10px;
+	background: #fff;
+}
+
+.sk-on .ViewsBlock .Views a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 40px;
+	background-color: #fff;
+}
+
+.sk-on .ViewsBlock .Views a + a {
+	border-left: 1px solid var(--sk-line-2);
+}
+
+.sk-on .ViewsBlock .Views a.Active {
+	background-color: var(--sk-bg);
+}
+
+.sk-on .ViewsBlock .Views a span {
+	height: 16px;
+}
+
+/* сетка карточек */
+.sk-on .Catalog .Items {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 32px 24px;
+	margin: 0 0 40px;
+}
+
+.sk-on .Catalog .Items .Item {
+	display: flex;
+	width: auto;
+	max-width: none;
+	margin: 0;
+	float: none;
+}
+
+.sk-on .Catalog .Items .Item .Item_Inner {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 0 0 16px;
+	border-bottom: 1px solid var(--sk-line);
+	border-radius: 0;
+	background: none;
+}
+
+.sk-on .Catalog .Item .Image {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 300px;
+	margin: 0 0 16px;
+	padding: 20px;
+	overflow: hidden;
+	background: #fff;
+}
+
+.sk-on .Catalog .Item .Image a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.sk-on .Catalog .Item .Image img {
+	width: auto;
+	max-height: 100%;
+	object-fit: contain;
+	transition: transform .4s;
+}
+
+.sk-on .Catalog .Item:hover .Image img {
+	transform: scale(1.04);
+}
+
+.sk-on .Catalog .Item .Stiker {
+	top: 12px;
+	left: 12px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.sk-on :is(.Catalog .Item, .CatalogDetail .ImagesBlock) .Stiker span {
+	margin: 0;
+	padding: 4px 10px;
+	border-radius: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.3;
+	color: #fff;
+}
+
+.sk-on :is(.Catalog .Item, .CatalogDetail .ImagesBlock) .Stiker span.Sale { background: var(--sk-grad); }
+.sk-on :is(.Catalog .Item, .CatalogDetail .ImagesBlock) .Stiker span.Hit { background: var(--sk-dark); }
+.sk-on :is(.Catalog .Item, .CatalogDetail .ImagesBlock) .Stiker span.New { background: #56BF36; }
+.sk-on :is(.Catalog .Item, .CatalogDetail .ImagesBlock) .Stiker span.Recomend { background: #F5A623; }
+
+.sk-on .Catalog .Item .Brend {
+	margin: 0 0 12px;
+}
+
+.sk-on .Catalog .Item .Brend a {
+	display: inline-block;
+	padding: 4px 6px;
+	border-radius: 3px;
+	background: #ECF2F6;
+	color: var(--sk-gray);
+	font-size: 15px;
+	line-height: 1.3;
+}
+
+.sk-on .Catalog .Item .Name {
+	flex: 1 1 auto;
+	height: auto;
+	margin: 0 0 16px;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.sk-on .Catalog .Item .Name a {
+	color: var(--sk-dark);
+}
+
+.sk-on .Catalog .Item .Name a:hover {
+	color: var(--sk-red);
+}
+
+.sk-on .Catalog .Item .buys {
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 8px;
+	padding: 16px 0 0;
+	border-top: 1px solid var(--sk-line-2);
+}
+
+.sk-on .Catalog .Item .PriceBlock {
+	margin: 0;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.sk-on .Catalog .Item .PriceBlock .Price span {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.sk-on .Catalog .Item .PriceBlock .OldPrice {
+	padding: 0 0 0 8px;
+	color: var(--sk-gray);
+	font-weight: 400;
+}
+
+.sk-on .Catalog .Item .PriceBlock .OldPrice span {
+	font-size: 16px;
+	font-weight: 400;
+}
+
+/* наличие: точка вместо картинки (карточки и товар) */
+.sk-on :is(.Catalog .Item, .CatalogDetail) .Availability {
+	min-height: 0;
+	margin: 0;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.sk-on :is(.Catalog .Item, .CatalogDetail) .Availability > div {
+	position: relative;
+	min-height: 0;
+	padding: 0 0 0 17px;
+	background: none;
+	color: var(--sk-dark);
+}
+
+.sk-on :is(.Catalog .Item, .CatalogDetail) .Availability > div::before {
+	content: '';
+	position: absolute;
+	top: calc(.7em - 4.5px);
+	left: 0;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: var(--sk-line);
+}
+
+.sk-on :is(.Catalog .Item, .CatalogDetail) .Availability .available::before { background: #56BF36; }
+.sk-on :is(.Catalog .Item, .CatalogDetail) .Availability .unavailable::before { background: #F5A623; }
+
+/* вид «списком» */
+.sk-on .Catalog.List .Items {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+/* SEO-текст под списком товаров */
+.sk-on .ContBlock .Description {
+	margin: 64px 0 0;
+}
+
+.sk-on .Description .seo-cat {
+	color: var(--sk-dark);
+	font-size: 18px;
+	line-height: 1.6;
+}
+
+.sk-on .Description .seo-cat :is(ol, ul:not(.seo-links)) {
+	padding-left: 0;
+}
+
+.sk-on .Description .seo-cat :is(.seo-pick, .seo-col, .seo-faq-item, .seo-note) {
+	border: 0;
+	border-radius: 12px;
+	background: #fff;
+	padding: 20px 24px;
+}
+
+.sk-on .Description .seo-cat :is(.seo-pick, .seo-faq-item, .seo-note) {
+	box-shadow: inset 4px 0 0 var(--sk-red);
+}
+
+.sk-on .Description .seo-cat :is(.seo-pick, .seo-col, .seo-faq-item) b {
+	color: var(--sk-dark);
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.sk-on .Description .seo-cat :is(.seo-pick, .seo-col, .seo-faq-item) span {
+	color: var(--sk-gray);
+	font-size: 15px;
+}
+
+.sk-on .Description .seo-cat .seo-scroll {
+	margin: 8px 0 20px;
+	border-radius: 12px;
+}
+
+.sk-on .Description .seo-cat :is(th, td) {
+	font-size: 15px;
+	border-color: var(--sk-line-2) !important;
+}
+
+.sk-on .Description .seo-cat th {
+	background: var(--sk-dark);
+	font-weight: 600;
+}
+
+.sk-on .Description .seo-cat tr:nth-child(even) td {
+	background: var(--sk-bg);
+}
+
+.sk-on .Description .seo-cat td a {
+	font-weight: 600;
+}
+
+.sk-on .Description .seo-cat .seo-links li {
+	border: 0;
+	border-radius: 12px;
+	background: #fff;
+	overflow: hidden;
+}
+
+.sk-on .Description .seo-cat .seo-links a {
+	color: var(--sk-dark);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.sk-on .Description .seo-cat .seo-links a:hover {
+	background: #fff;
+	color: var(--sk-red);
+}
+
+.sk-on .Description .seo-cat .seo-links span {
+	color: var(--sk-gray);
+	font-weight: 400;
+}
+
+/* пагинация */
+.sk-on .Pagination {
+	margin: 40px 0 0;
+	color: var(--sk-dark);
+	text-align: center;
+}
+
+.sk-on .Pagination ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sk-on .Pagination ul li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	min-width: 44px;
+	height: 44px;
+	margin: 0 !important;
+	padding: 0;
+	border-radius: 10px;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1;
+}
+
+.sk-on .Pagination ul li.Page {
+	border: 1px solid var(--sk-line-2);
+	background: #fff;
+}
+
+.sk-on .Pagination ul li a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	padding: 0 14px;
+	color: var(--sk-dark);
+}
+
+.sk-on .Pagination ul li.Page:hover {
+	border-color: var(--sk-dark);
+}
+
+.sk-on .Pagination ul li.Page.Active,
+.sk-on .Pagination .Active {
+	width: auto;
+	height: 44px;
+	border: 0;
+	border-radius: 10px;
+	background: var(--sk-grad);
+	color: #fff;
+	line-height: 1;
+}
+
+.sk-on .Pagination ul li:is(.PrevPage, .NextPage) {
+	padding: 0 8px;
+	color: var(--sk-line);
+}
+
+.sk-on .Pagination ul li:is(.PrevPage, .NextPage) a {
+	padding: 0 6px;
+}
+
+/* ==========================================================================
+   7. КАРТОЧКА ТОВАРА
+   ========================================================================== */
+.sk-on .CatalogDetail {
+	margin: 0 0 64px;
+	padding: 0;
+	border-radius: 0;
+	background: none;
+}
+
+.sk-on .CatalogDetail .startshop-item > .Box {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 40px;
+	padding: 32px;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.sk-on .CatalogDetail .startshop-item > .Clear {
+	display: none;
+}
+
+.sk-on .CatalogDetail .ImagesBlock,
+.sk-on .CatalogDetail .DescBlock {
+	width: auto;
+	margin: 0;
+	float: none;
+}
+
+.sk-on .CatalogDetail .ImagesBlock {
+	min-width: 0;
+}
+
+.sk-on .CatalogDetail .ImagesBlock .Stiker {
+	top: 16px;
+	right: 16px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 6px;
+}
+
+.sk-on .CatalogDetail .ImagesBlock .BigPhoto {
+	top: 16px;
+	left: 16px;
+}
+
+.sk-on .CatalogDetail .ImageBlock {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 420px;
+	padding: 24px;
+	border: 1px solid var(--sk-line-2);
+	border-radius: 12px;
+}
+
+.sk-on .CatalogDetail .ImageBlock img {
+	max-height: 480px;
+	width: auto;
+	object-fit: contain;
+}
+
+.sk-on #Gallery .owl-stage-outer {
+	border: 1px solid var(--sk-line-2);
+	border-radius: 12px;
+}
+
+.sk-on #Gallery .owl-item,
+.sk-on #Miniatures .owl-item {
+	display: block;
+}
+
+.sk-on #Gallery .Item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 440px;
+	padding: 24px;
+	border: 0;
+	border-radius: 0;
+}
+
+.sk-on #Gallery .Item img {
+	display: inline-block;
+	width: auto;
+	max-width: 100%;
+	max-height: 390px;
+}
+
+/* стрелки галереи: белые круги с шевроном вместо картинки */
+.sk-on #Gallery .owl-nav {
+	top: 50%;
+	display: block;
+	pointer-events: none;
+}
+
+.sk-on #Gallery .owl-nav button.owl-prev,
+.sk-on #Gallery .owl-nav button.owl-next {
+	position: absolute;
+	top: 0;
+	width: 44px;
+	height: 44px;
+	margin: -22px 0 0;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, .14);
+	text-indent: -9999px;
+	overflow: hidden;
+	pointer-events: auto;
+}
+
+.sk-on #Gallery .owl-nav button.owl-prev { left: 12px; }
+.sk-on #Gallery .owl-nav button.owl-next { right: 12px; }
+
+.sk-on #Gallery .owl-nav button::after {
+	content: '';
+	position: absolute;
+	top: 17px;
+	left: 19px;
+	width: 9px;
+	height: 9px;
+	border: solid var(--sk-dark);
+	border-width: 2px 2px 0 0;
+	transform: rotate(-135deg);
+}
+
+.sk-on #Gallery .owl-nav button.owl-next::after {
+	left: 15px;
+	transform: rotate(45deg);
+}
+
+.sk-on #Gallery .owl-nav button.disabled {
+	opacity: .4;
+}
+
+.sk-on #Gallery .owl-dots {
+	display: none;
+}
+
+.sk-on #Miniatures {
+	margin-top: 12px;
+}
+
+.sk-on #Miniatures .owl-stage-outer {
+	padding: 0;
+}
+
+.sk-on #Miniatures .Item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 84px !important;
+	padding: 6px;
+	border: 2px solid var(--sk-line-2);
+	border-radius: 10px;
+	transition: border-color .2s;
+}
+
+.sk-on #Miniatures .current .Item,
+.sk-on #Miniatures .Item:hover {
+	border-color: var(--sk-red);
+}
+
+.sk-on #Miniatures .current.active .Item::before {
+	content: none;
+}
+
+.sk-on #Miniatures .Item img {
+	display: inline-block;
+	max-height: 68px !important;
+}
+
+/* «Производитель / наличие» */
+.sk-on .CatalogDetail .DescBlock .Info {
+	padding: 0;
+}
+
+.sk-on .CatalogDetail .DescBlock .Info:first-child {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 24px;
+	padding: 0 0 20px;
+	border-bottom: 1px solid var(--sk-line-2);
+}
+
+.sk-on .CatalogDetail .DescBlock .Brend {
+	margin: 0;
+	color: var(--sk-gray);
+	font-size: 15px;
+}
+
+.sk-on .CatalogDetail .DescBlock .Brend a {
+	color: var(--sk-dark);
+	font-weight: 600;
+}
+
+.sk-on .CatalogDetail .DescBlock .Brend a:hover {
+	color: var(--sk-red);
+}
+
+/* вкладки «Описание / Характеристики» — как .sk-tabs */
+.sk-on .CatalogDetail .PropsTabs {
+	margin: 24px 0 0;
+	padding: 32px;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	font-size: 16px;
+	letter-spacing: normal;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Links li {
+	display: inline-flex;
+	align-items: center;
+	min-height: 54px;
+	margin: 0;
+	padding: 15px 31px;
+	border: 1px solid var(--sk-dark);
+	border-radius: 12px;
+	background: #fff;
+	color: var(--sk-dark);
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.4;
+	white-space: nowrap;
+	transition: background-color .2s, color .2s;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Links li:hover {
+	background: var(--sk-dark);
+	color: #fff;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Links li.Active {
+	border-color: transparent;
+	background: var(--sk-grad);
+	color: #fff;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Box {
+	padding: 32px 0 0;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Box.Active {
+	display: flow-root;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Anonse .Text {
+	padding: 0;
+}
+
+/* файлы и «Гарантия цены» */
+.sk-on .CatalogDetail .PropsTabs .Files {
+	width: 340px;
+	margin: 0 0 24px 40px;
+}
+
+.sk-on .CatalogDetail .Garantiya {
+	margin: 0 0 24px;
+	padding: 24px;
+	border-radius: 12px;
+	background: var(--sk-bg);
+	color: var(--sk-dark);
+	font-size: 15px;
+	line-height: 1.5;
+	text-align: left;
+}
+
+.sk-on .CatalogDetail .Garantiya .Image {
+	margin: 0 0 16px;
+	text-align: left;
+}
+
+.sk-on .CatalogDetail .Garantiya .Image img {
+	width: 72px;
+	height: auto;
+}
+
+.sk-on .CatalogDetail .Garantiya .Title {
+	margin: 0 0 12px;
+	font-size: 18px;
+	font-weight: 600;
+	text-align: left;
+}
+
+.sk-on .CatalogDetail .Garantiya .Text p {
+	margin: 0 0 12px;
+	padding: 0;
+}
+
+.sk-on .CatalogDetail .Garantiya .Text p:last-child {
+	margin: 0;
+}
+
+.sk-on .CatalogDetail .Files .Item {
+	margin: 0;
+	padding: 12px 0 12px 40px;
+	border-bottom: 1px solid var(--sk-line-2);
+	background-position: 0 50%;
+	font-size: 15px;
+	line-height: 1.4;
+}
+
+.sk-on .CatalogDetail .Files .Item a {
+	color: var(--sk-dark);
+	font-weight: 500;
+}
+
+.sk-on .CatalogDetail .Files .Item a:hover {
+	color: var(--sk-red);
+}
+
+/* таблица характеристик */
+.sk-on .CatalogDetail .PropsTabs .ProductSeoTitle {
+	margin: 0 0 20px;
+	padding: 0;
+	color: var(--sk-dark);
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Props {
+	overflow: hidden;
+	border: 1px solid var(--sk-line-2);
+	border-radius: 12px;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Labels {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	background: #fff;
+	font-size: 16px;
+	line-height: 1.45;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Labels + .Labels {
+	border-top: 1px solid var(--sk-line-2);
+}
+
+.sk-on .CatalogDetail .PropsTabs .Labels:nth-child(even) {
+	background: var(--sk-bg);
+}
+
+.sk-on .CatalogDetail .PropsTabs .Labels:first-child {
+	background: var(--sk-dark) !important;
+	color: #fff;
+	font-weight: 600;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Labels span,
+.sk-on .CatalogDetail .PropsTabs .Labels span.Name,
+.sk-on .CatalogDetail .PropsTabs .Labels span.Value {
+	width: auto;
+	padding: 12px 18px;
+	float: none;
+}
+
+.sk-on .CatalogDetail .PropsTabs .Labels span.Name {
+	color: var(--sk-gray);
+}
+
+.sk-on .CatalogDetail .PropsTabs .Labels:first-child span.Name {
+	color: #fff;
+}
+
+/* сопутствующие товары */
+.sk-on .ContBlock .Content > div > h2 {
+	margin: 0 0 24px;
+	font-size: 36px;
+}
+
+.sk-on .Catalog .startshop-indents-vertical,
+.sk-on .Catalog .clear:empty {
+	display: none;
+}
+
+/* ==========================================================================
+   8. БРЕНДЫ
+   ========================================================================== */
+.sk-on .Brends {
+	margin: 0;
+}
+
+.sk-on .Brends .Items {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	gap: 24px;
+	border: 0;
+}
+
+.sk-on .Brends .Items .Item {
+	display: flex;
+	width: auto;
+	margin: 0;
+	float: none;
+}
+
+.sk-on .Brends .Items .Item .Item_Inner {
+	display: block;
+	width: 100%;
+	border: 1px solid var(--sk-line-2);
+	border-radius: 12px;
+	background: #fff;
+	transition: border-color .2s, box-shadow .2s;
+}
+
+.sk-on .Brends .Items .Item .Item_Inner:hover {
+	border-color: var(--sk-red);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+}
+
+.sk-on .Brends .Items .Item .Item_Inner a {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	width: 100%;
+	height: 180px;
+	padding: 24px 16px;
+}
+
+.sk-on .Brends .Items .Item img {
+	max-width: 80%;
+	max-height: 80px;
+	width: auto;
+	opacity: 1;
+	filter: grayscale(1);
+	transition: filter .3s;
+}
+
+.sk-on .Brends .Items .Item a:hover img {
+	filter: none;
+}
+
+.sk-on .Brends .Items .Item .Item_Inner a span {
+	display: block;
+	color: var(--sk-gray);
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 1.3;
+	text-align: center;
+}
+
+.sk-on .BrendsDetail {
+	margin: 0;
+}
+
+.sk-on .BrendsDetail > :last-child {
+	margin-bottom: 40px;
+}
+
+.sk-on .BrendsDetail .PhotoBlock {
+	margin: 0 0 24px 40px;
+}
+
+.sk-on .BrendsDetail .PhotoBlock .Image {
+	width: 280px;
+	height: 160px;
+	padding: 20px;
+	border: 1px solid var(--sk-line-2);
+	border-radius: 12px;
+}
+
+/* ==========================================================================
+   9. СТАТЬИ, АКЦИИ, ОБЪЕКТЫ: списки и детальные
+   ========================================================================== */
+.sk-on :is(.NewsCont, .GalleryCont) .Items {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 40px 24px;
+	margin: 0;
+}
+
+.sk-on :is(.NewsCont, .GalleryCont) .Items .Item {
+	width: auto;
+	margin: 0;
+	padding: 0;
+	float: none;
+}
+
+.sk-on :is(.NewsCont, .GalleryCont) .Item .Item_Inner {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	color: var(--sk-dark);
+}
+
+.sk-on :is(.NewsCont, .GalleryCont) .Item .Image {
+	position: relative;
+	aspect-ratio: 16 / 11;
+	margin: 0;
+	overflow: hidden;
+	border-radius: 0;
+}
+
+.sk-on :is(.NewsCont, .GalleryCont) .Item .Image img {
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+	object-fit: cover;
+	transition: transform .5s;
+}
+
+.sk-on :is(.NewsCont, .GalleryCont) .Item .Item_Inner:hover .Image img {
+	transform: scale(1.05);
+}
+
+/* статьи и акции — как карточки категорий на главной */
+.sk-on .NewsCont .Item .Item_Inner {
+	padding: 0 0 16px;
+	border-bottom: 1px solid var(--sk-line);
+}
+
+.sk-on .NewsCont .Item .Name {
+	position: relative;
+	margin: 16px 0 0;
+	padding: 0 0 0 17px;
+	color: var(--sk-dark);
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1.4;
+	transition: color .2s;
+}
+
+.sk-on .NewsCont .Item .Name::before {
+	content: '';
+	position: absolute;
+	top: calc(.7em - 4.5px);
+	left: 0;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: var(--sk-red);
+}
+
+.sk-on .NewsCont .Item .Item_Inner:hover .Name {
+	color: var(--sk-red);
+}
+
+.sk-on :is(.NewsCont .Item .Image, .NewsDetail .ImageBlock) span {
+	top: 12px;
+	right: auto;
+	bottom: auto;
+	left: 12px;
+	padding: 6px 14px;
+	border-radius: 8px;
+	background: var(--sk-grad);
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.3;
+	text-transform: uppercase;
+}
+
+/* объекты — плитки с подписью на градиенте, как «Наши объекты» на главной */
+.sk-on .GalleryCont .Item .Item_Inner {
+	position: relative;
+	overflow: hidden;
+}
+
+.sk-on .GalleryCont .Item .Image {
+	aspect-ratio: 394 / 245;
+}
+
+.sk-on .GalleryCont .Item .Image::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(9, 18, 31, 0) 45%, rgba(9, 18, 31, .95) 100%);
+}
+
+.sk-on .GalleryCont .Item .Name {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	margin: 0;
+	padding: 0 20px 18px;
+	color: #fff;
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+/* детальная статьи */
+.sk-on .NewsDetail .PhotoBlock {
+	margin: 0 0 32px;
+}
+
+.sk-on .NewsDetail .ImageBlock {
+	position: relative;
+	overflow: hidden;
+	border-radius: 12px;
+}
+
+.sk-on .NewsDetail .ImageBlock img {
+	width: 100%;
+	border-radius: 12px;
+}
+
+.sk-on .NewsDetail .DetailText {
+	max-width: 1035px;
+}
+
+/* детальная объекта */
+.sk-on .ObjectDetail {
+	overflow: hidden;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.sk-on .ObjectDetail .ImageBlock {
+	position: relative;
+	margin: 0;
+}
+
+.sk-on .ObjectDetail .ImageBlock img {
+	width: 100%;
+	border-radius: 0;
+}
+
+.sk-on .ObjectDetail .DetailText {
+	padding: 32px;
+}
+
+.sk-on .ObjectDetail .InfoText {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 24px;
+	margin: 0 0 24px;
+	color: var(--sk-dark);
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.sk-on .ObjectDetail .InfoText :is(.Info, .City) {
+	position: relative;
+	padding: 0 0 0 28px;
+	float: none;
+	background: none;
+}
+
+.sk-on .ObjectDetail .InfoText :is(.Info, .City)::before {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	background: var(--sk-red);
+	-webkit-mask: url(/bitrix/templates/shop/sk/img/ic-home.svg) no-repeat center / contain;
+	mask: url(/bitrix/templates/shop/sk/img/ic-home.svg) no-repeat center / contain;
+}
+
+.sk-on .ObjectDetail .InfoText .City::before {
+	-webkit-mask-image: url(/bitrix/templates/shop/sk/img/ic-pin.svg);
+	mask-image: url(/bitrix/templates/shop/sk/img/ic-pin.svg);
+}
+
+.sk-on .ObjectDetail .Desc p {
+	padding: 0;
+}
+
+/* «Следующий объект» */
+.sk-on .Pages {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	margin: 24px 0 48px;
+}
+
+.sk-on .Pages a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 54px;
+	padding: 15px 31px;
+	border: 1px solid var(--sk-dark);
+	border-radius: 12px;
+	background: #fff;
+	color: var(--sk-dark);
+	font-size: 16px;
+	font-weight: 600;
+	transition: background-color .2s, color .2s;
+}
+
+.sk-on .Pages a.Next {
+	margin-left: auto;
+}
+
+.sk-on .Pages a:hover {
+	background: var(--sk-dark);
+	color: #fff;
+}
+
+.sk-on .Pages a span,
+.sk-on .Pages a:hover span {
+	display: inline !important; /* старый media прячет текст на ≤480 */
+	border: 0;
+}
+
+.sk-on .Pages a:is(.Prev, .Next)::before,
+.sk-on .Pages a:is(.Prev, .Next)::after {
+	content: none;
+}
+
+/* ==========================================================================
+   10. ПРАЙС-ЛИСТЫ, ПОИСК, КОНТАКТЫ, 404, «СПАСИБО»
+   ========================================================================== */
+.sk-on .FilesList {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.sk-on .FilesList > br {
+	display: none;
+}
+
+.sk-on .FilesList .Item {
+	margin: 0;
+	padding: 20px 24px;
+	border-radius: 12px;
+	background: #fff;
+	transition: box-shadow .2s;
+}
+
+.sk-on .FilesList .Item:hover {
+	box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+}
+
+.sk-on .FilesList .Item > .Flex {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.sk-on .FilesList .Item .Icon {
+	flex: 0 0 auto;
+	color: var(--sk-gray);
+	font-size: 13px;
+	text-align: center;
+}
+
+.sk-on .FilesList .Item .Name {
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.sk-on .FilesList .Item .Name a {
+	color: var(--sk-dark);
+}
+
+.sk-on .FilesList .Item .Name a:hover {
+	color: var(--sk-red);
+}
+
+/* поиск */
+.sk-on .search-page form {
+	margin: 0 0 32px;
+}
+
+.sk-on .search-page form .Flex {
+	display: flex;
+	align-items: stretch;
+	gap: 12px;
+}
+
+.sk-on .search-page form input[type="text"] {
+	flex: 1 1 auto;
+	height: 54px;
+	border-color: var(--sk-line-2);
+	background: #fff;
+	font-size: 16px;
+}
+
+.sk-on .search-page form .Submit {
+	flex: 0 0 auto;
+}
+
+.sk-on .search-page .SearchResult .Item {
+	margin: 0 0 12px;
+	padding: 24px;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.sk-on .search-page .SearchResult .Item h2 {
+	margin: 0 0 8px;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.sk-on .search-page .SearchResult .Item h2 a {
+	color: var(--sk-dark);
+}
+
+.sk-on .search-page .SearchResult .Item h2 a:hover {
+	color: var(--sk-red);
+}
+
+.sk-on .search-page .SearchResult .Item p {
+	margin: 0 0 10px;
+	padding: 0;
+	color: var(--sk-dark);
+	font-size: 16px;
+	line-height: 1.55;
+}
+
+.sk-on .search-page .SearchResult .Item b {
+	font-weight: 600;
+	color: var(--sk-red);
+}
+
+.sk-on .search-page .SearchResult .Item small,
+.sk-on .search-page .SearchResult .Item small a {
+	color: var(--sk-gray);
+	font-size: 14px;
+}
+
+/* контакты */
+.sk-on .Conteiner > .Contacts {
+	margin-bottom: 40px;
+}
+
+.sk-on .Conteiner > .Contacts > .Flex {
+	display: grid !important; /* у старого .Flex display с !important */
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 24px;
+}
+
+.sk-on .Conteiner > .Contacts > .Flex > div {
+	position: relative;
+	width: auto;
+	margin: 0;
+	float: none;
+	min-height: 104px;
+	padding: 28px 24px 28px 92px;
+	border-radius: 12px;
+	background: #fff;
+	color: var(--sk-dark);
+	font-size: 17px;
+	font-weight: 500;
+	line-height: 1.45;
+}
+
+.sk-on .Conteiner > .Contacts > .Flex > div::before {
+	top: 28px;
+	left: 24px;
+	width: 48px;
+	height: 48px;
+	background-color: var(--sk-red);
+	background-image: var(--sk-grad);
+	background-size: auto, auto;
+}
+
+.sk-on .Conteiner > .Contacts > .Flex > .Adress::before { background-image: url(/bitrix/templates/shop/images/map-icon.png), var(--sk-grad); background-repeat: no-repeat; background-position: 50% 50%, 0 0; }
+.sk-on .Conteiner > .Contacts > .Flex > .Tel::before { background-image: url(/bitrix/templates/shop/images/tel-icon.png), var(--sk-grad); background-repeat: no-repeat; background-position: 50% 50%, 0 0; }
+.sk-on .Conteiner > .Contacts > .Flex > .Mail::before { background-image: url(/bitrix/templates/shop/images/mail-icon.png), var(--sk-grad); background-repeat: no-repeat; background-position: 50% 50%, 0 0; }
+.sk-on .Conteiner > .Contacts > .Flex > .Grafic::before { background-image: url(/bitrix/templates/shop/images/icon-time.png), var(--sk-grad); background-repeat: no-repeat; background-position: 50% 50%, 0 0; }
+
+.sk-on .Conteiner > .Contacts a {
+	color: var(--sk-dark);
+}
+
+.sk-on .Conteiner > .Contacts a:hover {
+	color: var(--sk-red);
+}
+
+.sk-on .Conteiner > div:not([class]) {
+	margin-bottom: 40px;
+}
+
+.sk-on .Conteiner > div:not([class]) iframe {
+	display: block;
+	width: 100%;
+	height: 480px;
+	border: 0;
+	border-radius: 12px;
+}
+
+.sk-on .Conteiner > .Contacts > .Box {
+	padding: 40px;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.sk-on .Conteiner > .Contacts > .Box > h2 {
+	margin: 0 0 12px;
+	color: var(--sk-dark);
+	font-size: 36px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.sk-on .Conteiner > .Contacts .Form > p {
+	margin: 0 0 24px;
+	padding: 0;
+	color: var(--sk-gray);
+	font-size: 17px;
+}
+
+.sk-on .Conteiner > .Contacts .Form form {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px 20px;
+}
+
+.sk-on .Conteiner > .Contacts .Form form > :is(.Clear, script) {
+	display: none;
+}
+
+.sk-on .Conteiner > .Contacts .Form form > :is(.Label.Big, .Checkbox, .Submit, .Captcha) {
+	grid-column: 1 / -1;
+}
+
+.sk-on .Conteiner > .Contacts .Form .Label {
+	width: auto;
+	float: none;
+}
+
+/* 404 */
+.sk-on .ErrorText {
+	padding: 48px;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.sk-on .ErrorText h1 {
+	margin: 0 0 16px;
+	padding: 0;
+	background: var(--sk-grad);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	font-size: 72px;
+	font-weight: 700;
+	line-height: 1.1;
+}
+
+.sk-on .ErrorText .Text {
+	max-width: 640px;
+	margin: 0 0 32px;
+	color: var(--sk-dark);
+	font-size: 20px;
+	line-height: 1.6;
+}
+
+.sk-on .ErrorText .HomeLink {
+	margin: 0;
+}
+
+/* «Спасибо» */
+.sk-on .ContBlock .Content .Form {
+	padding: 48px;
+	border-radius: 12px;
+	background: #fff;
+}
+
+.sk-on .ContBlock .Content .Form > .Title {
+	position: relative;
+	margin: 0 0 16px;
+	padding: 88px 0 0;
+	color: var(--sk-dark);
+	font-size: 36px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+/* галочка в красном круге */
+.sk-on .ContBlock .Content .Form > .Title::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background: var(--sk-grad);
+}
+
+.sk-on .ContBlock .Content .Form > .Title::after {
+	content: '';
+	position: absolute;
+	top: 15px;
+	left: 25px;
+	width: 14px;
+	height: 26px;
+	border: solid #fff;
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+}
+
+.sk-on .ContBlock .Content .Form > p {
+	margin: 0 0 12px;
+	padding: 0;
+	font-size: 18px;
+	line-height: 1.6;
+}
+
+/* ==========================================================================
+   11. СТАРЫЕ ПОПАПЫ FANCYBOX → вид .sk-modal / .sk-form
+   ========================================================================== */
+/* по центру экрана; margin: auto не обрезает верх у высокого попапа */
+body:has(> .Holder.sk-on) .fancybox-container .fancybox-slide--html {
+	display: flex;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .fancybox-slide--html > .fancybox-content {
+	margin: auto;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container #OrderCall.fancybox-content {
+	padding: 0;
+	background: none;
+	overflow: visible;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup {
+	width: 100%;
+	max-width: 445px !important;
+	margin: 0 auto;
+	padding: 32px;
+	border-radius: 12px;
+	background: var(--sk-dark);
+	color: #fff;
+	font-size: 16px;
+	line-height: 1.4;
+	text-align: left;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .Title,
+body:has(> .Holder.sk-on) .fancybox-container .Forms.Popup .Title {
+	margin: 0 0 24px;
+	padding: 0 40px 0 0;
+	color: #fff;
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .PopupBlock,
+body:has(> .Holder.sk-on) .fancybox-container .Forms.Popup .PopupBlock {
+	padding: 0;
+	background: none;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .Form form {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .Form .Label label {
+	color: #fff;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .Form .Checkbox {
+	margin: 10px 0 0;
+	color: #fff;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .Form .Checkbox input[type="checkbox"] + label span::before {
+	border-color: #ECF2F6;
+	background: transparent;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .Form .Checkbox input[type="checkbox"]:checked + label span::before {
+	border-color: var(--sk-red);
+	background: var(--sk-red);
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .Form .Checkbox a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .Submit {
+	margin: 10px 0 0;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .Submit input[type="submit"] {
+	width: 100%;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .Popup .Captcha {
+	margin: 4px 0 0;
+}
+
+/* крестик: светлый на тёмном */
+body:has(> .Holder.sk-on) .fancybox-container .fancybox-content .fancybox-close-small {
+	top: 16px !important;
+	right: 16px !important;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	border: 0;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, .12);
+	opacity: 1;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .fancybox-content .fancybox-close-small span {
+	position: absolute;
+	inset: 0;
+	width: auto;
+	height: auto;
+	background: none;
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .fancybox-content .fancybox-close-small span::before,
+body:has(> .Holder.sk-on) .fancybox-container .fancybox-content .fancybox-close-small span::after {
+	content: '';
+	position: absolute;
+	top: 19px;
+	left: 11px;
+	width: 18px;
+	height: 2px;
+	border-radius: 2px;
+	background: #fff;
+	transform: rotate(45deg);
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .fancybox-content .fancybox-close-small span::after {
+	transform: rotate(-45deg);
+}
+
+body:has(> .Holder.sk-on) .fancybox-container .fancybox-content .fancybox-close-small svg {
+	display: none;
+}
+
+/* ==========================================================================
+   12. АДАПТИВ
+   ========================================================================== */
+@media (max-width: 1599px) {
+	.sk-on.Cont .CatalogIndex > ul.Items { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.sk-on .Brends .Items { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+	.sk-on :is(.NewsCont, .GalleryCont) .Items { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.sk-on .Conteiner > .Contacts > .Flex { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1399px) {
+	.sk-on .Conteiner > .Wrapper > .LeftBlock { width: 270px; }
+	.sk-on .Conteiner > .Wrapper > .ContBlock { width: calc(100% - 302px); margin-left: 32px; }
+	.sk-on .Catalog .Item .Image { height: 260px; }
+	.sk-on .CatalogDetail .PropsTabs .Files { width: 300px; margin-left: 32px; }
+}
+
+@media (max-width: 1199px) {
+	.sk-on .Conteiner,
+	.sk-on .sk-pagehead + .Conteiner { padding: 32px 0 72px; }
+
+	.sk-on .Catalog .Items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.sk-on.Cont .CatalogIndex > ul.Items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.sk-on .Brends .Items { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+	.sk-on .CatalogDetail .startshop-item > .Box { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+	.sk-on .CatalogDetail .PropsTabs .Files { width: 100%; margin: 0 0 24px; float: none; }
+	.sk-on .CatalogDetail .PropsTabs .Files { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 24px; align-items: start; }
+	.sk-on .CatalogDetail .PropsTabs .Files .Garantiya { grid-row: span 6; }
+	/* без float: сначала описание, потом гарантия и файлы */
+	.sk-on .CatalogDetail .PropsTabs .Box.Active { display: flex; flex-direction: column; }
+	.sk-on .CatalogDetail .PropsTabs .Box > .Anonse { order: -1; margin: 0 0 24px; }
+	.sk-on .CatalogDetail .PropsTabs .Box > .Clear { display: none; }
+
+	.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > :is(h1, h2) { font-size: 30px; }
+	.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > h3 { font-size: 23px; }
+	.sk-on .Conteiner > .Contacts > .Box > h2,
+	.sk-on .ContBlock .Content > div > h2 { font-size: 30px; }
+}
+
+/* ≤991: колонка уходит — меню раздела чипами над контентом, баннер и преимущества под ним */
+@media (max-width: 991px) {
+	.sk-on .Conteiner > .Wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.sk-on .Conteiner > .Wrapper::after,
+	.sk-on .Conteiner > .Wrapper > .Clear,
+	.sk-on .Conteiner > .Wrapper > .LeftBlock > script {
+		display: none;
+	}
+
+	.sk-on .Conteiner > .Wrapper > .LeftBlock { display: contents; }
+	.sk-on .Conteiner > .Wrapper > .ContBlock { order: 3; width: 100%; margin: 0; float: none; min-width: 0; }
+	.sk-on .LeftBlock > .LeftMenu { order: 1; min-width: 0; }
+	.sk-on .LeftBlock > .FilterBlock { order: 2; }
+	.sk-on .LeftBlock > .BannerCalc { order: 4; display: block; }
+	.sk-on .LeftBlock > .Benefits { order: 5; display: block; }
+
+	.sk-on .LeftBlock .LeftMenu,
+	.sk-on .LeftBlock .FilterBlock,
+	.sk-on .LeftBlock .BannerCalc { margin: 0; }
+
+	/* меню раздела — горизонтальные чипы */
+	.sk-on .LeftBlock .LeftMenu { padding: 0; background: none; border-radius: 0; }
+	.sk-on .LeftBlock .LeftMenu ul {
+		display: flex;
+		gap: 8px;
+		margin: 0 calc(var(--sk-pad) * -1);
+		padding: 0 var(--sk-pad) 4px;
+		overflow-x: auto;
+		scrollbar-width: none;
+		-webkit-overflow-scrolling: touch;
+	}
+	.sk-on .LeftBlock .LeftMenu ul::-webkit-scrollbar { display: none; }
+	.sk-on .LeftBlock .LeftMenu ul li,
+	.sk-on .LeftBlock .LeftMenu ul li + li { flex: 0 0 auto; margin: 0; padding: 0; border: 0; background: none; display: block; }
+	.sk-on .LeftBlock .LeftMenu ul li a {
+		padding: 10px 16px;
+		border: 1px solid var(--sk-line-2);
+		border-radius: 10px;
+		background: #fff;
+		font-size: 15px;
+		white-space: nowrap;
+	}
+	.sk-on .LeftBlock .LeftMenu ul li.Active a { border-color: transparent; background: var(--sk-grad); color: #fff; }
+	.sk-on .LeftBlock .LeftMenu ul li.Active::before { content: none; }
+
+	/* фильтр — пункты в две колонки */
+	.sk-on .LeftBlock .FilterBlock .bx-filter-parameters-box-container > .Labels,
+	.sk-on .LeftBlock .FilterBlock .bx-filter-parameters-box-container:not(:has(> .Labels)) {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0 16px;
+	}
+
+	.sk-on .LeftBlock .BannerCalc { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 0 20px; }
+	.sk-on .LeftBlock .BannerCalc .Icon { grid-row: span 2; margin: 0; }
+	.sk-on .LeftBlock .BannerCalc .Title { margin: 0 0 16px; }
+	.sk-on .LeftBlock .BannerCalc .Btn { width: auto; justify-self: start; }
+
+	.sk-on .LeftBlock .Benefits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 24px; }
+	.sk-on .LeftBlock .Benefits .Item + .Item { border-top: 0; }
+
+	.sk-on .Catalog .Items { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 16px; }
+	.sk-on .Catalog .Item .Image { height: 220px; padding: 14px; }
+	.sk-on .Catalog .Item .Name { font-size: 16px; }
+
+	.sk-on .Brends .Items { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.sk-on :is(.NewsCont, .GalleryCont) .Items { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 16px; }
+
+	.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail),
+	.sk-on .Description .seo-cat { font-size: 17px; }
+
+	.sk-on .Conteiner > .Contacts .Form form { grid-template-columns: minmax(0, 1fr); }
+	.sk-on .Conteiner > div:not([class]) iframe { height: 380px; }
+}
+
+@media (max-width: 767px) {
+	.sk-on .Catalog .Items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.sk-on.Cont .CatalogIndex > ul.Items { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+	.sk-on .CatalogIndex .Items .Item .Item_Inner { padding: 24px; }
+	.sk-on .CatalogIndex .Items .Item .Desc ul { flex-direction: row; flex-wrap: wrap; gap: 8px 20px; }
+
+	.sk-on .LeftBlock .Benefits { grid-template-columns: minmax(0, 1fr); }
+	.sk-on .LeftBlock .Benefits .Item + .Item { border-top: 1px solid var(--sk-line-2); }
+
+	.sk-on .ViewsBlock .Sort > span { flex: 1 1 100%; }
+
+	.sk-on .CatalogDetail .startshop-item > .Box,
+	.sk-on .CatalogDetail .PropsTabs { padding: 20px; }
+	.sk-on #Gallery .Item { height: 320px; }
+	.sk-on #Gallery .Item img { max-height: 270px; }
+	.sk-on .CatalogDetail .ImageBlock { min-height: 300px; }
+	.sk-on .CatalogDetail .PropsTabs .Links li { flex: 1 1 0; justify-content: center; min-height: 48px; padding: 12px 16px; font-size: 15px; }
+	.sk-on .CatalogDetail .PropsTabs .Files { display: block; }
+	.sk-on .CatalogDetail .PropsTabs .Labels { grid-template-columns: minmax(0, 1fr); }
+	.sk-on .CatalogDetail .PropsTabs .Labels span.Name { padding-bottom: 0; }
+	.sk-on .CatalogDetail .PropsTabs .Labels:first-child { display: none; }
+	.sk-on .CatalogDetail .PropsTabs .Labels:nth-child(even) { background: #fff; }
+	.sk-on .CatalogDetail .PropsTabs .Labels:nth-child(odd) { background: var(--sk-bg); }
+
+	.sk-on .BrendsDetail .PhotoBlock { margin: 0 0 24px; float: none; }
+	.sk-on .BrendsDetail .PhotoBlock .Image { display: flex; align-items: center; justify-content: center; width: 100%; }
+
+	.sk-on .Conteiner > .Contacts > .Flex { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+	.sk-on .Conteiner > .Contacts > .Box,
+	.sk-on .ContBlock .Content .Form,
+	.sk-on .ErrorText { padding: 28px 20px; }
+	.sk-on .ErrorText h1 { font-size: 52px; }
+
+	/* широкие таблицы в тексте — прокрутка внутри таблицы */
+	.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text) > table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+	.sk-on .ObjectDetail .DetailText { padding: 20px; }
+	.sk-on .Pages a { padding: 12px 20px; min-height: 48px; }
+}
+
+@media (max-width: 575px) {
+	.sk-on .Conteiner,
+	.sk-on .sk-pagehead + .Conteiner { padding: 24px 0 56px; }
+
+	.sk-on .Catalog .Items { gap: 24px 12px; }
+	.sk-on .Catalog .Item .Image { height: 170px; padding: 10px; margin-bottom: 12px; }
+	.sk-on .Catalog .Item .Brend a { font-size: 13px; }
+	.sk-on .Catalog .Item .Name { margin-bottom: 12px; font-size: 15px; }
+	.sk-on .Catalog .Item .PriceBlock,
+	.sk-on .Catalog .Item .PriceBlock .Price span { font-size: 17px; }
+	.sk-on :is(.Catalog .Item, .CatalogDetail) .Availability { font-size: 13px; }
+	.sk-on .Catalog .Item .Stiker { top: 8px; left: 8px; }
+	.sk-on :is(.Catalog .Item, .CatalogDetail .ImagesBlock) .Stiker span { padding: 3px 8px; font-size: 12px; }
+
+	.sk-on .ViewsBlock .Views { display: none; }
+	.sk-on .ViewsBlock .Sort a { min-height: 36px; padding: 6px 12px; font-size: 14px; }
+
+	.sk-on .Brends .Items { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+	.sk-on .Brends .Items .Item .Item_Inner a { height: 130px; padding: 16px 10px; }
+	.sk-on :is(.NewsCont, .GalleryCont) .Items { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+
+	.sk-on .LeftBlock .BannerCalc { display: block; padding: 24px 20px; }
+	.sk-on .LeftBlock .BannerCalc .Icon { margin: 0 0 16px; }
+	.sk-on .LeftBlock .BannerCalc .Btn { width: 100%; }
+	.sk-on .LeftBlock .FilterBlock { padding: 20px; }
+
+	.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail),
+	.sk-on .Description .seo-cat { font-size: 16px; }
+	.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > :is(h1, h2),
+	.sk-on .Conteiner > .Contacts > .Box > h2,
+	.sk-on .ContBlock .Content > div > h2,
+	.sk-on .ContBlock .Content .Form > .Title { font-size: 24px; }
+	.sk-on :is(.ContBlock .Content > div, .DetailText, .Description, .Description .seo-cat, .Anonse .Text, .ObjectDetail .Desc, .BrendsDetail) > h3 { font-size: 20px; }
+	.sk-on .CatalogDetail .PropsTabs .ProductSeoTitle { font-size: 20px; }
+
+	.sk-on .CatalogDetail .startshop-item > .Box,
+	.sk-on .CatalogDetail .PropsTabs { padding: 16px; }
+	.sk-on #Gallery .Item { height: 260px; padding: 12px; }
+	.sk-on #Gallery .Item img { max-height: 230px; }
+
+	.sk-on .search-page form .Flex { flex-direction: column; }
+	.sk-on .search-page form .Submit input[type="submit"] { width: 100%; }
+
+	.sk-on .Conteiner > div:not([class]) iframe { height: 300px; }
+
+	body:has(> .Holder.sk-on) .fancybox-container .Popup { padding: 24px 20px; }
+	body:has(> .Holder.sk-on) .fancybox-container .Form :is(input[type="text"], input[type="email"], input[type="tel"], textarea) { font-size: 16px; }
+	.sk-on .Conteiner :is(.Form, .search-page) :is(input[type="text"], input[type="email"], input[type="tel"], textarea) { font-size: 16px; }
+}
+
+@media (max-width: 374px) {
+	.sk-on .Catalog .Items { grid-template-columns: minmax(0, 1fr); }
+	.sk-on .Catalog .Item .Image { height: 220px; }
+	.sk-on .CatalogDetail .PropsTabs .Links li { padding: 12px 10px; font-size: 14px; }
+	.sk-on .LeftBlock .FilterBlock .bx-filter-parameters-box-container > .Labels,
+	.sk-on .LeftBlock .FilterBlock .bx-filter-parameters-box-container:not(:has(> .Labels)) { grid-template-columns: minmax(0, 1fr); }
+}

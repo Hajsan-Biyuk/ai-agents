@@ -41,6 +41,7 @@ if (!headers_sent()) {
 	<link href="<?=SK_PATH?>/css/fonts.css?v=<?=SK_V?>" rel="stylesheet" type="text/css">
 	<link href="<?=SK_PATH?>/css/sk.css?v=<?=SK_V?>" rel="stylesheet" type="text/css">
 	<link href="<?=SK_PATH?>/css/sk-bx.css?v=<?=SK_V?>" rel="stylesheet" type="text/css">
+	<link href="<?=SK_PATH?>/css/sk-inner.css?v=<?=SK_V?>" rel="stylesheet" type="text/css">
 	<?endif;?>
 	<meta name="google-site-verification" content="-mSbv4-bI-MQ3P5hdPgv1RmB_NBeu3-mJfiC--3E2xc">
 	<meta name="yandex-verification" content="258f6b5fedd4c3ff" />
@@ -454,7 +455,8 @@ if (!headers_sent()) {
 			<?if (SK_NEW):?>
 			<div class="sk-scope sk-pagehead"><div class="sk-container">
 				<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "sk", array("START_FROM" => "1", "PATH" => "", "SITE_ID" => "s1"), false, array("HIDE_ICONS" => "Y"));?>
-				<h1 class="sk-page__title"><?$APPLICATION->ShowTitle(false);?></h1>
+				<?$skH = $APPLICATION->GetCurPage() == "/404.php" ? "p" : "h1"; // на 404 свой h1 в контенте ?>
+				<<?=$skH?> class="sk-page__title"><?$APPLICATION->ShowTitle(false);?></<?=$skH?>>
 			</div></div>
 			<?else:?>
 			<div class="TitleBlock">
