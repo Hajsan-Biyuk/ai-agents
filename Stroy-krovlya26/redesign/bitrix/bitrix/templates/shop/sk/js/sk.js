@@ -114,10 +114,14 @@
 
 	/* ---------- Карточка товара: покрытие → толщина → цвет, цена ---------- */
 	// Чистая функция подбора предложения (тест: Stroy-krovlya26/redesign/tests/variants-test.js)
-	function skPick(offers, sel) {
+	// changed — какую группу только что выбрали: если толщины нет у покрытия, переключаем покрытие на то, где она есть
+	function skPick(offers, sel, changed) {
 		var s = { coat: sel.coat || '', thick: sel.thick || '', color: sel.color || '' };
 		if (!offers.length) return { sel: s, offer: null, thicks: [] };
 		var has = function (k, v) { return offers.some(function (o) { return o[k] === v; }); };
+		if (changed === 'thick' && !offers.some(function (o) { return o.coat === s.coat && o.thick === s.thick; })) {
+			offers.some(function (o) { if (o.thick === s.thick) { s.coat = o.coat; return true; } });
+		}
 		if (!has('coat', s.coat)) s.coat = offers[0].coat;
 		var thicks = [];
 		offers.forEach(function (o) { if (o.coat === s.coat && thicks.indexOf(o.thick) < 0) thicks.push(o.thick); });
@@ -140,8 +144,8 @@
 		var colors = d.colors || {};
 		var sel = {};
 
-		function render() {
-			var r = skPick(offers, sel);
+		function render(changed) {
+			var r = skPick(offers, sel, changed);
 			sel = r.sel;
 			var o = r.offer;
 			$root.find('[data-group="coat"] .sk-variants__opt').each(function () {
@@ -150,7 +154,7 @@
 			});
 			$root.find('[data-group="thick"] .sk-variants__opt').each(function () {
 				var v = this.getAttribute('data-value');
-				$(this).toggleClass('is-active', v === sel.thick).attr('aria-pressed', v === sel.thick).prop('disabled', r.thicks.indexOf(v) < 0);
+				$(this).toggleClass('is-active', v === sel.thick).attr('aria-pressed', v === sel.thick).toggleClass('is-other', r.thicks.indexOf(v) < 0);
 			});
 			$root.find('.sk-variants__color').each(function () {
 				var v = this.getAttribute('data-value');
@@ -177,8 +181,9 @@
 		}
 
 		$root.on('click', '.sk-variants__opt, .sk-variants__color', function () {
-			sel[$(this).closest('.sk-variants__group').data('group')] = this.getAttribute('data-value');
-			render();
+			var g = $(this).closest('.sk-variants__group').data('group');
+			sel[g] = this.getAttribute('data-value');
+			render(g);
 		});
 		$root.on('click', '.sk-js-v-order', function () {
 			var t = $root.data('order-text');

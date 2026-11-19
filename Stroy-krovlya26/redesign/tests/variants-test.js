@@ -31,4 +31,17 @@ assert.strictEqual(r.sel.color, '', 'цвета нет у предложения
 r = skPick([], {});
 assert.strictEqual(r.offer, null, 'товар без вариантов');
 
+// Толщину выбрали, а у текущего покрытия её нет — покрытие переключается
+const t = [
+	{ id: 10, coat: 'Полиэстер', thick: '0.4 мм', price: 640, colors: [] },
+	{ id: 11, coat: 'Полиэстер', thick: '0.5 мм', price: 777, colors: ['a'] },
+	{ id: 12, coat: 'Pural', thick: '0.5 мм', price: 950, colors: ['b'] },
+];
+r = skPick(t, { coat: 'Pural', thick: '0.4 мм' }, 'thick');
+assert.strictEqual(r.offer.id, 10, 'Pural + 0.4 → Полиэстер 0.4');
+r = skPick(t, { coat: 'Pural', thick: '0.4 мм' }, 'coat');
+assert.strictEqual(r.offer.id, 12, 'выбрали покрытие → берётся его толщина');
+r = skPick(t, { coat: 'Pural', thick: '0.5 мм', color: 'a' }, 'thick');
+assert.strictEqual(r.offer.id, 12); assert.strictEqual(r.sel.color, '', 'цвета нет у Pural → сброс');
+
 console.log('variants-test: OK');

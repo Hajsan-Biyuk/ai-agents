@@ -45,3 +45,5 @@ body.sk-menu-open { overflow: hidden; }
 .sk-modal.fancybox-content .fancybox-close-small::before,
 .sk-modal.fancybox-content .fancybox-close-small::after { content: ''; position: absolute; top: 50%; left: 50%; width: 22px; height: 2px; margin: -1px 0 0 -11px; border-radius: 1px; background: #fff; transform: rotate(45deg); }
 .sk-modal.fancybox-content .fancybox-close-small::after { transform: rotate(-45deg); }
+/* Толщина есть только у другого покрытия: бледная, но нажимается (переключит покрытие) */
+.sk-scope .sk-variants__opt.is-other { border-style: dashed; color: var(--sk-gray); }
