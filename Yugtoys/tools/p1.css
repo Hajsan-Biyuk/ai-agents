@@ -1,0 +1,30 @@
+
+/* П-1 (2026-11-19): согласие над кнопкой «Отправить», ссылки в тексте согласия контрастные */
+.checkbox a {
+	color: inherit;
+	text-decoration: underline;
+}
+.checkbox + .btn-main {
+	margin-top: 20px;
+}
+.about-unit .block-form .checkbox {
+	white-space: normal;
+	display: block;
+}
+.partnership-form__right .line-form .item-form {
+	width: 100%;
+	margin-right: 0;
+}
+@media only screen and (max-width : 992px) {
+	.form-contacts .checkbox {
+		display: block;
+	}
+	.form-contacts .checkbox + .btn-main {
+		width: 100%;
+	}
+}
+@media only screen and (max-width : 768px) {
+	.partnership-form__right .checkbox + .btn-main {
+		width: 100%;
+	}
+}

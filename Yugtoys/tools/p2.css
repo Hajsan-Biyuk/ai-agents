@@ -1,0 +1,38 @@
+
+/* П-2 (2026-11-19): при прокрутке шапка сворачивается в узкую полосу — логотип, поиск, телефон, меню каталога.
+   Класс .fixed ставит common.js при scrollTop > 0, у начала страницы возвращает .default.
+   Шапка position: fixed, отступ .wrapper не меняется — контент не прыгает. Корзина — в .buttons-fixed в обоих состояниях. */
+@media only screen and (min-width : 993px) {
+	.header.fixed .header-top,
+	.header.fixed .header-bottom,
+	.header.fixed .header-middle .location-main,
+	.header.fixed .header-middle .btn-main,
+	.header.fixed .header-middle .descr-min {
+		display: none;
+	}
+	.header.fixed .header-middle {
+		padding: 6px 0;
+	}
+	.header.fixed .logo img {
+		width: 120px;
+	}
+	.header.fixed .header-middle .btn-catalog {
+		display: flex;
+		border: none;
+		padding: 0;
+		margin: 0 0 0 30px;
+	}
+	.header.fixed .header-middle .btn-catalog .sandwich {
+		height: 40px;
+		padding-top: 9px;
+		background: #F1FBFF;
+	}
+	.header.fixed .header-middle .btn-catalog .sandwich span {
+		background: #005B9E;
+	}
+}
+@media only screen and (max-width : 992px) {
+	.header.fixed .header-middle {
+		padding: 7px 0;
+	}
+}
