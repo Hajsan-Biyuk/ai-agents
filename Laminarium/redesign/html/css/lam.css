@@ -708,3 +708,36 @@
 	.lam-footer .lam-footer__menu a{display:inline-block;transition:color .2s,transform .2s;}
 	.lam-footer .lam-footer__menu a:hover{transform:translateX(4px);}
 }
+
+/* ========== Слайдер главного баннера (19.11.2026) ========== */
+.lam-home .lam-hero__slides{position:absolute;inset:0;z-index:1;}
+.lam-home .lam-hero__slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility .6s;}
+.lam-home .lam-hero__slide.is-active{opacity:1;visibility:visible;}
+.lam-home .lam-hero__shape--yellow{z-index:2;}
+.lam-home .lam-hero__title{max-width:490px;}
+.lam-home .lam-hero__text{max-width:460px;}
+.lam-home .lam-label--yellow{margin-top:-5px;background:linear-gradient(217deg,#FEC402 0%,#FDD001 100%);color:#303030;font-size:20px;text-transform:none;}
+.lam-home .lam-hero__swatches-wrap{position:absolute;left:35px;top:348px;z-index:3;}
+.lam-home .lam-hero__swatches-wrap .lam-hero__swatches{margin-top:0;}
+.lam-home .lam-hero__dots{position:absolute;right:200px;bottom:24px;z-index:3;display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:20px;background:rgba(255,255,255,.8);box-shadow:0 4px 14px rgba(0,0,0,.12);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+.lam-home .lam-hero__dot{width:10px;height:10px;margin:0;padding:0;border:0;border-radius:5px;background:rgba(48,48,48,.25);cursor:pointer;transition:width .3s,background-color .3s;}
+.lam-home .lam-hero__dot:hover{background:rgba(253,101,1,.6);}
+.lam-home .lam-hero__dot.is-active{width:28px;background:#FD6501;}
+@media (prefers-reduced-motion:reduce){
+	.lam-home .lam-hero__slide,.lam-home .lam-hero__dot{transition:none;}
+}
+@media (max-width:1199px){
+	.lam-home .lam-hero__title{max-width:400px;}
+	.lam-home .lam-hero__dots{right:150px;}
+}
+@media (max-width:991px){
+	.lam-home .lam-hero__art--shapes{display:none;}
+	.lam-home .lam-hero__slides{position:static;}
+	.lam-home .lam-hero__slide{position:static;display:none;opacity:1;visibility:visible;transition:none;}
+	.lam-home .lam-hero__slide.is-active{display:flex;flex-direction:column;}
+	.lam-home .lam-hero__swatches-wrap{position:static;padding:24px;}
+	.lam-home .lam-hero__dots{position:static;justify-content:center;align-self:center;margin:0 0 20px;background:#F4F5F7;box-shadow:none;}
+}
+@media (max-width:575px){
+	.lam-home .lam-hero__swatches-wrap{padding:20px 16px;}
+}

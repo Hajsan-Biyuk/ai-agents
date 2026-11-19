@@ -7,19 +7,33 @@ $lamImg = $lamDir . '/img/';
 ?>
 <div class="lam-home">
 
-	<!-- LAM HOME: Hero (баннер «Идеальный пол») -->
+	<!-- LAM HOME: Hero — слайдер (инфоблок «Слайды на главной», lam_hero_slides) -->
 	<section class="lam-hero">
 		<div class="lam-container">
-			<div class="lam-hero__box">
-				<div class="lam-hero__art" aria-hidden="true">
+			<div class="lam-hero__box" data-lam-hero>
+				<div class="lam-hero__art lam-hero__art--shapes" aria-hidden="true">
 					<img class="lam-hero__shape lam-hero__shape--blue" src="<?=$lamImg?>hero-shape-blue.svg" alt="">
 					<img class="lam-hero__shape lam-hero__shape--outline" src="<?=$lamImg?>hero-shape-outline.svg" alt="">
-					<?php $APPLICATION->IncludeFile($lamDir . '/inc_hero_photo.php', array(), array('MODE' => 'html', 'NAME' => 'фото баннера')); ?>
 				</div>
+				<?php $APPLICATION->IncludeComponent("bitrix:news.list", "lam_adv", array(
+					"IBLOCK_TYPE" => "aspro_mshop_adv",
+					"IBLOCK_ID" => "112",
+					"NEWS_COUNT" => "10",
+					"SORT_BY1" => "SORT", "SORT_ORDER1" => "ASC",
+					"SORT_BY2" => "ID", "SORT_ORDER2" => "ASC",
+					"FIELD_CODE" => array("PREVIEW_TEXT", "PREVIEW_PICTURE"),
+					"PROPERTY_CODE" => array("LABEL", "LABEL_COLOR", "BUTTON_TEXT", "BUTTON_LINK"),
+					"CHECK_DATES" => "Y",
+					"ACTIVE_DATE_FORMAT" => "d.m.Y",
+					"SET_TITLE" => "N", "SET_BROWSER_TITLE" => "N", "SET_META_KEYWORDS" => "N", "SET_META_DESCRIPTION" => "N",
+					"SET_LAST_MODIFIED" => "N", "SET_STATUS_404" => "N", "INCLUDE_IBLOCK_INTO_CHAIN" => "N", "ADD_SECTIONS_CHAIN" => "N",
+					"DISPLAY_TOP_PAGER" => "N", "DISPLAY_BOTTOM_PAGER" => "N",
+					"CACHE_TYPE" => "A", "CACHE_TIME" => "3600", "CACHE_FILTER" => "N", "CACHE_GROUPS" => "N",
+					"LAM_V" => "1", // сменить, чтобы сбросить кеш шаблона
+				), false); ?>
 				<img class="lam-hero__shape lam-hero__shape--yellow" src="<?=$lamImg?>hero-shape-yellow.svg" alt="" aria-hidden="true">
-
-				<div class="lam-hero__content">
-					<?php $APPLICATION->IncludeFile($lamDir . '/inc_hero.php', array(), array('MODE' => 'html', 'NAME' => 'баннер')); ?>
+				<div class="lam-hero__swatches-wrap">
+					<?php $APPLICATION->IncludeFile($lamDir . '/inc_hero_swatches.php', array(), array('MODE' => 'html', 'NAME' => 'образцы оттенков')); ?>
 				</div>
 			</div>
 		</div>

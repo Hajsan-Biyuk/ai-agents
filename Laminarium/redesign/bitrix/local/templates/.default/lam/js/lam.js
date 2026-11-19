@@ -58,6 +58,73 @@
 		}
 	});
 
+	/* ---------- Слайдер главного баннера: смена с затуханием, точки, автопрокрутка, свайп ---------- */
+	each(document.querySelectorAll('[data-lam-hero]'), function (root) {
+		var slides = root.querySelectorAll('.lam-hero__slide');
+		var dots = root.querySelectorAll('.lam-hero__dot');
+		if (slides.length < 2) return;
+		var current = 0;
+		var timer = null;
+		var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		function go(index) {
+			current = (index + slides.length) % slides.length;
+			each(slides, function (slide, i) {
+				var on = i === current;
+				slide.classList.toggle('is-active', on);
+				if (on) {
+					slide.removeAttribute('aria-hidden');
+					slide.removeAttribute('inert');
+				} else {
+					slide.setAttribute('aria-hidden', 'true');
+					slide.setAttribute('inert', '');
+				}
+			});
+			each(dots, function (dot, i) {
+				dot.classList.toggle('is-active', i === current);
+				if (i === current) dot.setAttribute('aria-current', 'true');
+				else dot.removeAttribute('aria-current');
+			});
+		}
+		function stop() {
+			clearInterval(timer);
+			timer = null;
+		}
+		function play() {
+			stop();
+			if (!still) timer = setInterval(function () { go(current + 1); }, 6000);
+		}
+
+		each(dots, function (dot, i) {
+			dot.addEventListener('click', function () {
+				go(i);
+				play();
+			});
+		});
+		root.addEventListener('mouseenter', stop);
+		root.addEventListener('mouseleave', play);
+		root.addEventListener('focusin', stop);
+		root.addEventListener('focusout', play);
+		document.addEventListener('visibilitychange', function () {
+			if (document.hidden) stop();
+			else play();
+		});
+
+		var startX = null;
+		root.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+		root.addEventListener('touchend', function (e) {
+			if (startX === null) return;
+			var dx = e.changedTouches[0].clientX - startX;
+			startX = null;
+			if (Math.abs(dx) > 40) {
+				go(current + (dx < 0 ? 1 : -1));
+				play();
+			}
+		}, { passive: true });
+
+		play();
+	});
+
 	/* ---------- Карусели: CSS scroll-snap + стрелки ---------- */
 	// В корне [data-lam-carousel] может быть несколько .lam-track (вкладки) — листаем видимый.
 	function visibleTrack(root) {

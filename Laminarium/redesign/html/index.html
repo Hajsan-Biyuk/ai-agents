@@ -9,7 +9,7 @@
 	<link rel="preload" href="fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 	<!-- На сайте lam.css подключать ПОСЛЕ template_styles.css Аспро -->
-	<link rel="stylesheet" href="css/lam.css?ver=4">
+	<link rel="stylesheet" href="css/lam.css?ver=5">
 </head>
 <body style="margin:0"><!-- margin:0 только для локального превью: на сайте body сбрасывает Аспро -->
 
@@ -74,20 +74,37 @@
 	<!-- LAM HOME: Hero (баннер «Идеальный пол») -->
 	<section class="lam-hero">
 		<div class="lam-container">
-			<div class="lam-hero__box">
-				<div class="lam-hero__art" aria-hidden="true">
+			<div class="lam-hero__box" data-lam-hero>
+				<div class="lam-hero__art lam-hero__art--shapes" aria-hidden="true">
 					<img class="lam-hero__shape lam-hero__shape--blue" src="img/hero-shape-blue.svg" alt="">
 					<img class="lam-hero__shape lam-hero__shape--outline" src="img/hero-shape-outline.svg" alt="">
-					<img class="lam-hero__photo" src="img/hero-photo.webp" alt="" width="1122" height="515" fetchpriority="high">
+				</div>
+				<div class="lam-hero__slides">
+					<div class="lam-hero__slide is-active">
+						<div class="lam-hero__art" aria-hidden="true"><img class="lam-hero__photo" src="img/hero-photo.webp" alt="" width="1122" height="515" fetchpriority="high"></div>
+						<div class="lam-hero__content">
+							<span class="lam-label lam-label--cyan">Популярные оттенки</span>
+							<p class="lam-hero__title">Идеальный пол — основа дома</p>
+							<p class="lam-hero__text">Ламинат и напольные покрытия<br>в наличии по реальным ценам</p>
+							<a class="lam-btn lam-hero__btn" href="/catalog/">Выбрать покрытие</a>
+						</div>
+					</div>
+					<div class="lam-hero__slide" aria-hidden="true" inert>
+						<div class="lam-hero__art" aria-hidden="true"><img class="lam-hero__photo" src="img/hero-photo-ny.webp" alt="" width="1122" height="515" loading="lazy"></div>
+						<div class="lam-hero__content">
+							<span class="lam-label lam-label--yellow">Новогодняя акция до 31.12.26</span>
+							<p class="lam-hero__title">Скидка 6% на весь ассортимент</p>
+							<p class="lam-hero__text">Акция действует до Нового года:<br>успейте выбрать то, что давно хотели</p>
+							<a class="lam-btn lam-hero__btn" href="/catalog/">Выбрать покрытие</a>
+						</div>
+					</div>
+				</div>
+				<div class="lam-hero__dots" role="group" aria-label="Слайды баннера">
+					<button class="lam-hero__dot is-active" type="button" aria-label="Слайд 1" aria-current="true"></button>
+					<button class="lam-hero__dot" type="button" aria-label="Слайд 2"></button>
 				</div>
 				<img class="lam-hero__shape lam-hero__shape--yellow" src="img/hero-shape-yellow.svg" alt="" aria-hidden="true">
-
-				<div class="lam-hero__content">
-					<span class="lam-label lam-label--cyan">Популярные оттенки</span>
-					<h1 class="lam-hero__title">Идеальный пол — основа дома</h1>
-					<p class="lam-hero__text">Ламинат и напольные покрытия<br>в наличии по реальным ценам</p>
-					<a class="lam-btn lam-hero__btn" href="/catalog/">Выбрать покрытие</a>
-
+				<div class="lam-hero__swatches-wrap">
 					<ul class="lam-hero__swatches">
 						<li><a class="lam-swatch" href="#"><img src="img/swatch-1.webp" alt="" width="130" height="56"><span class="lam-swatch__name">Дуб натуральный</span></a></li>
 						<li><a class="lam-swatch lam-swatch--cyan" href="#"><img src="img/swatch-2.webp" alt="" width="130" height="56"><span class="lam-swatch__name">Дуб Лацио</span></a></li>
@@ -737,6 +754,6 @@
 </footer>
 <!-- LAM FOOTER END -->
 
-<script src="js/lam.js?ver=2"></script>
+<script src="js/lam.js?ver=4"></script>
 </body>
 </html>
