@@ -1,10 +1,10 @@
 <div class="subscribe">
 	<div class="subscribe-block">
 		<div class="image-subscribe-left">
-			<img alt="alt" src="/local/templates/ugtoiz/img/img_subscribe1.svg">
+			<img alt="" src="/local/templates/ugtoiz/img/img_subscribe1.svg">
 		</div>
 		<div class="image-subscribe-right">
-			<img alt="alt" src="/local/templates/ugtoiz/img/img_subscribe2.svg">
+			<img alt="" src="/local/templates/ugtoiz/img/img_subscribe2.svg">
 		</div>
 		<h2 class="title-section">Подпишитесь на наш Телеграм канал</h2>
 		<div class="descr-section">

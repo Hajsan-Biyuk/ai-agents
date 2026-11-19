@@ -196,27 +196,36 @@ $today = date("Y-m-d", strtotime("+14 days"));
 ?>
 
 <?
-$price_josn = str_replace('&nbsp;','',$price['PRINT_RATIO_PRICE']);
-?>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/", 
-  "@type": "Product", 
-  "name": "<?=$name?>",
-  "image": "https://www.yugtoys.ru<?=$arResult["DETAIL_PICTURE"]['SRC']?>",
-  "description": "<?=nl2br($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']['TEXT'])?>",
-  "sku": "<?=$arResult['PROPERTIES']['ARTNUMBER']['VALUE']?>",
-  "offers": {
-    "@type": "Offer",
-    "url": "<? echo $_SERVER['REQUEST_URI'];?>",
-    "priceCurrency": "RUB",
-    "price": "<?=str_replace(' &#8381;','',$price_josn);?>",
-    "priceValidUntil": "<? echo $today?>",
-    "availability": "https://schema.org/InStock",
-    "itemCondition": "https://schema.org/NewCondition"
-  }
+// П-3.5: разметка Product через json_encode — раньше перенос строки в description делал JSON невалидным.
+// Цена в разметке — только видимая на странице: авторизованным оптовая, гостям розничная (тип цены 2); нет видимой цены — без offers.
+$ldPrice = null;
+if (IsAuthorized()) {
+	if (isset($price['RATIO_PRICE'])) $ldPrice = $price['RATIO_PRICE'];
+} else {
+	$ldRetail = \Bitrix\Catalog\PriceTable::getList(["filter" => ["CATALOG_GROUP_ID" => 2, "PRODUCT_ID" => $arResult['ID']]])->fetch();
+	if ($ldRetail) $ldPrice = $ldRetail['PRICE'];
 }
-</script>
+$ld = array(
+	'@context' => 'https://schema.org/',
+	'@type' => 'Product',
+	'name' => html_entity_decode(strip_tags($name), ENT_QUOTES, 'UTF-8'),
+	'description' => trim(html_entity_decode(strip_tags($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']['TEXT']), ENT_QUOTES, 'UTF-8')),
+	'sku' => (string)$arResult['PROPERTIES']['ARTNUMBER']['VALUE'],
+);
+if (!empty($arResult['DETAIL_PICTURE']['SRC'])) $ld['image'] = 'https://www.yugtoys.ru' . $arResult['DETAIL_PICTURE']['SRC'];
+if ($ldPrice !== null && $ldPrice > 0) {
+	$ld['offers'] = array(
+		'@type' => 'Offer',
+		'url' => 'https://www.yugtoys.ru' . $APPLICATION->GetCurPage(false),
+		'priceCurrency' => 'RUB',
+		'price' => round((float)$ldPrice, 2),
+		'priceValidUntil' => $today,
+		'availability' => 'https://schema.org/InStock',
+		'itemCondition' => 'https://schema.org/NewCondition',
+	);
+}
+?>
+<script type="application/ld+json"><?=json_encode($ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | (defined('JSON_INVALID_UTF8_SUBSTITUTE') ? JSON_INVALID_UTF8_SUBSTITUTE : 0))?></script>
 
 <section class="card" id="<?=$itemIds['ID']?>"  product_id="<?=$arResult['ID']?>">
 	<div class="container">

@@ -12,6 +12,13 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 global $USER;
+// П-6 / С-2: баннер → раздел каталога и подпись картинки. Свойства LINK в ИБ 5 пока нет — по ID элемента.
+// shortcut: при замене баннера ссылку добавить сюда или завести в ИБ 5 свойство LINK (строка) — оно в приоритете.
+$banners = array(
+	52 => array('', 'Большой ассортимент новогодних товаров и игрушек 2027'),
+	14931 => array('/catalog/myagkie-igrushki/', 'Мягкие игрушки для детей оптом'),
+	14932 => array('/catalog/razvivayushchie-igry/tovary-dlya-tvorchestva/', 'Алмазная мозаика и картины по номерам оптом'),
+);
 ?>
 <ul class="slider-billbord">
 <?foreach($arResult["ITEMS"] as $key => $arItem):?>
@@ -29,14 +36,21 @@ global $USER;
 		<div class="item-billbord" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
 			<div class="title-big"><?=$arItem["PREVIEW_TEXT"]?></div>
 			<div class="descr-big"><?=$arItem["DETAIL_TEXT"]?></div>
-			<? if(true || $USER->IsAuthorized()){ ?>
+			<?
+			$link = isset($arItem['PROPERTIES']['LINK']['VALUE']) ? trim((string)$arItem['PROPERTIES']['LINK']['VALUE']) : '';
+			if ($link === '' && isset($banners[$arItem['ID']])) $link = $banners[$arItem['ID']][0];
+			$alt = isset($banners[$arItem['ID']]) ? $banners[$arItem['ID']][1] : $arItem['NAME'];
+			?>
+			<? if($link !== ''){ ?>
+			<a href="<?=htmlspecialcharsbx($link)?>" class="btn-main btn-main_page">СМОТРЕТЬ ТОВАРЫ</a>
+			<? }elseif(true || $USER->IsAuthorized()){ ?>
 			<a href="#callback_my" class="btn-main btn-main_page fancybox">СВЯЗАТЬСЯ С МЕНЕДЖЕРОМ</a>
 			<? }else{ ?>
 			<a href="#opt_price" class="btn-main btn-main_page fancybox">ЗАПРОСИТЬ ОПТОВЫЙ ПРАЙС</a>
 			<? } ?>
-			<div class="item-billbord__image">
-				<img alt="alt" src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>">
-			</div>
+			<?=($link !== '' ? '<a href="'.htmlspecialcharsbx($link).'" class="item-billbord__image">' : '<div class="item-billbord__image">')?>
+				<img alt="<?=htmlspecialcharsbx($alt)?>" src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>">
+			<?=($link !== '' ? '</a>' : '</div>')?>
 		</div>
 	</li>
 <?endforeach;?>

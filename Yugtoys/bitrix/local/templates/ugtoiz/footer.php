@@ -5,7 +5,7 @@
 					<div class="col-lg">
 						<div class="footer__logo">
 							<a href="/" class="logo">
-								<img src="<?=SITE_TEMPLATE_PATH?>/img/logo.svg" alt="alt">
+								<img src="<?=SITE_TEMPLATE_PATH?>/img/logo.svg" alt="Юг Тойз — оптовая компания">
 							</a>
 						</div>
 						<div class="footer__title">Реквизиты  <i class="far fa-chevron-down"></i></div>
@@ -50,10 +50,10 @@
 									<p><a href="mailto:<?echo \COption::GetOptionString( "askaron.settings", "UF_EMAIL");?>"><?echo \COption::GetOptionString( "askaron.settings", "UF_EMAIL");?></a></p>
 									<br>
 									<ul class="social-list">
-										<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_WHATSAPP");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/wp2.svg" alt="alt"></a></li>
-										<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_TELEGRAM");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/tg.svg" alt="alt"></a></li>
+										<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_WHATSAPP");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/wp2.svg" alt="WhatsApp"></a></li>
+										<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_TELEGRAM");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/tg.svg" alt="Telegram"></a></li>
 										<?php if(\COption::GetOptionString("askaron.settings", "UF_VIBER")) { ?>
-											<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_VIBER");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/vb.svg" alt="alt"></a></li>
+											<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_VIBER");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/vb.svg" alt="Viber"></a></li>
 										<?php } ?>
 									</ul>
 								</div>
@@ -76,7 +76,7 @@
 							<p>г. Краснодар © Copyright  <?=date('Y')?> г.</p>
 						</div>
 						<div class="col-lg">
-							<div class="create">Сделано в <a target="_blank" href="https://sheer82.ru"><img src="<?=SITE_TEMPLATE_PATH?>/img/copy.svg" alt="alt"></a></div>
+							<div class="create">Сделано в <a target="_blank" href="https://sheer82.ru"><img src="<?=SITE_TEMPLATE_PATH?>/img/copy.svg" alt="Sheer — разработка сайта"></a></div>
 						</div>
 						<div class="col-xl-4 col-lg">
 							<a href="#" class="btn_top"><i class="far fa-arrow-up"></i></a>

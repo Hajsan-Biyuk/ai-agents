@@ -1,0 +1,1 @@
+<img alt="alt" src="/local/templates/ugtoiz/img/sertificat_avd1.jpg">

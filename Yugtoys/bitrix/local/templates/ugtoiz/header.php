@@ -111,9 +111,9 @@
 							
 							
 						?>
-						<a href="/personal/" class="btn-user"><img src="<?=SITE_TEMPLATE_PATH?>/img/user.svg" alt="alt"><?=htmlspecialcharsbx($name)?></a>
+						<a href="/personal/" class="btn-user"><img src="<?=SITE_TEMPLATE_PATH?>/img/user.svg" alt=""><?=htmlspecialcharsbx($name)?></a>
 						<? }else{ ?>
-						<a href="/personal/private/" class="btn-user"><img src="<?=SITE_TEMPLATE_PATH?>/img/user.svg" alt="alt">Вход в оптовый кабинет</a>
+						<a href="/personal/private/" class="btn-user"><img src="<?=SITE_TEMPLATE_PATH?>/img/user.svg" alt="">Вход в оптовый кабинет</a>
 						<? } ?>
 					</div>
 				</div>
@@ -122,7 +122,7 @@
 				<div class="container">
 					<div class="header__wrapper">
 						<a href="/" class="logo">
-							<img src="<?=SITE_TEMPLATE_PATH?>/img/logo.svg" alt="alt">
+							<img src="<?=SITE_TEMPLATE_PATH?>/img/logo.svg" alt="Юг Тойз — оптовая компания">
 						</a>
 						<div class="location-main">
 							<div class="location-main__value"><i class="fas fa-chevron-down"></i><?echo \COption::GetOptionString("askaron.settings", "UF_ADDRESS_HEAD");?></div>
@@ -162,7 +162,7 @@
 							<div class="descr-min">Бесплатно по России</div>
 							<div class="descr-min">Звоните с 8:30 до 17:30</div>
 						</div>
-						<a href="/personal/private/" class="btn-user-mobile"><img src="<?=SITE_TEMPLATE_PATH?>/img/user.svg" alt="alt"></a>
+						<a href="/personal/private/" class="btn-user-mobile"><img src="<?=SITE_TEMPLATE_PATH?>/img/user.svg" alt="Личный кабинет"></a>
 						<a href="tel:<?=preg_replace('/[^0-9]/', '', \COption::GetOptionString( "askaron.settings", "UF_PHONE"))?>" class="btn-call"><i class="fas fa-phone-alt"></i></a>
 						<div class="btn-catalog">
 							<span class='sandwich'>
@@ -191,7 +191,7 @@
 							<div class="btn-catalog__title">КАТАЛОГ</div>
 						</div>
 						<ul class="nav">
-							<li><a href="/catalog/novinki/"><img alt="alt" src="/local/templates/ugtoiz/img/flash.svg">НОВИНКИ</a></li>
+							<li><a href="/catalog/novinki/"><img alt="" src="/local/templates/ugtoiz/img/flash.svg">НОВИНКИ</a></li>
 							<?$APPLICATION->IncludeComponent("bitrix:main.include", "", ["AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/main_head_menu.php"], false, ['HIDE_ICONS' => 'Y']);?>
 						</ul>
 					</div>
@@ -205,7 +205,7 @@
 					<li><a href="/faq/">Вопрос-Ответ</a></li>
 					<li><a href="/news/">Блог</a></li>
 					<li><a href="/about/contacts/">Контакты</a></li>
-					<li><a href="/catalog/novinki/"><img alt="alt" src="/local/templates/ugtoiz/img/flash.svg">НОВИНКИ</a></li>
+					<li><a href="/catalog/novinki/"><img alt="" src="/local/templates/ugtoiz/img/flash.svg">НОВИНКИ</a></li>
 					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", ["AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/main_head_menu.php"], false, ['HIDE_ICONS' => 'Y']);?>
 				</ul>
 				<div class="location-main">
@@ -221,9 +221,9 @@
 					<div class="descr-min">Бесплатно по России</div>
 				</div>
 				<ul class="social-list">
-					<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_WHATSAPP");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/wp2.svg" alt="alt"></a></li>
-					<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_TELEGRAM");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/tg.svg" alt="alt"></a></li>
-					<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_VIBER");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/vb.svg" alt="alt"></a></li>
+					<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_WHATSAPP");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/wp2.svg" alt="WhatsApp"></a></li>
+					<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_TELEGRAM");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/tg.svg" alt="Telegram"></a></li>
+					<li><a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_VIBER");?>"><img src="<?=SITE_TEMPLATE_PATH?>/img/vb.svg" alt="Viber"></a></li>
 				</ul>
 			</div>
 			<div class="container">

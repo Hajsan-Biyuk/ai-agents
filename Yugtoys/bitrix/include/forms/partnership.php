@@ -55,7 +55,7 @@
 				</div>
 				<div class="partnership-form__bottom">
 					<div class="file-upload">
-						<label><input name="file" type="file" name="file"><img alt="alt" src="/local/templates/ugtoiz/img/clip.svg"> Загрузить карточку предприятия</label>
+						<label><input name="file" type="file" name="file"><img alt="" src="/local/templates/ugtoiz/img/clip.svg"> Загрузить карточку предприятия</label>
 						<div class="name-upload"></div>
 					</div>
 					<button class="btn-main btn-main_page">СТАТЬ ПАРТНЁРОМ</button>
@@ -68,7 +68,7 @@
 				</div>
 			</form>-->
 			<div class="partnership-toy">
-				<img alt="alt" src="/local/templates/ugtoiz/img/toy1.png">
+				<img alt="" src="/local/templates/ugtoiz/img/toy1.png">
 			</div>
 		</div>
 	</div>

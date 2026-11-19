@@ -1,0 +1,1 @@
+<img alt="Сертификат соответствия" src="/local/templates/ugtoiz/img/sertificat_avd1.jpg">

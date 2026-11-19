@@ -1,5 +1,5 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Политика конфиденциальности и рпаила обработки персональных данных");
+$APPLICATION->SetTitle("Политика конфиденциальности и правила обработки персональных данных");
 ?>
 
 <section class="page-contacts">

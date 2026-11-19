@@ -13,7 +13,7 @@
 						<div class="col-md-6">
 							<div class="item-advantage">
 								<div class="item-advantage__icon">
-									<img alt="alt" src="/local/templates/ugtoiz/img/ic_avd1.svg">
+									<img alt="" src="/local/templates/ugtoiz/img/ic_avd1.svg">
 								</div>
 								<?$APPLICATION->IncludeComponent("bitrix:main.include", "", ["AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/forms/advantages/b3.php"], false, ['HIDE_ICONS' => 'N']);?>
 							</div>
@@ -21,7 +21,7 @@
 						<div class="col-md-6">
 							<div class="item-advantage">
 								<div class="item-advantage__icon">
-									<img alt="alt" src="/local/templates/ugtoiz/img/ic_avd2.svg">
+									<img alt="" src="/local/templates/ugtoiz/img/ic_avd2.svg">
 								</div>
 								<?$APPLICATION->IncludeComponent("bitrix:main.include", "", ["AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/forms/advantages/b4.php"], false, ['HIDE_ICONS' => 'N']);?>
 							</div>
@@ -29,7 +29,7 @@
 						<div class="col-md-6">
 							<div class="item-advantage">
 								<div class="item-advantage__icon">
-									<img alt="alt" src="/local/templates/ugtoiz/img/ic_avd3.svg">
+									<img alt="" src="/local/templates/ugtoiz/img/ic_avd3.svg">
 								</div>
 								<?$APPLICATION->IncludeComponent("bitrix:main.include", "", ["AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/forms/advantages/b5.php"], false, ['HIDE_ICONS' => 'N']);?>
 							</div>
@@ -37,7 +37,7 @@
 						<div class="col-md-6">
 							<div class="item-advantage">
 								<div class="item-advantage__icon">
-									<img alt="alt" src="/local/templates/ugtoiz/img/ic_avd4.svg">
+									<img alt="" src="/local/templates/ugtoiz/img/ic_avd4.svg">
 								</div>
 								<?$APPLICATION->IncludeComponent("bitrix:main.include", "", ["AREA_FILE_SHOW" => "file", "PATH" => SITE_DIR."include/forms/advantages/b6.php"], false, ['HIDE_ICONS' => 'N']);?>
 							</div>

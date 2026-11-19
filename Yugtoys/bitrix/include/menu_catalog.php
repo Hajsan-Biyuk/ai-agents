@@ -13,7 +13,7 @@ while($section = $section_list->GetNext()){ ?>
 		<div class="content-dropdown" <?=($i == 0 ? 'style="display: block;"' : '')?>>
 			<? if(!empty($section['UF_MENU_IMG'])){ ?>
 			<div class="billbord-dropdown">
-				<img src="<?=CFile::GetPath($section['UF_MENU_IMG'])?>" alt="alt">
+				<img src="<?=CFile::GetPath($section['UF_MENU_IMG'])?>" alt="<?=htmlspecialcharsbx($section['NAME'])?>">
 			</div>
 			<? } ?>
 			<div class="row">

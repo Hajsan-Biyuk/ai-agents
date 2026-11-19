@@ -183,6 +183,8 @@ $APPLICATION->SetPageProperty("description",'Оптовый магазин де�
 	"main_clients",
 	array(
 		"IBLOCK_ID" => "6",
+		"CACHE_TYPE" => "A",
+		"CACHE_TIME" => "86400", // С-2 (2026-11-19): новый ключ кеша, чтобы применились alt брендов
 		"NEWS_COUNT" => "999",
 		"SORT_BY1" => "SORT",
 		"SORT_ORDER1" => "ASC",
