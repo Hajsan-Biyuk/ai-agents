@@ -16,12 +16,7 @@ $skTelText = '+7 (8652) 33-40-41';
 				<img src="<?= SK_PATH ?>/img/ic-burger.svg" alt="" width="24" height="24">
 			</button>
 			<ul class="sk-header__list">
-				<li class="sk-header__item"><a class="sk-header__link" href="/catalog/krovelnye-materialy/">Кровля</a></li>
-				<li class="sk-header__item"><a class="sk-header__link" href="/catalog/stenovye-materialy/">Фасады</a></li>
-				<li class="sk-header__item"><a class="sk-header__link" href="/catalog/ograzhdeniya/">Забор</a></li>
-				<li class="sk-header__item"><a class="sk-header__link" href="/catalog/krovelnye-materialy/montazh-krovli/">Комплектующие</a></li>
-				<li class="sk-header__item"><a class="sk-header__link" href="/aktsii/">Акции</a></li>
-			</ul>
+<?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_topmenu.php', array(), array('MODE' => 'php')); ?>			</ul>
 
 			<div class="sk-menu" id="sk-menu" aria-hidden="true">
 				<div class="sk-menu__panel">

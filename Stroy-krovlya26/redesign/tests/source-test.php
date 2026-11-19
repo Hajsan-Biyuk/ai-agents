@@ -36,4 +36,14 @@ assert(substr(sk_source_number(), -3) === '-11');
 assert(preg_match('/^\d{6}-\d\d$/', sk_source_number()) === 1);
 $_COOKIE['tz_src'] = '{"r":["x"],"l":5}'; // мусор от клиента
 assert(substr(sk_source_number(), -3) === '-88');
+foreach (array(
+	'https://xn----7sbbumahgdz5aibf1d4b3e.xn--p1ai/?utm_source=x#f' => 'https://шархинский-карьер.рф/',
+	'https://www.xn--e1afmkfd.xn--p1ai/%D0%BA%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3/' => 'https://www.пример.рф/каталог/',
+	'https://xn--bcher-kva.de' => 'https://bücher.de',
+	'https://s.ru/a%FF/' => 'https://s.ru/a%FF/',
+	'https://xn--!!.ru/' => 'https://xn--!!.ru/',
+	'https://stroy-krovlya26.ru/catalog/x/?ysclid=1' => 'https://stroy-krovlya26.ru/catalog/x/',
+) as $in => $want) {
+	assert(sk_source_page_url($in) === $want, sk_source_page_url($in));
+}
 echo "source-test: OK\n";

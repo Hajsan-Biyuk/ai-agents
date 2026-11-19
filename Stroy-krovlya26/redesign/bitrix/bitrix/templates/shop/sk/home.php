@@ -41,23 +41,20 @@ $tabNames = array('sale' => 'Акции', 'recommend' => 'Рекомендуем
 		<div class="sk-container sk-hero__inner">
 			<div class="sk-hero__content">
 				<div class="sk-hero__top">
-					<div class="sk-hero__badge"><img src="<?= SK_PATH ?>/img/ic-badge.svg" alt="" width="24" height="24">СтройКровля · Ставрополь</div>
+					<div class="sk-hero__badge"><img src="<?= SK_PATH ?>/img/ic-badge.svg" alt="" width="24" height="24"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_hero_badge.php', array(), array('MODE' => 'text')); ?></div>
 					<div class="sk-hero__text">
-						<p class="sk-hero__title">Кровля под ваш дом — без ошибок в комплектации</p>
-						<p class="sk-hero__descr">Подберём материал под климат и бюджет, сравним варианты и соберём полную комплектацию объекта — от покрытия до водостока</p>
+						<p class="sk-hero__title"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_hero_title.php', array(), array('MODE' => 'text')); ?></p>
+						<p class="sk-hero__descr"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_hero_descr.php', array(), array('MODE' => 'text')); ?></p>
 					</div>
 					<ul class="sk-hero__chips">
-						<li class="sk-hero__chip">Экспертный подбор</li>
-						<li class="sk-hero__chip">Бесплатный замер</li>
-						<li class="sk-hero__chip">Гарантия до 50 лет</li>
-					</ul>
+<?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_hero_chips.php', array(), array('MODE' => 'php')); ?>					</ul>
 				</div>
 				<div class="sk-hero__bottom">
 					<div class="sk-hero__btns">
 						<a class="sk-btn sk-btn--wide sk-js-scroll" href="#sk-calc">Получить расчёт за 15 минут</a>
 						<a class="sk-btn sk-btn--glass" href="tel:+78652334041" onclick="if(window.ym)ym(38770565,'reachGoal','Perehod_po_nomeru_telefona');">Позвонить</a>
 					</div>
-					<p class="sk-hero__facts"><b>16 лет</b> на рынке <b>·</b> <b>150+</b> видов материалов <b>·</b> <b>0 ₽</b> замер по краю</p>
+					<p class="sk-hero__facts"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_hero_facts.php', array(), array('MODE' => 'html')); ?></p>
 				</div>
 			</div>
 
@@ -138,8 +135,8 @@ $tabNames = array('sale' => 'Акции', 'recommend' => 'Рекомендуем
 	<section class="sk-section sk-objects">
 		<div class="sk-container">
 			<div class="sk-objects__head">
-				<h2 class="sk-h2">Наши объекты</h2>
-				<p class="sk-lead">За 12 лет работы на рынке кровельных материалов нашей компанией было выполненно более 100 проектов различной сложности, смонтировано более 4 тысяч кв.м. кровли.</p>
+				<h2 class="sk-h2"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_objects_title.php', array(), array('MODE' => 'text')); ?></h2>
+				<p class="sk-lead"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_objects_text.php', array(), array('MODE' => 'text')); ?></p>
 			</div>
 			<?php $skList(11, 'portfolio', 5); ?>
 		</div>
@@ -148,13 +145,9 @@ $tabNames = array('sale' => 'Акции', 'recommend' => 'Рекомендуем
 	<section class="sk-section sk-section--gray sk-seo">
 		<div class="sk-container sk-seo__inner">
 			<div class="sk-seo__main">
-				<h1 class="sk-h3 sk-seo__title">Кровельные и фасадные материалы <br>в Ставрополе</h1>
+				<h1 class="sk-h3 sk-seo__title"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_seo_title.php', array(), array('MODE' => 'html')); ?></h1>
 				<div class="sk-seo__text">
-					<p class="sk-seo__lead">«Строй Кровля» - официальный дистрибьютор ведущих российских и иностранных производителей кровельных материалов.</p>
-					<p>Компания «Строй-Кровля», стабильно работающая на рынке предлагает продукцию ведущих мировых производителей кровельных и фасадных материалов. Будучи одним из самых ответственных и надежных дистрибьюторов, мы дорожим своей репутацией и делаем все, чтобы оправдать высокое доверие наших клиентов.</p>
-					<p>Основным направлением деятельности компании является продажа кровельных и фасадных материалов оптом и в розницу. Мы делаем акцент на широком ассортименте и достаточных товарных запасах, поддерживая статус надежного поставщика высококачественной продукции!</p>
-					<p>Мы будем рады работать с Вами!</p>
-				</div>
+<?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_seo_text.php', array(), array('MODE' => 'html')); ?>				</div>
 				<div class="sk-seo__btns">
 					<a class="sk-btn sk-btn--wide sk-js-scroll" href="#sk-calc">Получить расчет кровли</a>
 					<a class="sk-btn sk-btn--dark" href="/prays-listy/">Скачать прайс <img src="<?= SK_PATH ?>/img/ic-arrow-down.svg" alt="" width="24" height="24"></a>
