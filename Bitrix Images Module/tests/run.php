@@ -160,11 +160,18 @@ namespace {
     class CAgent
     {
         public static $list = [];
+        public static $intervals = [];
 
         public static function AddAgent($name, $module = '', $period = 'N', $interval = 60)
         {
             self::$list[] = $name;
+            self::$intervals[$name] = (int)$interval;
             return true;
+        }
+
+        public static function Update($id, $fields)
+        {
+            self::$intervals[$id] = (int)$fields['AGENT_INTERVAL'];
         }
 
         public static function RemoveModuleAgents($module)
@@ -179,7 +186,8 @@ namespace {
 
         public static function GetList($a = [], $b = [])
         {
-            $found = isset($b['NAME']) && in_array($b['NAME'], self::$list, true);
+            $found = isset($b['NAME']) && in_array($b['NAME'], self::$list, true)
+                ? ['ID' => $b['NAME'], 'AGENT_INTERVAL' => self::$intervals[$b['NAME']] ?? 60] : false;
             return new class($found) {
                 private $found;
                 public function __construct($found)
@@ -188,7 +196,7 @@ namespace {
                 }
                 public function Fetch()
                 {
-                    return $this->found ? ['ID' => 1] : false;
+                    return $this->found;
                 }
             };
         }
@@ -694,9 +702,17 @@ namespace {
     t('budget: warm runs now -> 25 s', \Sheer\Webp\Agent::cronBudget() === 25);
     $opt['night_from'] = (string)(($h + 1) % 24);
     $opt['night_to'] = (string)(($h + 2) % 24);
-    t('budget: warm night-only, day -> 50 s', \Sheer\Webp\Agent::cronBudget() === 50);
+    t('budget: warm night-only, day -> 45 s', \Sheer\Webp\Agent::cronBudget() === 45);
     $opt['warm_state'] = 'done';
-    t('budget: no warm -> 50 s', \Sheer\Webp\Agent::cronBudget() === 50);
+    t('budget: no warm -> 45 s', \Sheer\Webp\Agent::cronBudget() === 45);
+    // 1.7.7: старый агент с интервалом 60 с переводится на 1 с, новые сразу с 1 с.
+    \CAgent::$list[] = \Sheer\Webp\Agent::CALLBACK;
+    \CAgent::$intervals[\Sheer\Webp\Agent::CALLBACK] = 60;
+    \Sheer\Webp\Agent::fixIntervals();
+    t('old agent interval 60 -> 1', \CAgent::$intervals[\Sheer\Webp\Agent::CALLBACK] === 1);
+    \Sheer\Webp\Agent::ensureWarm();
+    t('new warm agent interval 1', \CAgent::$intervals[\Sheer\Webp\Warmer::CALLBACK] === 1);
+    \Sheer\Webp\Agent::removeAll();
     unset($opt['night_enabled'], $opt['night_from'], $opt['night_to'], $opt['night_workers'], $opt['warm_state']);
     $wp = $root . '/upload/iblock/abc/worker.jpg';
     copy($photo, $wp);

@@ -14,8 +14,17 @@ class Agent
      */
     public const CRON_BUDGET = 25;
 
-    /** Прогрев в эту минуту не работает (днём, завершён) — минута вся конвертации. */
-    public const CRON_BUDGET_SOLO = 50;
+    /**
+     * Прогрев в эту минуту не работает (днём, завершён) — минута вся конвертации.
+     * 45, а не 50: запуск + последняя картинка + INTERVAL должны успеть до следующего тика cron.
+     */
+    public const CRON_BUDGET_SOLO = 45;
+
+    /**
+     * Битрикс считает следующий запуск непериодического агента от КОНЦА прошлого: при 60 с
+     * агент с порцией 45 с успевал только к тику cron через минуту — шёл раз в 2 минуты.
+     */
+    public const INTERVAL = 1;
 
     public static function cronBudget()
     {
@@ -31,7 +40,7 @@ class Agent
             self::CALLBACK,
             Config::MODULE_ID,
             'N',
-            60,
+            self::INTERVAL,
             '',
             'Y',
             '',
@@ -54,7 +63,7 @@ class Agent
     public static function ensureWarm()
     {
         self::removeWarm();
-        CAgent::AddAgent(Warmer::CALLBACK, Config::MODULE_ID, 'N', 60, '', 'Y', '', 40);
+        CAgent::AddAgent(Warmer::CALLBACK, Config::MODULE_ID, 'N', self::INTERVAL, '', 'Y', '', 40);
     }
 
     public static function removeWarm()
@@ -137,10 +146,22 @@ class Agent
         ])->Fetch();
     }
 
+    /** Агенты, созданные до 1.7.7 с интервалом 60 с, перевести на INTERVAL. */
+    public static function fixIntervals()
+    {
+        foreach ([self::CALLBACK, Warmer::CALLBACK] as $name) {
+            $row = CAgent::GetList([], ['MODULE_ID' => Config::MODULE_ID, 'NAME' => $name])->Fetch();
+            if ($row && (int)$row['AGENT_INTERVAL'] !== self::INTERVAL) {
+                CAgent::Update($row['ID'], ['AGENT_INTERVAL' => self::INTERVAL]);
+            }
+        }
+    }
+
     public static function convertBatch()
     {
         try {
             self::restoreWarm();
+            self::fixIntervals();
         } catch (\Throwable $e) {
         }
 
@@ -160,7 +181,7 @@ class Agent
             return self::CALLBACK;
         }
 
-        // В cron посетителей нет: 25–50 с из минутного интервала, но не больше
+        // В cron посетителей нет: 25–45 с из минутного интервала, но не больше
         // N картинок за запуск (настройка «Картинок в минуту»), чтобы держать нагрузку.
         // Ночью — несколько конвертеров параллельно (настройка «Конвертеров ночью»).
         $result = Scanner::processChunk($perMinute, self::cronBudget(), Config::getWorkers());
