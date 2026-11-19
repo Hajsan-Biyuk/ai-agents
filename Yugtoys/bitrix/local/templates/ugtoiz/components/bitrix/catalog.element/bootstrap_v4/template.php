@@ -193,6 +193,8 @@ $arParams['MESS_RELATIVE_QUANTITY_FEW'] = $arParams['MESS_RELATIVE_QUANTITY_FEW'
 ?><?
 $today = date("Y-m-d");
 $today = date("Y-m-d", strtotime("+14 days"));
+// У товаров с пустыми «Характеристиками» ~VALUE — строка, а не массив: обращение ['TEXT'] в PHP 8 давало 500
+$propsHtml = (isset($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']) && is_array($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']) && isset($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']['TEXT'])) ? (string)$arResult['PROPERTIES']['PROPS_HTML']['~VALUE']['TEXT'] : '';
 ?>
 
 <?
@@ -209,7 +211,7 @@ $ld = array(
 	'@context' => 'https://schema.org/',
 	'@type' => 'Product',
 	'name' => html_entity_decode(strip_tags($name), ENT_QUOTES, 'UTF-8'),
-	'description' => trim(html_entity_decode(strip_tags($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']['TEXT']), ENT_QUOTES, 'UTF-8')),
+	'description' => trim(html_entity_decode(strip_tags($propsHtml), ENT_QUOTES, 'UTF-8')),
 	'sku' => (string)$arResult['PROPERTIES']['ARTNUMBER']['VALUE'],
 );
 if (!empty($arResult['DETAIL_PICTURE']['SRC'])) $ld['image'] = 'https://www.yugtoys.ru' . $arResult['DETAIL_PICTURE']['SRC'];
@@ -300,7 +302,7 @@ if ($ldPrice !== null && $ldPrice > 0) {
 					<div class="card-info__main">
 						<div class="articul">Артикул: <?=$arResult['PROPERTIES']['ARTNUMBER']['VALUE']?></div>
 						<h1 class="title-card"><?=$name?></h1>
-						<div class="articul"><?=nl2br($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']['TEXT'])?></div>
+						<div class="articul"><?=nl2br($propsHtml)?></div>
 						<div class="articul">
 						<? if($arResult['PROPERTIES']['IN_STOCK_M1']['VALUE'] == 'Y'){ ?>
 							ул. Новороссийская, 98:&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: bold; color: #2389fc;">В наличии</span>
@@ -377,7 +379,7 @@ if ($ldPrice !== null && $ldPrice > 0) {
 				}
 			?>
 				<?php
-				if($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']['TEXT'] != ''){
+				if($propsHtml != ''){
 				    ?>
 				   	<li><a href="#tab_card2">характеристики</a></li>
 					<?php
@@ -413,12 +415,12 @@ if ($ldPrice !== null && $ldPrice > 0) {
 				}
 			?>
 			<?php
-				if($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']['TEXT'] != ''){
+				if($propsHtml != ''){
 				    ?>
 				   	<div class="tab-pane-card" id="tab_card2">
         			<?php
-        				if($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']['TEXT'] != ''){
-        					echo nl2br($arResult['PROPERTIES']['PROPS_HTML']['~VALUE']['TEXT']);
+        				if($propsHtml != ''){
+        					echo nl2br($propsHtml);
         				}
         			?>
         			</div>
