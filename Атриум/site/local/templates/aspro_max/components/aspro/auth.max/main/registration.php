@@ -67,7 +67,8 @@ use \Bitrix\Main\Config\Option;
 			$d = preg_replace('/\D+/', '', (string)$arFields['PERSONAL_PHONE']);
 			if(strlen($d) === 11 && $d[0] === '8')
 				$d = '7'.substr($d, 1);
-			if(strlen($d) === 10)
+			// 10 цифр без кода страны: российские номера начинаются с 3, 4, 8 или 9
+			if(strlen($d) === 10 && strpos('3489', $d[0]) !== false)
 				$d = '7'.$d;
 			if(strlen($d) !== 11 || $d[0] !== '7'){
 				$GLOBALS['APPLICATION']->ThrowException('Укажите телефон полностью: +7 и 10 цифр.');

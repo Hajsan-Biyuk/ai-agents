@@ -505,7 +505,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (!/^[\d\s()+\-]{10,}$/.test(v.trim())) return null;
 		var d = v.replace(/\D+/g, '');
 		if (d.length === 11 && d[0] === '8') d = '7' + d.slice(1);
-		if (d.length === 10) d = '7' + d;
+		if (d.length === 10 && '3489'.indexOf(d[0]) !== -1) d = '7' + d; // российский номер без кода страны
 		return d.length === 11 && d[0] === '7' ? d : null;
 	}
 	function fix(input) {
