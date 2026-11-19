@@ -13,7 +13,7 @@
 $this->setFrameMode(true);
 global $USER;
 // П-6 / С-2: баннер → раздел каталога и подпись картинки. Свойства LINK в ИБ 5 пока нет — по ID элемента.
-// shortcut: при замене баннера ссылку добавить сюда или завести в ИБ 5 свойство LINK (строка) — оно в приоритете.
+// shortcut: при замене баннера ссылку добавить сюда или завести в ИБ 5 свойство LINK (строка) — оно в приоритете; без ссылки баннер без кнопки.
 $banners = array(
 	52 => array('', 'Большой ассортимент новогодних товаров и игрушек 2027'),
 	14931 => array('/catalog/myagkie-igrushki/', 'Мягкие игрушки для детей оптом'),
@@ -41,12 +41,8 @@ $banners = array(
 			if ($link === '' && isset($banners[$arItem['ID']])) $link = $banners[$arItem['ID']][0];
 			$alt = isset($banners[$arItem['ID']]) ? $banners[$arItem['ID']][1] : $arItem['NAME'];
 			?>
-			<? if($link !== ''){ ?>
+			<? if($link !== ''){ // без ссылки кнопку не выводим (решение 19.11) ?>
 			<a href="<?=htmlspecialcharsbx($link)?>" class="btn-main btn-main_page">СМОТРЕТЬ ТОВАРЫ</a>
-			<? }elseif(true || $USER->IsAuthorized()){ ?>
-			<a href="#callback_my" class="btn-main btn-main_page fancybox">СВЯЗАТЬСЯ С МЕНЕДЖЕРОМ</a>
-			<? }else{ ?>
-			<a href="#opt_price" class="btn-main btn-main_page fancybox">ЗАПРОСИТЬ ОПТОВЫЙ ПРАЙС</a>
 			<? } ?>
 			<?=($link !== '' ? '<a href="'.htmlspecialcharsbx($link).'" class="item-billbord__image">' : '<div class="item-billbord__image">')?>
 				<img alt="<?=htmlspecialcharsbx($alt)?>" src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>">
