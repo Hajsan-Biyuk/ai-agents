@@ -12,7 +12,7 @@ $skUniq = function ($key) use ($skOffers) {
 };
 $skCoats = $skUniq('coat');
 $skThicks = $skUniq('thick');
-natsort($skThicks);
+usort($skThicks, function ($a, $b) { return (float)str_replace(',', '.', $a) <=> (float)str_replace(',', '.', $b); }); // 0.4 < 0.45 < 0.5 (natsort ставил 0.45 после 0.5)
 $skData = array(
 	'name' => $arResult['NAME'],
 	'measure' => $skMeasure,
