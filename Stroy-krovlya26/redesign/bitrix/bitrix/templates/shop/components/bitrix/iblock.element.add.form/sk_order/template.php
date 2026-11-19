@@ -11,7 +11,7 @@ $val = function ($code) use ($arResult) {
 	<?= bitrix_sessid_post() ?>
 	<input type="hidden" name="PROPERTY[270][0]" value="<?= htmlspecialcharsbx($_SERVER['HTTP_HOST'] . $GLOBALS['APPLICATION']->GetCurPage()) ?>">
 	<input type="hidden" name="iblock_submit" value="Получить расчет">
-	<p class="sk-form__title">Быстрый расчёт стоимости кровли</p>
+	<p class="sk-form__title"><?= sk_home('FORM_TITLE', 'Быстрый расчёт стоимости кровли') ?></p>
 	<?php if (!empty($arResult['ERRORS'])): ?>
 	<p class="sk-form__error" role="alert"><?= implode('<br>', $arResult['ERRORS']) ?></p>
 	<?php endif; ?>

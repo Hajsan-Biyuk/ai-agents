@@ -16,7 +16,10 @@ $skTelText = '+7 (8652) 33-40-41';
 				<img src="<?= SK_PATH ?>/img/ic-burger.svg" alt="" width="24" height="24">
 			</button>
 			<ul class="sk-header__list">
-<?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_topmenu.php', array(), array('MODE' => 'php')); ?>			</ul>
+<?php foreach (sk_home_list('TOP_MENU') as $m): ?>
+				<li class="sk-header__item"><a class="sk-header__link" href="<?= $m['desc'] ?: '#' ?>"><?= $m['text'] ?></a></li>
+			<?php endforeach; ?>
+			</ul>
 
 			<div class="sk-menu" id="sk-menu" aria-hidden="true">
 				<div class="sk-menu__panel">

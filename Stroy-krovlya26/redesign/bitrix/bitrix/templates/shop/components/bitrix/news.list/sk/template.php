@@ -9,7 +9,11 @@ $edit = function ($it) {
 	return $this->GetEditAreaId($it['ID']);
 };
 $img = function ($pic, $w, $h) {
-	return is_array($pic) ? Pict::getResizeWebpSrc($pic, $w, $h) : '';
+	if (!is_array($pic)) return '';
+	// Pict не умеет webp-исходники (возвращает пусто) — тогда штатный ресайз Битрикса
+	$src = Pict::getResizeWebpSrc($pic, $w, $h);
+	if (!$src) { $r = CFile::ResizeImageGet($pic, array('width' => $w, 'height' => $h), BX_RESIZE_IMAGE_PROPORTIONAL); $src = $r['src']; }
+	return $src;
 };
 
 if ($view === 'stats'): ?>
@@ -27,7 +31,7 @@ if ($view === 'stats'): ?>
 <ol class="sk-steps__list">
 	<?php foreach (array_values($items) as $i => $it): ?>
 	<li class="sk-step" id="<?= $edit($it) ?>">
-		<div class="sk-step__media"><img src="<?= SK_PATH ?>/img/step-<?= min($i + 1, 4) ?>.webp" alt="" width="375" height="375" loading="lazy"></div>
+		<div class="sk-step__media"><img src="<?= $img($it['DETAIL_PICTURE'], 375, 375) ?: SK_PATH . '/img/step-' . min($i + 1, 4) . '.webp' ?>" alt="" width="375" height="375" loading="lazy"></div>
 		<div class="sk-step__body">
 			<span class="sk-step__num"><?= sprintf('%02d', $i + 1) ?></span>
 			<h3 class="sk-step__title"><?= $it['NAME'] ?></h3>

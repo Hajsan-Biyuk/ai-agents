@@ -22,7 +22,7 @@ $word = function ($n) {
 <?php foreach ($roots as $s):
 	$this->AddEditAction($s['ID'], $s['EDIT_LINK'], CIBlock::GetArrayByID($s['IBLOCK_ID'], 'SECTION_EDIT'));
 	$n = isset($cnt[$s['ID']]) ? $cnt[$s['ID']] : 0;
-	$img = isset($pics[$s['CODE']]) ? SK_PATH . '/img/cat-' . $pics[$s['CODE']] . '.webp' : (!empty($s['PICTURE']['SRC']) ? $s['PICTURE']['SRC'] : '');
+	$img = !empty($s['DETAIL_PICTURE']) ? CFile::GetPath(is_array($s['DETAIL_PICTURE']) ? $s['DETAIL_PICTURE']['ID'] : $s['DETAIL_PICTURE']) : (isset($pics[$s['CODE']]) ? SK_PATH . '/img/cat-' . $pics[$s['CODE']] . '.webp' : (!empty($s['PICTURE']['SRC']) ? $s['PICTURE']['SRC'] : ''));
 ?>
 	<li class="sk-cat" id="<?= $this->GetEditAreaId($s['ID']) ?>">
 		<a class="sk-cat__img" href="<?= $s['SECTION_PAGE_URL'] ?>" tabindex="-1" aria-hidden="true"><?php if ($img): ?><img src="<?= $img ?>" alt="" width="302" height="249" loading="lazy"><?php endif; ?></a>

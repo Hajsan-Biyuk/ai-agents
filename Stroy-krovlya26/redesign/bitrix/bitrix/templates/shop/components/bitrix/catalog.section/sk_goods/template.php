@@ -22,6 +22,7 @@ $brands = array();
 		$brands[$brandId] = $b ? $b['NAME'] : '';
 	}
 	$img = $el['PREVIEW_PICTURE'] ? Pict::getResizeWebpSrc($el['PREVIEW_PICTURE'], 500, 500) : '';
+	if (!$img && $el['PREVIEW_PICTURE']) { $r = CFile::ResizeImageGet($el['PREVIEW_PICTURE'], array('width' => 500, 'height' => 500), BX_RESIZE_IMAGE_PROPORTIONAL); $img = $r['src']; } // webp-исходник
 	$inStock = $p['NALICHIE']['VALUE'] && $p['NALICHIE']['VALUE_ENUM_ID'] == '30';
 ?>
 	<li class="sk-good" id="<?= $this->GetEditAreaId($el['ID']) ?>">

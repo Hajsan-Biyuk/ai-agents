@@ -47,3 +47,5 @@ body.sk-menu-open { overflow: hidden; }
 .sk-modal.fancybox-content .fancybox-close-small::after { transform: rotate(-45deg); }
 /* Толщина есть только у другого покрытия: бледная, но нажимается (переключит покрытие) */
 .sk-scope .sk-variants__opt.is-other { border-style: dashed; color: var(--sk-gray); }
+/* Кнопка «Редактировать главную» — только администратору в режиме правки */
+.sk-home-edit { position: fixed; right: 16px; bottom: 90px; z-index: 1000; padding: 10px 16px; border-radius: 10px; background: #2B2B2B; color: #fff !important; font: 600 14px/1 var(--sk-font); text-decoration: none; box-shadow: 0 4px 16px rgba(0,0,0,.25); }

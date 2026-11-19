@@ -14,7 +14,7 @@ $skList = function ($iblock, $view, $count, array $extra = array()) {
 		'SET_TITLE' => 'N', 'SET_BROWSER_TITLE' => 'N', 'SET_META_KEYWORDS' => 'N', 'SET_META_DESCRIPTION' => 'N',
 		'SET_LAST_MODIFIED' => 'N', 'SET_STATUS_404' => 'N', 'INCLUDE_IBLOCK_INTO_CHAIN' => 'N', 'ADD_SECTIONS_CHAIN' => 'N',
 		'DISPLAY_TOP_PAGER' => 'N', 'DISPLAY_BOTTOM_PAGER' => 'N', 'PREVIEW_TRUNCATE_LEN' => '',
-		'SK_VIEW' => $view,
+		'SK_VIEW' => $view, 'SK_V' => SK_V, // смена версии сбрасывает кеш блоков
 	), $extra), false, array('HIDE_ICONS' => 'Y'));
 };
 $skGoods = function ($sticker) {
@@ -28,33 +28,37 @@ $skGoods = function ($sticker) {
 		'CACHE_TYPE' => 'A', 'CACHE_TIME' => '36000', 'CACHE_FILTER' => 'Y', 'CACHE_GROUPS' => 'N',
 		'SET_TITLE' => 'N', 'SET_BROWSER_TITLE' => 'N', 'SET_META_KEYWORDS' => 'N', 'SET_META_DESCRIPTION' => 'N',
 		'SET_STATUS_404' => 'N', 'ADD_SECTIONS_CHAIN' => 'N', 'DISPLAY_TOP_PAGER' => 'N', 'DISPLAY_BOTTOM_PAGER' => 'N',
-		'BROWSER_TITLE' => '-', 'COMPATIBLE_MODE' => 'Y', 'SEF_MODE' => 'N',
+		'BROWSER_TITLE' => '-', 'COMPATIBLE_MODE' => 'Y', 'SEF_MODE' => 'N', 'SK_V' => SK_V,
 	), false, array('HIDE_ICONS' => 'Y'));
 };
 $tabs = array('sale' => 'Акция', 'recommend' => 'Рекомендуем', 'hit' => 'Хит', 'new' => 'Новинка');
 $tabNames = array('sale' => 'Акции', 'recommend' => 'Рекомендуем', 'hit' => 'Хит', 'new' => 'Новинка');
 ?>
 <main class="sk-scope sk-main">
+	<?= sk_home_edit_button() ?>
 
 	<section class="sk-hero">
-		<img class="sk-hero__bg" src="<?= SK_PATH ?>/img/hero.webp" alt="" width="1672" height="834" fetchpriority="high">
+		<img class="sk-hero__bg" src="<?= htmlspecialcharsbx(sk_home('HERO_IMAGE', SK_PATH . '/img/hero.webp')) ?>" alt="" width="1672" height="834" fetchpriority="high">
 		<div class="sk-container sk-hero__inner">
 			<div class="sk-hero__content">
 				<div class="sk-hero__top">
-					<div class="sk-hero__badge"><img src="<?= SK_PATH ?>/img/ic-badge.svg" alt="" width="24" height="24"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_hero_badge.php', array(), array('MODE' => 'text')); ?></div>
+					<div class="sk-hero__badge"><img src="<?= SK_PATH ?>/img/ic-badge.svg" alt="" width="24" height="24"><?= sk_home('HERO_BADGE', 'СтройКровля · Ставрополь') ?></div>
 					<div class="sk-hero__text">
-						<p class="sk-hero__title"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_hero_title.php', array(), array('MODE' => 'text')); ?></p>
-						<p class="sk-hero__descr"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_hero_descr.php', array(), array('MODE' => 'text')); ?></p>
+						<p class="sk-hero__title"><?= sk_home('HERO_TITLE', 'Кровля под ваш дом — без ошибок в комплектации') ?></p>
+						<p class="sk-hero__descr"><?= sk_home('HERO_DESCR', '') ?></p>
 					</div>
 					<ul class="sk-hero__chips">
-<?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_hero_chips.php', array(), array('MODE' => 'php')); ?>					</ul>
+<?php foreach (sk_home_list('HERO_CHIPS') as $c): ?>
+						<li class="sk-hero__chip"><?= $c['text'] ?></li>
+					<?php endforeach; ?>
+					</ul>
 				</div>
 				<div class="sk-hero__bottom">
 					<div class="sk-hero__btns">
-						<a class="sk-btn sk-btn--wide sk-js-scroll" href="#sk-calc">Получить расчёт за 15 минут</a>
-						<a class="sk-btn sk-btn--glass" href="tel:+78652334041" onclick="if(window.ym)ym(38770565,'reachGoal','Perehod_po_nomeru_telefona');">Позвонить</a>
+						<a class="sk-btn sk-btn--wide sk-js-scroll" href="#sk-calc"><?= sk_home('HERO_BTN_CALC', 'Получить расчёт за 15 минут') ?></a>
+						<a class="sk-btn sk-btn--glass" href="tel:+78652334041" onclick="if(window.ym)ym(38770565,'reachGoal','Perehod_po_nomeru_telefona');"><?= sk_home('HERO_BTN_CALL', 'Позвонить') ?></a>
 					</div>
-					<p class="sk-hero__facts"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_hero_facts.php', array(), array('MODE' => 'html')); ?></p>
+					<p class="sk-hero__facts"><?= sk_home('HERO_FACTS', '') ?></p>
 				</div>
 			</div>
 
@@ -74,8 +78,8 @@ $tabNames = array('sale' => 'Акции', 'recommend' => 'Рекомендуем
 	<section class="sk-section sk-about">
 		<div class="sk-container sk-about__inner">
 			<div class="sk-about__text">
-				<h2 class="sk-h2"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/stats-title.php', array(), array('MODE' => 'text')); ?></h2>
-				<div class="sk-about__descr"><p><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/stats-text.php', array(), array('MODE' => 'text')); ?></p></div>
+				<h2 class="sk-h2"><?= sk_home('ABOUT_TITLE', 'Почему кровлю покупают у нас') ?></h2>
+				<div class="sk-about__descr"><p><?= sk_home('ABOUT_TEXT', '') ?></p></div>
 			</div>
 			<?php $skList(16, 'stats', 4); ?>
 		</div>
@@ -84,17 +88,17 @@ $tabNames = array('sale' => 'Акции', 'recommend' => 'Рекомендуем
 	<section class="sk-section sk-section--gray sk-catalog sk-js-tabs">
 		<div class="sk-container">
 			<div class="sk-section__head">
-				<h2 class="sk-h3">Каталог</h2>
+				<h2 class="sk-h3"><?= sk_home('CATALOG_TITLE', 'Каталог') ?></h2>
 				<div class="sk-tabs" role="tablist">
-					<button class="sk-tabs__btn is-active" type="button" role="tab" aria-selected="true" aria-controls="sk-cat-materials" id="sk-cat-materials-tab">По материалам</button>
-					<button class="sk-tabs__btn" type="button" role="tab" aria-selected="false" aria-controls="sk-cat-brands" id="sk-cat-brands-tab">По брендам</button>
+					<button class="sk-tabs__btn is-active" type="button" role="tab" aria-selected="true" aria-controls="sk-cat-materials" id="sk-cat-materials-tab"><?= sk_home('TAB_MATERIALS', 'По материалам') ?></button>
+					<button class="sk-tabs__btn" type="button" role="tab" aria-selected="false" aria-controls="sk-cat-brands" id="sk-cat-brands-tab"><?= sk_home('TAB_BRANDS', 'По брендам') ?></button>
 				</div>
 			</div>
 			<div class="sk-tabs__panel is-active" id="sk-cat-materials" role="tabpanel" aria-labelledby="sk-cat-materials-tab">
 				<?php $APPLICATION->IncludeComponent('bitrix:catalog.section.list', 'sk_cats', array(
 					'IBLOCK_TYPE' => 'catalog', 'IBLOCK_ID' => '17', 'SECTION_ID' => '', 'SECTION_CODE' => '', 'COUNT_ELEMENTS' => 'N',
-					'TOP_DEPTH' => '2', 'SECTION_FIELDS' => array(), 'SECTION_USER_FIELDS' => array(), 'SECTION_URL' => '',
-					'CACHE_TYPE' => 'A', 'CACHE_TIME' => '86400', 'CACHE_GROUPS' => 'N', 'ADD_SECTIONS_CHAIN' => 'N',
+					'TOP_DEPTH' => '2', 'SECTION_FIELDS' => array('DETAIL_PICTURE'), 'SECTION_USER_FIELDS' => array(), 'SECTION_URL' => '',
+					'CACHE_TYPE' => 'A', 'CACHE_TIME' => '86400', 'CACHE_GROUPS' => 'N', 'ADD_SECTIONS_CHAIN' => 'N', 'SK_V' => SK_V,
 				), false, array('HIDE_ICONS' => 'Y')); ?>
 			</div>
 			<div class="sk-tabs__panel" id="sk-cat-brands" role="tabpanel" aria-labelledby="sk-cat-brands-tab" hidden>
@@ -106,18 +110,18 @@ $tabNames = array('sale' => 'Акции', 'recommend' => 'Рекомендуем
 	<section class="sk-section sk-section--dark sk-steps">
 		<div class="sk-container">
 			<div class="sk-steps__head">
-				<h2 class="sk-h2"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/stage-title.php', array(), array('MODE' => 'text')); ?></h2>
-				<p class="sk-lead"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/stage-text.php', array(), array('MODE' => 'text')); ?></p>
+				<h2 class="sk-h2"><?= sk_home('STEPS_TITLE', 'Как мы работаем') ?></h2>
+				<p class="sk-lead"><?= sk_home('STEPS_TEXT', '') ?></p>
 			</div>
-			<?php $skList(18, 'stages', 4); ?>
-			<a class="sk-btn sk-btn--wide" data-fancybox data-type="ajax" data-src="/include/order-call.php" href="javascript:;" onclick="if(window.ym)ym(38770565,'reachGoal','Poluchit_konsultaciyu');">Получить консультацию</a>
+			<?php $skList(18, 'stages', 4, array('FIELD_CODE' => array('DETAIL_PICTURE'))); ?>
+			<a class="sk-btn sk-btn--wide" data-fancybox data-type="ajax" data-src="/include/order-call.php" href="javascript:;" onclick="if(window.ym)ym(38770565,'reachGoal','Poluchit_konsultaciyu');"><?= sk_home('STEPS_BTN', 'Получить консультацию') ?></a>
 		</div>
 	</section>
 
 	<section class="sk-section sk-section--gray sk-products sk-js-tabs">
 		<div class="sk-container">
 			<div class="sk-section__head">
-				<h2 class="sk-h3">Каталог</h2>
+				<h2 class="sk-h3"><?= sk_home('GOODS_TITLE', 'Каталог') ?></h2>
 				<div class="sk-tabs" role="tablist">
 					<?php $first = true; foreach ($tabNames as $k => $name): ?>
 					<button class="sk-tabs__btn<?= $first ? ' is-active' : '' ?>" type="button" role="tab" aria-selected="<?= $first ? 'true' : 'false' ?>" aria-controls="sk-prod-<?= $k ?>" id="sk-prod-<?= $k ?>-tab"><?= $name ?></button>
@@ -135,8 +139,8 @@ $tabNames = array('sale' => 'Акции', 'recommend' => 'Рекомендуем
 	<section class="sk-section sk-objects">
 		<div class="sk-container">
 			<div class="sk-objects__head">
-				<h2 class="sk-h2"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_objects_title.php', array(), array('MODE' => 'text')); ?></h2>
-				<p class="sk-lead"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_objects_text.php', array(), array('MODE' => 'text')); ?></p>
+				<h2 class="sk-h2"><?= sk_home('OBJECTS_TITLE', 'Наши объекты') ?></h2>
+				<p class="sk-lead"><?= sk_home('OBJECTS_TEXT', '') ?></p>
 			</div>
 			<?php $skList(11, 'portfolio', 5); ?>
 		</div>
@@ -145,12 +149,13 @@ $tabNames = array('sale' => 'Акции', 'recommend' => 'Рекомендуем
 	<section class="sk-section sk-section--gray sk-seo">
 		<div class="sk-container sk-seo__inner">
 			<div class="sk-seo__main">
-				<h1 class="sk-h3 sk-seo__title"><?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_seo_title.php', array(), array('MODE' => 'html')); ?></h1>
+				<h1 class="sk-h3 sk-seo__title"><?= sk_home('SEO_TITLE', 'Кровельные и фасадные материалы в Ставрополе') ?></h1>
 				<div class="sk-seo__text">
-<?php $APPLICATION->IncludeFile(SITE_DIR . 'include/sk_seo_text.php', array(), array('MODE' => 'html')); ?>				</div>
+<?= sk_home('SEO_TEXT', '') ?>
+				</div>
 				<div class="sk-seo__btns">
-					<a class="sk-btn sk-btn--wide sk-js-scroll" href="#sk-calc">Получить расчет кровли</a>
-					<a class="sk-btn sk-btn--dark" href="/prays-listy/">Скачать прайс <img src="<?= SK_PATH ?>/img/ic-arrow-down.svg" alt="" width="24" height="24"></a>
+					<a class="sk-btn sk-btn--wide sk-js-scroll" href="#sk-calc"><?= sk_home('SEO_BTN_CALC', 'Получить расчет кровли') ?></a>
+					<a class="sk-btn sk-btn--dark" href="<?= sk_home('SEO_PRICE_LINK', '/prays-listy/') ?>"><?= sk_home('SEO_BTN_PRICE', 'Скачать прайс') ?> <img src="<?= SK_PATH ?>/img/ic-arrow-down.svg" alt="" width="24" height="24"></a>
 				</div>
 			</div>
 			<?php $GLOBALS['skPromoFilter'] = array('PROPERTY_TYPE_VALUE' => 'Акция'); // акции = статьи с типом «Акция», как на старой главной
