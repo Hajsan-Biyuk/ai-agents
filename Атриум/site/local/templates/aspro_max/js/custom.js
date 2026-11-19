@@ -520,3 +520,32 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (e.target && e.target.name === 'USER_LOGIN') fix(e.target);
 	}, true);
 })();
+
+// Телефон из автозаполнения или вставки («+79784445544») обходит маску, и проверка Аспро пишет «неверный формат».
+// Приводим номер к маске +7 (999) 999-99-99 до проверки (capture-фаза идёт раньше обработчиков поля).
+(function () {
+	function masked(v) {
+		var d = (v || '').replace(/\D+/g, '');
+		if (d.length === 11 && (d[0] === '7' || d[0] === '8')) d = d.slice(1);
+		else if (!(d.length === 10 && '3489'.indexOf(d[0]) !== -1)) return null;
+		return '+7 (' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6, 8) + '-' + d.slice(8);
+	}
+	function isPhone(el) {
+		return el && el.tagName === 'INPUT' && el.name !== 'USER_LOGIN' &&
+			(el.type === 'tel' || el.autocomplete === 'tel' || /(^|\s)phone(_input)?(\s|$)/.test(el.className));
+	}
+	function fix(el) {
+		if (!isPhone(el)) return;
+		var m = masked(el.value);
+		if (m && m !== el.value) el.value = m;
+	}
+	['change', 'blur', 'paste'].forEach(function (type) {
+		document.addEventListener(type, function (e) {
+			var el = e.target;
+			type === 'paste' ? setTimeout(function () { fix(el); }, 0) : fix(el);
+		}, true);
+	});
+	document.addEventListener('submit', function (e) {
+		if (e.target && e.target.querySelectorAll) [].forEach.call(e.target.querySelectorAll('input'), fix);
+	}, true);
+})();
