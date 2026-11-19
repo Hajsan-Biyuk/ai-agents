@@ -732,12 +732,14 @@
 }
 @media (max-width:991px){
 	.lam-home .lam-hero__art--shapes{display:none;}
-	.lam-home .lam-hero__slides{position:static;}
-	.lam-home .lam-hero__slide{position:static;display:none;opacity:1;visibility:visible;transition:none;}
-	.lam-home .lam-hero__slide.is-active{display:flex;flex-direction:column;}
+	/* все слайды в одной ячейке сетки: высота = самый высокий слайд, страница не прыгает при смене */
+	.lam-home .lam-hero__slides{position:static;display:grid;}
+	.lam-home .lam-hero__slide{position:relative;grid-area:1/1;display:flex;flex-direction:column;}
+	.lam-home .lam-hero__slide .lam-hero__art{margin-top:auto;}
 	.lam-home .lam-hero__swatches-wrap{position:static;padding:24px;}
 	.lam-home .lam-hero__dots{position:static;justify-content:center;align-self:center;margin:0 0 20px;background:#F4F5F7;box-shadow:none;}
 }
 @media (max-width:575px){
 	.lam-home .lam-hero__swatches-wrap{padding:20px 16px;}
+	.lam-home .lam-label--yellow{font-size:16px;}
 }
