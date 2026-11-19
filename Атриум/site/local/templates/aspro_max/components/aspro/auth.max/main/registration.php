@@ -17,7 +17,7 @@ use \Bitrix\Main\Config\Option;
 	<?
 	// default fields, that you can change
 	$arShowFields = array("LOGIN", "LAST_NAME", "NAME", "SECOND_NAME", "EMAIL", "PERSONAL_PHONE");
-	$arRequiredFields = array("NAME");
+	$arRequiredFields = array("NAME", "PERSONAL_PHONE");
 	$useBackUrl = 'Y';
 
 	if( Option::get('main', 'new_user_phone_required', 'N', SITE_ID) == 'Y' ) {
@@ -56,6 +56,26 @@ use \Bitrix\Main\Config\Option;
 		if($bPhoneAuthRequired){
 			$arRequiredFields[] = "PERSONAL_PHONE";
 		}
+	}
+	?>
+	<?
+	// Без e-mail логин = телефон 7XXXXXXXXXX (Аспро ставит логин = e-mail только при заполненной почте).
+	if(!function_exists('atriumPhoneLoginOnRegister')){
+		function atriumPhoneLoginOnRegister(&$arFields){
+			if(trim((string)$arFields['EMAIL']) !== '')
+				return;
+			$d = preg_replace('/\D+/', '', (string)$arFields['PERSONAL_PHONE']);
+			if(strlen($d) === 11 && $d[0] === '8')
+				$d = '7'.substr($d, 1);
+			if(strlen($d) === 10)
+				$d = '7'.$d;
+			if(strlen($d) !== 11 || $d[0] !== '7'){
+				$GLOBALS['APPLICATION']->ThrowException('Укажите телефон полностью: +7 и 10 цифр.');
+				return false;
+			}
+			$arFields['LOGIN'] = $d;
+		}
+		AddEventHandler('main', 'OnBeforeUserRegister', 'atriumPhoneLoginOnRegister', 200);
 	}
 	?>
 	<?$APPLICATION->IncludeComponent(

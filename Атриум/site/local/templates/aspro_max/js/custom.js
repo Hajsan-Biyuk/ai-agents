@@ -5,6 +5,149 @@ It will not be overwritten when you upgrade solution.
 
 
 $(document).ready(function(){
+	function atriumCleanCatalogPageUrl(rawUrl) {
+		if (!rawUrl) {
+			return '';
+		}
+		var clean = String(rawUrl).split('#')[0];
+		clean = clean
+			.replace(/[&?]ajax_get=[^&]*/g, '')
+			.replace(/[&?]AJAX_REQUEST=[^&]*/g, '')
+			.replace(/[&?]clear_cache=[^&]*/g, '')
+			.replace(/[&?]v=[^&]*/g, '')
+			.replace(/[&?]BLOCK=[^&]*/g, '');
+		clean = clean.replace(/\?&/g, '?').replace(/&&+/g, '&').replace(/[?&]$/g, '');
+		return clean.indexOf('PAGEN_') === -1 ? '' : clean;
+	}
+
+	$(document).ajaxSuccess(function (event, xhr, settings) {
+		if (!settings || !document.querySelector('.catalog1 .js_append')) {
+			return;
+		}
+		var data = settings.data;
+		var isLoadMore = false;
+		if (typeof data === 'string') {
+			isLoadMore = data.indexOf('ajax_get=Y') !== -1 || data.indexOf('ajax_get%3DY') !== -1;
+		} else if (data && data.ajax_get === 'Y') {
+			isLoadMore = true;
+		}
+		if (!isLoadMore) {
+			return;
+		}
+		var pageUrl = atriumCleanCatalogPageUrl(settings.url || '');
+		if (!pageUrl) {
+			return;
+		}
+		var current = window.location.pathname + window.location.search;
+		if (pageUrl === current || !window.history || !history.pushState) {
+			return;
+		}
+		history.pushState({ atriumCatalogPage: true }, '', pageUrl);
+	});
+
+	window.addEventListener('popstate', function () {
+		if (document.querySelector('.catalog1 .js_append')) {
+			window.location.reload();
+		}
+	});
+
+	document.addEventListener('click', function(e) {
+		var el = e.target && e.target.nodeType === 1 ? e.target : (e.target && e.target.parentElement);
+		if (!el || !el.closest) {
+			return;
+		}
+		var btn = el.closest('.ajax_load_btn');
+		if (!btn || !btn.closest('.js-load-block')) {
+			return;
+		}
+
+		var $btn = $(btn);
+		var $block = $btn.closest('.js-load-block');
+		var $nav = $btn.closest('.bottom_nav');
+		var nextUrl = $nav.find('a.flex-next').attr('href') || $nav.find('.flex-next').attr('href');
+		var $appendTo = $block.find('.js_append').first();
+		if (!nextUrl || !$appendTo.length) {
+			return;
+		}
+
+		e.preventDefault();
+		e.stopImmediatePropagation();
+
+		var $text = $btn.find('.more_text_ajax');
+		if ($text.hasClass('loading')) {
+			return;
+		}
+
+		$text.addClass('loading');
+		$.ajax({
+			url: nextUrl,
+			data: {
+				ajax_get: 'Y',
+				AJAX_REQUEST: 'Y',
+				BLOCK: $block.data('block') || 'assoc'
+			},
+			success: function(html) {
+				var $wrap = $('<div>').append($.parseHTML(html, document, false));
+				$wrap.find('.item_block').each(function() {
+					$appendTo.append(this);
+				});
+				$appendTo.find('.wrap_nav, .bottom_nav_wrapper').remove();
+
+				var $newNav = $wrap.find('.bottom_nav').first();
+				if ($newNav.length && $newNav.find('.ajax_load_btn').length) {
+					$nav.html($newNav.html());
+				} else {
+					$nav.remove();
+				}
+
+				$text.removeClass('loading');
+				if (typeof sliceItemBlock === 'function') {
+					sliceItemBlock();
+				}
+			},
+			error: function() {
+				$text.removeClass('loading');
+			}
+		});
+	}, true);
+
+	$(document).on('click', '.js-buy-product', function(e){
+		if(!$(this).hasClass('js-buy-product')) return;
+		e.preventDefault();
+		
+		var   $product = $(this).parents('[product_id]')
+			, product_id = $product.attr('product_id')
+			, quantity = parseInt($product.find('.quantity-block__num').val()) || 1
+		;
+		$.ajax({
+			url: '/local/tools/ajax.php',
+			method: 'GET',
+			data: {
+				action: 'buy-product',
+				product_id: product_id,
+				quantity: quantity,
+			},
+			success: function(reply){
+				if(reply.status == 'error'){
+					alert(reply.msg);
+					console.log(reply);
+				}
+				else{
+					BX.onCustomEvent('OnBasketChange');
+				}
+			}
+		});
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	//Попап менеджер FancyBox
 Fancybox.bind("[data-fancybox]", {
@@ -51,13 +194,21 @@ $('.list-features').each(function () {
             $btn.insertAfter($list);
 
             $btn.on('click', function (e) {
-                 e.preventDefault();
-                if ($btn.hasClass('is-open')) {
-                    $items.slice(limit).slideUp(200);
-                } else {
-                    $items.slice(limit).slideDown(200);
-                     $btn.hide();
-                }
+                e.preventDefault();
+				
+				$('.tab-content .tab-pane').not('#props').removeClass('active').removeClass('show');
+				$('[href="#props"]').click();
+				$('[href="#props"]').parent().click();
+				
+				var targetOffset = $('#props').offset().top;
+				$('html, body').animate({scrollTop: targetOffset - 200}, 600);
+				
+                // if ($btn.hasClass('is-open')) {
+                    // $items.slice(limit).slideUp(200);
+                // } else {
+                    // $items.slice(limit).slideDown(200);
+                     // $btn.hide();
+                // }
             });
         }
     });
@@ -88,7 +239,8 @@ $('.list-features').each(function () {
 document.querySelectorAll('.swiper--billbord').forEach(function(element) {
   var swiper = new Swiper(element, {
   
-    loop: true,        
+    loop: true,
+    autoHeight: true,
     
 navigation: {
       nextEl: element.querySelector('.swiper-button-next'),
@@ -100,6 +252,30 @@ navigation: {
       delay: 4000,  
     },
   });
+  element.querySelectorAll('.billbord-img--mobile').forEach(function(img) {
+    var src = img.getAttribute('data-src') || img.getAttribute('src') || '';
+    if (!src || src.indexOf('data:image') === 0) {
+      img.remove();
+      return;
+    }
+    var probe = new Image();
+    probe.onload = function() {
+      if (!probe.naturalWidth) {
+        img.remove();
+        swiper.updateAutoHeight(0);
+        return;
+      }
+      img.setAttribute('src', src);
+      img.classList.add('is-loaded');
+      swiper.updateAutoHeight(0);
+    };
+    probe.onerror = function() {
+      img.remove();
+      swiper.updateAutoHeight(0);
+    };
+    probe.src = src;
+  });
+  swiper.updateAutoHeight(0);
 });
 
   document.querySelectorAll('.swiper--catalog').forEach(function(element) {
@@ -312,4 +488,35 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   }
+
+	$(document).on('click', '.fixed-buttons__toggle', function () {
+		var $wrap = $(this).closest('.fixed-buttons');
+		var $extra = $wrap.find('.fixed-buttons__extra');
+		var open = !$wrap.hasClass('is-open');
+		$wrap.toggleClass('is-open', open);
+		$(this).attr('aria-expanded', open ? 'true' : 'false');
+		$extra.attr('aria-hidden', open ? 'false' : 'true');
+	});
 });
+
+// Вход по телефону: у клиентов без e-mail логин = 7XXXXXXXXXX, приводим введённый номер к этому виду.
+(function () {
+	function phoneLogin(v) {
+		if (!/^[\d\s()+\-]{10,}$/.test(v.trim())) return null;
+		var d = v.replace(/\D+/g, '');
+		if (d.length === 11 && d[0] === '8') d = '7' + d.slice(1);
+		if (d.length === 10) d = '7' + d;
+		return d.length === 11 && d[0] === '7' ? d : null;
+	}
+	function fix(input) {
+		var d = phoneLogin(input.value || '');
+		if (d) input.value = d;
+	}
+	document.addEventListener('submit', function (e) {
+		var input = e.target && e.target.querySelector && e.target.querySelector('input[name="USER_LOGIN"]');
+		if (input) fix(input);
+	}, true);
+	document.addEventListener('change', function (e) {
+		if (e.target && e.target.name === 'USER_LOGIN') fix(e.target);
+	}, true);
+})();
