@@ -14,6 +14,22 @@ if (!function_exists('lam_price_format')) {
 		return number_format($value, (floor($value) == $value ? 0 : 2), ',', ' ') . ' ₽';
 	}
 }
+if (!function_exists('lam_discount_until')) {
+	/** Конец ближайшей действующей скидки на товар (unix) — так же, как считает каталог Аспро (catalog_block). 0 — без срока. */
+	function lam_discount_until($productId, $priceId = null)
+	{
+		if (!class_exists('CCatalogDiscount')) return 0;
+		$until = 0;
+		$list = CCatalogDiscount::GetDiscountByProduct($productId, array(2), 'N', $priceId ? array($priceId) : array(), SITE_ID);
+		foreach ((array)$list as $d) {
+			if (!empty($d['ACTIVE_TO'])) {
+				$ts = MakeTimeStamp($d['ACTIVE_TO']);
+				if ($ts > 0 && ($until === 0 || $ts < $until)) $until = $ts;
+			}
+		}
+		return $until;
+	}
+}
 if (!function_exists('lam_measure_symbol')) {
 	function lam_measure_symbol($measureId)
 	{
@@ -107,9 +123,32 @@ foreach ($arResult['ITEMS'] as $arItem):
 			<?php endif; ?>
 			<?php if ($price): ?>
 				<div class="lam-card__prices">
-					<div class="lam-card__price"><?=empty($arItem['OFFERS']) ? '' : 'от '?><?=lam_price_format($price['DISCOUNT_VALUE'])?><?=$measure?></div>
-					<?php if ($price['DISCOUNT_VALUE'] < $price['VALUE']): ?>
-						<div class="lam-card__old-price"><span class="lam-visually-hidden">Старая цена: </span><?=lam_price_format($price['VALUE'])?><?=$measure?></div>
+					<div class="lam-card__price-row">
+						<div class="lam-card__price"><?=empty($arItem['OFFERS']) ? '' : 'от '?><?=lam_price_format($price['DISCOUNT_VALUE'])?><?=$measure?></div>
+						<?php if ($price['DISCOUNT_VALUE'] < $price['VALUE']): ?>
+							<s class="lam-card__old-price"><span class="lam-visually-hidden">Старая цена: </span><?=lam_price_format($price['VALUE'])?></s>
+						<?php endif; ?>
+					</div>
+					<?php if ($price['DISCOUNT_VALUE'] < $price['VALUE']):
+						$lamDiff = $price['VALUE'] - $price['DISCOUNT_VALUE'];
+						$lamPct = !empty($price['DISCOUNT_DIFF_PERCENT']) ? (float)$price['DISCOUNT_DIFF_PERCENT'] : round($lamDiff / $price['VALUE'] * 100);
+						$lamUntil = lam_discount_until($arItem['ID'], $price['PRICE_ID'] ?? null);
+					?>
+						<div class="lam-card__sale">
+							<span class="lam-card__sale-pct">−<?=$lamPct?>%</span>
+							<span class="lam-card__sale-save">Экономия <?=lam_price_format($lamDiff)?></span>
+						</div>
+						<?php if ($lamUntil > time()): ?>
+							<div class="lam-card__timer" data-lam-until="<?=$lamUntil?>">
+								<span class="lam-card__timer-title">До конца акции</span>
+								<span class="lam-card__timer-boxes" aria-hidden="true">
+									<span class="lam-card__timer-box"><b data-lam-d>—</b><span data-lam-dl>дней</span></span>
+									<span class="lam-card__timer-box"><b data-lam-h>—</b><span>час.</span></span>
+									<span class="lam-card__timer-box"><b data-lam-m>—</b><span>мин.</span></span>
+								</span>
+								<span class="lam-visually-hidden">до <?=date('d.m.Y', $lamUntil)?></span>
+							</div>
+						<?php endif; ?>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>

@@ -125,6 +125,35 @@
 		play();
 	});
 
+	/* ---------- Таймеры «До конца акции» в карточках: дни / часы / минуты до data-lam-until (unix) ---------- */
+	var timers = document.querySelectorAll('[data-lam-until]');
+	function plural(n, one, few, many) {
+		var m10 = n % 10, m100 = n % 100;
+		if (m10 === 1 && m100 !== 11) return one;
+		if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+		return many;
+	}
+	function pad(n) { return n < 10 ? '0' + n : String(n); }
+	function tick() {
+		var now = Date.now();
+		each(timers, function (t) {
+			var left = Math.floor((parseInt(t.getAttribute('data-lam-until'), 10) * 1000 - now) / 60000);
+			if (left <= 0) {
+				t.hidden = true;
+				return;
+			}
+			var d = Math.floor(left / 1440), h = Math.floor(left % 1440 / 60), m = left % 60;
+			t.querySelector('[data-lam-d]').textContent = d;
+			t.querySelector('[data-lam-dl]').textContent = plural(d, 'день', 'дня', 'дней');
+			t.querySelector('[data-lam-h]').textContent = pad(h);
+			t.querySelector('[data-lam-m]').textContent = pad(m);
+		});
+	}
+	if (timers.length) {
+		tick();
+		setInterval(tick, 30000);
+	}
+
 	/* ---------- Карусели: CSS scroll-snap + стрелки ---------- */
 	// В корне [data-lam-carousel] может быть несколько .lam-track (вкладки) — листаем видимый.
 	function visibleTrack(root) {
