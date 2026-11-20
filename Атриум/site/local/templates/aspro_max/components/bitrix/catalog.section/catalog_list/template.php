@@ -79,6 +79,7 @@
 					$arItem["SHOW_MORE_BUTTON"] = "Y";
 				}
 				$arAddToBasketData = CMax::GetAddToBasketArray($arItem, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], false, $arItemIDs["ALL_ITEM_IDS"], '', $arParams);
+
 				if (function_exists('atriumOboiApplyBasketData')) {
 					atriumOboiApplyBasketData($arAddToBasketData, (int)$arItem['ID']);
 				}
@@ -128,9 +129,9 @@
 					/* */
 
 					$arAddToBasketData = CMax::GetAddToBasketArray($arItem["OFFERS"][$arItem["OFFERS_SELECTED"]], $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], false, $arItemIDs["ALL_ITEM_IDS"], '', $arParams);
-					if (function_exists('atriumOboiApplyBasketData')) {
-						atriumOboiApplyBasketData($arAddToBasketData, (int)$arItem['ID']);
-					}
+									if (function_exists('atriumOboiApplyBasketData')) {
+					atriumOboiApplyBasketData($arAddToBasketData, (int)$arItem['ID']);
+				}
 
 					/* restore IBLOCK_ID */
 					$arItem["OFFERS"][$arItem["OFFERS_SELECTED"]]["IBLOCK_ID"] = $currentSKUIBlock;
@@ -144,8 +145,14 @@
 						<div class="js-item-gallery hidden"><?\Aspro\Functions\CAsproMaxItem::showSectionGallery( array('ITEM' => $arItem, 'RESIZE' => $arResult['CUSTOM_RESIZE_OPTIONS']) );?></div>
 					<?endif;?>
 					<?//image block?>
+					<?
+					require_once $_SERVER['DOCUMENT_ROOT'].'/local/templates/aspro_max/atrium_sale.php';
+					$atrSale = (empty($arItem['OFFERS']) && empty($arItem['ATRIUM_NOT_FOR_SALE'])) ? atriumSaleInfo($arItem['PROPERTIES']['STARAYA_CENA']['VALUE'], $arItem['MIN_PRICE']['DISCOUNT_VALUE'], $arItem['MIN_PRICE']['VALUE']) : null;
+					$atrOldPrice = $atrSale ? $atrSale['OLD'] : (!empty($arItem['OFFERS']) ? $arItem['PROPERTIES']['STARAYA_CENA']['VALUE'] : '');
+					?>
 					<div class="image_block">
 						<div class="image_wrapper_block js-notice-block__image">
+							<?if($atrSale):?><div class="sale_position">- <?=$atrSale['PERCENT']?>%</div><?endif;?>
 							<?\Aspro\Functions\CAsproMaxItem::showStickers($arParams, $arItem, true);?>
 							<?if($arParams['SHOW_GALLERY'] == 'Y'):?>
 								<?if($bUseSkuProps && $arItem["OFFERS"]):?>
@@ -362,8 +369,13 @@
 								<?\Aspro\Functions\CAsproMax::showDiscountCounter($totalCount, $arDiscount, $arQuantityData, $arItem, $strMeasure, 'v2 grey', $item_id);?>
 							<?}?>
 
-							<div class="cost prices clearfix">
-								<?if($arItem["OFFERS"]):?>
+							<div class="<?if($atrOldPrice):?>show_old_price__i <?endif;?><?if($atrSale):?>atr-sale <?endif;?>cost prices clearfix">
+								<?if($atrOldPrice):?>
+									<div class="old_price list_old_prices"><?=CurrencyFormat($atrOldPrice, 'RUB');?></div>
+								<?endif;?>
+								<?if(!empty($arItem['ATRIUM_NOT_FOR_SALE'])):?>
+									<span class="text-bold atrium-not-for-sale">Нет в продаже</span>
+								<?elseif($arItem["OFFERS"]):?>
 									<div class="ce_cmp_hidden">
 										<?=\Aspro\Functions\CAsproMaxItem::showItemPricesDefault($arParams);?>
 										<div class="js_price_wrapper">
@@ -407,6 +419,7 @@
 										<?\Aspro\Functions\CAsproMaxItem::showItemPrices(array_merge($arParams, $addParams), $arItem["PRICES"], $strMeasure, $min_price_id, ($arParams["SHOW_DISCOUNT_PERCENT_NUMBER"] == "Y" ? "N" : "Y"));?>
 									<?endif;?>
 								<?endif;?>
+								<?=atriumSaleEconomyHtml($atrSale);?>
 							</div>
 							<?\Aspro\Functions\CAsproMax::showBonusBlockList($arCurrentSKU ?: $arItem);?>
 

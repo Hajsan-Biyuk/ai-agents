@@ -3323,3 +3323,15 @@ body .counter_block input[type="text"] {
 	margin: 6px 0 0;
 	text-align: center;
 }
+
+/* Карточки: одна скидка — зачёркнутая цена, цена покупки, «Экономия» под ценой (atrium_sale.php, 20.11.2026) */
+.catalog_item .price_matrix_wrapper,
+.simple_price_wrapper .price_matrix_wrapper{flex-wrap:wrap}
+.simple_price_wrapper > .price_matrix_wrapper .price{white-space:nowrap}
+.atr-sale > .price_matrix_wrapper .price.discount,
+.atr-sale > .price_matrix_wrapper .sale_block,
+.atr-sale > .sale_block:not(.atr-sale-block){display:none!important}
+.atr-sale .atr-sale-block{display:block;width:100%;margin:6px 0 0}
+.atr-sale .atr-sale-block .sale-number{display:inline-flex;align-items:stretch;white-space:nowrap}
+.image_wrapper_block{position:relative}
+.image_wrapper_block > .sale_position{position:absolute;top:40px;left:0;z-index:5}

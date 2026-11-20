@@ -825,13 +825,18 @@ reset($arResult['MORE_PHOTO']);
 $countPhoto = count($arResult["MORE_PHOTO"]);
 $viewImgType = $arParams["DETAIL_PICTURE_MODE"];
 $bMagnifier = ($viewImgType == "MAGNIFIER");
+
+require_once $_SERVER['DOCUMENT_ROOT'].'/local/templates/aspro_max/atrium_sale.php';
+$atrSale = (empty($arResult['OFFERS']) && empty($arResult['ATRIUM_NOT_FOR_SALE'])) ? atriumSaleInfo($arResult['PROPERTIES']['STARAYA_CENA']['VALUE'], $arResult['MIN_PRICE']['DISCOUNT_VALUE'], $arResult['MIN_PRICE']['VALUE']) : null;
 ?>
 <div class="slider-wrapper-card">
 
 <div class="wrap-for-slider">
     <?if($arResult["MORE_PHOTO"]):?>
 		<div class="slider-for-wrap">
-			<? if(!empty($arResult['PROPERTIES']['SALE_PERCENT']['VALUE'])){ ?>
+			<? if($atrSale){ ?>
+			<div class="badge-sale">- <?=$atrSale['PERCENT']?>%</div>
+			<? } elseif(!empty($arResult['OFFERS']) && !empty($arResult['PROPERTIES']['SALE_PERCENT']['VALUE'])){ ?>
 			<div class="badge-sale"><?=$arResult['PROPERTIES']['SALE_PERCENT']['VALUE']?></div>
 			<? } ?>
 			<div class="slider-for">
@@ -1133,9 +1138,9 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 										<?else:?>
 
 <? /* простой товар ( цена ) */ ?>
-										<div class="simple_price_wrapper<?if(!empty($arResult['PROPERTIES']['STARAYA_CENA']['VALUE'])):?> show_old_price__i<?endif;?>">
-											<?if(!empty($arResult['PROPERTIES']['STARAYA_CENA']['VALUE'])):?>
-												<div class="old_price"><?=CurrencyFormat($arResult['PROPERTIES']['STARAYA_CENA']['VALUE'], 'RUB');?></div>
+										<div class="simple_price_wrapper<?if($atrSale):?> show_old_price__i atr-sale<?endif;?>">
+											<?if($atrSale):?>
+												<div class="old_price"><?=CurrencyFormat($atrSale['OLD'], 'RUB');?></div>
 											<?endif;?>
 											<?if(isset($arResult['PRICE_MATRIX']) && $arResult['PRICE_MATRIX']): // USE_PRICE_COUNT?>
 											
@@ -1151,6 +1156,7 @@ $bMagnifier = ($viewImgType == "MAGNIFIER");
 											<?elseif(isset($arResult["PRICES"])):?>
 												<?\Aspro\Functions\CAsproMaxItem::showItemPrices($arParams, $arResult["PRICES"], $strMeasure, $min_price_id, ($arParams["SHOW_DISCOUNT_PERCENT_NUMBER"] == "Y" ? "N" : "Y"));?>
 											<?endif;?>
+											<?=atriumSaleEconomyHtml($atrSale);?>
 											<?if( explode('/', $APPLICATION->GetCurPage())[2] == 'oboi'){?>
 												<span class="oboi__info">Уважаемые покупатели! Продажа товаров "Обои" производится только упаковками!</span>
 											<?}?>

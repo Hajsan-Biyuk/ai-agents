@@ -174,6 +174,7 @@
 				}
 				$arAddToBasketData = CMax::GetAddToBasketArray($arItem, $totalCount, $arParams["DEFAULT_COUNT"], $arParams["BASKET_URL"], false, array(), 'btn-exlg', $arParams);
 			}
+
 			if (function_exists('atriumOboiApplyBasketData') && !empty($arAddToBasketData) && is_array($arAddToBasketData)) {
 				atriumOboiApplyBasketData($arAddToBasketData, (int)$arItem['ID']);
 			}
@@ -340,8 +341,16 @@
 				<div class="product_id_wrapper">
 					<span class="left">Код товара:</span>&nbsp;<span class="right"><?=$arItem['ID'];?></span>
 				</div>
-				<div class="<?if(!empty($arItem['PROPERTIES']['STARAYA_CENA']['VALUE'])):?>show_old_price__i <?endif;?>cost prices clearfix<?= $arParams['TYPE_VIEW_BASKET_BTN'] === 'TYPE_2' && !$bBigBlock ? ' prices--with_icons_block' : ''?>">
-                
+				<?
+				require_once $_SERVER['DOCUMENT_ROOT'].'/local/templates/aspro_max/atrium_sale.php';
+				// у товаров с предложениями цену меняет JS — для них прежний вывод
+				$atrSale = (empty($arItem['OFFERS']) && empty($arItem['ATRIUM_NOT_FOR_SALE'])) ? atriumSaleInfo($arItem['PROPERTIES']['STARAYA_CENA']['VALUE'], $arItem['MIN_PRICE']['DISCOUNT_VALUE'], $arItem['MIN_PRICE']['VALUE']) : null;
+				$atrOldPrice = $atrSale ? $atrSale['OLD'] : (!empty($arItem['OFFERS']) ? $arItem['PROPERTIES']['STARAYA_CENA']['VALUE'] : '');
+				?>
+				<div class="<?if($atrOldPrice):?>show_old_price__i <?endif;?><?if($atrSale):?>atr-sale <?endif;?>cost prices clearfix<?= $arParams['TYPE_VIEW_BASKET_BTN'] === 'TYPE_2' && !$bBigBlock ? ' prices--with_icons_block' : ''?>">
+					<?if($atrOldPrice):?>
+						<div class="old_price list_old_prices"><?=CurrencyFormat($atrOldPrice, 'RUB');?></div>
+					<?endif;?>
 				
 				<?
 
@@ -387,7 +396,11 @@
 
 
 
-                    if($arItem['MIN_PRICE']['VALUE'] > 0):
+                    if(!empty($arItem['ATRIUM_NOT_FOR_SALE'])):
+                ?>
+                        <span class="text-bold atrium-not-for-sale">Нет в продаже</span>
+                <?
+                    elseif($arItem['MIN_PRICE']['VALUE'] > 0):
                 ?>
                         <?if($arItem["OFFERS"]):?>
                             
@@ -451,6 +464,7 @@
                                 <?endif;?>
                             <?endif;?>
                         <?endif;?>
+                        <?=atriumSaleEconomyHtml($atrSale);?>
                         <?if($arParams["TYPE_VIEW_BASKET_BTN"] == "TYPE_2" && !$bBigBlock):?>
                             <div class="icons-basket-wrapper offer_buy_block ce_cmp_hidden">
                                 <div class="button_block">
@@ -464,9 +478,6 @@
                     <?else:?>
                         <span class="text-bold"><?=Loc::getMessage('NO_GOODS');?></span>
                     <?endif;?>
-					<?if(!empty($arItem['PROPERTIES']['STARAYA_CENA']['VALUE']) && false):?>
-						<div class="old_price list_old_prices"><?=CurrencyFormat($arItem['PROPERTIES']['STARAYA_CENA']['VALUE'], 'RUB');?></div>
-					<?endif;?>						
 				</div>
 				<?\Aspro\Functions\CAsproMax::showBonusBlockList($arCurrentSKU ?: $arItem);?>
 			<?$itemPrice = ob_get_clean();?>
@@ -702,7 +713,9 @@
 							<?endif;?>
 						<?endif;?>
 						<div class="image_wrapper_block js-notice-block__image <?=($arParams['SHOW_PROPS'] == 'Y' && $arItem['DISPLAY_PROPERTIES'] && !$bBigBlock ? ' with-props' : '');?>">
-							<?if(!empty($arItem['PROPERTIES']['SALE_PERCENT']['VALUE'])):?>
+							<?if($atrSale):?>
+								<div class="sale_position">- <?=$atrSale['PERCENT']?>%</div>
+							<?elseif(!empty($arItem['OFFERS']) && !empty($arItem['PROPERTIES']['SALE_PERCENT']['VALUE'])):?>
 								<div class="sale_position">
 									<?=str_replace('%', '', $arItem['PROPERTIES']['SALE_PERCENT']['VALUE'])?>%<?/*<img style="width: 20px; position: relative;" src="/local/templates/aspro_max/images/icons-sale.png" alt="#" />*/?>
 								</div>
@@ -804,10 +817,17 @@
 						<?else:?>
 							<div class="item_info">
 								<div class="item_info--top_block">
+									<?
+									$reviewsCount = (int)$arItem['PROPERTIES']['EXTENDED_REVIEWS_COUNT']['VALUE'];
+									$reviewsRating = (float)str_replace(',', '.', (string)$arItem['PROPERTIES']['EXTENDED_REVIEWS_RAITING']['VALUE']);
+									if ($reviewsCount > 0 && $reviewsRating > 0) {
+										$reviewsRatingText = rtrim(rtrim(number_format($reviewsRating, 1, ',', ''), '0'), ',');
+									?>
 									<div class="rating-star">
-										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_2038_683)"><path d="M12 17L6.12199 20.59L7.71999 13.89L2.48999 9.41L9.35499 8.86L12 2.5L14.645 8.86L21.511 9.41L16.28 13.89L17.878 20.59L12 17Z" fill="#F5D784" /></g><defs><clipPath id="clip0_2038_683"><rect width="24" height="24" fill="white" /></clipPath></defs></svg>
-										4,9
+										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_rating_<?=(int)$arItem['ID']?>)"><path d="M12 17L6.12199 20.59L7.71999 13.89L2.48999 9.41L9.35499 8.86L12 2.5L14.645 8.86L21.511 9.41L16.28 13.89L17.878 20.59L12 17Z" fill="#F5D784" /></g><defs><clipPath id="clip0_rating_<?=(int)$arItem['ID']?>"><rect width="24" height="24" fill="white" /></clipPath></defs></svg>
+										<?=htmlspecialcharsbx($reviewsRatingText)?>
 									</div>
+									<? } ?>
 									<?//=$itemRating?>
 									<?=$itemTitle?>
 									<?=$itemSubTitle?>
@@ -868,7 +888,7 @@
 		<?endif;?>
 	<?endif;?>
 
-	<div class="bottom_nav animate-load-state block-type" <?=($showAllCount ? 'data-all_count="'.$allCount.'"' : '')?> data-parent=".tabs_slider" data-append=".items" <?=($arParams["AJAX_REQUEST"]=="Y" ? "style='display: none; '" : "");?>>
+	<div class="bottom_nav animate-load-state block-type<?=($bHasBottomPager ? ' has-nav' : '')?>" <?=($showAllCount ? 'data-all_count="'.$allCount.'"' : '')?> data-parent=".ajax_load" data-append=".js_append" <?=($arParams["AJAX_REQUEST"]=="Y" ? "style='display: none; '" : "");?>>
 		<?if( $arParams["DISPLAY_BOTTOM_PAGER"] == "Y" ){?><?=$arResult["NAV_STRING"]?><?}?>
 	</div>
 	
