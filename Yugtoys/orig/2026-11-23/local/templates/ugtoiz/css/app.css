@@ -1,0 +1,255 @@
+.status-catalog.ic_ch_zn{
+	width: 27px;
+    height: 30px;
+    padding: 4px;
+    background-color: #f4e600;
+    border-radius: 5px;
+    left: 5px;
+}
+
+
+.btn-fixed_max {
+    background: #7360F2;
+}
+
+
+
+#user_info img{
+	width: 100%;
+}
+#user_info .block-form{
+	position: relative;
+}
+#user_info .block-form:before{
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: 73px;
+    left: 120px;
+    z-index: 1;
+	width: 800px;
+    height: 230px;
+	background-image: url('/images/user_info_arrov.svg');
+}
+
+.cookies-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000000000;
+    bottom: 0px;
+    left: 0px;
+    transform: translateX(-50%);
+    margin: 0px -50% 15px 50%;
+    padding: 9px 43px 9px 14px;
+    font-size: 12px;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+    text-align: left;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.95);
+    pointer-events: auto;
+    max-width: 1280px;
+    box-shadow: rgba(6, 5, 50, 0.1) 0px 6px 20px;
+    color: #5c5c5c;
+}
+.cookies-modal a {
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 600;
+    color: #1557AE;
+}
+.cookies-modal .cookies-btns {
+    display: flex;
+    margin-left: auto;
+    margin-right: 0;
+    width: max-content;
+}
+.cookies-modal .cookies-btns .cookies-btn {
+    border: 1px solid #1557AE;
+    color: #1557AE;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+.cookies-modal .cookies-btns .cookies-btn.yes-cookie {
+    margin-left: 0px;
+    color: #fff;
+    background-color: #1557AE;
+}
+.cookies-modal .cookie-policy-button {
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    position: absolute;
+    top: 9px;
+    right: 7px;
+    display: inline-block;
+    width: 28px;
+    color: rgb(92, 99, 112);
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn-main.fancybox-contact-manager,
+.btn-main.not-fancybox-contact-manager{
+	line-height: 1.2;
+}
+
+
+#bx-panel{
+	z-index: 9999 !important;
+}
+.basket-coupon-section,
+.main-profile-social-block{
+	display: none !important;
+}
+
+.btn-like.active::before{
+	background-image: url(../img/heart_a.svg);
+}
+
+.location-main__dropdown{
+	z-index: 1;
+}
+
+.btn-main.btn-main-more{
+	width: 100%;
+}
+
+.fv-msg-block{
+	margin-bottom: 10px;
+	color: green;
+}
+.fv-msg-block.error{
+    color: red;
+}
+
+.btn-main.in_basked{
+	background: linear-gradient(360deg, #343a40 1.09%, #28a745 101.09%);
+}
+.btn-main.in_basked::before{
+	background: linear-gradient(360deg, #28a745 1.09%, #343a40 101.09%);
+}
+
+.prod__sort {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+.prod__sort span {
+    display: block;
+    margin-right: 40px;
+}
+.prod__sort button {
+    background: none;
+    border: none;
+    outline: none;
+    margin-right: 40px;
+    cursor: pointer;
+    -webkit-transition: 0.4s ease-in-out;
+    -o-transition: 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
+}
+.prod__sort button.active {
+    color: #435aa3;
+}
+
+.billbord .slider-billbord{
+	max-height: 550px;
+	overflow: hidden;
+}
+.billbord .slider-billbord.slick-initialized{
+	max-height: inherit;
+	overflow: inherit;
+}
+/* П-1 (2026-11-19): согласие над кнопкой «Отправить», ссылки в тексте согласия контрастные */
+.checkbox a {
+	color: inherit;
+	text-decoration: underline;
+}
+.checkbox + .btn-main {
+	margin-top: 20px;
+}
+.about-unit .block-form .checkbox {
+	white-space: normal;
+	display: block;
+}
+.partnership-form__right .line-form .item-form {
+	width: 100%;
+	margin-right: 0;
+}
+@media only screen and (max-width : 992px) {
+	.form-contacts .checkbox {
+		display: block;
+	}
+	.form-contacts .checkbox + .btn-main {
+		width: 100%;
+	}
+}
+@media only screen and (max-width : 768px) {
+	.partnership-form__right .checkbox + .btn-main {
+		width: 100%;
+	}
+}
+
+/* П-2 (2026-11-19): при прокрутке шапка сворачивается в узкую полосу — логотип, поиск, телефон, меню каталога.
+   Класс .fixed ставит common.js при scrollTop > 0, у начала страницы возвращает .default.
+   Шапка position: fixed, отступ .wrapper не меняется — контент не прыгает. Корзина — в .buttons-fixed в обоих состояниях. */
+@media only screen and (min-width : 993px) {
+	.header.fixed .header-top,
+	.header.fixed .header-bottom,
+	.header.fixed .header-middle .location-main,
+	.header.fixed .header-middle .btn-main,
+	.header.fixed .header-middle .descr-min {
+		display: none;
+	}
+	.header.fixed .header-middle {
+		padding: 6px 0;
+	}
+	.header.fixed .logo img {
+		width: 120px;
+	}
+	.header.fixed .header-middle .btn-catalog {
+		display: flex;
+		border: none;
+		padding: 0;
+		margin: 0 0 0 30px;
+	}
+	.header.fixed .header-middle .btn-catalog .sandwich {
+		height: 40px;
+		padding-top: 9px;
+		background: #F1FBFF;
+	}
+	.header.fixed .header-middle .btn-catalog .sandwich span {
+		background: #005B9E;
+	}
+}
+@media only screen and (max-width : 992px) {
+	.header.fixed .header-middle {
+		padding: 7px 0;
+	}
+}

@@ -253,3 +253,43 @@
 		padding: 7px 0;
 	}
 }
+
+/* Главный баннер (2026-11-23): на десктопе кнопка ниже, на мобильных баннер по пропорциям картинки */
+@media (min-width: 769px) {
+	.item-billbord .btn-main_page {
+		position: absolute;
+		bottom: 23%;
+		left: 87px;
+	}
+}
+@media (min-width: 769px) and (max-width: 1560px) {
+	.item-billbord .btn-main_page {
+		left: 55px;
+	}
+}
+@media (max-width: 768px) {
+	.item-billbord {
+		height: auto !important;
+		min-height: 0;
+		aspect-ratio: 1440 / 550;
+		padding: 0 0 6%;
+		justify-content: flex-end;
+		align-items: center;
+		background: none;
+	}
+	.item-billbord .title-big:empty,
+	.item-billbord .descr-big:empty {
+		display: none;
+	}
+	.item-billbord .item-billbord__image {
+		opacity: 1;
+	}
+	.item-billbord .btn-main_page {
+		height: 26px;
+		padding: 0 16px;
+		margin: 0;
+		font-size: 11px;
+		line-height: 1;
+		box-shadow: 0 4px 8px rgba(238, 36, 36, 0.2);
+	}
+}
