@@ -20,12 +20,15 @@ $banners = array(
 	14931 => array('/catalog/igrushki/dlya-malchikov/', 'Игрушки для мальчиков оптом'),
 	22159 => array('/catalog/igrushki/dlya-devochek/', 'Игрушки для девочек оптом'),
 	22162 => array('/catalog/razvivayushchie-igry/tovary-dlya-tvorchestva/', 'Алмазная мозаика и картины по номерам оптом'),
-	22160 => array('/catalog/razvivayushchie-igry/tovary-dlya-tvorchestva/', 'Алмазная мозаика и картины по номерам оптом'),
 );
 ?>
 <ul class="slider-billbord">
+<?$shown = array();?>
 <?foreach($arResult["ITEMS"] as $key => $arItem):?>
 <?
+	// дубль баннера с той же картинкой (23.11: 22160 повторял 22162) не выводим; деактивировать в ИБ 5 — бриджем нельзя
+	if (isset($shown[$arItem["PREVIEW_PICTURE"]["SRC"]])) continue;
+	$shown[$arItem["PREVIEW_PICTURE"]["SRC"]] = true;
 	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 	
