@@ -11,9 +11,6 @@
 <a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_WHATSAPP");?>" class="btn-fixed btn-fixed_whatsapp">
 	<img src="<?=SITE_TEMPLATE_PATH?>/img/whatsapp.svg" alt="WhatsApp">
 </a>
-<a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_TELEGRAM");?>" class="btn-fixed btn-fixed_telegram">
-	<img src="<?=SITE_TEMPLATE_PATH?>/img/telegram.svg" alt="Telegram">
-</a>
 <a target="_blank" href="<?echo \COption::GetOptionString("askaron.settings", "UF_MAX");?>" class="btn-fixed btn-fixed_max">
 	<img src="<?=SITE_TEMPLATE_PATH?>/img/max.svg" alt="MAX">
 </a>
