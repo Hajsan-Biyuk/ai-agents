@@ -84,7 +84,8 @@ class TZ_Woo {
 		}
 
 		$status = $order->get_status();
-		if (in_array($status, array('failed', 'cancelled', 'refunded', 'trash', 'checkout-draft'), true)) {
+		// pending = онлайн-оплата не прошла; уйдёт при переходе в processing / on-hold, как письмо WooCommerce.
+		if (in_array($status, array('pending', 'failed', 'cancelled', 'refunded', 'trash', 'checkout-draft'), true)) {
 			return;
 		}
 

@@ -216,17 +216,27 @@ class TZ_Messages {
 			if (!is_object($item) || !method_exists($item, 'get_name')) {
 				continue;
 			}
-			$items[] = self::escape($item->get_name()) . ' × ' . (int) $item->get_quantity();
+			$line = self::escape($item->get_name()) . ' × ' . (int) $item->get_quantity();
+			if (method_exists($item, 'get_formatted_meta_data')) {
+				foreach ($item->get_formatted_meta_data() as $meta) {
+					$line .= "\n  " . self::escape(wp_strip_all_tags($meta->display_key)) . ': ' . self::escape(trim(html_entity_decode(wp_strip_all_tags($meta->display_value), ENT_QUOTES, 'UTF-8')));
+				}
+			}
+			$items[] = $line;
 		}
 		if ($items !== array()) {
 			$lines[] = '<b>Состав:</b>' . "\n" . implode("\n", $items);
 		}
 
-		$total = wp_strip_all_tags(
-			wc_price(
-				$order->get_total(),
-				array('currency' => $order->get_currency())
-			)
+		$total = html_entity_decode(
+			wp_strip_all_tags(
+				wc_price(
+					$order->get_total(),
+					array('currency' => $order->get_currency())
+				)
+			),
+			ENT_QUOTES,
+			'UTF-8'
 		);
 		$lines[] = '<b>Сумма:</b> ' . self::escape($total);
 
@@ -239,6 +249,19 @@ class TZ_Messages {
 		$address = trim(wp_strip_all_tags((string) $address));
 		if ($address !== '') {
 			$lines[] = '<b>Адрес:</b> ' . self::escape($address);
+		}
+
+		if ($order->get_shipping_method() !== '') {
+			$lines[] = '<b>Доставка:</b> ' . self::escape($order->get_shipping_method());
+		}
+		$shipping = preg_replace('/<br\s*\/?>/i', "\n", (string) $order->get_formatted_shipping_address());
+		$shipping = trim(wp_strip_all_tags((string) $shipping));
+		if ($shipping !== '' && $shipping !== $address) {
+			$lines[] = '<b>Адрес доставки:</b> ' . self::escape($shipping);
+		}
+		$shipping_phone = method_exists($order, 'get_shipping_phone') ? trim($order->get_shipping_phone()) : '';
+		if ($shipping_phone !== '' && $shipping_phone !== $order->get_billing_phone()) {
+			$lines[] = '<b>Телефон получателя:</b> ' . self::escape($shipping_phone);
 		}
 
 		$note = trim($order->get_customer_note());
