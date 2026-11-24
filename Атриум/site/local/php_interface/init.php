@@ -1,8 +1,13 @@
 <?php
 
+// Журнал ошибок нашего кода (/local) — вне сайта, поведение не меняет.
+require_once $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/atrium/ErrorLog.php';
+atriumErrorLogInit();
+
 // ATRIUM P0 SEO redirects (2026-09-29)
 require_once $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/seo_p0_redirects.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/seo_city_meta.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/seo_product_snippet.php';
 
 // REST: запись только в блог (инфоблок 56).
 require_once $_SERVER['DOCUMENT_ROOT'] . '/local/php_interface/atrium_blog_rest.php';
