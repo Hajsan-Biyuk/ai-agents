@@ -55,7 +55,7 @@ use \Bitrix\Main\Localization\Loc;
 <div class="btn-like js-followers-btn <?=(is_followers($item['ID']) ? 'active' : '')?>" product_id="<?=$item['ID']?>"></div>
 <a href="<?=$item['DETAIL_PAGE_URL']?>" class="item-catalog__image">
 	<img alt="<?=htmlspecialchars($productTitle)?>" src="<?=$item['PREVIEW_PICTURE']['SRC']?>">
-	<? if(in_array('yugtoys', (array)($item['PROPERTIES']['OTMETKI']['VALUE_XML_ID'] ?? []), true)){ ?><span class="yt-brand">Бренд: «Юг Тойз»</span><? } ?>
+	<? if(in_array('yugtoys', (array)($item['PROPERTIES']['OTMETKI']['VALUE_XML_ID'] ?? []), true)){ ?><span class="yt-brand" role="img" aria-label="Бренд: «Юг Тойз»" title="Бренд: «Юг Тойз»"></span><? } ?>
 </a>
 <div class="articul-catalog">Артикул: <?=$item['PROPERTIES']['ARTNUMBER']['VALUE']?></div>
 <a href="<?=$item['DETAIL_PAGE_URL']?>" class="title-catalog"><?=$productTitle?></a>

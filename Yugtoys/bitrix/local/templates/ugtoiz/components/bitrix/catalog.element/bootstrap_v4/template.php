@@ -297,7 +297,7 @@ if ($ldPrice !== null && $ldPrice > 0) {
 					}
 				?>
 				</ul>
-				<? if($ytBrand){ ?><span class="yt-brand">Бренд: «Юг Тойз»</span><? } ?>
+				<? if($ytBrand){ ?><span class="yt-brand" role="img" aria-label="Бренд: «Юг Тойз»" title="Бренд: «Юг Тойз»"></span><? } ?>
 			</div>
 			<div class="col-lg-7">
 				<div class="card-info">
