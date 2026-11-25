@@ -298,6 +298,11 @@
 .item-catalog__image {
 	position: relative;
 }
+/* фото стало позиционированным — сердечко и значки (Хит, Честный знак) идут раньше в разметке, поднять над фото */
+.item-catalog > .btn-like,
+.item-catalog > .status-catalog {
+	z-index: 1;
+}
 .yt-brand {
 	position: absolute;
 	right: 6px;
