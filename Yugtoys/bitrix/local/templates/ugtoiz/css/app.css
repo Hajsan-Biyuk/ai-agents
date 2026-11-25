@@ -293,3 +293,57 @@
 		box-shadow: 0 4px 8px rgba(238, 36, 36, 0.2);
 	}
 }
+
+/* Отметка «Бренд: Юг Тойз» (свойство OTMETKI) — справа внизу на фото, 25.11 */
+.item-catalog__image {
+	position: relative;
+}
+.yt-brand {
+	position: absolute;
+	right: 6px;
+	bottom: 6px;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	gap: 0.3em;
+	padding: 0.25em 0.75em 0.25em 0.4em;
+	background: #fff;
+	border-radius: 999px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+	color: #0f8fd3;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 1.2;
+	white-space: nowrap;
+	pointer-events: none;
+}
+.yt-brand::before {
+	content: "";
+	flex: none;
+	width: 1.6em;
+	height: 1.8em;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAA2CAMAAAC2heqoAAAA/1BMVEX25+ffqpzzqab15uHKSzDtzbvZcmDgsKHcqprXi3KmaGK4cXHenWP13dboIB5/AAD10cazOxrdbiKtra3Ndmr/AAB/f3/oxbnGcVZtTlbUjXjRjHa/fz///3/44by4Ui+6VjWyj4yqAADJfGMVBxF8JVTNaJP/qv/kxLq/n39/fwAAAAC2Syny2MX+/v66VTPsJSTIaUrRhmvLdFf24s/muabFVzTrx7PWk3rcppD/f3/YmoOyQR3kspvSNybjqpIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/PdEHAAAAQHRSTlMf3whi/vPwX5Tf/AMFnfoC6/0EAw8BAqWV/2ucBAIQ44j/A2n///8DfggCAP7+CP3+/fv8/vj+/fz8Avf9+f79k+x1HQAABA9JREFUeNqFludim0gQgHfpqFly3O0457Qr27SNIoR4/7e6WRAIEuPMDyHZ8zGzUxeRiXxyHy83519fr9rH57EGmuhzwkHgiW5WXvvlxn/l5G4O4ATlka7ib5UWCxnZp6SgQtav5PA+wD9zS4WmUh6pk2OWUaUEVejA3wUOxJfahGd1SgWlC2YszbYjE2PgiliaM03Hohj8Ac8CIc3VUUwIazRNyfWMS7GUgh4ngC5oNmeBH3gKnisJ3uuLZyKdOzT8+Ecfo8VC7LK3hRxs+ITP5MHjiTzKxVtdqMfHAZAJRzPANfkrEzV+XOBtWA5nD57Jah4Iiu3P799/bBlTPZA9jIL0O1AZ++MRM2bKPr4AzFnwyHMmGfu5NWxkQSZk7gyvUBvHgi0WYMFekj0fJXJLNida4Lfc1IIGp33gPMLkarYfVlfR/kR1U0aCnvb7FiiR90E/kGi/p7sdbdXhK6UVGjs0BTzi26BV3Hf6pw8BSKffnN+8HwxQivmE6AHvlhC/hLSC8mazHwzAoUNOlr8AHEFm+BoiL4L9JoiCKNr0BlyYOPmK+C8W0Lppq+20OTUmZMwRQyaqdddgvAMQ99cP6tzJwUm5NBs8Bqh8SFA7dRzwSu5Vlg1t9iVnTmo4/qjvskDo+t4FDC2JJ88jojNvWsBCpulUjlmNiIdeeJLlVhRh15OiM8ByQSfD4ChqtcsSvgQrObUKHJf9WOlEjtVFWeq6kLscXDpwrEOlmenK2Z71jZoAUI0yzCGJBwT1gKWtlJU7qmXvEWPVxP/c5LqQOoYzQOf7qQUHsqhkC93rj/pBaiqaUhS5euKeywNU+5PFOL6HuVuYHgiHM+sYKyGlrBO3PtpM+09JjHgBVV0OwDBjxRe3NtZrRNr5h8jffJ1mMq1i98oW6A5eXIChHx0Ah9aqqnPRxhEAU7WhNWXv0sLnXreYWuCWY1XnRd7901nI++LoJU0mwxjZXEulu/IY8jYO01GPpjFkupLKspJOKgOkGRVrTG6uru96oJTmUgoXE+NUP/NufzjghX9LXdj72qnNUH0jEzhNQ9SFFZEYh0PYM5qVXd6mq44GOlPerUscX/IUHDcu7DrCOJJS1baYLjo4W06PpYst1BKYaM8olO9c9aEQwJTIYEsPcZKsUKJwAwcSzrlt3DqGkUWWyxd3b7jH23gdpkNPFFYXTKge8BBuchW5wm3n3yD+eQdXxlhd6uoMuNqKMUbdVcYt0/9WnnfwVv+SxNkQVRvlsondrkPnIdxffSazeYUi0LddBwa4zTc6X0uWyzvym6wIzmjDIOqm0rabsYh8IJ/vfCmYMSzELoKc/AkgB24z3TS2SHjv+McA/8S3RfMcI9JF8I9Ad6eD53Jmx71HkMvbHfA/uwWgn6CrfL8AAAAASUVORK5CYII=") center / contain no-repeat;
+}
+/* вне слайдера: рамка .slider-for выше слайда; от .col_for рамка на 23px правее (>992) */
+.col_for > .yt-brand {
+	z-index: 4;
+	right: -9px;
+	bottom: 14px;
+	font-size: 15px;
+}
+@media (max-width: 992px) {
+	.col_for > .yt-brand {
+		right: 25px;
+		bottom: 10px;
+	}
+}
+@media (max-width: 768px) {
+	.col_for > .yt-brand {
+		font-size: 13px;
+	}
+	.item-catalog .yt-brand {
+		right: 2px;
+		bottom: 2px;
+		font-size: 10px;
+	}
+}

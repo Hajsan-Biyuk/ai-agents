@@ -256,6 +256,7 @@ if ($ldPrice !== null && $ldPrice > 0) {
 			</div>
 			<div class="col-lg-3 col_for">
 				<ul class="slider-for">
+				<? $ytBrand = in_array('yugtoys', (array)($arResult['PROPERTIES']['OTMETKI']['VALUE_XML_ID'] ?? []), true); ?>
 				<?php
 					if(!empty($arResult['MORE_PHOTO'])){
 						foreach($arResult['MORE_PHOTO'] as $key => $photo){
@@ -296,6 +297,7 @@ if ($ldPrice !== null && $ldPrice > 0) {
 					}
 				?>
 				</ul>
+				<? if($ytBrand){ ?><span class="yt-brand">Бренд: «Юг Тойз»</span><? } ?>
 			</div>
 			<div class="col-lg-7">
 				<div class="card-info">
