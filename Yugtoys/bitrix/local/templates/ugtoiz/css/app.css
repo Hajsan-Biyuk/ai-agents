@@ -340,3 +340,53 @@
 		height: 23px;
 	}
 }
+
+/* Бегущая строка в шапке главной (2026-11-25): текст из настроек askaron UF_TICKER; лента = 2 одинаковые половины, сдвиг на -50% — без разрыва */
+.header-ticker {
+	box-sizing: border-box;
+	height: 34px;
+	overflow: hidden;
+	background: #F1FBFF;
+	border-bottom: 1px solid #EDEDED;
+	color: #005B9E;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 33px;
+}
+.header-ticker__track {
+	display: flex;
+	width: max-content;
+	animation: header-ticker 60s linear infinite;
+}
+.header-ticker__track span {
+	white-space: pre;
+}
+.header-ticker__track i {
+	font-style: normal;
+	color: #EE2424;
+}
+.header-ticker:hover .header-ticker__track {
+	animation-play-state: paused;
+}
+@keyframes header-ticker {
+	to {
+		transform: translateX(-50%);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.header-ticker__track {
+		animation: none;
+	}
+}
+.header-ticker-space {
+	height: 34px;
+}
+/* при прокрутке шапка сворачивается (П-2) — строку прячем, место под неё остаётся в потоке, контент не прыгает */
+.header.fixed .header-ticker {
+	display: none;
+}
+@media (max-width: 768px) {
+	.header-ticker {
+		font-size: 13px;
+	}
+}

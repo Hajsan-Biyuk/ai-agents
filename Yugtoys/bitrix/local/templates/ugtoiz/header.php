@@ -118,6 +118,17 @@
 					</div>
 				</div>
 			</div>
+			<?// бегущая строка (25.11): текст в админке «Настройки askaron» → UF_TICKER, пусто — не выводится; только главная
+			$ticker = $curPage == SITE_DIR.'index.php' ? trim((string)\COption::GetOptionString("askaron.settings", "UF_TICKER")) : '';
+			if ($ticker !== ''):
+				$tickerLen = max(1, mb_strlen($ticker));
+				$tickerCopies = max(2, (int)ceil(2600 / ($tickerLen * 8))); // половина ленты шире любого экрана (~8px на символ)
+				$tickerHalf = str_repeat('<span>'.str_replace('•', '<i>•</i>', htmlspecialcharsbx($ticker)).' </span>', $tickerCopies);
+			?>
+			<div class="header-ticker" role="marquee" aria-label="<?=htmlspecialcharsbx($ticker)?>">
+				<div class="header-ticker__track" aria-hidden="true" style="animation-duration: <?=round($tickerLen * $tickerCopies * 8 / 60)?>s"><?=$tickerHalf.$tickerHalf?></div>
+			</div>
+			<?endif;?>
 			<div class="header-middle">
 				<div class="container">
 					<div class="header__wrapper">
@@ -232,3 +243,4 @@
 				</div>
 			</div>
 		</header>
+		<?if ($ticker !== ''):?><div class="header-ticker-space"></div><?endif; // шапка fixed, отступ .wrapper задан в px — сдвигаем контент на высоту строки?>
