@@ -1,0 +1,273 @@
+/* Страница каталога опта: ТЗ п.10, п.12, Figma 181-3639 (сетка 1660, сайдбар 257 + 24 + контент 1379) */
+
+/* ---------- «Новинки» вверху раздела (ТЗ п.12) ---------- */
+.opt-new {
+	display: flex;
+	align-items: flex-start;
+	min-height: 320px;
+	margin: 18px 0 28px;
+	padding: 23px 24px 23px 0;
+	background: #9DD5AC;
+	border-radius: 20px;
+	box-sizing: border-box;
+}
+.opt-new__promo {
+	position: relative;
+	flex: 0 0 315px;
+	height: 274px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.opt-new__pic {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 40px;
+	background: #023420;
+	box-shadow: 0 2px 40px rgba(14, 196, 31, .9);
+	color: #4BFF6B;
+	font: 700 72px/1 Geologica, sans-serif;
+	letter-spacing: -2px;
+	text-shadow: 0 0 18px rgba(75, 255, 107, .8);
+}
+.opt-new__badge {
+	position: absolute;
+	left: 50%;
+	bottom: 34px;
+	transform: translateX(-50%) rotate(-12deg);
+	padding: 12px 18px 11px;
+	background: #F5D784;
+	border: 3px solid #fff;
+	border-radius: 12px;
+	color: #fff;
+	font: 700 32px/1 Geologica, sans-serif;
+	white-space: nowrap;
+}
+.opt-new__list {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: flex;
+	gap: 24px;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+.opt-new__list::-webkit-scrollbar { display: none; }
+.opt-new__item {
+	flex: 0 0 200px;
+	height: 274px;
+	padding: 9px 10px 0;
+	box-sizing: border-box;
+	background: #fff;
+	border-radius: 12px;
+	color: #1E2C2E;
+	text-decoration: none;
+}
+.opt-new__img {
+	position: relative;
+	display: block;
+	height: 222px;
+	border-radius: 10px;
+	overflow: hidden;
+	background: #fff;
+}
+.opt-new__img img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+.opt-new__sale {
+	position: absolute;
+	left: 6px;
+	bottom: 6px;
+	padding: 2px 6px;
+	background: #F5D784;
+	border-radius: 6px;
+	font: 500 12px/1.4 Geologica, sans-serif;
+}
+.opt-new__prices {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 6px;
+	margin-top: 12px;
+	white-space: nowrap;
+}
+.opt-new__price { font: 600 14px/1.4 Geologica, sans-serif; color: #1E2C2E; }
+.opt-new__old { font: 500 12px/1.4 Geologica, sans-serif; color: rgba(30, 44, 46, .5); text-decoration: line-through; }
+.opt-new__item:hover .opt-new__price { color: #3D7B5A; }
+
+/* ---------- Заголовок и подразделы ---------- */
+.catalog_page .opt-catalog-title { margin: 0 0 26px; padding: 0; }
+.catalog_page .opt-catalog-title h1 {
+	margin: 0;
+	font: 500 36px/1.3 Geologica, sans-serif;
+	color: #1E2C2E;
+}
+.opt-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 0 0 30px;
+}
+.opt-chips__item {
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
+	padding: 4px 16px 4px 10px;
+	background: #F2F7F5;
+	border-radius: 10px;
+	color: #1E2C2E;
+	font: 300 15px/1.3 Geologica, sans-serif;
+	text-decoration: none;
+	transition: background .2s;
+}
+.opt-chips__item:hover { background: #CCE0D9; color: #1E2C2E; }
+.opt-chips__img {
+	flex: 0 0 60px;
+	width: 60px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.opt-chips__item { min-height: 68px; box-sizing: border-box; }
+.opt-chips__img:empty { display: none; } /* у раздела нет ни картинки, ни товаров с фото */
+.opt-chips__img:empty + .opt-chips__name { padding-left: 6px; }
+.opt-chips__img img { max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+/* старый вывод подразделов внутри колонки товаров больше не нужен */
+.catalog_page .iq-catalog-main > .section-block { display: none; }
+
+/* ---------- Сетка: сайдбар 257 + 24 + контент ---------- */
+.catalog_page .middle > .container:has(> .iq-catalog-grid) { margin-left: -10px; margin-right: -10px; width: calc(100% + 20px) !important; max-width: none; } /* контейнер темы утоплен на 10px от сетки 1660 */
+.catalog_page .iq-catalog-grid { display: flex; align-items: flex-start; gap: 0; }
+.catalog_page .iq-catalog-grid > .left_block { flex: 0 0 257px; width: 257px; max-width: 257px; padding: 0; margin: 0 24px 0 0; }
+.catalog_page .iq-catalog-grid > .iq-catalog-main { flex: 1 1 auto; min-width: 0; width: auto; padding: 0; margin: 0; }
+/* в макете в сайдбаре только фильтр: меню категорий заменяют плашки подразделов */
+.catalog_page .iq-catalog-grid > .left_block .menu_top_block { display: none; }
+
+/* ---------- Шапка списка: «Товаров (N)» + сортировка ---------- */
+.catalog_page .iq-catalog-main .iq-catalog-head {
+	display: flex !important; /* тема ставит block !important */
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin: 0 0 24px;
+	padding: 0 0 18px;
+	border-bottom: 1px solid #CCE0D9;
+}
+.catalog_page .iq-catalog-main .iq-catalog-head__sort { flex: 0 0 auto !important; margin-left: auto; width: auto !important; }
+.catalog_page .iq-catalog-count-product {
+	flex: 0 1 auto;
+	width: auto;
+	font: 600 24px/1.3 Geologica, sans-serif;
+	color: #1E2C2E;
+	text-transform: none;
+}
+.catalog_page .iq-catalog-count-product > span { display: inline-flex; font-weight: 300; margin-left: 6px; } /* flex убирает пробелы вокруг числа */
+.catalog_page .iq-catalog-head .filter-panel { margin: 0; padding: 0; border: 0; }
+.catalog_page .iq-catalog-head .filter-panel__filter { display: none; }
+.catalog_page .iq-catalog-head .dropdown-select__title {
+	width: 309px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 12px 10px 14px;
+	border: 1px solid #D9D9D9;
+	border-radius: 6px;
+	background: #fff;
+	font: 300 14px/1.3 Geologica, sans-serif;
+	color: #1E2C2E;
+}
+.catalog_page .iq-catalog-head .dropdown-select__list { width: 309px; }
+/* верхний разделитель списка уже даёт шапка */
+.catalog_page .iq-catalog-main .filter-panel-wrapper,
+.catalog_page .iq-catalog-main .right_block1 > .filter-panel-wrapper { border: 0; }
+
+/* ---------- Фильтр (виден всем; ТЗ п.10 — только переключатели цен РРЦ/В2В в шапке) ---------- */
+.catalog_page .left_block .bx_filter .bx_filter_parameters_box { border-top: 1px solid #CCE0D9; border-bottom: 0; padding: 16px 0 !important; margin: 0; } /* перебивает !important темы */
+.catalog_page .left_block .bx_filter_parameters_box_title,
+.catalog_page .left_block .bx_filter_parameters_box_title .title-wrapper {
+	font: 600 18px/1.3 Geologica, sans-serif;
+	color: #1E2C2E;
+	text-transform: none;
+}
+.catalog_page .left_block .bx_filter_parameters_box_container label,
+.catalog_page .left_block .bx_filter_parameters_box_container .bx_filter_param_text {
+	font: 300 16px/1.3 Geologica, sans-serif;
+	color: #1E2C2E;
+}
+.catalog_page .left_block .iq-side-item__from-to__input,
+.catalog_page .left_block .bx_filter_select_block {
+	height: 40px;
+	padding: 10px 12px 10px 14px;
+	border: 1px solid #D9D9D9;
+	border-radius: 6px;
+	font: 300 14px/1.3 Geologica, sans-serif;
+	color: #1E2C2E;
+	box-sizing: border-box;
+}
+.catalog_page .left_block .bx_ui_slider_track { height: 2px; background: #D9D9D9; }
+.catalog_page .left_block .bx_ui_slider_pricebar_V { background: #023420; }
+.catalog_page .left_block .bx_ui_slider_handle { width: 14px; height: 14px; border-radius: 50%; background: #023420; border: 0; }
+.catalog_page .left_block .bx_filter_button_box .btn,
+.catalog_page .left_block .bx_filter_search_button {
+	width: 100%;
+	padding: 14px 10px;
+	background: #F1F8F5;
+	border: 0;
+	border-radius: 10px;
+	color: #023420;
+	font: 600 14px/1.3 Geologica, sans-serif;
+	text-transform: none;
+}
+.catalog_page .left_block .bx_filter_button_box .btn:hover,
+.catalog_page .left_block .bx_filter_search_button:hover { background: #CCE0D9; color: #023420; }
+
+/* ---------- Карточки: 4 в ряд по 314, зазор ~41 (макет) ---------- */
+.catalog_page .iq-catalog-main .catalog_block.items { display: flex; flex-wrap: wrap; column-gap: 41px; margin: 0; }
+.catalog_page .iq-catalog-main .catalog_block.items > .item { float: none; width: calc((100% - 123px) / 4); padding: 0; }
+
+/* ---------- Пагинация: в макете только номера и стрелки ---------- */
+.wrapper1.catalog_page .iq-catalog-main .bottom_nav .ajax_load_btn, .catalog_page .iq-catalog-main .bottom_nav .ajax_load_btn { display: none !important; } /* в макете нет «Развернуть», custom.css её включает */
+.catalog_page .iq-catalog-main .module-pagination .nums { font: 400 16px/1.6 Geologica, sans-serif; }
+.catalog_page .iq-catalog-main .module-pagination .cur { color: #3D7B5A; font-weight: 700; }
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 1199px) {
+	.opt-new__promo { flex-basis: 240px; }
+	.opt-new__pic { width: 160px; height: 160px; font-size: 56px; }
+	.opt-new__badge { font-size: 26px; }
+}
+@media (max-width: 1399px) {
+	.catalog_page .iq-catalog-main .catalog_block.items { column-gap: 24px; }
+	.catalog_page .iq-catalog-main .catalog_block.items > .item { width: calc((100% - 48px) / 3); }
+}
+@media (max-width: 991px) {
+	.catalog_page .iq-catalog-grid { display: block; }
+	.catalog_page .iq-catalog-grid > .left_block { margin-right: 0; }
+	.catalog_page .iq-catalog-main .catalog_block.items > .item { width: calc((100% - 24px) / 2); }
+	.catalog_page .iq-catalog-grid > .left_block { width: auto; max-width: none; }
+}
+@media (max-width: 767px) {
+	.opt-new { display: block; min-height: 0; padding: 16px 0 16px 16px; margin-top: 12px; }
+	.opt-new__promo { height: auto; justify-content: flex-start; margin-bottom: 14px; }
+	.opt-new__pic { display: none; }
+	.opt-new__badge { position: static; transform: none; font-size: 22px; padding: 8px 14px; }
+	.opt-new__item { flex-basis: 160px; height: 236px; }
+	.opt-new__img { height: 180px; }
+	.catalog_page .opt-catalog-title h1 { font-size: 26px; }
+	.opt-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: -16px; }
+	.opt-chips::-webkit-scrollbar { display: none; }
+	.opt-chips__item { flex: 0 0 auto; white-space: nowrap; }
+	.opt-chips__img { flex-basis: 44px; width: 44px; height: 44px; }
+	.catalog_page .iq-catalog-count-product { font-size: 20px; order: -1 !important; width: 100%; } /* тема на телефоне ставит счётчик под сортировку */
+	.catalog_page .iq-catalog-head .dropdown-select__title { width: auto; }
+	/* размеры плитки (100x100, 60x120…) на телефоне сжимались до 30px и слипались — листаются вбок */
+	.catalog_page .add-filter-sizes .js-add-filter-sizes-list { flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; gap: 12px; }
+	.catalog_page .add-filter-sizes .js-add-filter-sizes-list > .flex_item { flex: 0 0 72px; width: 72px; max-width: none !important; }
+}

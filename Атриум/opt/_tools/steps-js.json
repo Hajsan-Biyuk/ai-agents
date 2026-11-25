@@ -1,0 +1,1 @@
+[{"mouse":[[200,300]]},{"sleep":2000},{"eval":"(()=>{const h=((jQuery._data(document,\"events\")||{}).click||[]);return \"handlers=\"+h.length+\" css=\"+document.querySelectorAll(\"link[rel=stylesheet]\").length+\" js=\"+document.querySelectorAll(\"script[src]\").length})()","label":"state"}]

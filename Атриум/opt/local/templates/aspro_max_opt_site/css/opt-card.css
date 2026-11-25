@@ -1,0 +1,84 @@
+/* Карточка товара опта: ТЗ п.11, Figma 768-2227 (макет 1920, контент 1660).
+   База — стили розничной карточки в styles.css (wrap-info-card, slider-for, card-delivery, banner-sale);
+   здесь только подгонка под макет. Всё ограничено .main-catalog-wrapper.details — на другие страницы не влияет. */
+
+/* сетка 1660, как у шапки и хлебных крошек */
+body .main-catalog-wrapper.details { margin-left: -10px; margin-right: -10px; width: calc(100% + 20px); max-width: none; }
+body .main-catalog-wrapper.details h1.opt-card-title {
+	font-size: 36px; line-height: 1.3; font-weight: 500; color: #1e2c2e;
+	margin: 5px 0 34px; padding: 0;
+}
+
+/* баннер «Сочные скидки» (ТЗ п.11): 1660×220, текст 44/34 от края */
+body .main-catalog-wrapper.details .opt-card-banner {
+	padding: 34px 44px; min-height: 220px; margin-top: 40px; box-sizing: border-box;
+}
+body .main-catalog-wrapper.details .opt-card-banner .banner-sale__image img { object-position: left center; }
+
+/* счётчик количества позиционируется внутри блока цены, а не над фото (1024) */
+body .main-catalog-wrapper.details .content-info-card { position: relative; }
+/* styles.css розницы прячет .product_id_wrapper в блоке цены — оптовикам (группы 9/11) строки РРЦ/наценка/ОПТ нужны */
+body .main-catalog-wrapper.details .content-info-card .product_id_wrapper.prices_admine { display: block; }
+/* «Все характеристики» не прилипает к вкладкам (на 1920 зазор уже по макету) */
+@media (max-width: 1199px) { body .main-catalog-wrapper.details .product-container { margin-bottom: 40px; } }
+
+@media (min-width: 1200px) {
+	/* колонки: фото 537 | 60 | характеристики 605 | 61 | цена 397 */
+	body .main-catalog-wrapper.details .right_block:not(.catalog_page_detail_with_left) .product-view--side-left,
+	body .main-catalog-wrapper.details .product-view--side-left { width: 537px; }
+	body .main-catalog-wrapper.details .product-container .product-side { width: calc(100% - 537px); padding-left: 60px; }
+	body .main-catalog-wrapper.details .wrap-info-card { grid-template-columns: minmax(0, 1fr) 397px; gap: 61px; }
+
+	/* главное фото как на рознице: рамка 500, фото целиком, без растяжения и обрезки */
+	body .main-catalog-wrapper.details .slider-for__item { height: 500px; }
+	body .main-catalog-wrapper.details .slider-for__item img { object-fit: contain; }
+
+	/* лента миниатюр: на всю ширину фото, отступ 16, превью 62×85 через 16 */
+	body .main-catalog-wrapper.details .slider-wrapper-card .wrap-nav-slider { margin-top: 16px; }
+	body .main-catalog-wrapper.details .slider-nav {
+		width: 100%; margin: 0; padding: 12px 64px; border-radius: 12px; box-sizing: border-box;
+	}
+	body .main-catalog-wrapper.details .slider-nav .slick-slide { padding: 0 8px; }
+	body .main-catalog-wrapper.details .slider-nav .slick-arrow { left: 16px; }
+	body .main-catalog-wrapper.details .slider-nav .slick-next { left: auto; right: 16px; }
+
+	/* сердечко на фото: круг 42, полупрозрачный белый, 8 от верха и 7 от правого края */
+	body .main-catalog-wrapper.details .product-info-headnote__toolbar { top: 8px; right: 7px; }
+	body .main-catalog-wrapper.details .product-info-headnote__toolbar .wish_item_button .wish_item {
+		width: 42px; height: 42px; border-radius: 50%;
+		background-color: rgba(255, 255, 255, .6) !important; backdrop-filter: blur(5px);
+	}
+	body .main-catalog-wrapper.details .badge-sale { top: 8px; left: 7px; font-size: 16px; }
+
+	/* блок цены: 397, поля 24, цена 32/24 */
+	body .main-catalog-wrapper.details .product-container .cost.prices.detail .price.font_mxs .values_wrapper { font-size: 32px; }
+	body .main-catalog-wrapper.details .product-container .cost.prices.detail .price.font_mxs .price_currency,
+	body .main-catalog-wrapper.details .product-container .cost.prices.detail .price.font_mxs .price_measure { font-size: 24px; }
+
+	/* вкладки: 18 Medium, поля 14×32, зазор 8, отступ 44 */
+	body .main-catalog-wrapper.details .tabs .nav-tabs { gap: 8px; }
+	body .main-catalog-wrapper.details .tabs .nav-tabs li { flex-grow: 0; }
+	body .main-catalog-wrapper.details .tabs .nav-tabs li a,
+	body .main-catalog-wrapper.details .tabs .nav-tabs li > span {
+		font-size: 18px; line-height: 1.3; padding: 14px 20px; min-width: 155px; box-sizing: border-box;
+	}
+	body .main-catalog-wrapper.details .tab-content { border-radius: 20px; }
+	body .main-catalog-wrapper.details .content-info-card .btn { min-height: 50px; }
+}
+
+/* баннер на планшете/телефоне: картинка фоном, текст поверх (у розницы ≤992 баннер — картинка с зашитым текстом) */
+@media (max-width: 992px) {
+	body .main-catalog-wrapper.details .opt-card-banner { padding: 24px 20px; min-height: 0; margin-top: 28px; overflow: hidden; }
+	body .main-catalog-wrapper.details .opt-card-banner .banner-sale__image { position: absolute; height: 100%; }
+	body .main-catalog-wrapper.details .opt-card-banner .banner-sale__image img { height: 100%; object-fit: cover; }
+	body .main-catalog-wrapper.details .opt-card-banner .banner-sale__title { position: relative; top: auto; left: auto; right: auto; font-size: 26px; max-width: 80%; }
+	body .main-catalog-wrapper.details .opt-card-banner .banner-sale__title span { font-size: 16px; }
+}
+
+@media (max-width: 767px) {
+	body .main-catalog-wrapper.details { margin-left: 0; margin-right: 0; width: auto; }
+	body .main-catalog-wrapper.details h1.opt-card-title { font-size: 24px; margin: 0 0 20px; }
+	/* фото на телефоне квадратом, целиком */
+	body .main-catalog-wrapper.details .slider-for__item { height: auto; aspect-ratio: 1 / 1; }
+	body .main-catalog-wrapper.details .slider-for__item img { object-fit: contain; }
+}

@@ -1,0 +1,1 @@
+[{"eval":"(()=>{const h=((jQuery._data(document,\"events\")||{}).click||[]);return \"total=\"+h.length+\" side=\"+h.filter(x=>/side/.test(x.selector||\"\")).length+\" arAspro=\"+(typeof arAsproOptions)+\" smart=\"+(typeof JCSmartFilter)})()","label":"state"}]

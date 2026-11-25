@@ -1,0 +1,1 @@
+<a href="/"><img src="/images/logo.svg" alt="Логотип" style="width: 120px;"></a>

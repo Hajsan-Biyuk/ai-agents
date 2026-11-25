@@ -1,0 +1,1 @@
+Выражаю <a href="/personal-data/" target="_blank">Согласие на обработку персональных данных</a> в соответствии с условиями <a href="/politika-konfidencialnosti/" target="_blank">Политики конфиденциальности</a>

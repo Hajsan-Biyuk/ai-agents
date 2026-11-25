@@ -1,0 +1,5 @@
+[
+ {"mouse":[[900,600],[600,300],[250,110],[195,106]]},
+ {"sleep":1500},
+ {"label":"b","eval":"(()=>{const it=document.querySelector('.menu-row td.catalog .menu-navigation__sections-item');const out=[];for(const e of [it,it.querySelector('a'),it.querySelector('.image'),it.querySelector('.name')]){const c=getComputedStyle(e);out.push(e.className.slice(0,45)+' T:'+c.borderTop+' B:'+c.borderBottom+' bg:'+c.backgroundColor+' sh:'+c.boxShadow)};const a=getComputedStyle(it.querySelector('a'),'::before'),b=getComputedStyle(it.querySelector('a'),'::after'),c=getComputedStyle(it,'::after'),d=getComputedStyle(it,'::before');out.push('a::before '+a.content+' '+a.height+' '+a.backgroundColor+' '+a.borderBottom, 'a::after '+b.content+' '+b.height+' '+b.backgroundColor+' '+b.borderBottom,'it::after '+c.content+' '+c.height+' '+c.backgroundColor,'it::before '+d.content+' '+d.height+' '+d.backgroundColor);return out})()"}
+]

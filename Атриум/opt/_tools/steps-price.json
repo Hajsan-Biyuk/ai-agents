@@ -1,0 +1,1 @@
+[{"sleep":1500},{"eval":"[...document.querySelectorAll(\".price_value, .simple_price_wrapper .price\")].slice(0,3).map(e=>e.textContent.trim())","label":"price"}]

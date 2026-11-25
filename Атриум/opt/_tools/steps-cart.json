@@ -1,0 +1,4 @@
+[{"mouse":[[200,300]]},{"sleep":2000},
+{"eval":"(()=>{const b=[...document.querySelectorAll('.to-cart, [data-item] .to-cart, .btn.to-cart')].find(e=>e.offsetParent);if(!b)return 'no btn';b.scrollIntoView({block:'center'});b.click();return 'clicked '+b.className})()","label":"tocart"},{"sleep":3000},
+{"eval":"(()=>{const c=document.querySelector('.basket-link .count, .js-basket-block .count, .header-cart .count, [class*=basket] .count');return 'count='+(c?c.textContent.trim():'?')})()","label":"basket"},
+{"eval":"fetch('/ajax/showBasketHover.php').then(r=>r.status).catch(e=>e+'')","label":"basket ajax"}]

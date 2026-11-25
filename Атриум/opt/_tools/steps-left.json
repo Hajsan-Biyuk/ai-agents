@@ -1,0 +1,5 @@
+[
+ {"mouse":[[900,600],[600,300],[250,110],[195,106]]},
+ {"sleep":1500},
+ {"label":"left","eval":"(()=>{const it=document.querySelector('.menu-row td.catalog .menu-navigation__sections-item');const a=it.querySelector('a');const S=(e)=>{if(!e)return null;const c=getComputedStyle(e),r=e.getBoundingClientRect();return {r:[Math.round(r.x),Math.round(r.y),Math.round(r.width),Math.round(r.height)],pos:c.position,disp:c.display,pad:c.padding,mar:c.margin,font:c.font,top:c.top,right:c.right,left:c.left}};return {html:it.outerHTML.replace(/<svg.*?<\\/svg>/gs,'<svg/>').replace(/\\s+/g,' ').slice(0,700),it:S(it),a:S(a),img:S(a.querySelector('.image')),imgEl:S(a.querySelector('img')),name:S(a.querySelector('.name')),arrow:S(a.querySelector('.svg')),wrap:S(document.querySelector('.menu-row td.catalog .menu-navigation__sections-wrapper')),content:S(document.querySelector('.menu-row td.catalog .menu-navigation__content'))}})()"}
+]

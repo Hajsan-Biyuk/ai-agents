@@ -1,0 +1,4 @@
+[{"mouse":[[200,300]]},{"eval":"window.scrollBy(0,200);1"},{"sleep":4000},
+{"eval":"(()=>{const t=[...document.querySelectorAll('.iq-catalog-side-toggle')].find(e=>e.offsetParent);t.scrollIntoView({block:'center'});return 1})()"},
+{"click":[195,422]},{"sleep":1200},{"eval":"document.querySelector('.iq-side').scrollTop=600;1"},{"sleep":300},{"shot":"/tmp/atr/mobfilter2.png"},
+{"eval":"(()=>{const c=document.querySelector('.iq-side__mobile');if(!c)return 'no close';c.click();return 'closed: '+document.querySelector('.iq-side').className})()","label":"close"}]

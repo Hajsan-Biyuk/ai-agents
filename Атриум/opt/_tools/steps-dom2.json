@@ -1,0 +1,3 @@
+[
+ {"label":"dom","eval":"(()=>{const m=document.querySelector('.menu-row td.catalog .menu-navigation__content .subitems-wrapper > ul.menu-wrapper > li > .menu_img'); if(!m) return 'none'; const li=m.parentElement; const c=li.cloneNode(true); c.querySelectorAll('ul ul, .dropdown-menu-list').forEach(u=>u.innerHTML='…'); const cs=getComputedStyle(m); const t=li.querySelector(':scope > a, :scope > .name, :scope > div:not(.menu_img)'); return {html:c.outerHTML.replace(/<svg.*?<\\/svg>/g,'').replace(/\\s+/g,' ').slice(0,1800), liCls:li.className, liStyle:[getComputedStyle(li).position,getComputedStyle(li).paddingLeft,getComputedStyle(li).display], img:[cs.position,cs.top,cs.left,cs.width,cs.height]}})()"}
+]

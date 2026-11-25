@@ -1,0 +1,7 @@
+[
+ {"mouse":[[900,600],[600,300],[250,110],[195,106]]},
+ {"sleep":1500},
+ {"mouse":[[195,140],[200,250],[230,305],[232,309]]},
+ {"sleep":1500},
+ {"label":"ovf","eval":"(()=>{const td=document.querySelector('.menu-row td.catalog');const S=sel=>{const e=td.querySelector(sel);if(!e)return sel+' none';const c=getComputedStyle(e);const r=e.getBoundingClientRect();return sel+' disp='+c.display+' ovf='+c.overflow+'/'+c.overflowY+' h='+Math.round(r.height)+' maxH='+c.maxHeight+' scrollH='+e.scrollHeight+' clientH='+e.clientHeight+' style='+(e.getAttribute('style')||'')};return [S('.dropdown-menu'),S('.menu-navigation'),S('.menu-navigation__sections-wrapper'),S('.menu-navigation__content'),S('.menu-navigation__content > .customScrollbar'),S('.menu-navigation__content .mCustomScrollBox'),S('.menu-navigation__content > ul'), td.querySelector('.menu-navigation__content').innerHTML.replace(/\\s+/g,' ').slice(0,300)]})()"}
+]

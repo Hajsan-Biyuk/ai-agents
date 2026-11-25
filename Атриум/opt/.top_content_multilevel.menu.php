@@ -1,0 +1,53 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Каталог", 
+		"/catalog/", 
+		Array(), 
+		Array("NOT_VISIBLE"=>"Y", "USE_CUSTOM"=>"Y", "CLASS"=>"catalog wide_menu ", "ICON"=>"icon_catalog"), 
+		"" 
+	),
+	Array(
+		"Бренды", 
+		"/info/brands/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Акции", 
+		"/sale/", 
+		Array(), 
+		Array("ICON"=>"icon_discount"), 
+		"" 
+	),
+	Array(
+		"Новости", 
+		"/news/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"О компании", 
+		"/about/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Контакты", 
+		"/contacts/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Скачать каталог", 
+		"/upload/katalog-atrium-opt.pdf", 
+		Array(), 
+		Array("TARGET"=>"_blank"), 
+		"" 
+	)
+);
+?>

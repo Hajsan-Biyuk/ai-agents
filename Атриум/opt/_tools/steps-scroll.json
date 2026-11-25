@@ -1,0 +1,9 @@
+[
+ {"mouse":[[900,600],[600,300],[250,110],[195,106]]},
+ {"sleep":1500},
+ {"mouse":[[195,140],[200,250],[230,305],[232,309]]},
+ {"sleep":1500},
+ {"eval":"(()=>{const s=document.querySelector('.menu-row td.catalog .menu-navigation__content > .customScrollbar'); s.scrollTop=s.scrollHeight; return s.scrollTop})()"},
+ {"sleep":500},
+ {"shot":"/tmp/menu-bottom.png"}
+]

@@ -1,0 +1,7 @@
+[
+ {"mouse":[[900,600],[600,300],[250,110],[195,106]]},
+ {"sleep":1500},
+ {"mouse":[[195,140],[200,250],[230,305],[232,309]]},
+ {"sleep":1500},
+ {"label":"ul","eval":"(()=>{const td=document.querySelector('.menu-row td.catalog');const vis=[...td.querySelectorAll('.menu-navigation__content .parent-items')].find(x=>getComputedStyle(x).display!='none');const ul=vis.querySelector('.subitems-wrapper > ul.menu-wrapper');const c=getComputedStyle(ul);const li=ul.children[0];const lc=getComputedStyle(li);const tm=li.querySelector('ul.toggle_menu');const tc=tm&&getComputedStyle(tm);const h=li.querySelector(':scope > a');const R=e=>{const r=e.getBoundingClientRect();return [Math.round(r.x),Math.round(r.y),Math.round(r.width),Math.round(r.height)]};const chain=[];let e=li;while(e&&e!==td){const s=getComputedStyle(e);if(parseFloat(s.paddingLeft)||parseFloat(s.marginLeft))chain.push(e.className.slice(0,40)+' pl='+s.paddingLeft+' ml='+s.marginLeft);e=e.parentElement}return {ulClass:ul.className,disp:c.display,cols:c.gridTemplateColumns,cg:c.columnGap,rg:c.rowGap,ulW:R(ul),liDisp:lc.display,liGap:lc.gap,liMargin:lc.margin,liW:lc.width,hR:R(h),hMargin:getComputedStyle(h).margin+' / '+getComputedStyle(h).padding,tm:tc&&[tc.margin,tc.padding,tc.gap,R(tm)],firstItem:R(tm.children[0]),firstItemPad:getComputedStyle(tm.children[0]).padding,leftPadChain:chain}})()"}
+]

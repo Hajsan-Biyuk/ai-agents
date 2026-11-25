@@ -1,0 +1,1 @@
+<img src="/upload/santehnika-1.jpg">

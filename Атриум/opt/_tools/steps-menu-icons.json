@@ -1,0 +1,8 @@
+[
+ {"mouse":[[900,600],[600,300],[250,110],[195,106]]},
+ {"sleep":1500},
+ {"mouse":[[195,140],[200,250],[230,305],[232,309]]},
+ {"sleep":1500},
+ {"label":"imgs in visible panel","eval":"(()=>{const td=document.querySelector('.menu-row td.catalog'); const vis=[...td.querySelectorAll('.menu-navigation__content .parent-items')].find(x=>getComputedStyle(x).display!='none'); if(!vis) return 'no panel'; return [...vis.querySelectorAll('.menu_img img')].map(i=>[i.alt, i.naturalWidth, Math.round(i.getBoundingClientRect().width)])})()"},
+ {"shot":"/tmp/atr/menu-icons.png"}
+]

@@ -1,0 +1,7 @@
+[{"eval":"(()=>{const h=((jQuery._data(document,'events')||{}).click||[]);return 'total='+h.length+' smart='+(typeof JCSmartFilter)+' scripts='+document.scripts.length})()","label":"t0"},
+{"mouse":[[200,300],[210,320]]},{"eval":"window.scrollBy(0,200);document.dispatchEvent(new Event('touchstart'));1","label":"interact"},{"sleep":5000},
+{"eval":"(()=>{const h=((jQuery._data(document,'events')||{}).click||[]);return 'total='+h.length+' side='+h.filter(x=>/side/.test(x.selector||'')).length+' smart='+(typeof JCSmartFilter)+' scripts='+document.scripts.length})()","label":"t1"},
+{"eval":"(()=>{const t=[...document.querySelectorAll('.iq-catalog-side-toggle')].find(e=>e.offsetParent);t.scrollIntoView({block:'center'});const r=t.getBoundingClientRect();return [Math.round(r.x+r.width/2),Math.round(r.y+r.height/2)]})()","label":"pt"},
+{"click":[195,422]},{"sleep":1200},
+{"eval":"(()=>{const s=document.querySelector('.iq-side');const cs=getComputedStyle(s);return s.className+' disp='+cs.display+' left='+cs.left+' w='+s.offsetWidth})()","label":"after click"},
+{"shot":"/tmp/atr/mobfilter.png"}]
