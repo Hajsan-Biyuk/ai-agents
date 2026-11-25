@@ -43,7 +43,11 @@ $banners = array(
 			if ($link === '' && isset($banners[$arItem['ID']])) $link = $banners[$arItem['ID']][0];
 			$alt = isset($banners[$arItem['ID']]) ? $banners[$arItem['ID']][1] : $arItem['NAME'];
 			?>
+			<?if ($link !== '' && $arItem['ID'] != 52): // 25.11: кроме новогоднего (52) — кнопка ведёт в раздел ?>
+			<a href="<?=htmlspecialcharsbx($link)?>" class="btn-main btn-main_page">СМОТРЕТЬ ТОВАРЫ</a>
+			<?else:?>
 			<a href="#callback_my" class="btn-main btn-main_page fancybox">СВЯЗАТЬСЯ С МЕНЕДЖЕРОМ</a>
+			<?endif;?>
 			<?=($link !== '' ? '<a href="'.htmlspecialcharsbx($link).'" class="item-billbord__image">' : '<div class="item-billbord__image">')?>
 				<img alt="<?=htmlspecialcharsbx($alt)?>" src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>">
 			<?=($link !== '' ? '</a>' : '</div>')?>
