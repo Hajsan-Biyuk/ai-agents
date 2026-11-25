@@ -20,6 +20,8 @@ ErrorDocument 404 /404.php
 	RewriteEngine On
 	RewriteCond %{HTTP_HOST} ^yugtoys.ru$ [NC]
 	RewriteRule ^(.*)$ https://www.yugtoys.ru/$1 [R=301,L]
+	# старые закладки админки Joomla → админка Битрикса (на /administrator хостинг ставит защиту от перебора и отдаёт 403)
+	RewriteRule ^administrator(/|$) /bitrix/admin/? [R=302,L]
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-l
 	RewriteCond %{REQUEST_FILENAME} !-d

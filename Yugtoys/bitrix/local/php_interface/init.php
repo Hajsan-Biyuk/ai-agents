@@ -68,6 +68,15 @@ function get_followers(){
 // после старта сессии (init.php подключается раньше — восстановленное из cookie затиралось)
 AddEventHandler('main', 'OnBeforeProlog', 'set_followers');
 
+// Старая закладка админки Joomla (/administrator/?option=com_jshopping…&attempt=2) запоминалась как «последняя страница сайта»:
+// кнопка перехода на сайт в админке вела туда, а на /administrator защита хостинга от перебора → 403. Ведём на главную.
+AddEventHandler('main', 'OnBeforeProlog', function () {
+	$isJoomla = function ($url) { return is_string($url) && stripos($url, '/administrator') === 0; };
+	if (isset($_GET['back_url_pub']) && $isJoomla($_GET['back_url_pub'])) $_GET['back_url_pub'] = '/';
+	$session = \Bitrix\Main\Application::getInstance()->getSession();
+	if (isset($session['BACK_URL_PUB']) && $isJoomla($session['BACK_URL_PUB'])) $session['BACK_URL_PUB'] = '/';
+});
+
 function getHLList($HL){
 	$reply = [];
 	if(CModule::IncludeModule("highloadblock")){

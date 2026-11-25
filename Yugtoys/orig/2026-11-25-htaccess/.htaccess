@@ -1,0 +1,45 @@
+Options -Indexes 
+ErrorDocument 404 /404.php
+
+<IfModule mod_speling.c>
+	CheckCaseOnly On
+	CheckSpelling On
+</IfModule>
+
+<IfModule mod_php5.c>
+	php_flag allow_call_time_pass_reference 1
+	php_flag session.use_trans_sid off
+
+	php_value display_errors 1
+
+	#php_value mbstring.internal_encoding UTF-8
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	RewriteEngine On
+	RewriteCond %{HTTP_HOST} ^yugtoys.ru$ [NC]
+	RewriteRule ^(.*)$ https://www.yugtoys.ru/$1 [R=301,L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+	RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+	RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+</IfModule>
+<IfModule mod_headers.c>
+Header always set Strict-Transport-Security: "max-age=31536000" env=HTTPS
+Header always set Content-Security-Policy "upgrade-insecure-requests"
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy: "no-referrer-when-downgrade"
+</IfModule>
+<IfModule mod_dir.c>
+	DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive on
+	ExpiresByType image/jpeg "access plus 3 day"
+	ExpiresByType image/gif "access plus 3 day"
+</IfModule>
