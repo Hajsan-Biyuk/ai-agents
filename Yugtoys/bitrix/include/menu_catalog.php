@@ -81,4 +81,5 @@ while($section = $section_list->GetNext()){ ?>
 		<? } ?>
 	</li>
 <? $i++; } ?>
+	<li><a href="/catalog/akcii/">Акционные товары</a></li><?// 25.11: товары с маркером «АКЦИЯ», страница /catalog/akcii/ ?>
 </ul>

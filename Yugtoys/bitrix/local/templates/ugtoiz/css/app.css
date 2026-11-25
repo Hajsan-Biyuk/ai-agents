@@ -390,3 +390,11 @@
 		font-size: 13px;
 	}
 }
+
+/* Страница «Акционные товары» /catalog/akcii/ (2026-11-25): сообщение, когда товаров с маркером «АКЦИЯ» нет */
+.akcii-empty {
+	padding: 10px 0 60px;
+}
+.akcii-empty p {
+	margin-bottom: 24px;
+}
