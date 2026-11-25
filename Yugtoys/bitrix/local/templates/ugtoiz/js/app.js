@@ -164,7 +164,7 @@ $(document).ready(function() {
 		});
 	});
 	
-	$('.js-followers-btn').click(function(e){
+	$(document).on('click', '.js-followers-btn', function(e){
 		e.preventDefault();
 		var   $that = $(this)
 			, action = '';
@@ -182,8 +182,9 @@ $(document).ready(function() {
 				product_id: $that.attr('product_id')
 			},
 			success: function(reply){
-				if(action == 'followers-delete') $that.removeClass('active');
-				else if(action == 'followers-add') $that.addClass('active');
+				// все копии карточки (слайдер на главной клонирует слайды) и счётчик справа — сразу из ответа
+				$('.js-followers-btn[product_id="' + $that.attr('product_id') + '"]').toggleClass('active', action == 'followers-add');
+				$('.btn-fixed_favorites .btn-fixed__value').text(parseInt(reply, 10) || 0);
 				
 				BX.onCustomEvent('OnBasketChange');
 			}
