@@ -191,93 +191,102 @@ class TZ_Messages {
 	}
 
 	/**
-	 * Сообщение о заказе WooCommerce.
+	 * Сообщение о заказе WooCommerce — в виде письма «Новый заказ» администратору.
 	 *
 	 * @param WC_Order $order Заказ.
 	 */
 	public static function order($order) {
+		$sep = '------------------------------';
+		$number = self::escape($order->get_order_number());
+		$site = wp_specialchars_decode(get_bloginfo('name'), ENT_QUOTES);
 		$name = trim($order->get_formatted_billing_full_name());
+
 		$lines = array(
-			'<b>Новый заказ №' . self::escape($order->get_order_number()) . '</b>',
+			'🔔 <b>[' . self::escape($site) . ']: Новый заказ № ' . $number . '</b>🔔',
+			'',
+			'Новый заказ: № ' . $number,
+			$sep,
+			'Получен заказ от покупателя ' . self::escape($name) . ':',
+			'',
 		);
 
-		if ($name !== '') {
-			$lines[] = '<b>Имя:</b> ' . self::escape($name);
-		}
-		if ($order->get_billing_phone() !== '') {
-			$lines[] = '<b>Телефон:</b> ' . self::escape($order->get_billing_phone());
-		}
-		if ($order->get_billing_email() !== '') {
-			$lines[] = '<b>E-mail:</b> ' . self::escape($order->get_billing_email());
-		}
+		$edit = method_exists($order, 'get_edit_order_url') ? $order->get_edit_order_url() : '';
+		$link = $edit !== '' ? '<a href="' . self::escape($edit) . '">[Заказ № ' . $number . ']</a>' : '[Заказ № ' . $number . ']';
+		$date = $order->get_date_created() ? ' (' . self::escape(wc_format_datetime($order->get_date_created())) . ')' : '';
+		$lines[] = $link . $date;
+		$lines[] = '';
+		$lines[] = 'Товар | Количество | Цена';
 
-		$items = array();
 		foreach ($order->get_items() as $item) {
 			if (!is_object($item) || !method_exists($item, 'get_name')) {
 				continue;
 			}
-			$line = self::escape($item->get_name()) . ' × ' . (int) $item->get_quantity();
+			$lines[] = $sep;
+			$line = self::escape($item->get_name()) . ' | ' . (int) $item->get_quantity() . ' | ' . self::escape(self::plain($order->get_formatted_line_subtotal($item)));
 			if (method_exists($item, 'get_formatted_meta_data')) {
 				foreach ($item->get_formatted_meta_data() as $meta) {
-					$line .= "\n  " . self::escape(wp_strip_all_tags($meta->display_key)) . ': ' . self::escape(trim(html_entity_decode(wp_strip_all_tags($meta->display_value), ENT_QUOTES, 'UTF-8')));
+					$line .= "\n" . self::escape(self::plain($meta->display_key)) . ': ' . self::escape(self::plain($meta->display_value));
 				}
 			}
-			$items[] = $line;
-		}
-		if ($items !== array()) {
-			$lines[] = '<b>Состав:</b>' . "\n" . implode("\n", $items);
+			$lines[] = $line;
 		}
 
-		$total = html_entity_decode(
-			wp_strip_all_tags(
-				wc_price(
-					$order->get_total(),
-					array('currency' => $order->get_currency())
-				)
-			),
-			ENT_QUOTES,
-			'UTF-8'
-		);
-		$lines[] = '<b>Сумма:</b> ' . self::escape($total);
-
-		if ($order->get_payment_method_title() !== '') {
-			$lines[] = '<b>Оплата:</b> ' . self::escape($order->get_payment_method_title());
+		foreach ($order->get_order_item_totals() as $total) {
+			$lines[] = $sep;
+			$lines[] = self::escape(self::plain($total['label'])) . ' | ' . self::escape(self::plain($total['value']));
 		}
-
-		$address = $order->get_formatted_billing_address();
-		$address = preg_replace('/<br\s*\/?>/i', "\n", (string) $address);
-		$address = trim(wp_strip_all_tags((string) $address));
-		if ($address !== '') {
-			$lines[] = '<b>Адрес:</b> ' . self::escape($address);
-		}
-
-		if ($order->get_shipping_method() !== '') {
-			$lines[] = '<b>Доставка:</b> ' . self::escape($order->get_shipping_method());
-		}
-		$shipping = preg_replace('/<br\s*\/?>/i', "\n", (string) $order->get_formatted_shipping_address());
-		$shipping = trim(wp_strip_all_tags((string) $shipping));
-		if ($shipping !== '' && $shipping !== $address) {
-			$lines[] = '<b>Адрес доставки:</b> ' . self::escape($shipping);
-		}
-		$shipping_phone = method_exists($order, 'get_shipping_phone') ? trim($order->get_shipping_phone()) : '';
-		if ($shipping_phone !== '' && $shipping_phone !== $order->get_billing_phone()) {
-			$lines[] = '<b>Телефон получателя:</b> ' . self::escape($shipping_phone);
-		}
-
 		$note = trim($order->get_customer_note());
 		if ($note !== '') {
-			$lines[] = '<b>Комментарий:</b> ' . self::escape($note);
+			$lines[] = $sep;
+			$lines[] = 'Примечание: | ' . self::escape($note);
 		}
 
-		$edit = method_exists($order, 'get_edit_order_url') ? $order->get_edit_order_url() : '';
-		if ($edit !== '') {
-			$lines[] = '<b>Заказ:</b> ' . self::escape($edit);
+		$billing = self::address($order->get_formatted_billing_address(), array($order->get_billing_phone(), $order->get_billing_email()));
+		if ($billing !== '') {
+			$lines[] = '';
+			$lines[] = 'Платёжный адрес';
+			$lines[] = '';
+			$lines[] = $billing;
+		}
+		$shipping_phone = method_exists($order, 'get_shipping_phone') ? $order->get_shipping_phone() : '';
+		$shipping = self::address($order->get_formatted_shipping_address(), array($shipping_phone));
+		if ($shipping !== '') {
+			$lines[] = '';
+			$lines[] = 'Адрес доставки';
+			$lines[] = '';
+			$lines[] = $shipping;
 		}
 
+		$lines[] = '';
+		$lines[] = 'Поздравляем вас с продажей.';
+		$lines[] = '';
 		$source = (string) $order->get_meta(TZ_Woo::SOURCE_META);
 		$lines[] = $source !== '' ? $source : implode("\n", TZ_Source::lines());
 
 		return self::limit(implode("\n", $lines));
+	}
+
+	/**
+	 * HTML WooCommerce (цены, мета) в обычный текст.
+	 *
+	 * @param mixed $html HTML.
+	 */
+	private static function plain($html) {
+		$text = html_entity_decode(wp_strip_all_tags((string) $html), ENT_QUOTES, 'UTF-8');
+		return trim((string) preg_replace('/[ \t\x{00A0}]+/u', ' ', $text));
+	}
+
+	/**
+	 * Адрес WooCommerce (через <br>) плюс телефон / e-mail, экранированный.
+	 *
+	 * @param string   $html  Адрес.
+	 * @param string[] $extra Доп. строки.
+	 */
+	private static function address($html, $extra) {
+		$rows = explode("\n", (string) preg_replace('/<br\s*\/?>/i', "\n", (string) $html));
+		$rows = array_merge($rows, $extra);
+		$rows = array_filter(array_map(array(__CLASS__, 'plain'), $rows), 'strlen');
+		return implode("\n", array_map(array(__CLASS__, 'escape'), $rows));
 	}
 
 	/**
