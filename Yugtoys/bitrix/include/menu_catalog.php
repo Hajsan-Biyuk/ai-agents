@@ -6,7 +6,11 @@ $UF_MENU_TYPE = getUserFieldEnum(43);//UF_MENU_TYPE
 
 $section_list = CIBlockSection::GetList(array("sort" => "ASC"), array('IBLOCK_ID' => CATALOG, 'ACTIVE' => 'Y', 'SECTION_ID' => 0), false, array("ID", "NAME", "CODE", "SECTION_PAGE_URL", "PICTURE", "UF_*"));
 $i = 0;
-while($section = $section_list->GetNext()){ ?>
+while($section = $section_list->GetNext()){
+	// 27.11: «Акционные товары» на месте «Сезонных», «Сезонные» — последним пунктом
+	$isSeason = $section['CODE'] == 'sezonnye-tovary';
+	if($isSeason){ ?>
+	<li><a href="/catalog/akcii/">Акционные товары</a></li><? ob_start(); } ?>
 	<li <?=($i == 0 ? 'class="active"' : '')?>>
 		<a href="<?=$section['SECTION_PAGE_URL']?>"><?=$section['NAME']?></a>
 		<? if(CIBlockSection::GetCount(['IBLOCK_ID' => CATALOG, 'SECTION_ID' => $section['ID']])){ ?>
@@ -80,6 +84,6 @@ while($section = $section_list->GetNext()){ ?>
 		</div>
 		<? } ?>
 	</li>
-<? $i++; } ?>
-	<li><a href="/catalog/akcii/">Акционные товары</a></li><?// 25.11: товары с маркером «АКЦИЯ», страница /catalog/akcii/ ?>
+<? if($isSeason) $seasonHtml = ob_get_clean(); $i++; } ?>
+<?=isset($seasonHtml) ? $seasonHtml : '<li><a href="/catalog/akcii/">Акционные товары</a></li>'?>
 </ul>
